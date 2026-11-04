@@ -1,0 +1,29 @@
+extension_version: 0.1.0
+status: PRELIMINARY_LOCAL_AUDIT_NOT_INDEPENDENT_ADJUDICATION
+input_profile: Existing hash-bound scholarly candidate projection and previously captured text derivatives; no new unattended PDF mining.
+operators:
+  - operator_id: HEX-BOUND-AUDIT-EXCERPT
+    callable: horisma_p0.evidence_audit.bound_excerpt
+    output: Source/page/normalized-text hash plus Unicode offsets and a bounded review window
+  - operator_id: HEX-BRACKET-REFERENCE-INDEX
+    callable: horisma_p0.evidence_audit.index_bracket_references
+    output: Document-scoped bibliography candidates with page offsets and pending boundary review
+  - operator_id: HEX-STARTLUX-TEXT-FIT
+    callable: horisma_p0.evidence_audit.propose_text_score
+    provider: Existing selected loopback StartLux endpoint; no hosted fallback or automatic model replacement.
+    output: Raw attempt and a validated ordinal proposal, never a historical support verdict
+rubric:
+  version: text-fit-ordinal-0.1.0
+  unit: ordinal_category_not_probability
+  codes:
+    NOT_ESTABLISHED: 0
+    PARTIAL_OR_AMBIGUOUS: 1
+    DIRECT_AUTHOR_STATEMENT: 2
+constraints:
+  - TextFitScore(c) does_not_entail HistoricalTruth(c)
+  - BibliographicMarkerLinked(c,r) does_not_entail CitedBodySupports(r,c)
+  - AvailableRelatedWork(year2) cannot_substitute_for CitedExactWork(year1)
+  - JointAuthorshipReflection(paper) does_not_entail JointNaming(term)
+  - ModelProposal cannot_grant HumanApproval
+proof_status: UNPROVEN
+acceptance_gate: Independent source-image fidelity, identity/version, rights and human evidence adjudication remain required.

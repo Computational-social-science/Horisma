@@ -14,6 +14,7 @@ Checkpoint:2026-11-04. This is a documentation checkpoint, not a running monitor
 | Claim/adjudication ledger | CANDIDATES_PREPARED_NOT_ADJUDICATED | 28 scholarly-source candidates; 56 unfilled human-review slots, zero completed annotations |
 | Local parsing/drafting | PILOT_WITH_REJECTED_MODEL_REWRITES | 56 PDF pages read locally; five local model calls; incorrect name/anchor output quarantined, no model qualification |
 | Processing/transcription gates | PENDING | Present analyst intake is not yet L37-conforming; source-image fidelity and exact-operation rights require review |
+| Source/citation-chain audit | PRELIMINARY_NOT_ADJUDICATED | All28 scored by local StartLux:26 direct-author proposals,2 ambiguous;4 audit windows rebound,8 additional human-source dependencies; no historical approval |
 | PFLM extension | INSTALLED_EXPERIMENTAL_NOT_PROMOTED | Real weights CPU/chunk checks pass; four-case attribution pilot 1/4 versus rule 4/4; automatic filtering disabled |
 | English microbook | PLANNED | Evidence-to-book acceptance and editorial approval required |
 | Local model/backend | UNQUALIFIED_FOR_HORISMA | Inventory, licenses and task-quality/resource measurements required |
