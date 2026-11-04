@@ -1,0 +1,2 @@
+# Optional extension; install deliberately in the project environment, not base CI.
+pflm1[hf] @ git+https://github.com/cbl/prior-fitted-language-model.git@1e62eeb8ebbc3a314fa10d784fd8e1d56c72927f

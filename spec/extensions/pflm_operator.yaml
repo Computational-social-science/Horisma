@@ -1,0 +1,30 @@
+extension_version: 0.1.0
+status: OPTIONAL_EXPERIMENTAL_NOT_SCIENTIFICALLY_QUALIFIED
+upstream:
+  repository: https://github.com/cbl/prior-fitted-language-model
+  code_commit: 1e62eeb8ebbc3a314fa10d784fd8e1d56c72927f
+  weights_repository: lennartcb/pflm1
+  weights_revision: 20de84b6a178af5c7824f823bd0058452db2b360
+  license: Apache-2.0
+  paper: https://arxiv.org/abs/2610.05879
+placement: After explicit document decoding and deterministic paragraph/citation indexing, before candidate review; never consume PDF binary as text.
+default_enabled: false
+runtime:
+  default_device: cpu
+  remote_inference: forbidden
+  download_on_inference: forbidden
+  remote_model_code: forbidden
+  default_max_text_bytes: 16384
+operators:
+  - operator_id: HEX-PFLM-BYTE-PATTERN
+    callable: horisma_p0.pflm_adapter.score_text_bytes
+    input: Exact UTF-8 text bytes, local model identity and chunk configuration
+    output: Per-byte prediction cost and an explicitly defined eligible-byte denominator
+    interpretation: Pattern/statistical signal only; no OCR correction, identity or factual support verdict.
+  - operator_id: HEX-PFLM-ICL-RANK
+    callable: horisma_p0.pflm_adapter.rank_pattern_labels
+    input: Explicit few-shot pattern context and bounded candidate label byte strings
+    output: Conditional label code lengths; exploratory ordering, not calibrated probability
+    interpretation: May be benchmarked for attribution-paragraph triage/citation-marker patterns. Never exclude passages or certify supporting references from this score alone.
+proof_status: UNPROVEN
+promotion_gate: Independently labeled held-out paragraphs/citation links, recall and false-exclusion measurements against deterministic baselines, ablation and byte/chunk numerical controls; no task-quality claim before these exist.

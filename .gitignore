@@ -1,5 +1,6 @@
 # Clean-rebuild policy, authored independently of the deleted legacy ignore file.
 /.rebuild/
+/legacy/material_inventory.json
 /.venv/
 __pycache__/
 *.py[cod]

@@ -6,6 +6,8 @@ Canonical workspace: `E:/2026-AI4S/Horisma`. EIDOS is a proposed pinned SDK depe
 
 - [English research proposal](docs/research/Horisma_Terminological_Provenance_Project_Research_Proposal_EN.md)
 - [P0 evidence contract, actual results and limits](docs/research/P0_EVIDENCE_CONTRACT_EN.md)
+- [Optional local PFLM pattern/citation-triage extension](docs/architecture/PFLM_LOCAL_OPERATOR_EN.md)
+- [Measured validation and repository reconstruction](docs/research/P0_VALIDATION_CHECKPOINT_EN.md)
 - [Project structure and ownership](docs/architecture/PROJECT_STRUCTURE_EN.md)
 - [English data dictionary](docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md): project-wide logical entities and staged field contracts
 - [Vocabularies](spec/controlled_vocabularies.yaml), [logic obligations](spec/logic_catalog.yaml), [synthetic positive/negative scenarios](spec/examples/data_dictionary_examples.yaml)

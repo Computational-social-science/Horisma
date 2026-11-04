@@ -1,0 +1,136 @@
+{
+  "scope": "REAL_WEIGHTS_CPU_SYNTHETIC_SMOKE_NOT_RETRIEVAL_OR_OCR_QUALIFICATION",
+  "code_commit": "1e62eeb8ebbc3a314fa10d784fd8e1d56c72927f",
+  "weights_revision": "20de84b6a178af5c7824f823bd0058452db2b360",
+  "weights_sha256": "385b7b21cae8605dbc4fe0611b6a78576017260824011a0cbe402e3014061c0e",
+  "device": "cpu",
+  "dtype": "float32",
+  "threads": 6,
+  "model_parameters": 294908512,
+  "model_load_seconds": 12.12,
+  "input_bytes": 32,
+  "input_sha256": "d2f9fa9d99bb30b2b67fc6b0ea2694f345c0961596e0fd82561010b4f7570c2d",
+  "mean_bits_per_byte": 0.9070806795498356,
+  "scoring_seconds": 0.322,
+  "chunk_32_vs_8_max_abs_error_bits": 9.5367431640625e-07,
+  "label_pattern_smoke": {
+    "operator_id": "HEX-PFLM-ICL-RANK",
+    "context_sha256": "2a19961879de71e92cf043ac87f2851cc1faa44fcfe229824f0923b8ab1f4a2e",
+    "label_costs": [
+      {
+        "label": "0",
+        "conditional_total_bits": 7.89127501543903,
+        "label_bytes": 1
+      },
+      {
+        "label": "1",
+        "conditional_total_bits": 9.939375816658615,
+        "label_bytes": 1
+      }
+    ],
+    "preferred_label": "0",
+    "top_labels_tied": false,
+    "prefix_evaluations": 1,
+    "label_scoring": "float64_log1p_shifted_logits",
+    "calibrated_probability": null,
+    "automatic_exclusion_authorized": false,
+    "evidence_support_decision": null,
+    "qualification": "SYNTHETIC_OR_EXPLORATORY_ONLY"
+  },
+  "synthetic_attribution_pattern_pilot": {
+    "eligible_cases": 4,
+    "pflm_correct": 1,
+    "rule_correct": 4,
+    "cases": [
+      {
+        "text": "Matthew effect was coined by Scholar C.",
+        "expected_synthetic_pattern_label": "A",
+        "pflm_label": "N",
+        "pflm_correct": false,
+        "rule_label": "A",
+        "rule_correct": true,
+        "label_costs": [
+          {
+            "label": "A",
+            "conditional_total_bits": 14.64217115866924,
+            "label_bytes": 1
+          },
+          {
+            "label": "N",
+            "conditional_total_bits": 14.378552023843108,
+            "label_bytes": 1
+          }
+        ]
+      },
+      {
+        "text": "Matthew effect was named by Scholar D.",
+        "expected_synthetic_pattern_label": "A",
+        "pflm_label": "N",
+        "pflm_correct": false,
+        "rule_label": "A",
+        "rule_correct": true,
+        "label_costs": [
+          {
+            "label": "A",
+            "conditional_total_bits": 14.92466509940879,
+            "label_bytes": 1
+          },
+          {
+            "label": "N",
+            "conditional_total_bits": 14.383002300863357,
+            "label_bytes": 1
+          }
+        ]
+      },
+      {
+        "text": "Matthew effect describes accumulated advantage.",
+        "expected_synthetic_pattern_label": "N",
+        "pflm_label": "N",
+        "pflm_correct": true,
+        "rule_label": "N",
+        "rule_correct": true,
+        "label_costs": [
+          {
+            "label": "A",
+            "conditional_total_bits": 13.46150824222085,
+            "label_bytes": 1
+          },
+          {
+            "label": "N",
+            "conditional_total_bits": 12.984047255173106,
+            "label_bytes": 1
+          }
+        ]
+      },
+      {
+        "text": "Another term was coined by Scholar E.",
+        "expected_synthetic_pattern_label": "N",
+        "pflm_label": "A",
+        "pflm_correct": false,
+        "rule_label": "N",
+        "rule_correct": true,
+        "label_costs": [
+          {
+            "label": "A",
+            "conditional_total_bits": 14.47680346201131,
+            "label_bytes": 1
+          },
+          {
+            "label": "N",
+            "conditional_total_bits": 14.709915626296794,
+            "label_bytes": 1
+          }
+        ]
+      }
+    ],
+    "not_a_scholarly_retrieval_benchmark": true,
+    "no_real_literature_recall_claim": true
+  },
+  "scientific_qualification": false,
+  "automatic_filtering_enabled": false,
+  "packages": {
+    "pflm1": "0.1.0",
+    "torch": "2.13.0+cu126",
+    "transformers": "5.19.0"
+  }
+}

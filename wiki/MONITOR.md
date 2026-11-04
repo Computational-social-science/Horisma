@@ -14,6 +14,7 @@ Checkpoint:2026-11-04. This is a documentation checkpoint, not a running monitor
 | Claim/adjudication ledger | CANDIDATES_PREPARED_NOT_ADJUDICATED | 28 scholarly-source candidates; 56 unfilled human-review slots, zero completed annotations |
 | Local parsing/drafting | PILOT_WITH_REJECTED_MODEL_REWRITES | 56 PDF pages read locally; five local model calls; incorrect name/anchor output quarantined, no model qualification |
 | Processing/transcription gates | PENDING | Present analyst intake is not yet L37-conforming; source-image fidelity and exact-operation rights require review |
+| PFLM extension | INSTALLED_EXPERIMENTAL_NOT_PROMOTED | Real weights CPU/chunk checks pass; four-case attribution pilot 1/4 versus rule 4/4; automatic filtering disabled |
 | English microbook | PLANNED | Evidence-to-book acceptance and editorial approval required |
 | Local model/backend | UNQUALIFIED_FOR_HORISMA | Inventory, licenses and task-quality/resource measurements required |
 |24/7 maintenance | NOT_DEPLOYED_BY_THIS_REBUILD | Fault controls and24-hour shadow soak required |
@@ -23,4 +24,4 @@ Checkpoint:2026-11-04. This is a documentation checkpoint, not a running monitor
 
 Workspace: `E:/2026-AI4S/Horisma`. Horisma records must not be stored in EIDOS directories. No rebuilt service or live scientific pipeline is implied by the old repository or static pages.
 
-Next: independent review of the [P0 scholarly candidates](../docs/research/P0_EVIDENCE_CONTRACT_EN.md), then the reviewed evidence-to-book slice in the [implementation contract](../docs/research/Horisma_Implementation_Acceptance_Plan_EN.md).
+Next: independent review of the [P0 scholarly candidates](../docs/research/P0_EVIDENCE_CONTRACT_EN.md); use the [measured checkpoint](../docs/research/P0_VALIDATION_CHECKPOINT_EN.md) when deciding model promotion. Then proceed to the reviewed evidence-to-book slice in the [implementation contract](../docs/research/Horisma_Implementation_Acceptance_Plan_EN.md).
