@@ -1,7 +1,10 @@
-extension_version: 0.1.0
+extension_version: 0.1.1
 status: PRELIMINARY_LOCAL_AUDIT_NOT_INDEPENDENT_ADJUDICATION
 input_profile: Existing hash-bound scholarly candidate projection and previously captured text derivatives; no new unattended PDF mining.
 operators:
+  - operator_id: HEX-SINGLE-ROLE-SUPPORT-ELIGIBILITY
+    callable: horisma_p0.chain_guards.single_role_support_eligibility
+    output: Conditional role comparability; cross-role promotion blocked and equal roles still require evidence/scope review
   - operator_id: HEX-BOUND-AUDIT-EXCERPT
     callable: horisma_p0.evidence_audit.bound_excerpt
     output: Source/page/normalized-text hash plus Unicode offsets and a bounded review window
