@@ -1,0 +1,20 @@
+{
+  "protocol_id": "HORISMA-P0-MATTHEW-1.0.0",
+  "base_dictionary_version": "0.1.0",
+  "freeze_kind": "ENGINEERING_CONTRACT_FREEZE_NOT_SCIENTIFIC_APPROVAL",
+  "authorization_basis": "User instruction to freeze the evidence contract and proceed with P0; no scientific/rights/adjudication approval is inferred.",
+  "unit": "One atomic claim made in one identifiable scholarly document version, with a locatable body passage.",
+  "wikipedia_role": "Term/person/reference discovery only; its assertions are not the default candidate-claim corpus.",
+  "selection": "Purposive feasibility pilot of 20-30 body-level scholarly claims. Not representative; no prevalence, majority-literature or historical-first estimate.",
+  "priority": "Attribution of naming, chronology, eponymic inspiration, conceptual development, empirical contributions and authorship, with roles kept separate.",
+  "source_statement_vs_truth": "SOURCE_ASSERTS(document_version, candidate) records what a scholarly source claims. It does not establish the underlying historical or empirical proposition.",
+  "compound_example": "Split the supplied coining/person/year/name-origin sentence into separate propositions. Birth/death years belong to identity assertions. The supplied wording is an unattributed lead until located in a particular scholarly source.",
+  "non_exclusivity": "An assertion naming Merton is not automatically an assertion of sole coining. A joint-authorship reflection does not automatically prove joint naming.",
+  "local_first": "Deterministic local PDF reading/indexing precedes bounded local-model drafting. Main-model review is restricted to contracts, ambiguous attribution and selected outputs. No paid/proprietary API fallback.",
+  "private_intake_boundary": "This analyst intake retains NOT_REVIEWED rights and PENDING transcription review and is not yet L37-conforming. Manual operation and private storage do not satisfy that permission gate. Do not promote further processing or unattended operation without the affirmative exact-operation rights decision; no PDF/text redistribution or scientific release is permitted.",
+  "review": "All intake assessments remain null/NOT_ASSESSED. Require two independent human annotations and an adjudicator for disagreements before accepted historical findings or gold.",
+  "human_source_handoff": "One bounded access attempt. Access denial, paywall, challenge or unapproved redirect creates a source request; do not invent passages or silently substitute versions.",
+  "projection_boundary": "The P0 JSON format is a typed intake projection with local candidate IDs, not full dictionary entity records/UUIDs. Promotion requires explicit record construction, exact references and independent review.",
+  "proof_status": "UNPROVEN",
+  "public_sync_scope": "Code, frozen contracts, synthetic tests, English documentation and SKILLS. Actual source files, extracted text, raw local-model output and candidate evidence remain private pending reviewed export."
+}

@@ -1,0 +1,439 @@
+catalog_version: 0.1.0
+status: SPECIFICATION_ONLY
+authority: Machine codes and code meanings; no deployed validator.
+vocabularies:
+  definition_stage:
+    definition: Maturity of a definition, not validation of data or software.
+    codes:
+      CORE_CONTRACT_DEFINED: Core research contract specified; records still need their own review.
+      PROPOSED: Design definition; implementation and empirical qualification are pending.
+      PROTOCOL_DEPENDENT: Parameters/interpretation must be bound to an approved research protocol.
+  missing_reason:
+    definition: Companion reason for a null value; never a numerical sentinel.
+    codes:
+      NOT_COLLECTED: No observation was collected.
+      UNKNOWN: Value cannot currently be determined.
+      NOT_APPLICABLE: Field does not apply to this record.
+      SOURCE_UNAVAILABLE: Required source inaccessible.
+      NOT_ASSESSED: Assessment has not happened; not an insufficient-evidence finding.
+      WITHHELD: Known content is withheld under an access/rights policy.
+      NOT_DEFINED: Mathematical quantity undefined, including a zero denominator.
+      PROTOCOL_UNSET: Research protocol has not fixed this parameter.
+      INVALIDATED: Prior value is obsolete under changed inputs.
+  disclosure_class:
+    definition: Disclosure eligibility, never an independent permission to release.
+    codes:
+      PUBLIC_ELIGIBLE: May enter a reviewed export if all other gates pass.
+      INTERNAL: Project work product not approved for public export.
+      RESTRICTED: Controlled personal, licensed or otherwise restricted content.
+      SEALED_EVALUATION: Evaluation labels/items withheld from development and public export.
+  record_status:
+    definition: Record lifecycle; ACTIVE is not true, verified or approved.
+    codes:
+      DRAFT: Candidate record.
+      ACTIVE: Current version of a record.
+      SUPERSEDED: A later version replaces this version.
+      WITHDRAWN: Withdrawn with retained history.
+  source_identity_status:
+    definition: Whether this document/version is the claimed document/version.
+    codes:
+      UNVERIFIED: Identity not checked.
+      VERIFIED: Identity independently checked.
+      MISMATCH: Observed identity/version differs.
+      UNAVAILABLE: Identity cannot be checked with available material.
+  source_access_status:
+    definition: Access observation, separate from identity and rights.
+    codes:
+      NOT_ATTEMPTED: No acquisition attempted.
+      LOCAL_AVAILABLE: Local bytes available.
+      OPEN_ACCESS_AVAILABLE: A lawful public source was located.
+      WAITING_HUMAN_SOURCE: A person must supply/review admissible material.
+      TEMPORARILY_UNAVAILABLE: Transient failure; bounded retry may apply.
+      UNAVAILABLE: No currently usable source.
+  source_kind:
+    definition: Source genre; genre alone does not establish truth.
+    codes:
+      PRIMARY_DOCUMENT: Contemporaneous or original document, still subject to criticism.
+      RETROSPECTIVE_ACCOUNT: Later recollection or discussion.
+      SCHOLARLY_SECONDARY: Scholarly secondary analysis.
+      TERTIARY_ENCYCLOPEDIA: Encyclopedic starting point, including Wikipedia.
+      PROJECT_GENERATED: Generated project output; not independent corroboration.
+  evidence_relation:
+    definition: A passage-to-proposition relation, not a source reputation score.
+    codes:
+      SUPPORTS: Direct relevant support for the specified proposition/scope.
+      CONTRADICTS: Relevant counter-evidence for the specified proposition/scope.
+      MENTIONS: Mentions a topic without supporting the proposition.
+      REPORTS_CLAIM: Supports that a source made a statement, not necessarily its content.
+      UNDETERMINED: Relation not established.
+  claim_assessment:
+    definition: Outcome of a completed, scoped evidence assessment.
+    codes:
+      SUPPORTED: Policy-qualified support, with contrary evidence resolved for this scope.
+      CONTRADICTED: Policy-qualified contradiction for this scope.
+      MIXED: Relevant support and contradiction remain; preserve both.
+      INSUFFICIENT_EVIDENCE: An assessment occurred, but evidence is inadequate.
+      OUT_OF_SCOPE: Not assessable under the specified question/policy.
+  review_status:
+    definition: Review lifecycle for an exact version/digest and review kind.
+    codes:
+      PENDING: No completed review.
+      IN_REVIEW: Review in progress.
+      APPROVED: Authorized reviewer approved this exact target for the stated use.
+      REJECTED: Rejected for the stated use.
+      REVOKED: Prior approval explicitly revoked.
+      STALE: Binding no longer matches current inputs/target.
+  execution_status:
+    definition: Task lifecycle; SUCCEEDED does not imply scientific support.
+    codes:
+      QUEUED: Waiting for a lease.
+      LEASED: One owner holds a finite lease.
+      RUNNING: Owned attempt executing.
+      SUCCEEDED: Execution/output contract completed.
+      RETRYABLE_FAILURE: Bounded retry allowed.
+      TERMINAL_FAILURE: No automatic retry.
+      CANCELLED: Cancelled and ownership cleanup required.
+      WAITING_HUMAN_SOURCE: Source dependency requires human handling; lease released.
+      WAITING_HUMAN_REVIEW: Review work item awaits a person; not approval.
+  failure_kind:
+    definition: Typed failure; unknown reasons remain visible.
+    codes:
+      PAYWALL: Observed paid-access boundary.
+      ACCESS_DENIED: Access denied; not automatically a paywall.
+      NETWORK_FAILURE: Network unavailable.
+      INVALID_DOCUMENT: Wrong/malformed document.
+      MODEL_UNAVAILABLE: Selected local model unavailable.
+      INVALID_OUTPUT: Output contract invalid.
+      TIMEOUT: Finite budget exceeded.
+      OWNERSHIP_FAILURE: Ownership could not be established/closed.
+      RIGHTS_UNRESOLVED: Required permission unclear.
+      STALE_BINDING: Inputs no longer match.
+      DATA_INTEGRITY_ERROR: Digest or references fail.
+      UNKNOWN_FAILURE: Failure not diagnosed.
+  rights_status:
+    definition: Permission for one explicitly stated operation; not blanket clearance.
+    codes:
+      NOT_REVIEWED: Permission not assessed.
+      PERMITTED: Evidence of permission for this operation.
+      RESTRICTED: Only stated conditions/uses permitted.
+      PROHIBITED: Stated operation not permitted.
+      UNKNOWN: Insufficient rights information.
+  rights_operation:
+    definition: Operation-specific permission target.
+    codes:
+      READ_LOCAL: read local
+      PROCESS_LOCAL: process local
+      QUOTE_PUBLIC: quote public
+      REDISTRIBUTE_FULL_TEXT: redistribute full text
+      REDISTRIBUTE_ASSET: redistribute asset
+  contribution_role:
+    definition: Horisma historical roles; not a priority or intent verdict.
+    codes:
+      LABEL_NAMING: Proposing/coining a lexical expression.
+      CONCEPTUALIZATION: Developing the concept.
+      DISCOVERY: Discovery of the referent/phenomenon.
+      EMPIRICAL_BASIS: Supplying empirical material.
+      METHODOLOGY: Developing methods.
+      AUTHORSHIP: Authorship of a particular work.
+      PUBLICATION_SUPPORT: Enabling publication without implying authorship/naming.
+      TRANSLATION: Translation.
+      POPULARIZATION: Dissemination/popularization.
+      OTHER_SPECIFIED: Explicitly described role; not an escape from review.
+  historical_event_kind:
+    definition: Kind of dated event being asserted.
+    codes:
+      CONCEPTUAL_DEVELOPMENT: conceptual development
+      LABEL_PROPOSAL: label proposal
+      PRINTED_ATTESTATION: printed attestation
+      SCHEDULED_PRESENTATION: scheduled presentation
+      DELIVERED_PRESENTATION: delivered presentation
+      PUBLICATION: publication
+      TRANSLATION: translation
+      POPULARIZATION: popularization
+      RETROSPECTIVE_RECOLLECTION: retrospective recollection
+      ATTRIBUTION_STATEMENT: attribution statement
+  calendar_system:
+    definition: Calendar attached to the original expression.
+    codes:
+      GREGORIAN: gregorian
+      JULIAN: julian
+      OTHER_SPECIFIED: other_specified
+      UNKNOWN: unknown
+  temporal_precision:
+    definition: Claimed resolution, not the precision of stored strings.
+    codes:
+      DAY: day
+      MONTH: month
+      YEAR: year
+      DECADE: decade
+      INTERVAL: interval
+      UNKNOWN: unknown
+  attribution_scope:
+    definition: What the attribution statement actually claims.
+    codes:
+      EXPLICIT_EXCLUSIVE: Explicit sole/exclusive contribution claim.
+      EXPLICIT_SHARED: Explicit shared credit.
+      ROLE_SPECIFIC: Credit for a named role.
+      GENERAL_ASSOCIATION: General association, not sole origin.
+      UNSPECIFIED: Scope not determined.
+  discrepancy_conclusion:
+    definition: Independent finding under an explicit comparison policy.
+    codes:
+      DISCREPANCY_SUPPORTED: A same-role/same-scope discrepancy is supported under the policy.
+      NO_DISCREPANCY_SUPPORTED: The examined comparison supports no discrepancy; not global innocence.
+      UNRESOLVED: Comparison cannot support a conclusion.
+      OUT_OF_SCOPE: Comparison outside the protocol.
+  comparison_kind:
+    definition: Comparison outcome; role difference is not automatically miscredit.
+    codes:
+      COMPARABLE: comparable
+      ROLE_DIFFERENCE: role difference
+      CONCEPT_DIFFERENCE: concept difference
+      SCOPE_DIFFERENCE: scope difference
+      UNDETERMINED: undetermined
+  publication_mode:
+    definition: How a proposition is presented to readers.
+    codes:
+      ESTABLISHED_FACT: Presented as an accepted project finding; current support/review required.
+      QUALIFIED_ACCOUNT: Explicitly qualified interpretation or report of a claim.
+      OPEN_QUESTION: Unresolved question, not an accusation in disguise.
+      SYNTHETIC_ILLUSTRATION: Clearly fictional example, not historical evidence.
+  actor_kind:
+    definition: Operational provenance actor, separate from historical contributors.
+    codes:
+      HUMAN: human
+      SOFTWARE: software
+      MODEL: model
+  assertion_origin:
+    definition: Who/how proposed the content; not an acceptance grade.
+    codes:
+      HUMAN_PROPOSED: human proposed
+      MODEL_PROPOSED: model proposed
+      IMPORTED_UNVERIFIED: imported unverified
+      DERIVED: derived
+  contributor_kind:
+    definition: Historical contribution-bearing entity.
+    codes:
+      PERSON: person
+      ORGANIZATION: organization
+      COLLECTIVE: collective
+      UNKNOWN: unknown
+  taxonomy_scheme:
+    definition: Scheme family; actual release and mapping must be pinned.
+    codes:
+      JACS3: JACS3
+      HECOS: HECOS
+      CAH: CAH
+      FORD: FORD
+      OTHER_SPECIFIED: OTHER_SPECIFIED
+  target_language:
+    definition: Publication lanes only; source-language BCP47 values are not restricted to these.
+    codes:
+      en: en
+      fr: fr
+      es: es
+      ru: ru
+      zh: zh
+      ar: ar
+  dataset_split:
+    definition: Evaluation partition, assigned at concept-family level.
+    codes:
+      DEVELOPMENT: development
+      TRAIN: train
+      VALIDATION: validation
+      TEST_SEALED: test sealed
+  evaluation_condition:
+    definition: Do not pool these evidence-access conditions.
+    codes:
+      RULE_RETRIEVAL: rule retrieval
+      CLOSED_BOOK: closed book
+      ORACLE_EVIDENCE: oracle evidence
+      RETRIEVED_EVIDENCE: retrieved evidence
+  metric_status:
+    definition: Whether an actual mathematical/operational observation exists.
+    codes:
+      NOT_MEASURED: not measured
+      DEFINED: defined
+      NOT_DEFINED: not defined
+      INVALIDATED: invalidated
+  presentation_condition:
+    definition: Proposed behavioural manipulation; not an approved study.
+    codes:
+      LEDGER: Structured ledger.
+      FACT_MATCHED_NARRATIVE: Narrative with matched facts.
+  proof_status:
+    definition: Formal verification status, separate from examples and human review.
+    codes:
+      UNPROVEN: No bound formal proof accepted.
+      EXAMPLES_CHECKED: Finite examples inspected; not proof.
+      COUNTEREXAMPLE_FOUND: A counterexample is recorded.
+      PROVED_WITH_BOUND_ARTIFACT: The exact statement, assumptions and toolchain have an accepted proof artifact.
+  logic_kind:
+    definition: Hypotheses must not silently become axioms.
+    codes:
+      DEFINITION: definition
+      INVARIANT: invariant
+      TRANSITION: transition
+      DERIVATION: derivation
+      RESEARCH_HYPOTHESIS: research_hypothesis
+      INFERENCE_POLICY: Forbidden automatic inference; not an object-level truth axiom.
+  operator_kind:
+    definition: Composition does not imply a separate microservice.
+    codes:
+      PRIMITIVE: Reusable bounded capability.
+      COMPOSITE: Composition of declared primitive contracts.
+  operator_readiness:
+    definition: Contract versus implementation readiness.
+    codes:
+      SPECIFIED_NOT_IMPLEMENTED: Contract only.
+      SDK_REUSE_CANDIDATE: Existing provider inspected; Horisma integration not qualified.
+      QUALIFIED_FOR_DECLARED_SCOPE: Requires actual scope-bound receipts.
+  execution_mode:
+    definition: Choose the cheapest adequate ownership boundary.
+    codes:
+      IN_PROCESS: in process
+      OWNED_SUBPROCESS: owned subprocess
+      HUMAN_HANDOFF: human handoff
+  resource_class:
+    definition: Scheduling lease class.
+    codes:
+      CPU: cpu
+      NETWORK_INGEST: network ingest
+      GPU_EXCLUSIVE: gpu exclusive
+      HUMAN: human
+  passage_anchor_kind:
+    definition: Version-bound passage location strategy.
+    codes:
+      PAGE: page
+      TEXT_OFFSETS: text_offsets
+      IMAGE_REGION: image_region
+  identifier_scheme:
+    definition: Identifier namespace; identifiers alone are not identity evidence.
+    codes:
+      DOI: DOI
+      ISBN: ISBN
+      ISSN: ISSN
+      PMID: PMID
+      ARXIV: ARXIV
+      ORCID: ORCID
+      URI: URI
+      WIKIDATA: WIKIDATA
+      WIKIPEDIA_REVISION: WIKIPEDIA_REVISION
+      OTHER_SPECIFIED: OTHER_SPECIFIED
+  search_outcome:
+    definition: Outcome of a bounded search, not a fictitious passage relation.
+    codes:
+      MATCH_FOUND: One or more relevant passages returned.
+      NO_RELEVANT_PASSAGE: No relevant passage in inspected scope.
+      PARTIAL_SEARCH: Declared search incomplete.
+      UNAVAILABLE: Required material inaccessible.
+  temporal_comparison:
+    definition: Partial-information temporal ordering.
+    codes:
+      BEFORE: before
+      AFTER: after
+      OVERLAP: overlap
+      UNKNOWN: unknown
+state_machines:
+  execution_status:
+    initial: QUEUED
+    edges:
+    - - QUEUED
+      - LEASED
+      - finite exclusive lease/owner binding granted
+      - L30
+    - - LEASED
+      - RUNNING
+      - owner and input bindings checked
+      - L03
+    - - RUNNING
+      - SUCCEEDED
+      - execution/output contract complete; no scientific promotion
+      - L07
+    - - RUNNING
+      - WAITING_HUMAN_SOURCE
+      - human source dependency recorded; lease released
+      - L15
+    - - WAITING_HUMAN_SOURCE
+      - QUEUED
+      - identity/rights gates rechecked, dependent inputs rebound
+      - L16
+    - - RUNNING
+      - WAITING_HUMAN_REVIEW
+      - review task bound; prior owned work closed and lease released
+      - L17
+    - - WAITING_HUMAN_REVIEW
+      - QUEUED
+      - exact-scope approval received and inputs still current; rejection does not requeue
+      - L17
+    - - RUNNING
+      - RETRYABLE_FAILURE
+      - typed failure; prior owned work verified closed and lease released; attempt limit not exhausted
+      - L31
+    - - RETRYABLE_FAILURE
+      - QUEUED
+      - backoff elapsed and same task binding valid
+      - L31
+    - - RUNNING
+      - TERMINAL_FAILURE
+      - nonretryable failure or attempts exhausted
+      - L07
+    - - QUEUED
+      - CANCELLED
+      - authorized cancellation recorded
+      - L31
+    - - LEASED
+      - CANCELLED
+      - owned work closed and cancellation recorded
+      - L31
+    - - RUNNING
+      - CANCELLED
+      - owned work closed and cancellation recorded
+      - L31
+    - - WAITING_HUMAN_REVIEW
+      - TERMINAL_FAILURE
+      - review rejected/revoked; retain findings
+      - L17
+    - - LEASED
+      - QUEUED
+      - expired/crashed owner; previous work verified closed; protected data unchanged
+      - L30
+    - - WAITING_HUMAN_SOURCE
+      - CANCELLED
+      - authorized cancellation; dependent wait closed; history retained
+      - L31
+    - - WAITING_HUMAN_REVIEW
+      - CANCELLED
+      - authorized cancellation; dependent wait closed; history retained
+      - L31
+    - - RETRYABLE_FAILURE
+      - CANCELLED
+      - authorized cancellation; dependent wait closed; history retained
+      - L31
+  review_status:
+    initial: PENDING
+    edges:
+    - - PENDING
+      - IN_REVIEW
+      - qualified reviewer assigned
+      - L17
+    - - IN_REVIEW
+      - APPROVED
+      - authorized review with exact digest and scope
+      - L17
+    - - IN_REVIEW
+      - REJECTED
+      - review findings retained
+      - L17
+    - - APPROVED
+      - STALE
+      - target/dependency binding changed
+      - L17
+    - - APPROVED
+      - REVOKED
+      - authorized revocation recorded
+      - L17
+    - - STALE
+      - IN_REVIEW
+      - fresh review of new exact binding
+      - L17

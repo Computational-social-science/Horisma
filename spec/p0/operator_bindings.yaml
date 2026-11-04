@@ -1,0 +1,37 @@
+profile_version: 1.0.0
+status: ON_DEMAND_INTAKE_PROTOTYPES_NOT_UNATTENDED_QUALIFICATION
+base_operator_catalog_version: 0.1.0
+operators:
+  - operator_id: P0-WIKIPEDIA-DISCOVERY
+    base_contract_ref: HOP-SOURCE-INTAKE
+    callable: horisma_p0.operators.index_wikipedia
+    input: revision-bound UTF-8 HTML bytes and receipt
+    output: private reference index and proposed DOI work groups
+    invariant_refs: [P0-L01, P0-L02]
+  - operator_id: P0-ACQUIRE
+    base_contract_ref: HOP-SOURCE-INTAKE
+    callable: horisma_p0.operators.acquire_source
+    input: explicitly selected allowlisted public URL, source ID and media type
+    output: immutable acquired bytes/receipt or human-source dependency
+    invariant_refs: [P0-L03]
+  - operator_id: P0-PRIVATE-PDF-READ
+    base_contract_ref: HOP-TEXT-EXTRACTION
+    callable: horisma_p0.local_documents.extract_for_private_intake
+    input: locally acquired PDF and exact digest
+    output: private raw per-page derivative, tool version and pending review
+    restriction: Current interactive intake is not yet L37-conforming. Private storage/manual operation do not replace affirmative processing permission; no unattended promotion or redistribution.
+    invariant_refs: [P0-L02, P0-L04]
+  - operator_id: P0-LOCAL-DRAFT
+    base_contract_ref: HOP-CONTRIBUTION-EXTRACTION
+    callable: horisma_p0.local_documents.draft_locally
+    input: bounded local page text, pinned model/configuration and loopback endpoint
+    output: raw attempt and source-anchor-matched or quarantined suggestions
+    restriction: Full-text rewrite pilot failed; outputs are not authoritative and cannot mint review.
+    invariant_refs: [P0-L04, P0-L05, P0-L06]
+  - operator_id: P0-CANDIDATE-CHECK
+    base_contract_ref: HOP-EVIDENCE-ASSESSMENT
+    callable: horisma_p0.operators.validate_ledger
+    input: intake projection, exact schema and frozen contract manifest
+    output: structural/binding receipt; no evidence-support outcome
+    restriction: Does not implement historical evidence assessment or human adjudication.
+    invariant_refs: [P0-L01, P0-L02, P0-L04, P0-L05, P0-L06]

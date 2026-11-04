@@ -1,0 +1,803 @@
+catalog_version: 0.1.0
+status: CONTRACTS_NOT_DEPLOYED
+ownership: Horisma contracts; imported SDK providers remain external and pinned.
+performance_policy: Prefer in-process pure functions/batches; cache only by complete immutable bindings; isolation/deadlines
+  justify a subprocess, not a microservice by default.
+operators:
+- operator_id: HOP-SOURCE-INTAKE
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - work
+  - document_version
+  output_entity_types:
+  - acquisition_attempt
+  - source_file
+  - human_source_request
+  precondition_rule_refs:
+  - L15
+  - L16
+  - L33
+  - L34
+  postcondition_rule_refs:
+  - L15
+  - L16
+  - L33
+  - L34
+  execution_mode: IN_PROCESS
+  resource_class: NETWORK_INGEST
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-DOCUMENT-IDENTITY
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - document_version
+  - source_file
+  output_entity_types:
+  - review_decision
+  precondition_rule_refs:
+  - L05
+  - L16
+  postcondition_rule_refs:
+  - L05
+  - L16
+  execution_mode: IN_PROCESS
+  resource_class: CPU
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-TEXT-EXTRACTION
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - source_file
+  - rights_decision
+  output_entity_types:
+  - artifact
+  precondition_rule_refs:
+  - L05
+  - L16
+  - L33
+  - L37
+  postcondition_rule_refs:
+  - L05
+  - L16
+  - L33
+  - L37
+  execution_mode: OWNED_SUBPROCESS
+  resource_class: CPU
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-PASSAGE-ANCHOR
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - document_version
+  - source_file
+  - artifact
+  output_entity_types:
+  - passage
+  precondition_rule_refs:
+  - L05
+  postcondition_rule_refs:
+  - L05
+  execution_mode: IN_PROCESS
+  resource_class: CPU
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-TRANSCRIPTION-REVIEW
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - source_file
+  - artifact
+  - passage
+  output_entity_types:
+  - review_decision
+  precondition_rule_refs:
+  - L05
+  - L17
+  - L36
+  postcondition_rule_refs:
+  - L05
+  - L17
+  - L36
+  execution_mode: HUMAN_HANDOFF
+  resource_class: HUMAN
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-TEMPORAL-NORMALIZATION
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - atomic_claim
+  - passage
+  output_entity_types:
+  - contribution_assertion
+  precondition_rule_refs:
+  - L12
+  - L14
+  postcondition_rule_refs:
+  - L12
+  - L14
+  execution_mode: IN_PROCESS
+  resource_class: CPU
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-CONCEPT-RESOLUTION
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - lexical_form
+  - passage
+  output_entity_types:
+  - concept
+  - sense
+  - concept_family
+  precondition_rule_refs:
+  - L10
+  - L19
+  postcondition_rule_refs:
+  - L10
+  - L19
+  execution_mode: IN_PROCESS
+  resource_class: CPU
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-TAXONOMY-MAPPING
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - sense
+  - artifact
+  output_entity_types:
+  - taxonomy_assignment
+  precondition_rule_refs:
+  - L03
+  - L05
+  postcondition_rule_refs:
+  - L03
+  - L05
+  execution_mode: IN_PROCESS
+  resource_class: CPU
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-CONTRIBUTION-EXTRACTION
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - passage
+  - concept
+  - contributor
+  output_entity_types:
+  - atomic_claim
+  - contribution_assertion
+  - attribution_assertion
+  precondition_rule_refs:
+  - L01
+  - L10
+  - L11
+  postcondition_rule_refs:
+  - L01
+  - L10
+  - L11
+  execution_mode: IN_PROCESS
+  resource_class: CPU
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-EVIDENCE-ASSESSMENT
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - atomic_claim
+  - passage
+  - adjudication_policy
+  output_entity_types:
+  - evidence_link
+  - annotation
+  precondition_rule_refs:
+  - L05
+  - L06
+  - L08
+  postcondition_rule_refs:
+  - L05
+  - L06
+  - L08
+  execution_mode: IN_PROCESS
+  resource_class: CPU
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-HUMAN-ADJUDICATION
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - annotation
+  - adjudication_policy
+  output_entity_types:
+  - adjudication
+  - discrepancy_finding
+  precondition_rule_refs:
+  - L09
+  - D01
+  postcondition_rule_refs:
+  - L09
+  - D01
+  execution_mode: HUMAN_HANDOFF
+  resource_class: HUMAN
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-PROFILE-PROJECTION
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - contributor
+  - identity_assertion
+  output_entity_types:
+  - artifact
+  precondition_rule_refs:
+  - L05
+  - L32
+  postcondition_rule_refs:
+  - L05
+  - L32
+  execution_mode: IN_PROCESS
+  resource_class: CPU
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-PORTRAIT-CANDIDATE
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - artifact
+  - rights_decision
+  - model_configuration
+  output_entity_types:
+  - artifact
+  precondition_rule_refs:
+  - L16
+  - L30
+  - L32
+  - L37
+  postcondition_rule_refs:
+  - L16
+  - L30
+  - L32
+  - L37
+  execution_mode: OWNED_SUBPROCESS
+  resource_class: GPU_EXCLUSIVE
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-BOOK-MATERIALIZATION
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - atomic_claim
+  - adjudication
+  - artifact
+  output_entity_types:
+  - book_edition
+  - artifact
+  precondition_rule_refs:
+  - L17
+  - L18
+  postcondition_rule_refs:
+  - L17
+  - L18
+  execution_mode: OWNED_SUBPROCESS
+  resource_class: CPU
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-LOCALIZATION
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - book_edition
+  - model_configuration
+  output_entity_types:
+  - localization
+  - artifact
+  precondition_rule_refs:
+  - L17
+  - L18
+  - L34
+  postcondition_rule_refs:
+  - L17
+  - L18
+  - L34
+  execution_mode: OWNED_SUBPROCESS
+  resource_class: GPU_EXCLUSIVE
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-RIGHTS-REVIEW
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - artifact
+  output_entity_types:
+  - rights_decision
+  - review_decision
+  precondition_rule_refs:
+  - L16
+  - L27
+  postcondition_rule_refs:
+  - L16
+  - L27
+  execution_mode: HUMAN_HANDOFF
+  resource_class: HUMAN
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-FRESHNESS-CHECK
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - artifact
+  - review_decision
+  output_entity_types:
+  - review_decision
+  precondition_rule_refs:
+  - L03
+  - L17
+  postcondition_rule_refs:
+  - L03
+  - L17
+  execution_mode: IN_PROCESS
+  resource_class: CPU
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-METRIC-DERIVATION
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - metric_definition
+  - artifact
+  output_entity_types:
+  - metric_observation
+  precondition_rule_refs:
+  - L20
+  - L21
+  - L23
+  - L24
+  - L38
+  - L39
+  - L40
+  postcondition_rule_refs:
+  - L20
+  - L21
+  - L23
+  - L24
+  - L38
+  - L39
+  - L40
+  execution_mode: IN_PROCESS
+  resource_class: CPU
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-RELEASE-CHECK
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - book_edition
+  - localization
+  - rights_decision
+  - review_decision
+  output_entity_types:
+  - artifact
+  precondition_rule_refs:
+  - L17
+  - L18
+  - L27
+  postcondition_rule_refs:
+  - L17
+  - L18
+  - L27
+  execution_mode: IN_PROCESS
+  resource_class: CPU
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-FORMAL-REVIEW
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  input_entity_types:
+  - logical_statement
+  - proof_record
+  - artifact
+  output_entity_types:
+  - proof_record
+  precondition_rule_refs:
+  - L28
+  - L29
+  postcondition_rule_refs:
+  - L28
+  - L29
+  execution_mode: HUMAN_HANDOFF
+  resource_class: HUMAN
+  implementation_provider: null
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-OWNED-EXECUTION
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SDK_REUSE_CANDIDATE
+  input_entity_types:
+  - artifact
+  output_entity_types:
+  - operator_run
+  - artifact
+  precondition_rule_refs:
+  - L07
+  - L30
+  - L31
+  - L33
+  postcondition_rule_refs:
+  - L07
+  - L30
+  - L31
+  - L33
+  execution_mode: OWNED_SUBPROCESS
+  resource_class: CPU
+  implementation_provider: Installed EIDOS SDK process owner via a future thin adapter; no source-tree import or
+    Horisma integration claim.
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-PROJECT-RECEIPT
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SDK_REUSE_CANDIDATE
+  input_entity_types:
+  - artifact
+  output_entity_types:
+  - artifact
+  precondition_rule_refs:
+  - L07
+  - L17
+  - L33
+  postcondition_rule_refs:
+  - L07
+  - L17
+  - L33
+  execution_mode: IN_PROCESS
+  resource_class: CPU
+  implementation_provider: Existing explicit eidos-project skill/selected installed CLI; status is not a research
+    run or scientific acceptance.
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: HOP-FEEDBACK-EXPORT
+  operator_version: 0.1.0
+  kind: PRIMITIVE
+  readiness: SDK_REUSE_CANDIDATE
+  input_entity_types:
+  - operator_run
+  - artifact
+  output_entity_types:
+  - artifact
+  precondition_rule_refs:
+  - L27
+  - L31
+  - L33
+  postcondition_rule_refs:
+  - L27
+  - L31
+  - L33
+  execution_mode: IN_PROCESS
+  resource_class: CPU
+  implementation_provider: Existing eidos-project feedback/incident capability; local export only, not upload/adoption/closure.
+  cache_policy: Only deterministic outputs over immutable inputs may be reused; human decisions/model attempts retain
+    separate receipts.
+  idempotency_key: SHA256(operator_id/version, input digests, configuration digest, locale, model/prompt/workflow
+    identities, seed/run policy)
+  failure_vocabulary_ref: failure_kind
+  retry_policy: Bounded attempts; no retry for rights refusal or human wait; never weaken acceptance.
+  side_effects: Write new Horisma-owned artifacts/events only; no overwrite of accepted research.
+  runtime_cost_policy: No required proprietary/paid API; source retrieval only from explicitly allowed lawful endpoints.
+  performance_acceptance: Measure latency, throughput, memory and cache hits under a fixed quality/input contract
+    before optimization claims.
+  horisma_integration_qualified: false
+- operator_id: Term_Taxonomy_Operator
+  operator_version: 0.1.0
+  kind: COMPOSITE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  components:
+  - HOP-CONCEPT-RESOLUTION
+  - HOP-TAXONOMY-MAPPING
+  contract_source: docs/research/Horisma_Terminological_Provenance_Project_Research_Proposal_EN.md#6-six-domain-operators-and-their-contracts
+  execution_policy: Call reusable primitives in process/batches where possible; use owned subprocess only for isolation/deadlines.
+    Human approval remains a separate authority.
+  horisma_integration_qualified: false
+- operator_id: Provenance_Extraction_Operator
+  operator_version: 0.1.0
+  kind: COMPOSITE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  components:
+  - HOP-SOURCE-INTAKE
+  - HOP-DOCUMENT-IDENTITY
+  - HOP-TEXT-EXTRACTION
+  - HOP-PASSAGE-ANCHOR
+  - HOP-TRANSCRIPTION-REVIEW
+  - HOP-TEMPORAL-NORMALIZATION
+  - HOP-CONTRIBUTION-EXTRACTION
+  - HOP-EVIDENCE-ASSESSMENT
+  - HOP-HUMAN-ADJUDICATION
+  contract_source: docs/research/Horisma_Terminological_Provenance_Project_Research_Proposal_EN.md#6-six-domain-operators-and-their-contracts
+  execution_policy: Call reusable primitives in process/batches where possible; use owned subprocess only for isolation/deadlines.
+    Human approval remains a separate authority.
+  horisma_integration_qualified: false
+- operator_id: Scientist_Profile_Operator
+  operator_version: 0.1.0
+  kind: COMPOSITE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  components:
+  - HOP-PROFILE-PROJECTION
+  - HOP-PORTRAIT-CANDIDATE
+  contract_source: docs/research/Horisma_Terminological_Provenance_Project_Research_Proposal_EN.md#6-six-domain-operators-and-their-contracts
+  execution_policy: Call reusable primitives in process/batches where possible; use owned subprocess only for isolation/deadlines.
+    Human approval remains a separate authority.
+  horisma_integration_qualified: false
+- operator_id: MicroBook_Synthesis_Operator
+  operator_version: 0.1.0
+  kind: COMPOSITE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  components:
+  - HOP-BOOK-MATERIALIZATION
+  contract_source: docs/research/Horisma_Terminological_Provenance_Project_Research_Proposal_EN.md#6-six-domain-operators-and-their-contracts
+  execution_policy: Call reusable primitives in process/batches where possible; use owned subprocess only for isolation/deadlines.
+    Human approval remains a separate authority.
+  horisma_integration_qualified: false
+- operator_id: Localization_Operator
+  operator_version: 0.1.0
+  kind: COMPOSITE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  components:
+  - HOP-LOCALIZATION
+  contract_source: docs/research/Horisma_Terminological_Provenance_Project_Research_Proposal_EN.md#6-six-domain-operators-and-their-contracts
+  execution_policy: Call reusable primitives in process/batches where possible; use owned subprocess only for isolation/deadlines.
+    Human approval remains a separate authority.
+  horisma_integration_qualified: false
+- operator_id: Automated_Review_Operator
+  operator_version: 0.1.0
+  kind: COMPOSITE
+  readiness: SPECIFIED_NOT_IMPLEMENTED
+  components:
+  - HOP-FRESHNESS-CHECK
+  - HOP-METRIC-DERIVATION
+  - HOP-RELEASE-CHECK
+  contract_source: docs/research/Horisma_Terminological_Provenance_Project_Research_Proposal_EN.md#6-six-domain-operators-and-their-contracts
+  execution_policy: Call reusable primitives in process/batches where possible; use owned subprocess only for isolation/deadlines.
+    Human approval remains a separate authority.
+  horisma_integration_qualified: false

@@ -1,0 +1,18 @@
+{
+  "profile_version": "1.0.0",
+  "kind": "ENGINEERING_CONTRACT_FREEZE_NOT_SCIENTIFIC_APPROVAL",
+  "authorization_basis": "Explicit user instruction to freeze P0 evidence contract, 2026-11-04.",
+  "scientific_approval_granted": false,
+  "rights_approval_granted": false,
+  "proof_status": "UNPROVEN",
+  "sha256": {
+    "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md": "bfd1eaf0e8ba683e0aac0a5cbd0ffb77f455f6bb66d16160bd0906d2b6a96cd8",
+    "spec/controlled_vocabularies.yaml": "01a5153a00f7b938b1db13ba99e25f5bef080e4ba90156238c568536bedc6a27",
+    "spec/logic_catalog.yaml": "210e14f4d98bdcb891b6adeb57b6c719a45e47a30e2b60784205a08c0279fd6f",
+    "spec/operator_catalog.yaml": "62758d0e725c5db942c95eea4ecbbd16f75ef6279a1d711863eac4346de85ef8",
+    "spec/p0/candidate_ledger.schema.json": "745517a0c7841c10afe79dc41a0c7ed9bdd338de6032ffbbf0397aa8f6a96b26",
+    "spec/p0/formal_obligations.yaml": "8cc67f09215943495552b261a4104228ae7fa1d60d7ac65da0a2848c0c32a27c",
+    "spec/p0/operator_bindings.yaml": "2f3197dcf84661110ee4622391daff65482ebb72ebf3ba3a86332ead5848501b",
+    "spec/p0/protocol.json": "e7b5b0514eaf0baeac791ba578a3fdb359c28606aff875c679497fdb4d50321e"
+  }
+}

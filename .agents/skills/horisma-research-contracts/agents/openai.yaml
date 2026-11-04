@@ -1,0 +1,6 @@
+interface:
+  display_name: "Horisma Research Contracts"
+  short_description: "Maintain evidence, operators and formal research contracts"
+  default_prompt: "Use $horisma-research-contracts to maintain the Horisma research specification and its evidence boundaries."
+policy:
+  allow_implicit_invocation: false

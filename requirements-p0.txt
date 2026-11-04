@@ -1,0 +1,6 @@
+# Observed core versions for the bounded P0 tooling; no model/backend download.
+beautifulsoup4==4.14.3
+jsonschema==4.26.0
+pypdf==6.19.0
+PyYAML==6.0.3
+pytest==9.1.1

@@ -1,0 +1,31 @@
+# Clean-rebuild policy, authored independently of the deleted legacy ignore file.
+/.rebuild/
+/.venv/
+__pycache__/
+*.py[cod]
+/.pytest_cache/
+/.coverage*
+# Private inputs, evidence, evaluation labels and generated deliveries: export explicitly.
+/data/**
+!/data/**/
+!/data/**/README.md
+/outputs/**
+!/outputs/README.md
+/ops/state/
+*.db
+*.db-wal
+*.db-shm
+# Existing candidate material stays in place and is never auto-published.
+/Country-flags/
+/Matthew Effect/
+/The Matthew effect governs miscredit tendency/
+/assets/
+/prompts/
+/visuals/
+/dossiers/
+/workflows/
+/mErBZ.jpg
+/wiki/Pilot-Corpus.md
+/wiki/Matthew-Effect-Case.md
+/wiki/Visual-Illustration-Layer.md
+/wiki/GitHub-Sync.md

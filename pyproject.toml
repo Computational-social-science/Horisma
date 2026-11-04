@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "horisma-p0"
+version = "0.1.0"
+description = "Bounded literature intake and candidate-evidence contract operators for Horisma"
+requires-python = ">=3.12"
+dependencies = ["beautifulsoup4>=4.12", "PyYAML>=6", "jsonschema>=4.20", "pypdf>=5"]
+
+[project.scripts]
+horisma-p0 = "horisma_p0.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests/p0"]
+pythonpath = ["src"]

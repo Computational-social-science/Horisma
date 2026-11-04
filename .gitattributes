@@ -1,0 +1,11 @@
+# Source code and ordinary docs use LF. Frozen byte-bound contracts retain exact bytes.
+* text=auto eol=lf
+/spec/controlled_vocabularies.yaml -text
+/spec/logic_catalog.yaml -text
+/spec/operator_catalog.yaml -text
+/docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md -text
+/spec/p0/candidate_ledger.schema.json -text
+/spec/p0/protocol.json -text
+/spec/p0/operator_bindings.yaml -text
+/spec/p0/formal_obligations.yaml -text
+/spec/p0/freeze_manifest.json -text

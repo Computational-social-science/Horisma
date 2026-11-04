@@ -1,0 +1,902 @@
+catalog_version: 0.1.0
+status: SYNTHETIC_EXPECTATIONS_NOT_EXECUTABLE_TESTS
+is_synthetic: true
+not_benchmark_gold: true
+projection_policy: Facts are partial semantic projections. Full record requiredness/IDs are not being tested. Context
+  fixes independent prerequisites; no output is actual research or proof.
+allowed_expected_outcomes:
+- CONFORMING
+- VIOLATING
+examples:
+- example_id: EX01
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Different roles are legitimate
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    contribution_assertion.role: DISCOVERY
+    attribution_assertion.role: LABEL_NAMING
+    discrepancy_finding.comparison_kind: ROLE_DIFFERENCE
+    discrepancy_finding.conclusion: NO_DISCREPANCY_SUPPORTED
+  rule_refs:
+  - L09
+  - L10
+  expected_outcome: CONFORMING
+  explanation: Different discoverer/namer alone supplies no discrepancy.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX02
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: False discrepancy from different roles
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    contribution_assertion.role: DISCOVERY
+    attribution_assertion.role: LABEL_NAMING
+    discrepancy_finding.comparison_kind: ROLE_DIFFERENCE
+    discrepancy_finding.conclusion: DISCREPANCY_SUPPORTED
+  rule_refs:
+  - L09
+  - L10
+  - D01
+  expected_outcome: VIOLATING
+  explanation: Reject supported-discrepancy promotion; no same-role incompatibility.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX03
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Correct DOI, irrelevant passage
+  context: The only inspected passage mentions the topic and no supporting passage is available; an actual assessment
+    occurred.
+  facts:
+    document_version.identity_status: VERIFIED
+    evidence_link.relation: MENTIONS
+    adjudication.assessment: INSUFFICIENT_EVIDENCE
+  rule_refs:
+  - L05
+  - L06
+  expected_outcome: CONFORMING
+  explanation: Identity and mention do not support the proposition.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX04
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Citation laundering
+  context: Only one passage is supplied; it merely mentions the topic, with no independent support.
+  facts:
+    document_version.identity_status: VERIFIED
+    evidence_link.relation: MENTIONS
+    adjudication.assessment: SUPPORTED
+  rule_refs:
+  - L06
+  expected_outcome: VIOLATING
+  explanation: Reject promotion from the sole mentioning passage.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX05
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Scoped early evidence
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    atomic_claim.scope_statement: earliest located in declared corpus S
+    search_scope.coverage_limits: other archives not searched
+  rule_refs:
+  - L13
+  expected_outcome: CONFORMING
+  explanation: Retain explicit corpus limitations; no first-ever conclusion.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX06
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Universal priority from limited search
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    atomic_claim.scope_statement: first-ever naming in all history
+    search_scope.coverage_limits: other archives inaccessible
+  rule_refs:
+  - L13
+  expected_outcome: VIOLATING
+  explanation: Reject universal priority inference from a bounded search.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX07
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Year precision retained
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    contribution_assertion.event_time:
+      original_text: '1964'
+      calendar_system: GREGORIAN
+      precision: YEAR
+      normalized_lower: '1964-01-01'
+      normalized_upper: '1964-12-31'
+  rule_refs:
+  - L12
+  expected_outcome: CONFORMING
+  explanation: Bounds are derived possibilities, not observed day/date.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX08
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Unjustified exact day
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    contribution_assertion.event_time:
+      original_text: '1964'
+      calendar_system: GREGORIAN
+      precision: DAY
+      normalized_lower: '1964-01-01'
+      normalized_upper: '1964-01-01'
+  rule_refs:
+  - L12
+  expected_outcome: VIOLATING
+  explanation: Original evidence gives only a year; do not invent Jan1.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX09
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Paid source handed to human
+  context: The request has DOI/title/pages/dependent claims; lease release is recorded and independent jobs continue.
+  facts:
+    acquisition_attempt.access_status: WAITING_HUMAN_SOURCE
+    human_source_request.failure_kind: PAYWALL
+    task_lease.status: WAITING_HUMAN_SOURCE
+  rule_refs:
+  - L15
+  expected_outcome: CONFORMING
+  explanation: Lease released; dependency queued for lawful human access.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX10
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Human supply is not public clearance
+  context: A human supplied bytes; public redistribution is attempted without identity/rights review.
+  facts:
+    document_version.identity_status: UNVERIFIED
+    rights_decision.operation: REDISTRIBUTE_FULL_TEXT
+    rights_decision.status: NOT_REVIEWED
+  rule_refs:
+  - L16
+  - L27
+  expected_outcome: VIOLATING
+  explanation: Reject attempted public PDF release after human deposit.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX11
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Separate human source gates
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    document_version.identity_status: VERIFIED
+    rights_decision.operation: PROCESS_LOCAL
+    rights_decision.status: PERMITTED
+  rule_refs:
+  - L16
+  expected_outcome: CONFORMING
+  explanation: Local analysis may resume after actual identity and processing checks; no full-text public right
+    implied.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX12
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Changed source invalidates approval
+  context: The current dependency digest differs from the digest bound in the approved bundle.
+  facts:
+    review_decision.status: STALE
+  rule_refs:
+  - L17
+  expected_outcome: CONFORMING
+  explanation: Retain original event but withdraw effective approval.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX13
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Stale approval reused
+  context: The dependency changed; the old review still asserts effective approval without fresh review.
+  facts:
+    review_decision.status: APPROVED
+  rule_refs:
+  - L17
+  expected_outcome: VIOLATING
+  explanation: Reject effective approval/publication under changed dependencies.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX14
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Family shared by two languages
+  context: English/Chinese tasks are the same concept family and dataset version.
+  facts:
+    split_assignment.split: TEST_SEALED
+  rule_refs:
+  - L19
+  expected_outcome: CONFORMING
+  explanation: Both English/Chinese copies stay in the same family partition.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX15
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Alias/translation leakage
+  context: One family has an English TRAIN task and a Chinese TEST_SEALED task in the same dataset.
+  facts:
+    split_assignment.split: TRAIN
+  rule_refs:
+  - L19
+  - L35
+  expected_outcome: VIOLATING
+  explanation: Reject different train/test assignments in one family.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX16
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Execution complete, research unassessed
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    operator_run.execution_status: SUCCEEDED
+    adjudication.assessment: null
+    common.missing_reasons:
+      adjudication.assessment: NOT_ASSESSED
+  rule_refs:
+  - L07
+  - L08
+  expected_outcome: CONFORMING
+  explanation: Candidate output exists; no scientific support/approval claimed.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX17
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Execution used as evidence
+  context: No evidence assessment or human review exists; support is inferred only from zero exit.
+  facts:
+    operator_run.execution_status: SUCCEEDED
+    adjudication.assessment: SUPPORTED
+  rule_refs:
+  - L07
+  expected_outcome: VIOLATING
+  explanation: Reject execution-only promotion.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX18
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Measured zero is real
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    metric_observation.measurement_status: DEFINED
+    metric_observation.numerator: 0
+    metric_observation.denominator: 10
+    metric_observation.value: 0.0
+  rule_refs:
+  - L20
+  expected_outcome: CONFORMING
+  explanation: Zero numerator and positive denominator yield a measured zero.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX19
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Zero denominator is undefined
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    metric_observation.measurement_status: NOT_DEFINED
+    metric_observation.numerator: 0
+    metric_observation.denominator: 0
+    metric_observation.value: null
+    common.missing_reasons:
+      metric_observation.value: NOT_DEFINED
+  rule_refs:
+  - L02
+  - L20
+  expected_outcome: CONFORMING
+  explanation: No eligible observations; do not report zero performance.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX20
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Missingness encoded as zero
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    metric_observation.measurement_status: NOT_MEASURED
+    metric_observation.value: 0.0
+  rule_refs:
+  - L02
+  - L20
+  expected_outcome: VIOLATING
+  explanation: No observation exists; null/reason required.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX21
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: No numeric observation of fees
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    cost_audit.measurement_status: NOT_MEASURED
+    cost_audit.spend: null
+    common.missing_reasons:
+      cost_audit.spend: NOT_COLLECTED
+  rule_refs:
+  - L25
+  expected_outcome: CONFORMING
+  explanation: Zero-fee policy does not make missing telemetry a zero-cost measurement.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX22
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Paid primary backend
+  context: This is a fabricated endpoint, not contacted by the example.
+  facts:
+    model_configuration.backend_uri: https://fictional-paid-provider.invalid/inference
+  rule_refs:
+  - L34
+  expected_outcome: VIOLATING
+  explanation: Reject hosted paid/proprietary runtime primary endpoint, even with no fallback.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX23
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Synthetic illustration is not biography
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    artifact.kind: AI portrait
+    identity_assertion.asserted_value: nationality inferred only from portrait
+  rule_refs:
+  - L32
+  expected_outcome: VIOLATING
+  explanation: Reject face/flag-derived historical identity facts.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX24
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Finite examples claimed as a proof
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    proof_record.proof_status: PROVED_WITH_BOUND_ARTIFACT
+    proof_record.proof_artifact_ref: null
+    proof_record.toolchain_artifact_ref: null
+  rule_refs:
+  - L28
+  expected_outcome: VIOLATING
+  explanation: Examples and YAML checks cannot establish a theorem.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX25
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Partial dates remain unknown
+  context: Both null bounds have missing reasons UNKNOWN; ordering result must be UNKNOWN, not before/after.
+  facts:
+    contribution_assertion.event_time:
+      original_text: unknown
+      calendar_system: UNKNOWN
+      precision: UNKNOWN
+      normalized_lower: null
+      normalized_upper: null
+  rule_refs:
+  - L12
+  expected_outcome: CONFORMING
+  explanation: No temporal order is inferred.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX26
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Internal artifact in public export
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    common.disclosure_class: INTERNAL
+  rule_refs:
+  - L27
+  expected_outcome: VIOLATING
+  explanation: Reject direct export; an independently reviewed public projection is needed.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX27
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: No relevant passage needs no fake passage
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    search_observation.outcome: NO_RELEVANT_PASSAGE
+    search_observation.returned_passage_refs: []
+  rule_refs:
+  - L13
+  expected_outcome: CONFORMING
+  explanation: Observed empty result stays on the searched scope, not a fabricated evidence link.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX28
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Research hypothesis promoted to axiom
+  context: A proof attempt silently assumes the empirical hypothesis is true.
+  facts:
+    logical_statement.logic_kind: RESEARCH_HYPOTHESIS
+  rule_refs:
+  - L29
+  expected_outcome: VIOLATING
+  explanation: Reject treating the proposed attribution-compression hypothesis as a trusted axiom.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX29
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Horisma output path is owned
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    artifact.relative_path: outputs/candidates/synthetic.json
+  rule_refs:
+  - L33
+  expected_outcome: CONFORMING
+  explanation: The future resolved path stays inside Horisma, with no symlink escape.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX30
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Cross-project scientific write
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    artifact.relative_path: ../Eidos/artifacts/horisma.json
+  rule_refs:
+  - L33
+  expected_outcome: VIOLATING
+  explanation: Reject writes into EIDOS, including logs/caches/temp/exports.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX31
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Two concurrent GPU owners
+  context: Two distinct live runs concurrently claim the same exclusive GPU; memory size does not resolve ownership.
+  facts:
+    resource_observation.gpu_memory_mib: 1000
+  rule_refs:
+  - L30
+  expected_outcome: VIOLATING
+  explanation: Reject the second active exclusive GPU lease.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX32
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Actual zero behavioural contrast
+  context: An approved simulated protocol supplies eligible observations and a defined contrast. This is synthetic,
+    not a participant result.
+  facts:
+    metric_observation.measurement_status: DEFINED
+    metric_observation.value: 0.0
+  rule_refs:
+  - L24
+  expected_outcome: CONFORMING
+  explanation: A defined signed contrast can be zero; it is not missing and is not proof of no causal effect.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX33
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Legacy labels imported as accepted gold
+  context: An old accepted label is copied into gold without new evidence review.
+  facts:
+    atomic_claim.origin: IMPORTED_UNVERIFIED
+  rule_refs:
+  - L01
+  expected_outcome: VIOLATING
+  explanation: Reject acceptance based solely on migration.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX34
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Immutable version reference required
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    evidence_link.claim_ref: current-claim.md
+  rule_refs:
+  - L03
+  expected_outcome: VIOLATING
+  explanation: A mutable filename cannot identify the exact assessed record.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX35
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Circular corroboration
+  context: The only offered passage is project prose derived from the target claim.
+  facts:
+    evidence_link.relation: SUPPORTS
+  rule_refs:
+  - L04
+  expected_outcome: VIOLATING
+  explanation: Reject independent support from a book generated from the same claim.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX36
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Not assessed is not insufficient evidence
+  context: No assessor has inspected the claim; the label was generated from an empty task result.
+  facts:
+    adjudication.assessment: INSUFFICIENT_EVIDENCE
+  rule_refs:
+  - L08
+  expected_outcome: VIOLATING
+  explanation: Use null/NOT_ASSESSED until assessment occurs.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX37
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Comparable contributions without a credit conflict
+  context: All compared facts agree; no exclusive attribution or policy-required credit is contradicted/omitted.
+  facts:
+    discrepancy_finding.comparison_kind: COMPARABLE
+    discrepancy_finding.conclusion: DISCREPANCY_SUPPORTED
+  rule_refs:
+  - L09
+  - D01
+  expected_outcome: VIOLATING
+  explanation: Comparability alone does not establish incompatibility.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX38
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Policy-qualified explicit conflict
+  context: Two independent humans assessed the identified in-scope passages and a third resolved disagreement. Exact
+    policy, sources and reviews are current. All persons and statements are synthetic.
+  facts:
+    discrepancy_finding.comparison_kind: COMPARABLE
+    discrepancy_finding.conclusion: DISCREPANCY_SUPPORTED
+    discrepancy_finding.incompatibility_rationale: The source explicitly assigns sole naming to B; same-sense same-role
+      evidence and the declared policy contradict that exclusive assertion.
+  rule_refs:
+  - L09
+  - D01
+  expected_outcome: CONFORMING
+  explanation: Support only the policy-relative discrepancy, not intent or misconduct.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX39
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Intent from discrepancy alone
+  context: A downstream narrative asserts deliberate theft solely from the discrepancy conclusion.
+  facts:
+    discrepancy_finding.conclusion: DISCREPANCY_SUPPORTED
+  rule_refs:
+  - L11
+  expected_outcome: VIOLATING
+  explanation: Reject automatic inference of deception.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX40
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Programme is not proof of delivery
+  context: Only a printed programme exists; a downstream claim says the talk was actually delivered.
+  facts:
+    contribution_assertion.event_kind: SCHEDULED_PRESENTATION
+  rule_refs:
+  - L14
+  expected_outcome: VIOLATING
+  explanation: Retain scheduling as the supported event.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX41
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Unreviewed book release
+  context: A public release is attempted without bundle approval or operation-specific rights decisions.
+  facts:
+    book_edition.release_review_ref: null
+  rule_refs:
+  - L18
+  expected_outcome: VIOLATING
+  explanation: Block publication despite a successful renderer.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX42
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Unweighted family macro
+  context: Two eligible concept families have correct/eligible counts 10/10 and 0/1 under one condition/language.
+  facts:
+    metric_observation.measurement_status: DEFINED
+    metric_observation.value: 0.5
+  rule_refs:
+  - L21
+  expected_outcome: CONFORMING
+  explanation: Compute (1+0)/2, not the pooled 10/11.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX43
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Self-rating is not calibrated truth
+  context: A generated self-rating alone is relabelled as a calibrated factual probability.
+  facts:
+    model_response.raw_self_rating: 0.98
+    model_response.calibration_ref: null
+  rule_refs:
+  - L22
+  expected_outcome: VIOLATING
+  explanation: Reject a reported 98% historical-truth probability.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX44
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Valid credit allocation
+  context: Both fictional actors are in the assigned vignette; response is complete.
+  facts:
+    behavioral_response.allocation:
+    - actor_ref: '@vignette_actor_a'
+      share: 0.25
+    - actor_ref: '@vignette_actor_b'
+      share: 0.75
+    behavioral_response.raw_scale: percent 0..100
+  rule_refs:
+  - L23
+  expected_outcome: CONFORMING
+  explanation: Retain original 25/75, normalize once by 100.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX45
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Abstention encoded as zero shares
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    behavioral_response.allocation:
+    - actor_ref: '@vignette_actor_a'
+      share: 0.0
+    - actor_ref: '@vignette_actor_b'
+      share: 0.0
+  rule_refs:
+  - L23
+  expected_outcome: VIOLATING
+  explanation: Abstention is missing with a reason, not a complete allocation.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX46
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Local outage with hosted fallback
+  context: The only qualified local runtime is unavailable and the controller proposes an external inference call.
+  facts:
+    operator_run.failure_kind: MODEL_UNAVAILABLE
+  rule_refs:
+  - L26
+  - L34
+  expected_outcome: VIOLATING
+  explanation: Stop or request human action; do not contact a hosted free-tier fallback.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX47
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Operational restart preserves science
+  context: Accepted record bytes are verified unchanged and no approval is minted.
+  facts:
+    recovery_event.action: restart the closed owned worker
+    recovery_event.protected_manifest_ref: '@artifact_manifest_a'
+  rule_refs:
+  - L31
+  expected_outcome: CONFORMING
+  explanation: Restore only the approved operational capability.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX48
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Self-healing overwrites a finding
+  context: All other relevant prerequisites are held fixed and satisfied for this isolated logical test.
+  facts:
+    recovery_event.action: change an accepted assessment to SUPPORTED to clear an alarm
+  rule_refs:
+  - L31
+  expected_outcome: VIOLATING
+  explanation: Reject scientific promotion as an operational repair.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX49
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Developer access to sealed content
+  context: A development actor requests sealed test items and gold outside the evaluator-only policy.
+  facts:
+    common.disclosure_class: SEALED_EVALUATION
+  rule_refs:
+  - L35
+  expected_outcome: VIOLATING
+  explanation: Deny reading into development prompts/cache, even if no public upload is attempted.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX50
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: A supporting document need not verify every other document
+  context: Passage p binds verified document d1. An unrelated document d2 is unverified. The in-scope support relation
+    and all relevant reviews are current.
+  facts:
+    document_version.identity_status: VERIFIED
+    evidence_link.relation: SUPPORTS
+  rule_refs:
+  - L05
+  expected_outcome: CONFORMING
+  explanation: Admissibility needs the exact supporting version verified, not universal verification of unrelated
+    versions.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX51
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Shared OCR error is not source support
+  context: Two humans read the same OCR but neither compares it to the original source image; the OCR reverses a
+    negation.
+  facts:
+    passage.transcription_review_ref: null
+    evidence_link.relation: SUPPORTS
+  rule_refs:
+  - L36
+  expected_outcome: VIOLATING
+  explanation: Reject use of unverified extracted wording as textual evidence.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX52
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Independent transcription fidelity review
+  context: An independent human compared the quoted span to the original source region, preserved raw OCR and corrections,
+    and approved the exact current source/derivative/locator binding.
+  facts:
+    passage.transcription_review_ref: '@review_decision_transcription_a'
+  rule_refs:
+  - L36
+  expected_outcome: CONFORMING
+  explanation: Permit the fidelity gate only; historical support still requires separate assessment.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX53
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Permission for different bytes or use
+  context: An extraction task tries to process source_file A using a rights decision bound only to artifact B.
+  facts:
+    rights_decision.operation: READ_LOCAL
+    rights_decision.status: PERMITTED
+  rule_refs:
+  - L37
+  expected_outcome: VIOLATING
+  explanation: A reading permission for a different artifact cannot authorize processing this scan.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX54
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Exact local-processing clearance
+  context: The permission targets the same bytes and path as the source file and all conditions are satisfied; no
+    public redistribution is attempted.
+  facts:
+    rights_decision.operation: PROCESS_LOCAL
+    rights_decision.status: PERMITTED
+    source_file.artifact_ref: '@artifact_scan_a'
+  rule_refs:
+  - L37
+  expected_outcome: CONFORMING
+  explanation: Permit only the declared local operation after affirmative current conditions and payload bindings
+    are checked.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX55
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Cross-release gold ambiguity
+  context: The task occurs in two dataset releases with different gold; a score is computed without choosing the
+    release or realized-access receipt.
+  facts:
+    model_response.task_ref: '@benchmark_task_a'
+  rule_refs:
+  - L38
+  expected_outcome: VIOLATING
+  explanation: Reject scoring without one exact evaluation context.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX56
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Bound evaluation context
+  context: The context pins all release mappings and the actual prompt/evidence-access receipt; target claims resolve
+    in its gold manifest.
+  facts:
+    model_response.evaluation_context_ref: '@evaluation_context_a'
+  rule_refs:
+  - L38
+  expected_outcome: CONFORMING
+  explanation: Score only the matching frozen dataset/task/target/gold and policy.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX57
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Family versions evade grouping
+  context: One release assigns English and Chinese aliases of the same concept to different versions/IDs of one
+    grouping without a canonical partition.
+  facts:
+    benchmark_task.family_ref: '@concept_family_v2'
+  rule_refs:
+  - L19
+  - L39
+  expected_outcome: VIOLATING
+  explanation: Reject inconsistent family membership before split comparison.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX58
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Unrelated missingness is not required
+  context: Only fields applicable to actor and present nested parents are evaluated; a null parent covers absent
+    descendants.
+  facts:
+    actor.display_label: synthetic reviewer
+  rule_refs:
+  - L02
+  expected_outcome: CONFORMING
+  explanation: Do not demand missing reasons for metric fields on an actor record.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX59
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Normalized allocation to unrelated actors
+  context: Neither allocated actor belongs to the assigned vignette or required response set.
+  facts:
+    behavioral_response.allocation:
+    - actor_ref: '@vignette_actor_outside_a'
+      share: 0.5
+    - actor_ref: '@vignette_actor_outside_b'
+      share: 0.5
+  rule_refs:
+  - L23
+  - L40
+  expected_outcome: VIOLATING
+  explanation: Reject despite shares summing to one.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true
+- example_id: EX60
+  is_synthetic: true
+  record_form: partial_semantic_projection_not_complete_record
+  topic: Delivered condition and response membership
+  context: The complete response covers exactly the required two actors; the delivered stimulus matches the actual
+    assignment.
+  facts:
+    condition_assignment.prestige_recipient_ref: '@vignette_actor_a'
+    condition_assignment.response_actor_refs:
+    - '@vignette_actor_a'
+    - '@vignette_actor_b'
+    condition_assignment.delivered_stimulus_artifact_ref: '@artifact_delivered_a'
+  rule_refs:
+  - L40
+  expected_outcome: CONFORMING
+  explanation: Recipient and allocation domain match the delivered vignette/format/cue.
+  proof_status: UNPROVEN
+  not_benchmark_gold: true

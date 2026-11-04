@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-11-04T09:59:11.556673+00:00",
+  "inventory_ref": "legacy/material_inventory.json",
+  "status": "SOURCE_GAPS_RECORDED",
+  "original_inventory_retained": true,
+  "unchanged_files": 622,
+  "issues": [
+    {
+      "path": "Matthew Effect/Harriet Zuckerman - Wikipedia.pdf",
+      "observation": "MISSING_AT_CHECK",
+      "prior_sha256": "457bde40bb72857ace5e53b8e8439b4090ea1cdd75942c0855f643f82aa8e494",
+      "interpretation": "Cause not established; do not infer contents, restore legacy conclusions or silently delete the inventory entry."
+    },
+    {
+      "path": "Matthew Effect/Matthew effect - Wikipedia.pdf",
+      "observation": "MISSING_AT_CHECK",
+      "prior_sha256": "036c5d63db39478ce3132c357221f4cd1a6ad07cb41e08f8f314ff22c86614cb",
+      "interpretation": "Cause not established; do not infer contents, restore legacy conclusions or silently delete the inventory entry."
+    },
+    {
+      "path": "Matthew Effect/Robert K. Merton - Wikipedia.pdf",
+      "observation": "MISSING_AT_CHECK",
+      "prior_sha256": "e18b22856cca88063684ce91cdbe825daf74c1e5709daa1ced26f52f529c187c",
+      "interpretation": "Cause not established; do not infer contents, restore legacy conclusions or silently delete the inventory entry."
+    }
+  ]
+}

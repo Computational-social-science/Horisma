@@ -1,0 +1,31 @@
+profile_version: 1.0.0
+notation: Typed specification; no executable theorem-prover encoding or accepted proof.
+obligations:
+  - logic_id: P0-L01
+    expression: Candidate(c) -> ScholarlyDocument(Source(c)) and not DefaultWikipediaAssertion(c)
+    interpretation: Wikipedia discovers literature; body-level scholarly assertions supply the candidate corpus.
+    proof_status: UNPROVEN
+  - logic_id: P0-L02
+    expression: Locatable(c) -> ExactSourceDigest(c) and ExactDerivativeDigest(c) and ValidPage(c) and ExactTextSlice(c)
+    interpretation: Source bytes, Unicode offsets and the whitespace-only derivative bind together; fidelity still needs independent image review.
+    proof_status: UNPROVEN
+  - logic_id: P0-L03
+    expression: BlockedSource(s) -> HumanSourceDependency(s) and not InventUnseenClaim(s)
+    interpretation: A single failed access attempt cannot generate an unseen-body claim or justify circumvention.
+    proof_status: UNPROVEN
+  - logic_id: P0-L04
+    expression: SOURCE_ASSERTS(document,candidate) does_not_entail HistoricalTruth(candidate)
+    interpretation: A source-reporting proposition is separate from evidence support, approval and truth.
+    proof_status: UNPROVEN
+  - logic_id: P0-L05
+    expression: NamesAsCoiner(source,person,term) does_not_entail SoleCoiner(person,term); JointAuthorshipReflection(source,paper) does_not_entail JointNaming(term)
+    interpretation: Naming, sole naming, conceptual input, empirical interviews and paper authorship remain distinct; a publication year is not automatically a coining date.
+    proof_status: UNPROVEN
+  - logic_id: P0-L06
+    expression: IntakeValidated(bundle) -> NoScientificApprovalGranted(bundle) and NoFormalProofGranted(bundle)
+    interpretation: Local model labels/self-ratings and schema success cannot grant human authority or proof.
+    proof_status: UNPROVEN
+  - logic_id: P0-L07
+    expression: PurposivePilot(bundle) does_not_entail MajorityLiteratureClaim(bundle)
+    interpretation: Twenty-eight selected candidates cannot establish the prevalence of an attribution in scholarship.
+    proof_status: UNPROVEN

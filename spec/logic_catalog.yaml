@@ -1,0 +1,673 @@
+catalog_version: 0.1.0
+status: SPECIFICATION_ONLY_UNPROVEN
+notation:
+  profile: typed-first-order-specification-with-finite-sets-and-rational-arithmetic
+  does_not_entail: Metalogical non-entailment constraint, not a first-order connective.
+  unknown: Value_f:Record->Option[T_f]. None(T_f) is missing; Some(v) is observed. UNDEFINED denotes None(Q), never
+    zero.
+  evidence: Evidence predicates describe assessments; they do not assert historical truth.
+  scope: Expressions are formal specifications awaiting complete prover encoding; not executable Lean.
+nonvacuity_requirement: Future proofs need defined predicates/types, admissible positive witnesses and rejecting
+  counterexamples; an empty uninterpreted model does not validate research.
+logic:
+- logic_id: L01
+  kind: INVARIANT
+  title: No inherited acceptance
+  variables:
+    r: Record
+  formal_expression: forall r. LegacyImported(r) -> not AcceptedByMigration(r)
+  interpretation: Legacy and Wikipedia intake are candidates; do not import labels as gold.
+  field_refs:
+  - atomic_claim.origin
+  - dataset_version.gold_adjudication_refs
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L02
+  kind: INVARIANT
+  title: Null is not zero
+  variables:
+    r: Record
+    f: Field
+  formal_expression: forall r:Record,f:Field. ApplicableFieldWithPresentParent(r,f) -> ((Missing(r,f) <-> IsNone(Value(r,f)))
+    and (Missing(r,f) -> exists! m:MissingReason. HasMissingReason(r,f,m)) and (not Missing(r,f) -> not exists m:MissingReason.
+    HasMissingReason(r,f,m)))
+  interpretation: Null requires a reason; zero, false and a known-empty list are observed values, not missing sentinels.
+  field_refs:
+  - common.missing_reasons
+  - metric_observation.value
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L03
+  kind: INVARIANT
+  title: Exact immutable references
+  variables:
+    r: Record
+    s: Record
+  formal_expression: forall r,s. References(r,s) -> ExistsExactVersion(s)
+  interpretation: Scientific references bind immutable record versions; identity merges retain prior versions.
+  field_refs:
+  - common.record_id
+  - common.supersedes_record_id
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L04
+  kind: INVARIANT
+  title: No circular corroboration
+  variables:
+    c: Claim
+    p: Passage
+  formal_expression: forall c,p. IndependentEvidence(p,c) -> not GeneratedFromClaim(p,c)
+  interpretation: A generated book/profile and its translations cannot corroborate their own source claim.
+  field_refs:
+  - evidence_link.passage_ref
+  - atomic_claim.derived_from_claim_refs
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L05
+  kind: INVARIANT
+  title: Typed source authority
+  variables:
+    d: DocumentVersion
+    p: Passage
+    c: Claim
+  formal_expression: forall p:Passage,c:Claim. AdmissiblePassageSupport(p,c) -> exists d:DocumentVersion. (IdentityVerified(d)
+    and PassageBoundTo(p,d) and InScope(p,c))
+  interpretation: Identity, locator binding and scope are necessary, not sufficient for historical truth.
+  field_refs:
+  - document_version.identity_status
+  - passage.document_version_ref
+  - evidence_link.relation
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L06
+  kind: INFERENCE_POLICY
+  title: Mention is not support
+  variables:
+    p: Passage
+    c: Claim
+  formal_expression: forall p,c. Mentions(p,c) does_not_entail Supports(p,c)
+  interpretation: The token does_not_entail states a forbidden inference, not object-language negation.
+  field_refs:
+  - evidence_link.relation
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Audit that no automatic promotion uses this premise alone. Model-theoretic non-entailment needs
+    a specified model class/countermodel; neither is supplied here.
+  proof_status: UNPROVEN
+- logic_id: L07
+  kind: INFERENCE_POLICY
+  title: Operational success is separate
+  variables:
+    r: OperatorRun
+    c: Claim
+  formal_expression: forall r,c. Succeeded(r) does_not_entail AssessedSupported(c)
+  interpretation: All four status domains remain distinct; no generic PASS field.
+  field_refs:
+  - operator_run.execution_status
+  - adjudication.assessment
+  - review_decision.status
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Audit that no automatic promotion uses this premise alone. Model-theoretic non-entailment needs
+    a specified model class/countermodel; neither is supplied here.
+  proof_status: UNPROVEN
+- logic_id: L08
+  kind: INVARIANT
+  title: Assessment is not absence
+  variables:
+    c: Claim
+  formal_expression: forall c. NotAssessed(c) -> Assessment(c)=null and MissingReason(c)=NOT_ASSESSED
+  interpretation: INSUFFICIENT_EVIDENCE requires an actual completed assessment.
+  field_refs:
+  - adjudication.assessment
+  - adjudication.annotation_refs
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L09
+  kind: DEFINITION
+  title: Policy-qualified discrepancy
+  variables:
+    f: Finding
+  formal_expression: forall f:Finding. SupportedDiscrepancy(f) <-> (SameConceptRoleScope(f) and PolicyQualifiedCreditConflict(f)
+    and CurrentComparedEvidence(f) and PolicySatisfied(f) and IndependentHumanReview(f))
+  interpretation: The definition is policy-relative and supplies no intent, theft or misconduct conclusion.
+  field_refs:
+  - discrepancy_finding.comparison_kind
+  - discrepancy_finding.policy_ref
+  - discrepancy_finding.adjudication_refs
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L10
+  kind: INVARIANT
+  title: Different roles need not conflict
+  variables:
+    a: AttributionAssertion
+    k: ContributionAssertion
+  formal_expression: forall a,k. Role(a)!=Role(k) -> not SameRoleComparison(a,k)
+  interpretation: Different discovery and naming roles cannot alone yield a supported discrepancy.
+  field_refs:
+  - attribution_assertion.role
+  - contribution_assertion.role
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L11
+  kind: INFERENCE_POLICY
+  title: No intent inference
+  variables:
+    f: Finding
+  formal_expression: forall f. SupportedDiscrepancy(f) does_not_entail IntentToDeceive(f)
+  interpretation: There is no automatic intent/misconduct field or inference rule.
+  field_refs:
+  - discrepancy_finding.conclusion
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Audit that no automatic promotion uses this premise alone. Model-theoretic non-entailment needs
+    a specified model class/countermodel; neither is supplied here.
+  proof_status: UNPROVEN
+- logic_id: L12
+  kind: DEFINITION
+  title: Conservative temporal ordering
+  variables:
+    x: TemporalExtent
+    y: TemporalExtent
+  formal_expression: forall x:TemporalExtent,y:TemporalExtent. DefinitelyBefore(x,y) <-> (KnownValidNormalizedBounds(x)
+    and KnownValidNormalizedBounds(y) and JustifiedCalendarAlignment(x,y) and Upper(x)<Lower(y)); not KnownComparableBounds(x,y)
+    -> TemporalCompare(x,y)=UNKNOWN
+  interpretation: Overlapping, unavailable or incomparable bounds do not establish before/after.
+  field_refs:
+  - contribution_assertion.event_time
+  - search_scope.temporal_coverage
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L13
+  kind: INFERENCE_POLICY
+  title: Bounded earliest attestation
+  variables:
+    x: Claim
+    s: SearchScope
+  formal_expression: forall x,s. EarliestLocated(x,s) does_not_entail FirstEver(x)
+  interpretation: All earliest claims carry a search scope; corpus absence is not global nonexistence.
+  field_refs:
+  - atomic_claim.search_scope_ref
+  - search_scope.coverage_limits
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Audit that no automatic promotion uses this premise alone. Model-theoretic non-entailment needs
+    a specified model class/countermodel; neither is supplied here.
+  proof_status: UNPROVEN
+- logic_id: L14
+  kind: INFERENCE_POLICY
+  title: Scheduled is not delivered
+  variables:
+    c: Claim
+  formal_expression: forall c. ScheduledPresentation(c) does_not_entail DeliveredPresentation(c)
+  interpretation: A programme can support scheduling/printed wording, not actual delivery alone.
+  field_refs:
+  - contribution_assertion.event_kind
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Audit that no automatic promotion uses this premise alone. Model-theoretic non-entailment needs
+    a specified model class/countermodel; neither is supplied here.
+  proof_status: UNPROVEN
+- logic_id: L15
+  kind: TRANSITION
+  title: Human source handoff
+  variables:
+    j: Job
+    d: DocumentVersion
+  formal_expression: forall j,d. RequiresHumanSource(j,d) -> NextStatus(j)=WAITING_HUMAN_SOURCE and LeaseReleased(j)
+  interpretation: Stop acquisition loops, retain the source request and let independent jobs continue.
+  field_refs:
+  - human_source_request.failure_kind
+  - task_lease.status
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L16
+  kind: INFERENCE_POLICY
+  title: Supplied is not cleared
+  variables:
+    d: DocumentVersion
+  formal_expression: forall d:DocumentVersion. HumanSupplied(d) does_not_entail IdentityVerified(d); HumanSupplied(d)
+    does_not_entail PublicRedistributionPermitted(d)
+  interpretation: Manual files require separate identity and operation-specific rights decisions.
+  field_refs:
+  - document_version.identity_status
+  - rights_decision.operation
+  - rights_decision.status
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Audit that no automatic promotion uses this premise alone. Model-theoretic non-entailment needs
+    a specified model class/countermodel; neither is supplied here.
+  proof_status: UNPROVEN
+- logic_id: L17
+  kind: INVARIANT
+  title: Fresh approval binding
+  variables:
+    a: ReviewDecision
+    t: Artifact
+  formal_expression: forall a:ReviewDecision,t:Artifact. EffectiveApproved(a,t) <-> (Status(a)=APPROVED and ReviewerAuthorizedForKindScope(a,t)
+    and ApprovedDigest(a)=CurrentDigest(t) and DependenciesCurrent(t) and not RevokedAtEvaluation(a))
+  interpretation: Changed sources, policies, translations or bundles make effective approval stale.
+  field_refs:
+  - review_decision.target_sha256
+  - artifact.dependency_refs
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L18
+  kind: INVARIANT
+  title: Release eligibility
+  variables:
+    b: BookEdition
+    c: Claim
+  formal_expression: forall b. CanRelease(b) -> HumanBundleApproval(b) and RightsPermitAllPublicComponents(b) and
+    LocaleReviewsCurrent(b) and forall c in AssertedFacts(b). CurrentScopedSupport(c)
+  interpretation: Qualified accounts/open questions are explicitly marked and separately reviewed; this is not blanket
+    suppression of uncertainty.
+  field_refs:
+  - book_edition.claim_refs
+  - book_edition.publication_modes
+  - review_decision.status
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L19
+  kind: INVARIANT
+  title: Family-level holdout
+  variables:
+    i: BenchmarkTask
+    j: BenchmarkTask
+  formal_expression: forall i:BenchmarkTask,j:BenchmarkTask. SameDatasetVersion(i,j) and Family(i)=Family(j) ->
+    Split(i)=Split(j)
+  interpretation: Translations/aliases share a concept family; folds do not inflate independent n.
+  field_refs:
+  - split_assignment.family_ref
+  - split_assignment.split
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L20
+  kind: DERIVATION
+  title: Rate domain
+  variables:
+    k: Integer
+    n: Integer
+  formal_expression: forall k,n. 0<=k<=n and n>0 -> Rate(k,n)=k/n; n=0 -> Rate(k,n)=UNDEFINED
+  interpretation: Use NOT_DEFINED/null for zero denominators. A measured zero numerator with positive denominator
+    is zero.
+  field_refs:
+  - metric_observation.numerator
+  - metric_observation.denominator
+  - metric_observation.value
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L21
+  kind: DERIVATION
+  title: Family macro score
+  variables:
+    F: FiniteSet[ConceptFamily]
+  formal_expression: Macro(F)=sum(f in Eligible(F), Correct(f)/EligibleItems(f))/size(Eligible(F)) when size(Eligible(F))>0
+  interpretation: Report eligible/excluded families, condition, language and the denominator. Empty Eligible(F)
+    is undefined.
+  field_refs:
+  - metric_definition.formula
+  - metric_observation.eligible_family_refs
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L22
+  kind: INFERENCE_POLICY
+  title: A score is not truth
+  variables:
+    s: Score
+    c: Claim
+  formal_expression: forall s,c. ModelSelfRating(s,c) does_not_entail HistoricalTruth(c)
+  interpretation: Raw softmax/self-rating are not calibrated evidence probabilities.
+  field_refs:
+  - model_response.raw_self_rating
+  - model_response.calibration_ref
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Audit that no automatic promotion uses this premise alone. Model-theoretic non-entailment needs
+    a specified model class/countermodel; neither is supplied here.
+  proof_status: UNPROVEN
+- logic_id: L23
+  kind: INVARIANT
+  title: Credit scale
+  variables:
+    v: CreditAllocation
+  formal_expression: forall v. CompleteValidAllocation(v) -> (forall x in Shares(v). 0<=x<=1) and abs(sum(Shares(v))-1)<=0.000001
+  interpretation: Canonical share is a fraction. Keep raw response and scale; abstention is missing, not an all-zero
+    vector.
+  field_refs:
+  - behavioral_response.allocation
+  - behavioral_response.raw_scale
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L24
+  kind: DERIVATION
+  title: Proposed mitigation estimand
+  variables:
+    f: PresentationCondition
+  formal_expression: Delta(f)=E[Y_A|cue=A,format=f]-E[Y_A|cue=B,format=f]; Contrast=Delta(FACT_MATCHED_NARRATIVE)-Delta(LEDGER)
+  interpretation: Positive is algebraic attenuation in the prespecified direction. A causal interpretation additionally
+    needs approved assignment/identification assumptions; this is a proposed contrast, not an empirical effect.
+  field_refs:
+  - study_protocol.estimand_statement
+  - behavioral_response.allocation
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L25
+  kind: INVARIANT
+  title: Zero-fee policy versus observation
+  variables:
+    a: CostAudit
+  formal_expression: forall a. AssertMeasuredZeroSpend(a) -> CompleteDeclaredCoverage(a) and ObservedSpend(a)=0
+    and ObservedPaidCalls(a)=0
+  interpretation: A configuration policy or missing logs cannot be reported as measured zero spend.
+  field_refs:
+  - cost_audit.measurement_status
+  - cost_audit.billable_api_calls
+  - cost_audit.spend
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L26
+  kind: INVARIANT
+  title: No free-tier fallback
+  variables:
+    r: OperatorRun
+  formal_expression: forall r. LocalCapabilityUnavailable(r) -> FailOrHumanHandoff(r) and not HostedFallback(r)
+  interpretation: No required proprietary/paid API or trial-credit dependency.
+  field_refs:
+  - operator_run.execution_status
+  - model_configuration.backend_uri
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L27
+  kind: INVARIANT
+  title: Protected export
+  variables:
+    a: Artifact
+  formal_expression: forall a:Artifact. PublicExport(a) -> (AuthorizedPublicProjection(a) and CurrentHumanExportReview(a)
+    and forall c in IncludedPayloads(a). (Disclosure(c)=PUBLIC_ELIGIBLE and CurrentOperationRightsPermitExport(c)
+    and not RestrictedParticipantData(c) and not SealedEvaluationContent(c)))
+  interpretation: PUBLIC_ELIGIBLE is not sufficient permission; private PDFs require their own rights decision.
+  field_refs:
+  - common.disclosure_class
+  - dataset_version.gold_adjudication_refs
+  - rights_decision.status
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L28
+  kind: INFERENCE_POLICY
+  title: Finite examples are not proofs
+  variables:
+    p: ProofRecord
+  formal_expression: forall p. ExamplesChecked(p) does_not_entail FormallyProved(p)
+  interpretation: Proof requires exact statement, assumptions, proof artifact, toolchain and independently checked
+    receipt.
+  field_refs:
+  - proof_record.proof_status
+  - proof_record.toolchain_artifact_ref
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Audit that no automatic promotion uses this premise alone. Model-theoretic non-entailment needs
+    a specified model class/countermodel; neither is supplied here.
+  proof_status: UNPROVEN
+- logic_id: L29
+  kind: INVARIANT
+  title: Hypothesis is not axiom
+  variables:
+    h: Hypothesis
+  formal_expression: forall h. EmpiricalHypothesis(h) -> not TrustedLogicalAxiom(h)
+  interpretation: Attribution compression and prestige effects remain falsifiable proposed hypotheses.
+  field_refs:
+  - hypothesis.statement
+  - hypothesis.logical_statement_ref
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L30
+  kind: INVARIANT
+  title: One GPU/lease owner
+  variables:
+    r: OperatorRun
+    s: OperatorRun
+  formal_expression: forall r,s. ConcurrentGPUOwners(r,s) -> r=s
+  interpretation: Actual lease implementation and crash closure remain unqualified; use bounded ownership, not file-presence
+    assumptions.
+  field_refs:
+  - task_lease.owner_actor_ref
+  - resource_observation.gpu_memory_mib
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L31
+  kind: INVARIANT
+  title: No automatic scientific repair
+  variables:
+    e: RecoveryEvent
+  formal_expression: forall e. AutomaticRecovery(e) -> PreservesAcceptedResearch(e) and not GrantsScientificApproval(e)
+  interpretation: Restart/requeue do not authorize findings, model/policy changes or weakened gates.
+  field_refs:
+  - recovery_event.action
+  - recovery_event.protected_manifest_ref
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L32
+  kind: INFERENCE_POLICY
+  title: Profile/illustration separation
+  variables:
+    i: Artifact
+    c: IdentityAssertion
+  formal_expression: forall i,c. GeneratedPortrait(i) does_not_entail SupportsIdentity(i,c)
+  interpretation: Do not infer nationality, gender, historical appearance or rights from a portrait/flag/name.
+  field_refs:
+  - identity_assertion.evidence_refs
+  - artifact.kind
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Audit that no automatic promotion uses this premise alone. Model-theoretic non-entailment needs
+    a specified model class/countermodel; neither is supplied here.
+  proof_status: UNPROVEN
+- logic_id: L33
+  kind: INVARIANT
+  title: Horisma write boundary
+  variables:
+    w: WriteEvent
+  formal_expression: forall w. HorismaWrite(w) -> (WithinHorismaWorkspaceOrDeclaredHorismaState(w) and not WithinEidosSourceOrState(w))
+  interpretation: Covers outputs, logs, caches, temporary files and exports; SDK reads grant no scientific-state
+    write permission.
+  field_refs:
+  - artifact.relative_path
+  - source_file.relative_path
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L34
+  kind: INVARIANT
+  title: Unconditional runtime service admissibility
+  variables:
+    r: OperatorRun
+    c: ServiceCall
+  formal_expression: forall r,c. RuntimeServiceCall(r,c) -> (ControlledLocalEndpoint(c) and OpenLicensedRuntime(c)
+    and PermittedWeightsUse(c) and not ProprietaryOrBillableAPI(c)); SourceRetrievalCall(r,c) -> (ExplicitlyAllowedLawfulSource(c)
+    and not AutomaticPaidAccess(c))
+  interpretation: No paid/proprietary primary service, even when local capability exists. Source retrieval and authorized
+    publication are separate call classes.
+  field_refs:
+  - model_configuration.backend_uri
+  - operator_run.configuration_artifact_ref
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L35
+  kind: INVARIANT
+  title: Sealed evaluation access
+  variables:
+    a: Actor
+    d: DatasetVersion
+  formal_expression: forall a,d. DevelopmentActor(a) -> not CanReadSealedEvaluationContent(a,d)
+  interpretation: Scoped evaluation access is audited; sealed items/gold cannot enter development prompts, caches
+    or training.
+  field_refs:
+  - dataset_version.access_policy_artifact_ref
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: D01
+  kind: DEFINITION
+  title: Credit conflict is not comparability
+  variables:
+    f: Finding
+  formal_expression: forall f. PolicyQualifiedCreditConflict(f) <-> (ExplicitRolePriorityContradictedUnderPolicy(f)
+    or OmittedCreditRequiredByExplicitNorm(f))
+  interpretation: Both branches need policy-bound evidence. Comparable contributions, an absent name or unequal
+    fame alone are insufficient.
+  field_refs:
+  - adjudication_policy.credit_incompatibility_rule
+  - discrepancy_finding.incompatibility_rationale
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L36
+  kind: INVARIANT
+  title: Transcription fidelity before textual support
+  variables:
+    p: Passage
+  formal_expression: forall p:Passage. ExtractedTextUsedAsEvidence(p) -> CurrentIndependentTranscriptionReview(p)
+    and ExactSourceDerivativeBinding(p)
+  interpretation: Check OCR/parsed/transcribed wording against the original source image/text, not only the derivative.
+    Retain raw extraction and corrected versions; human fidelity review is distinct from historical adjudication.
+  field_refs:
+  - passage.transcription_review_ref
+  - passage.locator
+  - passage.original_text
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L37
+  kind: INVARIANT
+  title: Affirmative operation-specific permission
+  variables:
+    r: OperatorRun
+    a: Artifact
+  formal_expression: forall r:OperatorRun,a:Artifact. Processes(r,a) -> exists d:RightsDecision. (DecisionTarget(d)=a
+    and Operation(d)=PROCESS_LOCAL and Status(d)=PERMITTED and ConditionsSatisfied(d,r) and CurrentRightsDecision(d));
+    forall s:SourceFile. SHA256(s)=SHA256(BoundArtifact(s)) and SamePayloadPath(s,BoundArtifact(s))
+  interpretation: Extraction, portrait references and all local processing require affirmative permission for the
+    exact payload and operation, including satisfied conditions; availability or a permission for different bytes/use
+    is insufficient.
+  field_refs:
+  - source_file.artifact_ref
+  - rights_decision.artifact_ref
+  - rights_decision.operation
+  - rights_decision.status
+  - rights_decision.conditions_artifact_ref
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L38
+  kind: INVARIANT
+  title: Frozen scoring and realized access binding
+  variables:
+    r: ModelResponse
+  formal_expression: forall r:ModelResponse. Scored(r) -> (UniqueFrozenEvaluationContext(r) and TaskInBoundDataset(r)
+    and GoldMatchesDatasetTaskTarget(r) and ScoringPolicyBound(r) and RealizedInputsAndAccessBound(r))
+  interpretation: A task may occur in multiple releases; every scored response resolves through one exact dataset/gold/scoring-policy
+    and realized prompt/evidence-access receipt.
+  field_refs:
+  - model_response.evaluation_context_ref
+  - evaluation_context.dataset_ref
+  - evaluation_context.gold_binding_manifest_ref
+  - evaluation_context.realized_input_receipt_ref
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L39
+  kind: INVARIANT
+  title: Canonical family partition integrity
+  variables:
+    d: DatasetVersion
+  formal_expression: forall d:DatasetVersion. ValidFamilyPartition(d) -> (UniqueCanonicalFamilyVersionPerEntity(d)
+    and BidirectionalConceptFamilyMembership(d) and AllTaskClaimConceptFamilyBindingsConsistent(d)); CanScoreDataset(d)
+    -> ValidFamilyPartition(d)
+  interpretation: Validate the release-specific canonical family manifest before applying split equality; aliases
+    or different family versions must not evade grouping. Retain overlap audits beyond known families.
+  field_refs:
+  - dataset_version.canonical_family_manifest_ref
+  - concept.family_ref
+  - concept_family.member_concept_refs
+  - benchmark_task.family_ref
+  - benchmark_task.target_claim_refs
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
+- logic_id: L40
+  kind: INVARIANT
+  title: Delivered vignette and allocation domain
+  variables:
+    a: ConditionAssignment
+    r: BehavioralResponse
+  formal_expression: forall a:ConditionAssignment. ValidAssignment(a) -> (PrestigeRecipient(a) in VignetteActors(a)
+    and ResponseActorSet(a) subset_of VignetteActors(a) and ExactDeliveredStimulusVariantBound(a)); forall r:BehavioralResponse.
+    CompleteValidAllocation(Allocation(r)) -> (ValidAssignment(Assignment(r)) and AllocationActors(r)=ResponseActorSet(Assignment(r)))
+  interpretation: The assigned prestige recipient and complete response actor set belong to the exact vignette;
+    retain the delivered format/cue/stimulus variant. A normalized allocation to unrelated actors is invalid.
+  field_refs:
+  - condition_assignment.prestige_recipient_ref
+  - condition_assignment.response_actor_refs
+  - condition_assignment.delivered_stimulus_artifact_ref
+  - behavioral_response.allocation
+  assumptions:
+  - Typed records and the stated policy bindings are supplied correctly.
+  proof_obligation: Show that each future implementation preserves this statement under the declared assumptions.
+  proof_status: UNPROVEN
