@@ -1,0 +1,109 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "artifact_ref": {
+      "definition": "Material being assessed, not all works by an author.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L16",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Rights reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "exact bytes"
+    },
+    "basis_artifact_ref": {
+      "definition": "Applicable conditions, jurisdiction and actual source.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L16",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Rights reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "license/permission/review evidence"
+    },
+    "conditions_artifact_ref": {
+      "definition": "Exact scope, applicable constraints and applicability period; use an explicit no-additional-conditions statement when appropriate.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L37",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Rights reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "explicit conditions"
+    },
+    "operation": {
+      "definition": "Local reading/processing, quote, full-text/asset redistribution are separate.",
+      "examples": "a member of `rights_operation` / an unregistered code or generic PASS",
+      "logic": "L16",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Rights reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "rights_operation"
+    },
+    "status": {
+      "definition": "Unknown does not mean permitted.",
+      "examples": "a member of `rights_status` / an unregistered code or generic PASS",
+      "logic": "L27",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Rights reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "rights_status"
+    }
+  },
+  "record_skeleton": {
+    "artifact_ref": null,
+    "basis_artifact_ref": null,
+    "conditions_artifact_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "missing_reasons": {
+      "/artifact_ref": "NOT_COLLECTED",
+      "/basis_artifact_ref": "NOT_COLLECTED",
+      "/conditions_artifact_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/operation": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/status": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "operation": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "status": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "rights_decision",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "artifact_ref",
+    "operation",
+    "status",
+    "basis_artifact_ref",
+    "conditions_artifact_ref"
+  ],
+  "schema_ref": "rights_decision.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

@@ -1,0 +1,106 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "access_status": {
+      "definition": "HTTP200/local presence is not identity or rights verification.",
+      "examples": "a member of `source_access_status` / an unregistered code or generic PASS",
+      "logic": "L16",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "source_access_status"
+    },
+    "document_version_ref": {
+      "definition": "Requested document, not a guessed replacement.",
+      "examples": "`@document_version_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:document_version`; 1; R",
+      "values_units": "exact version"
+    },
+    "failure_kind": {
+      "definition": "Paywall, access denial and transient network failure are distinct.",
+      "examples": "a member of `failure_kind` / an unregistered code or generic PASS",
+      "logic": "L15",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 0..1; O",
+      "values_units": "failure_kind"
+    },
+    "requested_uri": {
+      "definition": "Lawful endpoint or source location.",
+      "examples": "https://example.org/source / URL containing a password",
+      "logic": "L15",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`uri`; 0..1; O",
+      "values_units": "no credentials"
+    },
+    "source_file_ref": {
+      "definition": "Actual acquired bytes if any; no fabricated extract.",
+      "examples": "`@source_file_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L05",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:source_file`; 0..1; O",
+      "values_units": "exact version"
+    }
+  },
+  "record_skeleton": {
+    "access_status": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "document_version_ref": null,
+    "entity_id": null,
+    "failure_kind": null,
+    "missing_reasons": {
+      "/access_status": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/document_version_ref": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/failure_kind": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/requested_uri": "NOT_COLLECTED",
+      "/source_file_ref": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "requested_uri": null,
+    "source_file_ref": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "acquisition_attempt",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "document_version_ref",
+    "access_status"
+  ],
+  "schema_ref": "acquisition_attempt.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

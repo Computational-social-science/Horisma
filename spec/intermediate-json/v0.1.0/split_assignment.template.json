@@ -1,0 +1,97 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROTOCOL_DEPENDENT",
+  "field_contracts": {
+    "assignment_protocol_ref": {
+      "definition": "Partition/selection rules and seed policy.",
+      "examples": "`@project_protocol_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L19",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:project_protocol`; 1; R",
+      "values_units": "exact version"
+    },
+    "dataset_ref": {
+      "definition": "Partition ownership; assignments may differ across separately frozen dataset versions, with overlap audits.",
+      "examples": "`@dataset_version_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L19",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:dataset_version`; 1; R",
+      "values_units": "exact dataset version"
+    },
+    "family_ref": {
+      "definition": "Family, not one language string.",
+      "examples": "`@concept_family_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L19",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:concept_family`; 1; R",
+      "values_units": "exact version"
+    },
+    "split": {
+      "definition": "All aliases/translations remain in this partition for this dataset.",
+      "examples": "a member of `dataset_split` / an unregistered code or generic PASS",
+      "logic": "L19",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "dataset_split"
+    }
+  },
+  "record_skeleton": {
+    "assignment_protocol_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dataset_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "family_ref": null,
+    "missing_reasons": {
+      "/assignment_protocol_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dataset_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/family_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/split": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "split": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "split_assignment",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "family_ref",
+    "split",
+    "assignment_protocol_ref",
+    "dataset_ref"
+  ],
+  "schema_ref": "split_assignment.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

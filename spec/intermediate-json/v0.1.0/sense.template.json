@@ -1,0 +1,85 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "attestation_claim_refs": {
+      "definition": "Evidence of this usage/sense association.",
+      "examples": "`@atomic_claim_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain/language reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:atomic_claim`; 1..n; R",
+      "values_units": "exact versions"
+    },
+    "concept_ref": {
+      "definition": "Concept in this usage, not all homographic meanings.",
+      "examples": "`@concept_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L10",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain/language reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:concept`; 1; R",
+      "values_units": "exact version"
+    },
+    "lexical_form_ref": {
+      "definition": "Form being interpreted.",
+      "examples": "`@lexical_form_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain/language reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:lexical_form`; 1; R",
+      "values_units": "exact version"
+    }
+  },
+  "record_skeleton": {
+    "attestation_claim_refs": null,
+    "concept_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "lexical_form_ref": null,
+    "missing_reasons": {
+      "/attestation_claim_refs": "NOT_COLLECTED",
+      "/concept_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/lexical_form_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "sense",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "lexical_form_ref",
+    "concept_ref",
+    "attestation_claim_refs"
+  ],
+  "schema_ref": "sense.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

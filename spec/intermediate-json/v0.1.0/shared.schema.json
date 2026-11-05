@@ -1,0 +1,734 @@
+{
+  "$defs": {
+    "ArtifactBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "BoundRef": {
+      "additionalProperties": false,
+      "properties": {
+        "binding_kind": {
+          "enum": [
+            "RECORD_REVISION",
+            "SOURCE_BYTES"
+          ]
+        },
+        "record_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "revision_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "record_id",
+        "revision_sha256",
+        "binding_kind"
+      ],
+      "type": "object"
+    },
+    "CreditAllocation": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "actor_ref": {
+            "pattern": "^record:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "share": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "actor_ref",
+          "share"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "IdentifierList": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "other_scheme_name": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scheme": {
+            "$ref": "#/$defs/v_identifier_scheme"
+          },
+          "value": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "scheme",
+          "value",
+          "other_scheme_name"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "LogicRefList": {
+      "items": {
+        "pattern": "^L[0-9]+$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "OperatorRef": {
+      "additionalProperties": false,
+      "properties": {
+        "operator_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "operator_version": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "operator_id",
+        "operator_version"
+      ],
+      "type": "object"
+    },
+    "PassageLocator": {
+      "additionalProperties": false,
+      "properties": {
+        "anchor_kind": {
+          "$ref": "#/$defs/v_passage_anchor_kind"
+        },
+        "derivative_artifact_ref": {
+          "anyOf": [
+            {
+              "pattern": "^record:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "end_offset": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pdf_page_index": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "printed_page": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "region": {
+          "anyOf": [
+            {
+              "items": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "maxItems": 4,
+              "minItems": 4,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "start_offset": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "anchor_kind",
+        "printed_page",
+        "pdf_page_index",
+        "derivative_artifact_ref",
+        "start_offset",
+        "end_offset",
+        "region"
+      ],
+      "type": "object"
+    },
+    "PublicationModeMap": {
+      "additionalProperties": {
+        "$ref": "#/$defs/v_publication_mode"
+      },
+      "type": "object"
+    },
+    "RecordRef": {
+      "pattern": "^record:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "RecordRefList": {
+      "items": {
+        "pattern": "^record:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "TemporalExtent": {
+      "additionalProperties": false,
+      "properties": {
+        "calendar_system": {
+          "$ref": "#/$defs/v_calendar_system"
+        },
+        "normalization_artifact_ref": {
+          "anyOf": [
+            {
+              "pattern": "^record:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "normalized_lower": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "normalized_upper": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "original_text": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "precision": {
+          "$ref": "#/$defs/v_temporal_precision"
+        }
+      },
+      "required": [
+        "original_text",
+        "calendar_system",
+        "precision",
+        "normalized_lower",
+        "normalized_upper",
+        "normalization_artifact_ref"
+      ],
+      "type": "object"
+    },
+    "TextBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact": {
+          "$ref": "#/$defs/ArtifactBinding"
+        },
+        "offset_unit": {
+          "const": "UNICODE_CODE_POINTS_IN_EXACT_UTF8_TEXT"
+        },
+        "unicode_end": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "unicode_start": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "artifact",
+        "unicode_start",
+        "unicode_end",
+        "offset_unit"
+      ],
+      "type": "object"
+    },
+    "sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "v_actor_kind": {
+      "enum": [
+        "HUMAN",
+        "SOFTWARE",
+        "MODEL"
+      ],
+      "type": "string"
+    },
+    "v_assertion_origin": {
+      "enum": [
+        "HUMAN_PROPOSED",
+        "MODEL_PROPOSED",
+        "IMPORTED_UNVERIFIED",
+        "DERIVED"
+      ],
+      "type": "string"
+    },
+    "v_attribution_scope": {
+      "enum": [
+        "EXPLICIT_EXCLUSIVE",
+        "EXPLICIT_SHARED",
+        "ROLE_SPECIFIC",
+        "GENERAL_ASSOCIATION",
+        "UNSPECIFIED"
+      ],
+      "type": "string"
+    },
+    "v_calendar_system": {
+      "enum": [
+        "GREGORIAN",
+        "JULIAN",
+        "OTHER_SPECIFIED",
+        "UNKNOWN"
+      ],
+      "type": "string"
+    },
+    "v_claim_assessment": {
+      "enum": [
+        "SUPPORTED",
+        "CONTRADICTED",
+        "MIXED",
+        "INSUFFICIENT_EVIDENCE",
+        "OUT_OF_SCOPE"
+      ],
+      "type": "string"
+    },
+    "v_comparison_kind": {
+      "enum": [
+        "COMPARABLE",
+        "ROLE_DIFFERENCE",
+        "CONCEPT_DIFFERENCE",
+        "SCOPE_DIFFERENCE",
+        "UNDETERMINED"
+      ],
+      "type": "string"
+    },
+    "v_contribution_role": {
+      "enum": [
+        "LABEL_NAMING",
+        "CONCEPTUALIZATION",
+        "DISCOVERY",
+        "EMPIRICAL_BASIS",
+        "METHODOLOGY",
+        "AUTHORSHIP",
+        "PUBLICATION_SUPPORT",
+        "TRANSLATION",
+        "POPULARIZATION",
+        "OTHER_SPECIFIED"
+      ],
+      "type": "string"
+    },
+    "v_contributor_kind": {
+      "enum": [
+        "PERSON",
+        "ORGANIZATION",
+        "COLLECTIVE",
+        "UNKNOWN"
+      ],
+      "type": "string"
+    },
+    "v_dataset_split": {
+      "enum": [
+        "DEVELOPMENT",
+        "TRAIN",
+        "VALIDATION",
+        "TEST_SEALED"
+      ],
+      "type": "string"
+    },
+    "v_definition_stage": {
+      "enum": [
+        "CORE_CONTRACT_DEFINED",
+        "PROPOSED",
+        "PROTOCOL_DEPENDENT"
+      ],
+      "type": "string"
+    },
+    "v_disclosure_class": {
+      "enum": [
+        "PUBLIC_ELIGIBLE",
+        "INTERNAL",
+        "RESTRICTED",
+        "SEALED_EVALUATION"
+      ],
+      "type": "string"
+    },
+    "v_discrepancy_conclusion": {
+      "enum": [
+        "DISCREPANCY_SUPPORTED",
+        "NO_DISCREPANCY_SUPPORTED",
+        "UNRESOLVED",
+        "OUT_OF_SCOPE"
+      ],
+      "type": "string"
+    },
+    "v_evaluation_condition": {
+      "enum": [
+        "RULE_RETRIEVAL",
+        "CLOSED_BOOK",
+        "ORACLE_EVIDENCE",
+        "RETRIEVED_EVIDENCE"
+      ],
+      "type": "string"
+    },
+    "v_evidence_relation": {
+      "enum": [
+        "SUPPORTS",
+        "CONTRADICTS",
+        "MENTIONS",
+        "REPORTS_CLAIM",
+        "UNDETERMINED"
+      ],
+      "type": "string"
+    },
+    "v_execution_mode": {
+      "enum": [
+        "IN_PROCESS",
+        "OWNED_SUBPROCESS",
+        "HUMAN_HANDOFF"
+      ],
+      "type": "string"
+    },
+    "v_execution_status": {
+      "enum": [
+        "QUEUED",
+        "LEASED",
+        "RUNNING",
+        "SUCCEEDED",
+        "RETRYABLE_FAILURE",
+        "TERMINAL_FAILURE",
+        "CANCELLED",
+        "WAITING_HUMAN_SOURCE",
+        "WAITING_HUMAN_REVIEW"
+      ],
+      "type": "string"
+    },
+    "v_failure_kind": {
+      "enum": [
+        "PAYWALL",
+        "ACCESS_DENIED",
+        "NETWORK_FAILURE",
+        "INVALID_DOCUMENT",
+        "MODEL_UNAVAILABLE",
+        "INVALID_OUTPUT",
+        "TIMEOUT",
+        "OWNERSHIP_FAILURE",
+        "RIGHTS_UNRESOLVED",
+        "STALE_BINDING",
+        "DATA_INTEGRITY_ERROR",
+        "UNKNOWN_FAILURE"
+      ],
+      "type": "string"
+    },
+    "v_historical_event_kind": {
+      "enum": [
+        "CONCEPTUAL_DEVELOPMENT",
+        "LABEL_PROPOSAL",
+        "PRINTED_ATTESTATION",
+        "SCHEDULED_PRESENTATION",
+        "DELIVERED_PRESENTATION",
+        "PUBLICATION",
+        "TRANSLATION",
+        "POPULARIZATION",
+        "RETROSPECTIVE_RECOLLECTION",
+        "ATTRIBUTION_STATEMENT"
+      ],
+      "type": "string"
+    },
+    "v_identifier_scheme": {
+      "enum": [
+        "DOI",
+        "ISBN",
+        "ISSN",
+        "PMID",
+        "ARXIV",
+        "ORCID",
+        "URI",
+        "WIKIDATA",
+        "WIKIPEDIA_REVISION",
+        "OTHER_SPECIFIED"
+      ],
+      "type": "string"
+    },
+    "v_logic_kind": {
+      "enum": [
+        "DEFINITION",
+        "INVARIANT",
+        "TRANSITION",
+        "DERIVATION",
+        "RESEARCH_HYPOTHESIS",
+        "INFERENCE_POLICY"
+      ],
+      "type": "string"
+    },
+    "v_metric_status": {
+      "enum": [
+        "NOT_MEASURED",
+        "DEFINED",
+        "NOT_DEFINED",
+        "INVALIDATED"
+      ],
+      "type": "string"
+    },
+    "v_missing_reason": {
+      "enum": [
+        "NOT_COLLECTED",
+        "UNKNOWN",
+        "NOT_APPLICABLE",
+        "SOURCE_UNAVAILABLE",
+        "NOT_ASSESSED",
+        "WITHHELD",
+        "NOT_DEFINED",
+        "PROTOCOL_UNSET",
+        "INVALIDATED"
+      ],
+      "type": "string"
+    },
+    "v_operator_kind": {
+      "enum": [
+        "PRIMITIVE",
+        "COMPOSITE"
+      ],
+      "type": "string"
+    },
+    "v_operator_readiness": {
+      "enum": [
+        "SPECIFIED_NOT_IMPLEMENTED",
+        "SDK_REUSE_CANDIDATE",
+        "QUALIFIED_FOR_DECLARED_SCOPE"
+      ],
+      "type": "string"
+    },
+    "v_passage_anchor_kind": {
+      "enum": [
+        "PAGE",
+        "TEXT_OFFSETS",
+        "IMAGE_REGION"
+      ],
+      "type": "string"
+    },
+    "v_presentation_condition": {
+      "enum": [
+        "LEDGER",
+        "FACT_MATCHED_NARRATIVE"
+      ],
+      "type": "string"
+    },
+    "v_proof_status": {
+      "enum": [
+        "UNPROVEN",
+        "EXAMPLES_CHECKED",
+        "COUNTEREXAMPLE_FOUND",
+        "PROVED_WITH_BOUND_ARTIFACT"
+      ],
+      "type": "string"
+    },
+    "v_publication_mode": {
+      "enum": [
+        "ESTABLISHED_FACT",
+        "QUALIFIED_ACCOUNT",
+        "OPEN_QUESTION",
+        "SYNTHETIC_ILLUSTRATION"
+      ],
+      "type": "string"
+    },
+    "v_record_status": {
+      "enum": [
+        "DRAFT",
+        "ACTIVE",
+        "SUPERSEDED",
+        "WITHDRAWN"
+      ],
+      "type": "string"
+    },
+    "v_resource_class": {
+      "enum": [
+        "CPU",
+        "NETWORK_INGEST",
+        "GPU_EXCLUSIVE",
+        "HUMAN"
+      ],
+      "type": "string"
+    },
+    "v_review_status": {
+      "enum": [
+        "PENDING",
+        "IN_REVIEW",
+        "APPROVED",
+        "REJECTED",
+        "REVOKED",
+        "STALE"
+      ],
+      "type": "string"
+    },
+    "v_rights_operation": {
+      "enum": [
+        "READ_LOCAL",
+        "PROCESS_LOCAL",
+        "QUOTE_PUBLIC",
+        "REDISTRIBUTE_FULL_TEXT",
+        "REDISTRIBUTE_ASSET"
+      ],
+      "type": "string"
+    },
+    "v_rights_status": {
+      "enum": [
+        "NOT_REVIEWED",
+        "PERMITTED",
+        "RESTRICTED",
+        "PROHIBITED",
+        "UNKNOWN"
+      ],
+      "type": "string"
+    },
+    "v_search_outcome": {
+      "enum": [
+        "MATCH_FOUND",
+        "NO_RELEVANT_PASSAGE",
+        "PARTIAL_SEARCH",
+        "UNAVAILABLE"
+      ],
+      "type": "string"
+    },
+    "v_source_access_status": {
+      "enum": [
+        "NOT_ATTEMPTED",
+        "LOCAL_AVAILABLE",
+        "OPEN_ACCESS_AVAILABLE",
+        "WAITING_HUMAN_SOURCE",
+        "TEMPORARILY_UNAVAILABLE",
+        "UNAVAILABLE"
+      ],
+      "type": "string"
+    },
+    "v_source_identity_status": {
+      "enum": [
+        "UNVERIFIED",
+        "VERIFIED",
+        "MISMATCH",
+        "UNAVAILABLE"
+      ],
+      "type": "string"
+    },
+    "v_source_kind": {
+      "enum": [
+        "PRIMARY_DOCUMENT",
+        "RETROSPECTIVE_ACCOUNT",
+        "SCHOLARLY_SECONDARY",
+        "TERTIARY_ENCYCLOPEDIA",
+        "PROJECT_GENERATED"
+      ],
+      "type": "string"
+    },
+    "v_target_language": {
+      "enum": [
+        "en",
+        "fr",
+        "es",
+        "ru",
+        "zh",
+        "ar"
+      ],
+      "type": "string"
+    },
+    "v_taxonomy_scheme": {
+      "enum": [
+        "JACS3",
+        "HECOS",
+        "CAH",
+        "FORD",
+        "OTHER_SPECIFIED"
+      ],
+      "type": "string"
+    },
+    "v_temporal_comparison": {
+      "enum": [
+        "BEFORE",
+        "AFTER",
+        "OVERLAP",
+        "UNKNOWN"
+      ],
+      "type": "string"
+    },
+    "v_temporal_precision": {
+      "enum": [
+        "DAY",
+        "MONTH",
+        "YEAR",
+        "DECADE",
+        "INTERVAL",
+        "UNKNOWN"
+      ],
+      "type": "string"
+    }
+  },
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/shared.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

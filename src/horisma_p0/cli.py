@@ -19,6 +19,11 @@ def main():
     rebase=sub.add_parser('research-publication-rebase')
     rebase.add_argument('base',type=Path)
     sub.add_parser('research-passage-review')
+    sub.add_parser('research-regional-audit')
+    sub.add_parser('research-heldout-review')
+    sub.add_parser('research-json-templates')
+    json_validate=sub.add_parser('research-json-validate')
+    json_validate.add_argument('record',type=Path)
     build=sub.add_parser('research-build')
     build.add_argument('--ocr-model-dir',type=Path)
     check=sub.add_parser('research-check')
@@ -96,7 +101,19 @@ def main():
     try:
         if args.command.startswith('research-'):
             from .research_slice import build_slice,check_slice,run_ocr
-            if args.command=='research-passage-review':
+            if args.command=='research-json-templates':
+                from .json_contracts import compile_contracts
+                result=compile_contracts(root)
+            elif args.command=='research-json-validate':
+                from .json_contracts import validate_interchange
+                result=validate_interchange(root,json.loads(args.record.read_bytes()))
+            elif args.command=='research-heldout-review':
+                from .regional_qualification import holdout_review
+                result=holdout_review(root)
+            elif args.command=='research-regional-audit':
+                from .regional_qualification import regional_audit
+                result=regional_audit(root)
+            elif args.command=='research-passage-review':
                 from .passage_review import review_passages
                 result=review_passages(root)
             elif args.command=='research-publication-rebase':

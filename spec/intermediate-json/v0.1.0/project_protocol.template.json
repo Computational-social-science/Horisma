@@ -1,0 +1,96 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "approval_ref": {
+      "definition": "Review of this protocol; absence is not approval.",
+      "examples": "`@review_decision_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L17",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:review_decision`; 0..1; O",
+      "values_units": "exact version"
+    },
+    "policy_refs": {
+      "definition": "Applicable adjudication policies.",
+      "examples": "`@adjudication_policy_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L09",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:adjudication_policy`; 1..n; R",
+      "values_units": "exact versions"
+    },
+    "research_question_refs": {
+      "definition": "Questions covered by this protocol.",
+      "examples": "`@research_question_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:research_question`; 1..n; R",
+      "values_units": "exact versions"
+    },
+    "scope_statement": {
+      "definition": "Population, period, languages and exclusions; not universal coverage.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L13",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "bounded scope"
+    }
+  },
+  "record_skeleton": {
+    "approval_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "missing_reasons": {
+      "/approval_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/policy_refs": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/research_question_refs": "NOT_COLLECTED",
+      "/scope_statement": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "policy_refs": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "research_question_refs": null,
+    "scope_statement": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "project_protocol",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "research_question_refs",
+    "scope_statement",
+    "policy_refs"
+  ],
+  "schema_ref": "project_protocol.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

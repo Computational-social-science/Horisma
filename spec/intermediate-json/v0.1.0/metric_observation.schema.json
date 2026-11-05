@@ -1,0 +1,212 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/metric_observation.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Structural interchange for dictionary entity metric_observation. Conformance does not certify review, truth, rights or implementation.",
+  "properties": {
+    "definition_stage": {
+      "const": "PROTOCOL_DEPENDENT"
+    },
+    "record": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "measurement_status": {
+                "const": "DEFINED"
+              }
+            },
+            "required": [
+              "measurement_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "not": {
+                  "type": "null"
+                }
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "created_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "created_by_actor_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "definition_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Fixed measurement semantics.",
+          "x-logical-type": "ref:metric_definition",
+          "x-target-type": "metric_definition"
+        },
+        "denominator": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Eligible observations; zero denominator makes a rate undefined.",
+          "x-logical-type": "integer"
+        },
+        "dictionary_version": {
+          "const": "0.1.0"
+        },
+        "disclosure_class": {
+          "$ref": "shared.schema.json#/$defs/v_disclosure_class"
+        },
+        "eligible_family_refs": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "shared.schema.json#/$defs/RecordRef"
+              },
+              "minItems": 0,
+              "type": "array",
+              "x-target-type": "concept_family"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Required for family-macro results; report excluded families separately.",
+          "x-logical-type": "refs:concept_family"
+        },
+        "entity_id": {
+          "pattern": "^metric_observation:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "input_artifact_refs": {
+          "description": "Raw scores/logs, eligibility and uncertainty calculation inputs.",
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "minItems": 1,
+          "type": "array",
+          "x-logical-type": "refs:artifact",
+          "x-target-type": "artifact"
+        },
+        "measurement_status": {
+          "$ref": "shared.schema.json#/$defs/v_metric_status",
+          "description": "NOT_MEASURED differs from measured zero and NOT_DEFINED.",
+          "x-logical-type": "enum"
+        },
+        "missing_reasons": {
+          "additionalProperties": {
+            "$ref": "shared.schema.json#/$defs/v_missing_reason"
+          },
+          "type": "object"
+        },
+        "numerator": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Observed count for rate metrics, not inferred from a rounded score.",
+          "x-logical-type": "integer"
+        },
+        "provenance_artifact_refs": {
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "type": "array"
+        },
+        "record_id": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "record_status": {
+          "$ref": "shared.schema.json#/$defs/v_record_status"
+        },
+        "record_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "supersedes_record_id": {
+          "anyOf": [
+            {
+              "$ref": "shared.schema.json#/$defs/RecordRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Null for missing/undefined/invalidated observations.",
+          "x-logical-type": "number"
+        },
+        "vocabulary_version": {
+          "const": "0.1.0"
+        }
+      },
+      "required": [
+        "entity_id",
+        "record_id",
+        "record_version",
+        "dictionary_version",
+        "vocabulary_version",
+        "record_status",
+        "created_at",
+        "created_by_actor_ref",
+        "disclosure_class",
+        "missing_reasons",
+        "provenance_artifact_refs",
+        "definition_ref",
+        "measurement_status",
+        "input_artifact_refs"
+      ],
+      "type": "object"
+    },
+    "record_type": {
+      "const": "metric_observation"
+    },
+    "schema_profile": {
+      "const": "horisma-dictionary-structural-0.1.0"
+    }
+  },
+  "required": [
+    "schema_profile",
+    "record_type",
+    "definition_stage",
+    "record"
+  ],
+  "type": "object",
+  "x-dictionary-sha256": "bfd1eaf0e8ba683e0aac0a5cbd0ffb77f455f6bb66d16160bd0906d2b6a96cd8",
+  "x-semantic-conditions": [
+    {
+      "condition": "measurement_status=DEFINED",
+      "field": "value",
+      "implementation": "JSON_SCHEMA_CONDITION"
+    },
+    {
+      "condition": "family-macro metric",
+      "field": "eligible_family_refs",
+      "implementation": "SEMANTIC_CONDITION_NOT_CERTIFIED_BY_STRUCTURAL_SCHEMA"
+    }
+  ],
+  "x-vocabulary-sha256": "01a5153a00f7b938b1db13ba99e25f5bef080e4ba90156238c568536bedc6a27"
+}

@@ -1,0 +1,432 @@
+{
+  "core_entities": 55,
+  "dictionary_sha256": "bfd1eaf0e8ba683e0aac0a5cbd0ffb77f455f6bb66d16160bd0906d2b6a96cd8",
+  "entries": [
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 15,
+      "record_type": "actor",
+      "schema": "actor.schema.json",
+      "template": "actor.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 16,
+      "record_type": "project_protocol",
+      "schema": "project_protocol.schema.json",
+      "template": "project_protocol.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 15,
+      "record_type": "research_question",
+      "schema": "research_question.schema.json",
+      "template": "research_question.template.json"
+    },
+    {
+      "definition_stage": "PROTOCOL_DEPENDENT",
+      "field_count": 16,
+      "record_type": "hypothesis",
+      "schema": "hypothesis.schema.json",
+      "template": "hypothesis.template.json"
+    },
+    {
+      "definition_stage": "PROTOCOL_DEPENDENT",
+      "field_count": 16,
+      "record_type": "sampling_frame",
+      "schema": "sampling_frame.schema.json",
+      "template": "sampling_frame.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 15,
+      "record_type": "concept",
+      "schema": "concept.schema.json",
+      "template": "concept.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 15,
+      "record_type": "lexical_form",
+      "schema": "lexical_form.schema.json",
+      "template": "lexical_form.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 15,
+      "record_type": "sense",
+      "schema": "sense.schema.json",
+      "template": "sense.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 15,
+      "record_type": "concept_family",
+      "schema": "concept_family.schema.json",
+      "template": "concept_family.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 18,
+      "record_type": "taxonomy_assignment",
+      "schema": "taxonomy_assignment.schema.json",
+      "template": "taxonomy_assignment.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 16,
+      "record_type": "contributor",
+      "schema": "contributor.schema.json",
+      "template": "contributor.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 17,
+      "record_type": "identity_assertion",
+      "schema": "identity_assertion.schema.json",
+      "template": "identity_assertion.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 18,
+      "record_type": "contribution_assertion",
+      "schema": "contribution_assertion.schema.json",
+      "template": "contribution_assertion.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 16,
+      "record_type": "work",
+      "schema": "work.schema.json",
+      "template": "work.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 18,
+      "record_type": "document_version",
+      "schema": "document_version.schema.json",
+      "template": "document_version.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 18,
+      "record_type": "source_file",
+      "schema": "source_file.schema.json",
+      "template": "source_file.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 17,
+      "record_type": "acquisition_attempt",
+      "schema": "acquisition_attempt.schema.json",
+      "template": "acquisition_attempt.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 18,
+      "record_type": "human_source_request",
+      "schema": "human_source_request.schema.json",
+      "template": "human_source_request.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 18,
+      "record_type": "passage",
+      "schema": "passage.schema.json",
+      "template": "passage.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 19,
+      "record_type": "atomic_claim",
+      "schema": "atomic_claim.schema.json",
+      "template": "atomic_claim.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 17,
+      "record_type": "search_scope",
+      "schema": "search_scope.schema.json",
+      "template": "search_scope.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 17,
+      "record_type": "attribution_assertion",
+      "schema": "attribution_assertion.schema.json",
+      "template": "attribution_assertion.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 17,
+      "record_type": "evidence_link",
+      "schema": "evidence_link.schema.json",
+      "template": "evidence_link.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 17,
+      "record_type": "annotation",
+      "schema": "annotation.schema.json",
+      "template": "annotation.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 17,
+      "record_type": "adjudication_policy",
+      "schema": "adjudication_policy.schema.json",
+      "template": "adjudication_policy.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 17,
+      "record_type": "adjudication",
+      "schema": "adjudication.schema.json",
+      "template": "adjudication.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 19,
+      "record_type": "discrepancy_finding",
+      "schema": "discrepancy_finding.schema.json",
+      "template": "discrepancy_finding.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 17,
+      "record_type": "review_decision",
+      "schema": "review_decision.schema.json",
+      "template": "review_decision.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 18,
+      "record_type": "artifact",
+      "schema": "artifact.schema.json",
+      "template": "artifact.template.json"
+    },
+    {
+      "definition_stage": "PROPOSED",
+      "field_count": 17,
+      "record_type": "book_edition",
+      "schema": "book_edition.schema.json",
+      "template": "book_edition.template.json"
+    },
+    {
+      "definition_stage": "PROPOSED",
+      "field_count": 17,
+      "record_type": "localization",
+      "schema": "localization.schema.json",
+      "template": "localization.template.json"
+    },
+    {
+      "definition_stage": "PROPOSED",
+      "field_count": 16,
+      "record_type": "correction",
+      "schema": "correction.schema.json",
+      "template": "correction.template.json"
+    },
+    {
+      "definition_stage": "PROTOCOL_DEPENDENT",
+      "field_count": 19,
+      "record_type": "dataset_version",
+      "schema": "dataset_version.schema.json",
+      "template": "dataset_version.template.json"
+    },
+    {
+      "definition_stage": "PROTOCOL_DEPENDENT",
+      "field_count": 16,
+      "record_type": "split_assignment",
+      "schema": "split_assignment.schema.json",
+      "template": "split_assignment.template.json"
+    },
+    {
+      "definition_stage": "PROTOCOL_DEPENDENT",
+      "field_count": 17,
+      "record_type": "benchmark_task",
+      "schema": "benchmark_task.schema.json",
+      "template": "benchmark_task.template.json"
+    },
+    {
+      "definition_stage": "PROPOSED",
+      "field_count": 19,
+      "record_type": "model_configuration",
+      "schema": "model_configuration.schema.json",
+      "template": "model_configuration.template.json"
+    },
+    {
+      "definition_stage": "PROTOCOL_DEPENDENT",
+      "field_count": 20,
+      "record_type": "model_response",
+      "schema": "model_response.schema.json",
+      "template": "model_response.template.json"
+    },
+    {
+      "definition_stage": "PROTOCOL_DEPENDENT",
+      "field_count": 17,
+      "record_type": "metric_definition",
+      "schema": "metric_definition.schema.json",
+      "template": "metric_definition.template.json"
+    },
+    {
+      "definition_stage": "PROTOCOL_DEPENDENT",
+      "field_count": 19,
+      "record_type": "metric_observation",
+      "schema": "metric_observation.schema.json",
+      "template": "metric_observation.template.json"
+    },
+    {
+      "definition_stage": "PROTOCOL_DEPENDENT",
+      "field_count": 16,
+      "record_type": "study_protocol",
+      "schema": "study_protocol.schema.json",
+      "template": "study_protocol.template.json"
+    },
+    {
+      "definition_stage": "PROTOCOL_DEPENDENT",
+      "field_count": 15,
+      "record_type": "vignette_actor",
+      "schema": "vignette_actor.schema.json",
+      "template": "vignette_actor.template.json"
+    },
+    {
+      "definition_stage": "PROTOCOL_DEPENDENT",
+      "field_count": 15,
+      "record_type": "vignette",
+      "schema": "vignette.schema.json",
+      "template": "vignette.template.json"
+    },
+    {
+      "definition_stage": "PROTOCOL_DEPENDENT",
+      "field_count": 16,
+      "record_type": "participant",
+      "schema": "participant.schema.json",
+      "template": "participant.template.json"
+    },
+    {
+      "definition_stage": "PROTOCOL_DEPENDENT",
+      "field_count": 19,
+      "record_type": "condition_assignment",
+      "schema": "condition_assignment.schema.json",
+      "template": "condition_assignment.template.json"
+    },
+    {
+      "definition_stage": "PROTOCOL_DEPENDENT",
+      "field_count": 16,
+      "record_type": "behavioral_response",
+      "schema": "behavioral_response.schema.json",
+      "template": "behavioral_response.template.json"
+    },
+    {
+      "definition_stage": "PROPOSED",
+      "field_count": 18,
+      "record_type": "operator_run",
+      "schema": "operator_run.schema.json",
+      "template": "operator_run.template.json"
+    },
+    {
+      "definition_stage": "PROPOSED",
+      "field_count": 17,
+      "record_type": "task_lease",
+      "schema": "task_lease.schema.json",
+      "template": "task_lease.template.json"
+    },
+    {
+      "definition_stage": "PROPOSED",
+      "field_count": 17,
+      "record_type": "resource_observation",
+      "schema": "resource_observation.schema.json",
+      "template": "resource_observation.template.json"
+    },
+    {
+      "definition_stage": "PROPOSED",
+      "field_count": 17,
+      "record_type": "cost_audit",
+      "schema": "cost_audit.schema.json",
+      "template": "cost_audit.template.json"
+    },
+    {
+      "definition_stage": "PROPOSED",
+      "field_count": 16,
+      "record_type": "recovery_event",
+      "schema": "recovery_event.schema.json",
+      "template": "recovery_event.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 17,
+      "record_type": "rights_decision",
+      "schema": "rights_decision.schema.json",
+      "template": "rights_decision.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 16,
+      "record_type": "logical_statement",
+      "schema": "logical_statement.schema.json",
+      "template": "logical_statement.template.json"
+    },
+    {
+      "definition_stage": "PROPOSED",
+      "field_count": 17,
+      "record_type": "proof_record",
+      "schema": "proof_record.schema.json",
+      "template": "proof_record.template.json"
+    },
+    {
+      "definition_stage": "PROTOCOL_DEPENDENT",
+      "field_count": 18,
+      "record_type": "evaluation_context",
+      "schema": "evaluation_context.schema.json",
+      "template": "evaluation_context.template.json"
+    },
+    {
+      "definition_stage": "CORE_CONTRACT_DEFINED",
+      "field_count": 17,
+      "record_type": "search_observation",
+      "schema": "search_observation.schema.json",
+      "template": "search_observation.template.json"
+    },
+    {
+      "definition_stage": "EXTENSION_CANDIDATE_PROFILE",
+      "record_type": "citation_object",
+      "schema": "citation_object.schema.json",
+      "template": "citation_object.template.json"
+    },
+    {
+      "definition_stage": "EXTENSION_STRUCTURE_DEFINED_ADAPTER_REQUIRED",
+      "record_type": "parse_unit",
+      "schema": "parse_unit.schema.json",
+      "template": "parse_unit.template.json"
+    },
+    {
+      "definition_stage": "EXTENSION_STRUCTURE_DEFINED_ADAPTER_REQUIRED",
+      "record_type": "entity_mention",
+      "schema": "entity_mention.schema.json",
+      "template": "entity_mention.template.json"
+    },
+    {
+      "definition_stage": "EXTENSION_STRUCTURE_DEFINED_ADAPTER_REQUIRED",
+      "record_type": "event_card",
+      "schema": "event_card.schema.json",
+      "template": "event_card.template.json"
+    },
+    {
+      "definition_stage": "EXTENSION_STRUCTURE_DEFINED_ADAPTER_REQUIRED",
+      "record_type": "manuscript_unit",
+      "schema": "manuscript_unit.schema.json",
+      "template": "manuscript_unit.template.json"
+    },
+    {
+      "definition_stage": "EXTENSION_STRUCTURE_DEFINED_ADAPTER_REQUIRED",
+      "record_type": "pipeline_packet",
+      "schema": "pipeline_packet.schema.json",
+      "template": "pipeline_packet.template.json"
+    }
+  ],
+  "extension_entities": 6,
+  "operational_policy": "Current local automated-or-abstain policy supersedes historical mandatory-human prose; schema conformance never grants review authority.",
+  "profile": "STRUCTURAL_CONTRACTS_NOT_SCIENTIFIC_ACCEPTANCE",
+  "semantic_validation": "Partial; explicit conditions and research obligations remain in the authoritative dictionary/current plan.",
+  "vocabulary_sha256": "01a5153a00f7b938b1db13ba99e25f5bef080e4ba90156238c568536bedc6a27"
+}

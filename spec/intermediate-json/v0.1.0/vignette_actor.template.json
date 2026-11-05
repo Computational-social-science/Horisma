@@ -1,0 +1,85 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROTOCOL_DEPENDENT",
+  "field_contracts": {
+    "documented_role": {
+      "definition": "Fixed contribution role independent of randomized prestige.",
+      "examples": "a member of `contribution_role` / an unregistered code or generic PASS",
+      "logic": "L10",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Study owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "contribution_role"
+    },
+    "label": {
+      "definition": "Not a disguised historical allegation or real-person biography.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L32",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Study owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "fictional label"
+    },
+    "vignette_ref": {
+      "definition": "Defines fictional context and contribution record.",
+      "examples": "`@vignette_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Study owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:vignette`; 1; R",
+      "values_units": "exact version"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "documented_role": null,
+    "entity_id": null,
+    "label": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/documented_role": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/label": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vignette_ref": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "vignette_ref": null,
+    "vocabulary_version": null
+  },
+  "record_type": "vignette_actor",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "label",
+    "vignette_ref",
+    "documented_role"
+  ],
+  "schema_ref": "vignette_actor.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

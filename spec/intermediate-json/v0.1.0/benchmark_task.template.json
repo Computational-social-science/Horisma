@@ -1,0 +1,108 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROTOCOL_DEPENDENT",
+  "field_contracts": {
+    "condition": {
+      "definition": "Do not combine closed-book/oracle/retrieved evidence scores.",
+      "examples": "a member of `evaluation_condition` / an unregistered code or generic PASS",
+      "logic": "L21",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "evaluation_condition"
+    },
+    "evidence_packet_ref": {
+      "definition": "Absent in closed-book; record actual access in other conditions.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L05",
+      "missing_disclosure": "null + missing_reason; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 0..1; O",
+      "values_units": "condition-bound packet"
+    },
+    "family_ref": {
+      "definition": "Independent grouping unit.",
+      "examples": "`@concept_family_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L19",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:concept_family`; 1; R",
+      "values_units": "exact version"
+    },
+    "question_artifact_ref": {
+      "definition": "Frozen prompt/question; no answer leakage.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L19",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "exact bytes"
+    },
+    "target_claim_refs": {
+      "definition": "Claims evaluated, including unresolved controls.",
+      "examples": "`@atomic_claim_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L08",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:atomic_claim`; 1..n; R",
+      "values_units": "exact versions"
+    }
+  },
+  "record_skeleton": {
+    "condition": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "evidence_packet_ref": null,
+    "family_ref": null,
+    "missing_reasons": {
+      "/condition": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/evidence_packet_ref": "NOT_COLLECTED",
+      "/family_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/question_artifact_ref": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/target_claim_refs": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "question_artifact_ref": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "target_claim_refs": null,
+    "vocabulary_version": null
+  },
+  "record_type": "benchmark_task",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "family_ref",
+    "question_artifact_ref",
+    "condition",
+    "target_claim_refs"
+  ],
+  "schema_ref": "benchmark_task.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

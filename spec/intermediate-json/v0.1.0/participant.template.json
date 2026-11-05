@@ -1,0 +1,96 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROTOCOL_DEPENDENT",
+  "field_contracts": {
+    "consent_record_artifact_ref": {
+      "definition": "Separate protected consent record, never public release content.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L27",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Authorized study/data steward; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "restricted opaque record"
+    },
+    "protocol_ref": {
+      "definition": "Eligibility, consent and withdrawal policy.",
+      "examples": "`@study_protocol_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L29",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Authorized study/data steward; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:study_protocol`; 1; R",
+      "values_units": "exact version"
+    },
+    "pseudonym": {
+      "definition": "Not a name, email, account handle or link to a historical contributor.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L27",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Authorized study/data steward; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "random study identifier"
+    },
+    "withdrawal_record_ref": {
+      "definition": "Actual withdrawal and permitted retention handling.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L27",
+      "missing_disclosure": "null + missing_reason; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Authorized study/data steward; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 0..1; O",
+      "values_units": "restricted record"
+    }
+  },
+  "record_skeleton": {
+    "consent_record_artifact_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "missing_reasons": {
+      "/consent_record_artifact_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/protocol_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/pseudonym": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED",
+      "/withdrawal_record_ref": "NOT_COLLECTED"
+    },
+    "protocol_ref": null,
+    "provenance_artifact_refs": null,
+    "pseudonym": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null,
+    "withdrawal_record_ref": null
+  },
+  "record_type": "participant",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "pseudonym",
+    "protocol_ref",
+    "consent_record_artifact_ref"
+  ],
+  "schema_ref": "participant.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

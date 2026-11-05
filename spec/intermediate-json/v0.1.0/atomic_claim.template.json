@@ -1,0 +1,130 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "concept_ref": {
+      "definition": "Concept/sense to which the proposition applies.",
+      "examples": "`@concept_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L10",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:concept`; 1; R",
+      "values_units": "exact version"
+    },
+    "derived_from_claim_refs": {
+      "definition": "Logical/processing dependency, not independent corroboration.",
+      "examples": "`@atomic_claim_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L04",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:atomic_claim`; 0..n; O",
+      "values_units": "exact versions"
+    },
+    "logical_statement_ref": {
+      "definition": "Optional formal encoding, not a proof of historical truth.",
+      "examples": "`@logical_statement_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L28",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:logical_statement`; 0..1; O",
+      "values_units": "exact version"
+    },
+    "origin": {
+      "definition": "Wikipedia/legacy/model proposals do not inherit acceptance.",
+      "examples": "a member of `assertion_origin` / an unregistered code or generic PASS",
+      "logic": "L01",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "assertion_origin"
+    },
+    "proposition": {
+      "definition": "Retain original wording; a question or report is not an asserted fact.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "atomic proposition"
+    },
+    "scope_statement": {
+      "definition": "Bounded proposition; no silent universalization.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L13",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "role/time/document context"
+    },
+    "search_scope_ref": {
+      "definition": "Mandatory for earliest/absence claims.",
+      "examples": "`@search_scope_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L13",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:search_scope`; 0..1; O",
+      "values_units": "exact version"
+    }
+  },
+  "record_skeleton": {
+    "concept_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "derived_from_claim_refs": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "logical_statement_ref": null,
+    "missing_reasons": {
+      "/concept_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/derived_from_claim_refs": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/logical_statement_ref": "NOT_COLLECTED",
+      "/origin": "NOT_COLLECTED",
+      "/proposition": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/scope_statement": "NOT_COLLECTED",
+      "/search_scope_ref": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "origin": null,
+    "proposition": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "scope_statement": null,
+    "search_scope_ref": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "atomic_claim",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "proposition",
+    "concept_ref",
+    "scope_statement",
+    "origin"
+  ],
+  "schema_ref": "atomic_claim.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

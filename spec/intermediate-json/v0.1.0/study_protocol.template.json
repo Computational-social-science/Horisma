@@ -1,0 +1,95 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROTOCOL_DEPENDENT",
+  "field_contracts": {
+    "analysis_plan_artifact_ref": {
+      "definition": "No invented sample size, power, exclusions or completed study.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L29",
+      "missing_disclosure": "null + missing_reason; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Research/ethics owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 0..1; O",
+      "values_units": "preregistered plan"
+    },
+    "estimand_statement": {
+      "definition": "Proposed mitigation positive for reduction; actual protocol must approve it.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L24",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Research/ethics owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "outcome/conditions/sign"
+    },
+    "ethics_review_ref": {
+      "definition": "A plan/LLM opinion is not ethics approval.",
+      "examples": "`@review_decision_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L17",
+      "missing_disclosure": "null + missing_reason; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Research/ethics owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:review_decision`; 0..1; O",
+      "values_units": "actual institutional determination"
+    },
+    "project_protocol_ref": {
+      "definition": "Research question and scientific scope.",
+      "examples": "`@project_protocol_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L29",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Research/ethics owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:project_protocol`; 1; R",
+      "values_units": "exact version"
+    }
+  },
+  "record_skeleton": {
+    "analysis_plan_artifact_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "estimand_statement": null,
+    "ethics_review_ref": null,
+    "missing_reasons": {
+      "/analysis_plan_artifact_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/estimand_statement": "NOT_COLLECTED",
+      "/ethics_review_ref": "NOT_COLLECTED",
+      "/project_protocol_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "project_protocol_ref": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "study_protocol",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "project_protocol_ref",
+    "estimand_statement"
+  ],
+  "schema_ref": "study_protocol.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

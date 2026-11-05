@@ -1,0 +1,159 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/dataset_version.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Structural interchange for dictionary entity dataset_version. Conformance does not certify review, truth, rights or implementation.",
+  "properties": {
+    "definition_stage": {
+      "const": "PROTOCOL_DEPENDENT"
+    },
+    "record": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy_artifact_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Evaluator versus development access and leakage audit, including prompts/caches.",
+          "x-logical-type": "ref:artifact",
+          "x-target-type": "artifact"
+        },
+        "canonical_family_manifest_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Exactly one canonical version per family entity, consistent bidirectional concept membership and task/claim/concept/family bindings before splitting.",
+          "x-logical-type": "ref:artifact",
+          "x-target-type": "artifact"
+        },
+        "created_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "created_by_actor_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "dictionary_version": {
+          "const": "0.1.0"
+        },
+        "disclosure_class": {
+          "$ref": "shared.schema.json#/$defs/v_disclosure_class"
+        },
+        "entity_id": {
+          "pattern": "^dataset_version:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "gold_adjudication_refs": {
+          "description": "Independent gold with disagreement records.",
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "minItems": 1,
+          "type": "array",
+          "x-logical-type": "refs:adjudication",
+          "x-target-type": "adjudication"
+        },
+        "gold_binding_manifest_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Frozen release-specific gold and scoring bindings; task identity alone is insufficient.",
+          "x-logical-type": "ref:artifact",
+          "x-target-type": "artifact"
+        },
+        "missing_reasons": {
+          "additionalProperties": {
+            "$ref": "shared.schema.json#/$defs/v_missing_reason"
+          },
+          "type": "object"
+        },
+        "protocol_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Sampling and research purpose.",
+          "x-logical-type": "ref:project_protocol",
+          "x-target-type": "project_protocol"
+        },
+        "provenance_artifact_refs": {
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "type": "array"
+        },
+        "record_id": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "record_status": {
+          "$ref": "shared.schema.json#/$defs/v_record_status"
+        },
+        "record_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "split_assignment_refs": {
+          "description": "Family-level partitions and documented overlap audit.",
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "minItems": 1,
+          "type": "array",
+          "x-logical-type": "refs:split_assignment",
+          "x-target-type": "split_assignment"
+        },
+        "supersedes_record_id": {
+          "anyOf": [
+            {
+              "$ref": "shared.schema.json#/$defs/RecordRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "task_refs": {
+          "description": "Frozen task inventory; not generated answer narratives as gold.",
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "minItems": 1,
+          "type": "array",
+          "x-logical-type": "refs:benchmark_task",
+          "x-target-type": "benchmark_task"
+        },
+        "vocabulary_version": {
+          "const": "0.1.0"
+        }
+      },
+      "required": [
+        "entity_id",
+        "record_id",
+        "record_version",
+        "dictionary_version",
+        "vocabulary_version",
+        "record_status",
+        "created_at",
+        "created_by_actor_ref",
+        "disclosure_class",
+        "missing_reasons",
+        "provenance_artifact_refs",
+        "protocol_ref",
+        "task_refs",
+        "gold_adjudication_refs",
+        "split_assignment_refs",
+        "access_policy_artifact_ref",
+        "gold_binding_manifest_ref",
+        "canonical_family_manifest_ref"
+      ],
+      "type": "object"
+    },
+    "record_type": {
+      "const": "dataset_version"
+    },
+    "schema_profile": {
+      "const": "horisma-dictionary-structural-0.1.0"
+    }
+  },
+  "required": [
+    "schema_profile",
+    "record_type",
+    "definition_stage",
+    "record"
+  ],
+  "type": "object",
+  "x-dictionary-sha256": "bfd1eaf0e8ba683e0aac0a5cbd0ffb77f455f6bb66d16160bd0906d2b6a96cd8",
+  "x-semantic-conditions": [],
+  "x-vocabulary-sha256": "01a5153a00f7b938b1db13ba99e25f5bef080e4ba90156238c568536bedc6a27"
+}

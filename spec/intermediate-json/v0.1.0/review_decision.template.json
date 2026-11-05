@@ -1,0 +1,109 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "review_scope": {
+      "definition": "Identity, scientific assessment, language, rights or release; not interchangeable.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L18",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Authorized human reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "specific purpose"
+    },
+    "reviewer_ref": {
+      "definition": "Human approval cannot be minted by a model field.",
+      "examples": "`@actor_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L17",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Authorized human reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:actor`; 1; R",
+      "values_units": "exact authorized actor"
+    },
+    "status": {
+      "definition": "Effective status becomes stale after any relevant change.",
+      "examples": "a member of `review_status` / an unregistered code or generic PASS",
+      "logic": "L17",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Authorized human reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "review_status"
+    },
+    "target_artifact_ref": {
+      "definition": "The reviewed bundle/source/protocol artifact.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L17",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Authorized human reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "exact version"
+    },
+    "target_sha256": {
+      "definition": "Approval binds exact bytes and declared dependencies.",
+      "examples": "a 64-character lowercase hex digest of actual bytes / invented digest or model confidence",
+      "logic": "L17",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Authorized human reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`sha256`; 1; R",
+      "values_units": "exact target bytes"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/review_scope": "NOT_COLLECTED",
+      "/reviewer_ref": "NOT_COLLECTED",
+      "/status": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/target_artifact_ref": "NOT_COLLECTED",
+      "/target_sha256": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "review_scope": null,
+    "reviewer_ref": null,
+    "status": null,
+    "supersedes_record_id": null,
+    "target_artifact_ref": null,
+    "target_sha256": null,
+    "vocabulary_version": null
+  },
+  "record_type": "review_decision",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "reviewer_ref",
+    "target_artifact_ref",
+    "target_sha256",
+    "status",
+    "review_scope"
+  ],
+  "schema_ref": "review_decision.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

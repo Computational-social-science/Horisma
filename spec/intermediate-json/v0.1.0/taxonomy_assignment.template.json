@@ -1,0 +1,119 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "code": {
+      "definition": "Actual code; null UNKNOWN is preferable to a guessed code.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L02",
+      "missing_disclosure": "null + missing_reason; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 0..1; O",
+      "values_units": "code in pinned vocabulary"
+    },
+    "context_time": {
+      "definition": "Context of assignment; modern labels are not timeless identities.",
+      "examples": "year1964 with YEAR precision / 1964-01-01 asserted as an observed day",
+      "logic": "L12",
+      "missing_disclosure": "null + missing_reason; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`TemporalExtent`; 0..1; O",
+      "values_units": "historical time"
+    },
+    "mapping_evidence_refs": {
+      "definition": "Evidence and interpretation supporting the mapping.",
+      "examples": "`@atomic_claim_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:atomic_claim`; 1..n; R",
+      "values_units": "exact versions"
+    },
+    "scheme": {
+      "definition": "Scheme family; no universal latest-JACS assumption.",
+      "examples": "a member of `taxonomy_scheme` / an unregistered code or generic PASS",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "taxonomy_scheme"
+    },
+    "sense_ref": {
+      "definition": "The attested sense/use being classified.",
+      "examples": "`@sense_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L10",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:sense`; 1; R",
+      "values_units": "exact version"
+    },
+    "vocabulary_artifact_ref": {
+      "definition": "Exact vocabulary release/bytes and its rights decision.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "pinned source release"
+    }
+  },
+  "record_skeleton": {
+    "code": null,
+    "context_time": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "mapping_evidence_refs": null,
+    "missing_reasons": {
+      "/code": "NOT_COLLECTED",
+      "/context_time": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/mapping_evidence_refs": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/scheme": "NOT_COLLECTED",
+      "/sense_ref": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_artifact_ref": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "scheme": null,
+    "sense_ref": null,
+    "supersedes_record_id": null,
+    "vocabulary_artifact_ref": null,
+    "vocabulary_version": null
+  },
+  "record_type": "taxonomy_assignment",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "sense_ref",
+    "scheme",
+    "vocabulary_artifact_ref",
+    "mapping_evidence_refs"
+  ],
+  "schema_ref": "taxonomy_assignment.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

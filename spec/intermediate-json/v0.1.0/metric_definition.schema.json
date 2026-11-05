@@ -1,0 +1,133 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/metric_definition.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Structural interchange for dictionary entity metric_definition. Conformance does not certify review, truth, rights or implementation.",
+  "properties": {
+    "definition_stage": {
+      "const": "PROTOCOL_DEPENDENT"
+    },
+    "record": {
+      "additionalProperties": false,
+      "properties": {
+        "created_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "created_by_actor_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "dictionary_version": {
+          "const": "0.1.0"
+        },
+        "disclosure_class": {
+          "$ref": "shared.schema.json#/$defs/v_disclosure_class"
+        },
+        "entity_id": {
+          "pattern": "^metric_definition:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "formula": {
+          "description": "Define numerator, denominator, independent unit and undefined cases.",
+          "minLength": 1,
+          "type": "string",
+          "x-logical-type": "text"
+        },
+        "logic_ids": {
+          "$ref": "shared.schema.json#/$defs/LogicRefList",
+          "description": "Formal derivation and assumptions, not a model-generated explanation.",
+          "minItems": 1,
+          "x-logical-type": "LogicRefList"
+        },
+        "missing_reasons": {
+          "additionalProperties": {
+            "$ref": "shared.schema.json#/$defs/v_missing_reason"
+          },
+          "type": "object"
+        },
+        "name": {
+          "description": "Distinguish retrieval, identity, support, correctness and calibration.",
+          "minLength": 1,
+          "type": "string",
+          "x-logical-type": "text"
+        },
+        "protocol_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Eligible universe, exclusions, uncertainty method and aggregation.",
+          "x-logical-type": "ref:project_protocol",
+          "x-target-type": "project_protocol"
+        },
+        "provenance_artifact_refs": {
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "type": "array"
+        },
+        "record_id": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "record_status": {
+          "$ref": "shared.schema.json#/$defs/v_record_status"
+        },
+        "record_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "supersedes_record_id": {
+          "anyOf": [
+            {
+              "$ref": "shared.schema.json#/$defs/RecordRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unit_and_direction": {
+          "description": "For example fraction, seconds, MiB; higher/lower is not universally better.",
+          "minLength": 1,
+          "type": "string",
+          "x-logical-type": "text"
+        },
+        "vocabulary_version": {
+          "const": "0.1.0"
+        }
+      },
+      "required": [
+        "entity_id",
+        "record_id",
+        "record_version",
+        "dictionary_version",
+        "vocabulary_version",
+        "record_status",
+        "created_at",
+        "created_by_actor_ref",
+        "disclosure_class",
+        "missing_reasons",
+        "provenance_artifact_refs",
+        "name",
+        "formula",
+        "unit_and_direction",
+        "protocol_ref",
+        "logic_ids"
+      ],
+      "type": "object"
+    },
+    "record_type": {
+      "const": "metric_definition"
+    },
+    "schema_profile": {
+      "const": "horisma-dictionary-structural-0.1.0"
+    }
+  },
+  "required": [
+    "schema_profile",
+    "record_type",
+    "definition_stage",
+    "record"
+  ],
+  "type": "object",
+  "x-dictionary-sha256": "bfd1eaf0e8ba683e0aac0a5cbd0ffb77f455f6bb66d16160bd0906d2b6a96cd8",
+  "x-semantic-conditions": [],
+  "x-vocabulary-sha256": "01a5153a00f7b938b1db13ba99e25f5bef080e4ba90156238c568536bedc6a27"
+}

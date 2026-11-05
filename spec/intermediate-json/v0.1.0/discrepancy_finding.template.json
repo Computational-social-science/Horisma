@@ -1,0 +1,133 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "adjudication_refs": {
+      "definition": "Independent source-based assessments, not a model vote.",
+      "examples": "`@adjudication_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L09",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent human adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:adjudication`; 1..n; R",
+      "values_units": "exact versions"
+    },
+    "attribution_ref": {
+      "definition": "Observed allocation of a particular role.",
+      "examples": "`@attribution_assertion_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L09",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent human adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:attribution_assertion`; 1; R",
+      "values_units": "exact version"
+    },
+    "comparison_kind": {
+      "definition": "Same-concept/role/scope must be established before supported discrepancy.",
+      "examples": "a member of `comparison_kind` / an unregistered code or generic PASS",
+      "logic": "L10",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent human adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "comparison_kind"
+    },
+    "conclusion": {
+      "definition": "No implied intent, theft, legal ownership or misconduct.",
+      "examples": "a member of `discrepancy_conclusion` / an unregistered code or generic PASS",
+      "logic": "L11",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent human adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "discrepancy_conclusion"
+    },
+    "contribution_refs": {
+      "definition": "Comparison contributions with evidence.",
+      "examples": "`@contribution_assertion_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L10",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent human adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:contribution_assertion`; 1..n; R",
+      "values_units": "exact versions"
+    },
+    "incompatibility_rationale": {
+      "definition": "State the supported conflict or why none/unresolved; never a fame-based assertion.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "D01",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent human adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "policy-bound evidence"
+    },
+    "policy_ref": {
+      "definition": "Explicit comparison/omission norm.",
+      "examples": "`@adjudication_policy_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L09",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent human adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:adjudication_policy`; 1; R",
+      "values_units": "exact version"
+    }
+  },
+  "record_skeleton": {
+    "adjudication_refs": null,
+    "attribution_ref": null,
+    "comparison_kind": null,
+    "conclusion": null,
+    "contribution_refs": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "incompatibility_rationale": null,
+    "missing_reasons": {
+      "/adjudication_refs": "NOT_COLLECTED",
+      "/attribution_ref": "NOT_COLLECTED",
+      "/comparison_kind": "NOT_COLLECTED",
+      "/conclusion": "NOT_COLLECTED",
+      "/contribution_refs": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/incompatibility_rationale": "NOT_COLLECTED",
+      "/policy_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "policy_ref": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "discrepancy_finding",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "attribution_ref",
+    "contribution_refs",
+    "comparison_kind",
+    "policy_ref",
+    "adjudication_refs",
+    "conclusion",
+    "incompatibility_rationale"
+  ],
+  "schema_ref": "discrepancy_finding.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

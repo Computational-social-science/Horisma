@@ -1,0 +1,120 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "dependent_claim_refs": {
+      "definition": "Claims blocked by this source dependency.",
+      "examples": "`@atomic_claim_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L15",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:atomic_claim`; 1..n; R",
+      "values_units": "exact versions"
+    },
+    "document_version_ref": {
+      "definition": "Work/version metadata supplied to the person.",
+      "examples": "`@document_version_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L15",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:document_version`; 1; R",
+      "values_units": "exact version"
+    },
+    "failure_kind": {
+      "definition": "Reason for handoff, not automatic evidence of a paywall.",
+      "examples": "a member of `failure_kind` / an unregistered code or generic PASS",
+      "logic": "L15",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "failure_kind"
+    },
+    "inbox_relative_path": {
+      "definition": "Local deposit destination, never public Git or an EIDOS directory.",
+      "examples": "data/intake/example.pdf / ../Eidos/outputs/private.pdf",
+      "logic": "L27",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`path`; 1; R",
+      "values_units": "private Horisma intake path"
+    },
+    "requested_locators": {
+      "definition": "Why the source is needed and which pages/questions matter.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L15",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "pages/questions"
+    },
+    "resume_review_refs": {
+      "definition": "Identity/version/rights checks before resumption.",
+      "examples": "`@review_decision_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L16",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:review_decision`; 0..n; O",
+      "values_units": "exact versions"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dependent_claim_refs": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "document_version_ref": null,
+    "entity_id": null,
+    "failure_kind": null,
+    "inbox_relative_path": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dependent_claim_refs": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/document_version_ref": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/failure_kind": "NOT_COLLECTED",
+      "/inbox_relative_path": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/requested_locators": "NOT_COLLECTED",
+      "/resume_review_refs": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "requested_locators": null,
+    "resume_review_refs": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "human_source_request",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "document_version_ref",
+    "dependent_claim_refs",
+    "failure_kind",
+    "requested_locators",
+    "inbox_relative_path"
+  ],
+  "schema_ref": "human_source_request.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

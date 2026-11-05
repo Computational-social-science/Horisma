@@ -1,0 +1,107 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "asserted_value": {
+      "definition": "Preserve uncertainty; do not infer gender, nationality or death from a name.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L32",
+      "missing_disclosure": "null + missing_reason; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Domain/privacy reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 0..1; O",
+      "values_units": "source-attested value"
+    },
+    "attribute_name": {
+      "definition": "For example birth event, citizenship or affiliation; these are different constructs.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L32",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Domain/privacy reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "specified attribute"
+    },
+    "contributor_ref": {
+      "definition": "Person/organization described.",
+      "examples": "`@contributor_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Domain/privacy reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:contributor`; 1; R",
+      "values_units": "exact version"
+    },
+    "evidence_refs": {
+      "definition": "Support for this particular attribute.",
+      "examples": "`@evidence_link_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Domain/privacy reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:evidence_link`; 1..n; R",
+      "values_units": "exact versions"
+    },
+    "valid_time": {
+      "definition": "Time to which the assertion applies.",
+      "examples": "year1964 with YEAR precision / 1964-01-01 asserted as an observed day",
+      "logic": "L12",
+      "missing_disclosure": "null + missing_reason; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Domain/privacy reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`TemporalExtent`; 0..1; O",
+      "values_units": "historical time"
+    }
+  },
+  "record_skeleton": {
+    "asserted_value": null,
+    "attribute_name": null,
+    "contributor_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "evidence_refs": null,
+    "missing_reasons": {
+      "/asserted_value": "NOT_COLLECTED",
+      "/attribute_name": "NOT_COLLECTED",
+      "/contributor_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/evidence_refs": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/valid_time": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "valid_time": null,
+    "vocabulary_version": null
+  },
+  "record_type": "identity_assertion",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "contributor_ref",
+    "attribute_name",
+    "evidence_refs"
+  ],
+  "schema_ref": "identity_assertion.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

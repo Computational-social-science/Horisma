@@ -1,0 +1,96 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROPOSED",
+  "field_contracts": {
+    "action": {
+      "definition": "Restart owned worker, requeue or restore verified backup only.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L31",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "approved bounded action"
+    },
+    "outcome_artifact_ref": {
+      "definition": "Missing outcome is not a successful repair.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L31",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 0..1; O",
+      "values_units": "actual receipt"
+    },
+    "protected_manifest_ref": {
+      "definition": "Prove preservation; recovery cannot rewrite scientific records.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L31",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "accepted-record inventory"
+    },
+    "run_ref": {
+      "definition": "Owned failure/recovery context.",
+      "examples": "`@operator_run_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L31",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:operator_run`; 1; R",
+      "values_units": "exact version"
+    }
+  },
+  "record_skeleton": {
+    "action": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "missing_reasons": {
+      "/action": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/outcome_artifact_ref": "NOT_COLLECTED",
+      "/protected_manifest_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/run_ref": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "outcome_artifact_ref": null,
+    "protected_manifest_ref": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "run_ref": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "recovery_event",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "run_ref",
+    "action",
+    "protected_manifest_ref"
+  ],
+  "schema_ref": "recovery_event.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

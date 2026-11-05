@@ -1,0 +1,109 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "attributed_contributor_ref": {
+      "definition": "Recipient of credit, not necessarily the reporting author.",
+      "examples": "`@contributor_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L10",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:contributor`; 1; R",
+      "values_units": "exact version"
+    },
+    "concept_ref": {
+      "definition": "Concept/sense of attribution.",
+      "examples": "`@concept_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L10",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:concept`; 1; R",
+      "values_units": "exact version"
+    },
+    "reporting_passage_ref": {
+      "definition": "Where the attribution was observed.",
+      "examples": "`@passage_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:passage`; 1; R",
+      "values_units": "exact version"
+    },
+    "role": {
+      "definition": "Role actually attributed, not an inferred broader role.",
+      "examples": "a member of `contribution_role` / an unregistered code or generic PASS",
+      "logic": "L10",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "contribution_role"
+    },
+    "scope": {
+      "definition": "Association is not an exclusive-origin assertion.",
+      "examples": "a member of `attribution_scope` / an unregistered code or generic PASS",
+      "logic": "L09",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "attribution_scope"
+    }
+  },
+  "record_skeleton": {
+    "attributed_contributor_ref": null,
+    "concept_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "missing_reasons": {
+      "/attributed_contributor_ref": "NOT_COLLECTED",
+      "/concept_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/reporting_passage_ref": "NOT_COLLECTED",
+      "/role": "NOT_COLLECTED",
+      "/scope": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "reporting_passage_ref": null,
+    "role": null,
+    "scope": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "attribution_assertion",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "reporting_passage_ref",
+    "attributed_contributor_ref",
+    "concept_ref",
+    "role",
+    "scope"
+  ],
+  "schema_ref": "attribution_assertion.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

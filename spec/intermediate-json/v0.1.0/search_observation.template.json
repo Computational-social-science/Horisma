@@ -1,0 +1,108 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "claim_ref": {
+      "definition": "Question/proposition searched.",
+      "examples": "`@atomic_claim_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:atomic_claim`; 1; R",
+      "values_units": "exact version"
+    },
+    "outcome": {
+      "definition": "Negative retrieval belongs here, not on an invented passage.",
+      "examples": "a member of `search_outcome` / an unregistered code or generic PASS",
+      "logic": "L13",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "search_outcome"
+    },
+    "query_log_artifact_ref": {
+      "definition": "Inspected documents, queries and unresolved coverage gaps.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L13",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "actual search receipt"
+    },
+    "returned_passage_refs": {
+      "definition": "Known empty list may accompany a completed negative search.",
+      "examples": "`@passage_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L02",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:passage`; 0..n; O",
+      "values_units": "actual returned spans"
+    },
+    "search_scope_ref": {
+      "definition": "Scope actually inspected; not all history.",
+      "examples": "`@search_scope_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L13",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:search_scope`; 1; R",
+      "values_units": "exact version"
+    }
+  },
+  "record_skeleton": {
+    "claim_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "missing_reasons": {
+      "/claim_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/outcome": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/query_log_artifact_ref": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/returned_passage_refs": "NOT_COLLECTED",
+      "/search_scope_ref": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "outcome": null,
+    "provenance_artifact_refs": null,
+    "query_log_artifact_ref": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "returned_passage_refs": null,
+    "search_scope_ref": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "search_observation",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "search_scope_ref",
+    "claim_ref",
+    "outcome",
+    "query_log_artifact_ref"
+  ],
+  "schema_ref": "search_observation.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

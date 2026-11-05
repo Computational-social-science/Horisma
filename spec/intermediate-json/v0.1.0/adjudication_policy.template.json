@@ -1,0 +1,109 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "credit_incompatibility_rule": {
+      "definition": "What makes role/priority claims incompatible, or credit obligatory in this genre; comparability alone is insufficient.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "D01",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner/domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "explicit rule"
+    },
+    "decision_rules_artifact_ref": {
+      "definition": "Rules for all five assessment labels and comparison thresholds.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L09",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner/domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "bound rules"
+    },
+    "independence_requirement": {
+      "definition": "At least two independent human annotations; third adjudicator resolves disagreement.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L09",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner/domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "reviewer independence"
+    },
+    "normative_basis": {
+      "definition": "Expected credit is policy/genre specific, not a fact inferred from fame.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L11",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner/domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "stated comparison norm"
+    },
+    "scope_statement": {
+      "definition": "Question, genres, dates, roles and excluded interpretations.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L09",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner/domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "admissible claims"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "credit_incompatibility_rule": null,
+    "decision_rules_artifact_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "independence_requirement": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/credit_incompatibility_rule": "NOT_COLLECTED",
+      "/decision_rules_artifact_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/independence_requirement": "NOT_COLLECTED",
+      "/normative_basis": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/scope_statement": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "normative_basis": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "scope_statement": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "adjudication_policy",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "scope_statement",
+    "decision_rules_artifact_ref",
+    "independence_requirement",
+    "normative_basis",
+    "credit_incompatibility_rule"
+  ],
+  "schema_ref": "adjudication_policy.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

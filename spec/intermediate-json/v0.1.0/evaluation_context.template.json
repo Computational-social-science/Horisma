@@ -1,0 +1,121 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROTOCOL_DEPENDENT",
+  "field_contracts": {
+    "dataset_ref": {
+      "definition": "Unambiguous dataset, family partition, access policy and gold version.",
+      "examples": "`@dataset_version_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L38",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:dataset_version`; 1; R",
+      "values_units": "exact release"
+    },
+    "evidence_access": {
+      "definition": "Declared condition must match the task and actual accessible inputs.",
+      "examples": "a member of `evaluation_condition` / an unregistered code or generic PASS",
+      "logic": "L38",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "evaluation_condition"
+    },
+    "gold_binding_manifest_ref": {
+      "definition": "Must equal the bound release manifest mapping each task/target to its gold adjudication and scoring policy.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L38",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "exact dataset manifest"
+    },
+    "realized_input_receipt_ref": {
+      "definition": "Exact rendered prompt, retrieved passage IDs and hashes, access limitations and observed context; protected when evaluation content is sealed.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L38",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "actual prompt/access receipt"
+    },
+    "scoring_policy_artifact_ref": {
+      "definition": "Outcome definitions and eligible gold mappings, never a floating latest policy.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L38",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "exact scoring rules"
+    },
+    "task_ref": {
+      "definition": "Must match the response task and belong to the bound release.",
+      "examples": "`@benchmark_task_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L38",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:benchmark_task`; 1; R",
+      "values_units": "exact version"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dataset_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "evidence_access": null,
+    "gold_binding_manifest_ref": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dataset_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/evidence_access": "NOT_COLLECTED",
+      "/gold_binding_manifest_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/realized_input_receipt_ref": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/scoring_policy_artifact_ref": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/task_ref": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "realized_input_receipt_ref": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "scoring_policy_artifact_ref": null,
+    "supersedes_record_id": null,
+    "task_ref": null,
+    "vocabulary_version": null
+  },
+  "record_type": "evaluation_context",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "dataset_ref",
+    "task_ref",
+    "scoring_policy_artifact_ref",
+    "gold_binding_manifest_ref",
+    "evidence_access",
+    "realized_input_receipt_ref"
+  ],
+  "schema_ref": "evaluation_context.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

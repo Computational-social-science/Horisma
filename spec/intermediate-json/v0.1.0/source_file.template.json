@@ -1,0 +1,120 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "artifact_ref": {
+      "definition": "Source-file and artifact wrappers must bind identical bytes/digest and resolved payload path, enabling operation-specific rights review.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L37",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Source/rights curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "same exact payload"
+    },
+    "byte_count": {
+      "definition": "Observed file length; empty files are not usable PDFs.",
+      "examples": "0 when actually observed and allowed / -999 as missing sentinel",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Source/rights curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`integer`; 1; R",
+      "values_units": "bytes; >=0"
+    },
+    "document_version_ref": {
+      "definition": "Version the bytes claim to represent.",
+      "examples": "`@document_version_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Source/rights curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:document_version`; 1; R",
+      "values_units": "exact version"
+    },
+    "relative_path": {
+      "definition": "Never an EIDOS state path or a publication permission.",
+      "examples": "data/intake/example.pdf / ../Eidos/outputs/private.pdf",
+      "logic": "L27",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Source/rights curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`path`; 1; R",
+      "values_units": "workspace-relative private path"
+    },
+    "rights_decision_refs": {
+      "definition": "Separate local-processing and redistribution decisions.",
+      "examples": "`@rights_decision_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L16",
+      "missing_disclosure": "null + missing_reason; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Source/rights curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:rights_decision`; 0..n; O",
+      "values_units": "exact versions"
+    },
+    "sha256": {
+      "definition": "Content hash, not identity or scientific authentication.",
+      "examples": "a 64-character lowercase hex digest of actual bytes / invented digest or model confidence",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Source/rights curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`sha256`; 1; R",
+      "values_units": "SHA256 of exact bytes"
+    }
+  },
+  "record_skeleton": {
+    "artifact_ref": null,
+    "byte_count": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "document_version_ref": null,
+    "entity_id": null,
+    "missing_reasons": {
+      "/artifact_ref": "NOT_COLLECTED",
+      "/byte_count": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/document_version_ref": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/relative_path": "NOT_COLLECTED",
+      "/rights_decision_refs": "NOT_COLLECTED",
+      "/sha256": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "relative_path": null,
+    "rights_decision_refs": null,
+    "sha256": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "source_file",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "document_version_ref",
+    "relative_path",
+    "sha256",
+    "byte_count",
+    "artifact_ref"
+  ],
+  "schema_ref": "source_file.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

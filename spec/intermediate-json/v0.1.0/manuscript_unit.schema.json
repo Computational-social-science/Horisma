@@ -1,0 +1,111 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/manuscript_unit.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "citation_refs": {
+      "items": {
+        "$ref": "shared.schema.json#/$defs/BoundRef"
+      },
+      "type": "array"
+    },
+    "claim_refs": {
+      "items": {
+        "$ref": "shared.schema.json#/$defs/BoundRef"
+      },
+      "type": "array"
+    },
+    "edition_ref": {
+      "$ref": "shared.schema.json#/$defs/BoundRef"
+    },
+    "material_uncertainties": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "affected_claim_refs": {
+            "items": {
+              "$ref": "shared.schema.json#/$defs/BoundRef"
+            },
+            "type": "array"
+          },
+          "impact_statement": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "issue": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "issue",
+          "affected_claim_refs",
+          "impact_statement"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "missing_reasons": {
+      "additionalProperties": {
+        "$ref": "shared.schema.json#/$defs/v_missing_reason"
+      },
+      "type": "object"
+    },
+    "publication_mode": {
+      "$ref": "shared.schema.json#/$defs/v_publication_mode"
+    },
+    "reader_text": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "review_ref": {
+      "anyOf": [
+        {
+          "$ref": "shared.schema.json#/$defs/BoundRef"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "revision_sha256": {
+      "$ref": "shared.schema.json#/$defs/sha256"
+    },
+    "schema_profile": {
+      "const": "horisma-manuscript-unit-0.1.0"
+    },
+    "text_binding": {
+      "$ref": "shared.schema.json#/$defs/TextBinding"
+    },
+    "unit_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "unit_kind": {
+      "enum": [
+        "PARAGRAPH",
+        "FIGURE",
+        "TABLE",
+        "CAPTION",
+        "EVIDENCE_NOTE"
+      ]
+    }
+  },
+  "required": [
+    "schema_profile",
+    "unit_id",
+    "revision_sha256",
+    "edition_ref",
+    "unit_kind",
+    "reader_text",
+    "publication_mode",
+    "text_binding",
+    "claim_refs",
+    "citation_refs",
+    "material_uncertainties",
+    "review_ref",
+    "missing_reasons"
+  ],
+  "type": "object"
+}

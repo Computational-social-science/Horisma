@@ -1,0 +1,139 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/evaluation_context.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Structural interchange for dictionary entity evaluation_context. Conformance does not certify review, truth, rights or implementation.",
+  "properties": {
+    "definition_stage": {
+      "const": "PROTOCOL_DEPENDENT"
+    },
+    "record": {
+      "additionalProperties": false,
+      "properties": {
+        "created_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "created_by_actor_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "dataset_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Unambiguous dataset, family partition, access policy and gold version.",
+          "x-logical-type": "ref:dataset_version",
+          "x-target-type": "dataset_version"
+        },
+        "dictionary_version": {
+          "const": "0.1.0"
+        },
+        "disclosure_class": {
+          "$ref": "shared.schema.json#/$defs/v_disclosure_class"
+        },
+        "entity_id": {
+          "pattern": "^evaluation_context:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "evidence_access": {
+          "$ref": "shared.schema.json#/$defs/v_evaluation_condition",
+          "description": "Declared condition must match the task and actual accessible inputs.",
+          "x-logical-type": "enum"
+        },
+        "gold_binding_manifest_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Must equal the bound release manifest mapping each task/target to its gold adjudication and scoring policy.",
+          "x-logical-type": "ref:artifact",
+          "x-target-type": "artifact"
+        },
+        "missing_reasons": {
+          "additionalProperties": {
+            "$ref": "shared.schema.json#/$defs/v_missing_reason"
+          },
+          "type": "object"
+        },
+        "provenance_artifact_refs": {
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "type": "array"
+        },
+        "realized_input_receipt_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Exact rendered prompt, retrieved passage IDs and hashes, access limitations and observed context; protected when evaluation content is sealed.",
+          "x-logical-type": "ref:artifact",
+          "x-target-type": "artifact"
+        },
+        "record_id": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "record_status": {
+          "$ref": "shared.schema.json#/$defs/v_record_status"
+        },
+        "record_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "scoring_policy_artifact_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Outcome definitions and eligible gold mappings, never a floating latest policy.",
+          "x-logical-type": "ref:artifact",
+          "x-target-type": "artifact"
+        },
+        "supersedes_record_id": {
+          "anyOf": [
+            {
+              "$ref": "shared.schema.json#/$defs/RecordRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "task_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Must match the response task and belong to the bound release.",
+          "x-logical-type": "ref:benchmark_task",
+          "x-target-type": "benchmark_task"
+        },
+        "vocabulary_version": {
+          "const": "0.1.0"
+        }
+      },
+      "required": [
+        "entity_id",
+        "record_id",
+        "record_version",
+        "dictionary_version",
+        "vocabulary_version",
+        "record_status",
+        "created_at",
+        "created_by_actor_ref",
+        "disclosure_class",
+        "missing_reasons",
+        "provenance_artifact_refs",
+        "dataset_ref",
+        "task_ref",
+        "scoring_policy_artifact_ref",
+        "gold_binding_manifest_ref",
+        "evidence_access",
+        "realized_input_receipt_ref"
+      ],
+      "type": "object"
+    },
+    "record_type": {
+      "const": "evaluation_context"
+    },
+    "schema_profile": {
+      "const": "horisma-dictionary-structural-0.1.0"
+    }
+  },
+  "required": [
+    "schema_profile",
+    "record_type",
+    "definition_stage",
+    "record"
+  ],
+  "type": "object",
+  "x-dictionary-sha256": "bfd1eaf0e8ba683e0aac0a5cbd0ffb77f455f6bb66d16160bd0906d2b6a96cd8",
+  "x-semantic-conditions": [],
+  "x-vocabulary-sha256": "01a5153a00f7b938b1db13ba99e25f5bef080e4ba90156238c568536bedc6a27"
+}

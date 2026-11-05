@@ -1,0 +1,119 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROPOSED",
+  "field_contracts": {
+    "configuration_artifact_ref": {
+      "definition": "Reproducibility and idempotency parameters, not undocumented ambient configuration.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "code/lock/prompt/backend/seed manifest"
+    },
+    "execution_status": {
+      "definition": "Execution state, separate from source/evidence/review statuses.",
+      "examples": "a member of `execution_status` / an unregistered code or generic PASS",
+      "logic": "L07",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "execution_status"
+    },
+    "failure_kind": {
+      "definition": "Typed operational limit; no silent paid fallback.",
+      "examples": "a member of `failure_kind` / an unregistered code or generic PASS",
+      "logic": "L26",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 0..1; O",
+      "values_units": "failure_kind"
+    },
+    "input_artifact_refs": {
+      "definition": "Explicit inputs, with no recursive legacy ingestion.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L01",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:artifact`; 1..n; R",
+      "values_units": "exact versions"
+    },
+    "operator_id": {
+      "definition": "Contract identity/version, not an arbitrary shell command.",
+      "examples": "HOP-SOURCE-INTAKE / an unregistered mutable script path",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`OperatorRef`; 1; R",
+      "values_units": "operator catalogue ID"
+    },
+    "output_artifact_refs": {
+      "definition": "Candidate outputs do not inherit scientific approval.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L07",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:artifact`; 0..n; O",
+      "values_units": "actual outputs"
+    }
+  },
+  "record_skeleton": {
+    "configuration_artifact_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "execution_status": null,
+    "failure_kind": null,
+    "input_artifact_refs": null,
+    "missing_reasons": {
+      "/configuration_artifact_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/execution_status": "NOT_COLLECTED",
+      "/failure_kind": "NOT_COLLECTED",
+      "/input_artifact_refs": "NOT_COLLECTED",
+      "/operator_id": "NOT_COLLECTED",
+      "/output_artifact_refs": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "operator_id": null,
+    "output_artifact_refs": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "operator_run",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "operator_id",
+    "input_artifact_refs",
+    "execution_status",
+    "configuration_artifact_ref"
+  ],
+  "schema_ref": "operator_run.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

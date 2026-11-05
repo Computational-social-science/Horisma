@@ -1,0 +1,109 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "claim_ref": {
+      "definition": "Precisely assessed proposition.",
+      "examples": "`@atomic_claim_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent annotator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:atomic_claim`; 1; R",
+      "values_units": "exact version"
+    },
+    "passage_ref": {
+      "definition": "Evidence location; citation existence alone is insufficient.",
+      "examples": "`@passage_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent annotator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:passage`; 1; R",
+      "values_units": "exact version"
+    },
+    "policy_ref": {
+      "definition": "Rules used to interpret passage support.",
+      "examples": "`@adjudication_policy_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L09",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent annotator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:adjudication_policy`; 1; R",
+      "values_units": "exact version"
+    },
+    "rationale": {
+      "definition": "Explain support and its limits; no numeric self-confidence substitute.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L22",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent annotator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "scoped explanation"
+    },
+    "relation": {
+      "definition": "Mentions/reports must not be promoted to direct support.",
+      "examples": "a member of `evidence_relation` / an unregistered code or generic PASS",
+      "logic": "L06",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent annotator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "evidence_relation"
+    }
+  },
+  "record_skeleton": {
+    "claim_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "missing_reasons": {
+      "/claim_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/passage_ref": "NOT_COLLECTED",
+      "/policy_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/rationale": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/relation": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "passage_ref": null,
+    "policy_ref": null,
+    "provenance_artifact_refs": null,
+    "rationale": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "relation": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "evidence_link",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "passage_ref",
+    "claim_ref",
+    "relation",
+    "policy_ref",
+    "rationale"
+  ],
+  "schema_ref": "evidence_link.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

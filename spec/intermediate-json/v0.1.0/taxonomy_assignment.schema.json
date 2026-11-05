@@ -1,0 +1,154 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/taxonomy_assignment.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Structural interchange for dictionary entity taxonomy_assignment. Conformance does not certify review, truth, rights or implementation.",
+  "properties": {
+    "definition_stage": {
+      "const": "CORE_CONTRACT_DEFINED"
+    },
+    "record": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Actual code; null UNKNOWN is preferable to a guessed code.",
+          "x-logical-type": "text"
+        },
+        "context_time": {
+          "anyOf": [
+            {
+              "$ref": "shared.schema.json#/$defs/TemporalExtent"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Context of assignment; modern labels are not timeless identities.",
+          "x-logical-type": "TemporalExtent"
+        },
+        "created_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "created_by_actor_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "dictionary_version": {
+          "const": "0.1.0"
+        },
+        "disclosure_class": {
+          "$ref": "shared.schema.json#/$defs/v_disclosure_class"
+        },
+        "entity_id": {
+          "pattern": "^taxonomy_assignment:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "mapping_evidence_refs": {
+          "description": "Evidence and interpretation supporting the mapping.",
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "minItems": 1,
+          "type": "array",
+          "x-logical-type": "refs:atomic_claim",
+          "x-target-type": "atomic_claim"
+        },
+        "missing_reasons": {
+          "additionalProperties": {
+            "$ref": "shared.schema.json#/$defs/v_missing_reason"
+          },
+          "type": "object"
+        },
+        "provenance_artifact_refs": {
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "type": "array"
+        },
+        "record_id": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "record_status": {
+          "$ref": "shared.schema.json#/$defs/v_record_status"
+        },
+        "record_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "scheme": {
+          "$ref": "shared.schema.json#/$defs/v_taxonomy_scheme",
+          "description": "Scheme family; no universal latest-JACS assumption.",
+          "x-logical-type": "enum"
+        },
+        "sense_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "The attested sense/use being classified.",
+          "x-logical-type": "ref:sense",
+          "x-target-type": "sense"
+        },
+        "supersedes_record_id": {
+          "anyOf": [
+            {
+              "$ref": "shared.schema.json#/$defs/RecordRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "vocabulary_artifact_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Exact vocabulary release/bytes and its rights decision.",
+          "x-logical-type": "ref:artifact",
+          "x-target-type": "artifact"
+        },
+        "vocabulary_version": {
+          "const": "0.1.0"
+        }
+      },
+      "required": [
+        "entity_id",
+        "record_id",
+        "record_version",
+        "dictionary_version",
+        "vocabulary_version",
+        "record_status",
+        "created_at",
+        "created_by_actor_ref",
+        "disclosure_class",
+        "missing_reasons",
+        "provenance_artifact_refs",
+        "sense_ref",
+        "scheme",
+        "vocabulary_artifact_ref",
+        "mapping_evidence_refs"
+      ],
+      "type": "object"
+    },
+    "record_type": {
+      "const": "taxonomy_assignment"
+    },
+    "schema_profile": {
+      "const": "horisma-dictionary-structural-0.1.0"
+    }
+  },
+  "required": [
+    "schema_profile",
+    "record_type",
+    "definition_stage",
+    "record"
+  ],
+  "type": "object",
+  "x-dictionary-sha256": "bfd1eaf0e8ba683e0aac0a5cbd0ffb77f455f6bb66d16160bd0906d2b6a96cd8",
+  "x-semantic-conditions": [],
+  "x-vocabulary-sha256": "01a5153a00f7b938b1db13ba99e25f5bef080e4ba90156238c568536bedc6a27"
+}

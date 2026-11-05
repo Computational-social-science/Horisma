@@ -1,0 +1,78 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/event_card.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "account_time": {
+      "$ref": "shared.schema.json#/$defs/TemporalExtent"
+    },
+    "citation_refs": {
+      "items": {
+        "$ref": "shared.schema.json#/$defs/BoundRef"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "event_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "event_kind": {
+      "$ref": "shared.schema.json#/$defs/v_historical_event_kind"
+    },
+    "event_proposition": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "event_time": {
+      "$ref": "shared.schema.json#/$defs/TemporalExtent"
+    },
+    "missing_reasons": {
+      "additionalProperties": {
+        "$ref": "shared.schema.json#/$defs/v_missing_reason"
+      },
+      "type": "object"
+    },
+    "qualification_ref": {
+      "anyOf": [
+        {
+          "$ref": "shared.schema.json#/$defs/BoundRef"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "related_event_refs": {
+      "items": {
+        "$ref": "shared.schema.json#/$defs/BoundRef"
+      },
+      "type": "array"
+    },
+    "revision_sha256": {
+      "$ref": "shared.schema.json#/$defs/sha256"
+    },
+    "schema_profile": {
+      "const": "horisma-event-card-0.1.0"
+    },
+    "system_recorded_at": {
+      "format": "date-time",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_profile",
+    "event_id",
+    "revision_sha256",
+    "event_kind",
+    "event_time",
+    "account_time",
+    "system_recorded_at",
+    "event_proposition",
+    "citation_refs",
+    "related_event_refs",
+    "qualification_ref",
+    "missing_reasons"
+  ],
+  "type": "object"
+}

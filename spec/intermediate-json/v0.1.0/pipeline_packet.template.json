@@ -1,0 +1,19 @@
+{
+  "record_skeleton": {
+    "artifacts": null,
+    "execution_status": null,
+    "input_records": null,
+    "missing_reasons": null,
+    "operator_run_ref": null,
+    "output_records": null,
+    "packet_id": null,
+    "revision_sha256": null,
+    "schema_profile": null,
+    "scientific_review_ref": null,
+    "stage": null
+  },
+  "record_type": "pipeline_packet",
+  "schema_ref": "pipeline_packet.schema.json",
+  "template_only": true,
+  "warning": "Blank structural scaffold, not observed or approved data."
+}

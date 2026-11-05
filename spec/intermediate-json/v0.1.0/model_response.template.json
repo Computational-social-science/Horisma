@@ -1,0 +1,141 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROTOCOL_DEPENDENT",
+  "field_contracts": {
+    "answer_artifact_ref": {
+      "definition": "Retain failed/malformed answers and attempts.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L07",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "exact raw answer"
+    },
+    "calibrated_correctness_probability": {
+      "definition": "Requires a bound independent calibration study for this task/outcome and evaluation condition; never historical truth probability.",
+      "examples": "0.25 / 75 treated as a fraction",
+      "logic": "L22",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`fraction`; 0..1; O",
+      "values_units": "0..1; declared task outcome"
+    },
+    "calibration_ref": {
+      "definition": "Absent is not a calibrated score of zero.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L22",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1 when condition; else 0..1; C:calibrated_correctness_probability is non-null",
+      "values_units": "independent calibration study"
+    },
+    "configuration_ref": {
+      "definition": "Actual selected local configuration.",
+      "examples": "`@model_configuration_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L26",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:model_configuration`; 1; R",
+      "values_units": "exact version"
+    },
+    "evaluation_context_ref": {
+      "definition": "Bind the frozen release, gold/scoring policy and actually accessible prompt/evidence; no ambiguous cross-release scoring.",
+      "examples": "`@evaluation_context_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L38",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:evaluation_context`; 1; R",
+      "values_units": "exact attempt context"
+    },
+    "raw_self_rating": {
+      "definition": "Optional requested score; never called historical truth probability.",
+      "examples": "0.25 / 75 treated as a fraction",
+      "logic": "L22",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`fraction`; 0..1; O",
+      "values_units": "0..1; uncalibrated"
+    },
+    "task_ref": {
+      "definition": "Task/condition and eligible gold policy.",
+      "examples": "`@benchmark_task_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L19",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:benchmark_task`; 1; R",
+      "values_units": "exact version"
+    },
+    "token_softmax_artifact_ref": {
+      "definition": "Raw token probabilities with tokenizer/logit-processing/dtype configuration; not a calibrated answer correctness probability.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L22",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 0..1; O",
+      "values_units": "token-distribution observation"
+    }
+  },
+  "record_skeleton": {
+    "answer_artifact_ref": null,
+    "calibrated_correctness_probability": null,
+    "calibration_ref": null,
+    "configuration_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "evaluation_context_ref": null,
+    "missing_reasons": {
+      "/answer_artifact_ref": "NOT_COLLECTED",
+      "/calibrated_correctness_probability": "NOT_COLLECTED",
+      "/calibration_ref": "NOT_COLLECTED",
+      "/configuration_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/evaluation_context_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/raw_self_rating": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/task_ref": "NOT_COLLECTED",
+      "/token_softmax_artifact_ref": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "raw_self_rating": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "task_ref": null,
+    "token_softmax_artifact_ref": null,
+    "vocabulary_version": null
+  },
+  "record_type": "model_response",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "task_ref",
+    "configuration_ref",
+    "answer_artifact_ref",
+    "evaluation_context_ref"
+  ],
+  "schema_ref": "model_response.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

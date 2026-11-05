@@ -1,0 +1,109 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROPOSED",
+  "field_contracts": {
+    "expires_at": {
+      "definition": "Finite lease; expiry is operational time, not historical date.",
+      "examples": "2026-11-04T00:00:00Z / 1964 guessed as an exact operational timestamp",
+      "logic": "L30",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`datetime`; 1; R",
+      "values_units": "UTC instant"
+    },
+    "idempotency_key": {
+      "definition": "Retry deduplication, not an exactly-once execution claim.",
+      "examples": "a 64-character lowercase hex digest of actual bytes / invented digest or model confidence",
+      "logic": "L31",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`sha256`; 1; R",
+      "values_units": "input/config/operator binding"
+    },
+    "owner_actor_ref": {
+      "definition": "Actual controller/worker identity, not a reusable PID alone.",
+      "examples": "`@actor_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L30",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:actor`; 1; R",
+      "values_units": "exact actor"
+    },
+    "run_ref": {
+      "definition": "Attempt being owned.",
+      "examples": "`@operator_run_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:operator_run`; 1; R",
+      "values_units": "exact version"
+    },
+    "status": {
+      "definition": "Human waits release the lease; cancellation closes owned work.",
+      "examples": "a member of `execution_status` / an unregistered code or generic PASS",
+      "logic": "L15",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "execution_status"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "expires_at": null,
+    "idempotency_key": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/expires_at": "NOT_COLLECTED",
+      "/idempotency_key": "NOT_COLLECTED",
+      "/owner_actor_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/run_ref": "NOT_COLLECTED",
+      "/status": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "owner_actor_ref": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "run_ref": null,
+    "status": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "task_lease",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "run_ref",
+    "owner_actor_ref",
+    "expires_at",
+    "status",
+    "idempotency_key"
+  ],
+  "schema_ref": "task_lease.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

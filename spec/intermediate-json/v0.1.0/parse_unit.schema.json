@@ -1,0 +1,112 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/parse_unit.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "extraction_mode": {
+      "enum": [
+        "NATIVE",
+        "OCR",
+        "STRUCTURED_SOURCE"
+      ]
+    },
+    "missing_reasons": {
+      "additionalProperties": {
+        "$ref": "shared.schema.json#/$defs/v_missing_reason"
+      },
+      "type": "object"
+    },
+    "normalized_region": {
+      "items": {
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "type": "array"
+    },
+    "operator_run_ref": {
+      "$ref": "shared.schema.json#/$defs/BoundRef"
+    },
+    "original_text": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "page_dimensions_pdf_points": {
+      "items": {
+        "exclusiveMinimum": 0,
+        "type": "number"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    },
+    "parent_ref": {
+      "anyOf": [
+        {
+          "$ref": "shared.schema.json#/$defs/BoundRef"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "pdf_page_index": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "printed_page": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "revision_sha256": {
+      "$ref": "shared.schema.json#/$defs/sha256"
+    },
+    "schema_profile": {
+      "const": "horisma-parse-unit-0.1.0"
+    },
+    "source_version_ref": {
+      "$ref": "shared.schema.json#/$defs/BoundRef"
+    },
+    "text_binding": {
+      "$ref": "shared.schema.json#/$defs/TextBinding"
+    },
+    "unit_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "unit_kind": {
+      "enum": [
+        "PAGE",
+        "BLOCK",
+        "LINE"
+      ]
+    }
+  },
+  "required": [
+    "schema_profile",
+    "unit_id",
+    "revision_sha256",
+    "unit_kind",
+    "source_version_ref",
+    "parent_ref",
+    "text_binding",
+    "original_text",
+    "pdf_page_index",
+    "printed_page",
+    "normalized_region",
+    "page_dimensions_pdf_points",
+    "extraction_mode",
+    "operator_run_ref",
+    "missing_reasons"
+  ],
+  "type": "object"
+}

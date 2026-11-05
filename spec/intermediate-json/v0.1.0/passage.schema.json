@@ -1,0 +1,157 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/passage.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Structural interchange for dictionary entity passage. Conformance does not certify review, truth, rights or implementation.",
+  "properties": {
+    "definition_stage": {
+      "const": "CORE_CONTRACT_DEFINED"
+    },
+    "record": {
+      "additionalProperties": false,
+      "properties": {
+        "created_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "created_by_actor_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "dictionary_version": {
+          "const": "0.1.0"
+        },
+        "disclosure_class": {
+          "$ref": "shared.schema.json#/$defs/v_disclosure_class"
+        },
+        "document_version_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Document supplying the passage.",
+          "x-logical-type": "ref:document_version",
+          "x-target-type": "document_version"
+        },
+        "entity_id": {
+          "pattern": "^passage:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "language_tag": {
+          "description": "Language of the original passage.",
+          "minLength": 1,
+          "type": "string",
+          "x-logical-type": "language"
+        },
+        "locator": {
+          "$ref": "shared.schema.json#/$defs/PassageLocator",
+          "description": "Printed page/PDF index or exact derivative offsets/region.",
+          "x-logical-type": "PassageLocator"
+        },
+        "missing_reasons": {
+          "additionalProperties": {
+            "$ref": "shared.schema.json#/$defs/v_missing_reason"
+          },
+          "type": "object"
+        },
+        "original_text": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Withhold when rights require; never replace original with translation.",
+          "x-logical-type": "text"
+        },
+        "provenance_artifact_refs": {
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "type": "array"
+        },
+        "record_id": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "record_status": {
+          "$ref": "shared.schema.json#/$defs/v_record_status"
+        },
+        "record_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "source_file_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Local snapshot or admitted extract binding.",
+          "x-logical-type": "ref:source_file",
+          "x-target-type": "source_file"
+        },
+        "supersedes_record_id": {
+          "anyOf": [
+            {
+              "$ref": "shared.schema.json#/$defs/RecordRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transcription_review_ref": {
+          "anyOf": [
+            {
+              "$ref": "shared.schema.json#/$defs/RecordRef",
+              "x-target-type": "review_decision"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Independent wording-fidelity review against original source image/text; preserve raw extraction and corrected versions. Historical assessors reading only the same OCR do not satisfy this check.",
+          "x-logical-type": "ref:review_decision"
+        },
+        "vocabulary_version": {
+          "const": "0.1.0"
+        }
+      },
+      "required": [
+        "entity_id",
+        "record_id",
+        "record_version",
+        "dictionary_version",
+        "vocabulary_version",
+        "record_status",
+        "created_at",
+        "created_by_actor_ref",
+        "disclosure_class",
+        "missing_reasons",
+        "provenance_artifact_refs",
+        "document_version_ref",
+        "source_file_ref",
+        "locator",
+        "language_tag"
+      ],
+      "type": "object"
+    },
+    "record_type": {
+      "const": "passage"
+    },
+    "schema_profile": {
+      "const": "horisma-dictionary-structural-0.1.0"
+    }
+  },
+  "required": [
+    "schema_profile",
+    "record_type",
+    "definition_stage",
+    "record"
+  ],
+  "type": "object",
+  "x-dictionary-sha256": "bfd1eaf0e8ba683e0aac0a5cbd0ffb77f455f6bb66d16160bd0906d2b6a96cd8",
+  "x-semantic-conditions": [
+    {
+      "condition": "extracted text used as evidence",
+      "field": "transcription_review_ref",
+      "implementation": "SEMANTIC_CONDITION_NOT_CERTIFIED_BY_STRUCTURAL_SCHEMA"
+    }
+  ],
+  "x-vocabulary-sha256": "01a5153a00f7b938b1db13ba99e25f5bef080e4ba90156238c568536bedc6a27"
+}

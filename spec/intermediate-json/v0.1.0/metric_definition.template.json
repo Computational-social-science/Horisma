@@ -1,0 +1,109 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROTOCOL_DEPENDENT",
+  "field_contracts": {
+    "formula": {
+      "definition": "Define numerator, denominator, independent unit and undefined cases.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L20",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Methods reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "expression with domain"
+    },
+    "logic_ids": {
+      "definition": "Formal derivation and assumptions, not a model-generated explanation.",
+      "examples": "L20 / unsupported/unregistered logic identifier",
+      "logic": "L20",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Methods reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`LogicRefList`; 1..n; R",
+      "values_units": "catalogue rules"
+    },
+    "name": {
+      "definition": "Distinguish retrieval, identity, support, correctness and calibration.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L21",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Methods reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "construct-specific name"
+    },
+    "protocol_ref": {
+      "definition": "Eligible universe, exclusions, uncertainty method and aggregation.",
+      "examples": "`@project_protocol_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L21",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Methods reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:project_protocol`; 1; R",
+      "values_units": "exact version"
+    },
+    "unit_and_direction": {
+      "definition": "For example fraction, seconds, MiB; higher/lower is not universally better.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L24",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Methods reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "scale and interpretation"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "formula": null,
+    "logic_ids": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/formula": "NOT_COLLECTED",
+      "/logic_ids": "NOT_COLLECTED",
+      "/name": "NOT_COLLECTED",
+      "/protocol_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/unit_and_direction": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "name": null,
+    "protocol_ref": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "unit_and_direction": null,
+    "vocabulary_version": null
+  },
+  "record_type": "metric_definition",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "name",
+    "formula",
+    "unit_and_direction",
+    "protocol_ref",
+    "logic_ids"
+  ],
+  "schema_ref": "metric_definition.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

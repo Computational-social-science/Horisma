@@ -1,0 +1,23 @@
+{
+  "record_skeleton": {
+    "extraction_mode": null,
+    "missing_reasons": null,
+    "normalized_region": null,
+    "operator_run_ref": null,
+    "original_text": null,
+    "page_dimensions_pdf_points": null,
+    "parent_ref": null,
+    "pdf_page_index": null,
+    "printed_page": null,
+    "revision_sha256": null,
+    "schema_profile": null,
+    "source_version_ref": null,
+    "text_binding": null,
+    "unit_id": null,
+    "unit_kind": null
+  },
+  "record_type": "parse_unit",
+  "schema_ref": "parse_unit.schema.json",
+  "template_only": true,
+  "warning": "Blank structural scaffold, not observed or approved data."
+}

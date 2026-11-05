@@ -1,0 +1,107 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "annotation_refs": {
+      "definition": "Independent decisions; retain disagreements.",
+      "examples": "`@annotation_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L08",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Human adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:annotation`; 1..n; R",
+      "values_units": "exact versions"
+    },
+    "assessment": {
+      "definition": "Completed assessment label; null with reason before completion.",
+      "examples": "a member of `claim_assessment` / an unregistered code or generic PASS",
+      "logic": "L08",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Human adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 0..1; O",
+      "values_units": "claim_assessment"
+    },
+    "claim_ref": {
+      "definition": "Target with fixed scope.",
+      "examples": "`@atomic_claim_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Human adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:atomic_claim`; 1; R",
+      "values_units": "exact version"
+    },
+    "disagreement_resolution": {
+      "definition": "Needed when annotations differ; agreement is not proof of truth.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L09",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Human adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 0..1; O",
+      "values_units": "actual adjudication"
+    },
+    "policy_ref": {
+      "definition": "Applied rules, not a mutable policy name.",
+      "examples": "`@adjudication_policy_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L09",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Human adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:adjudication_policy`; 1; R",
+      "values_units": "exact version"
+    }
+  },
+  "record_skeleton": {
+    "annotation_refs": null,
+    "assessment": null,
+    "claim_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disagreement_resolution": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "missing_reasons": {
+      "/annotation_refs": "NOT_COLLECTED",
+      "/assessment": "NOT_COLLECTED",
+      "/claim_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disagreement_resolution": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/policy_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "policy_ref": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "adjudication",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "claim_ref",
+    "policy_ref",
+    "annotation_refs"
+  ],
+  "schema_ref": "adjudication.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

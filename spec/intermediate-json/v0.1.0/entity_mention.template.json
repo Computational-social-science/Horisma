@@ -1,0 +1,20 @@
+{
+  "record_skeleton": {
+    "antecedent_refs": null,
+    "candidate_entity_refs": null,
+    "context_binding": null,
+    "decision_artifact": null,
+    "mention_id": null,
+    "mention_kind": null,
+    "missing_reasons": null,
+    "resolution_status": null,
+    "revision_sha256": null,
+    "schema_profile": null,
+    "surface_text": null,
+    "text_binding": null
+  },
+  "record_type": "entity_mention",
+  "schema_ref": "entity_mention.schema.json",
+  "template_only": true,
+  "warning": "Blank structural scaffold, not observed or approved data."
+}

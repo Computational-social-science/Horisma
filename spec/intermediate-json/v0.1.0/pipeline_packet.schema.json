@@ -1,0 +1,93 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/pipeline_packet.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifacts": {
+      "items": {
+        "$ref": "shared.schema.json#/$defs/ArtifactBinding"
+      },
+      "type": "array"
+    },
+    "execution_status": {
+      "$ref": "shared.schema.json#/$defs/v_execution_status"
+    },
+    "input_records": {
+      "items": {
+        "$ref": "shared.schema.json#/$defs/BoundRef"
+      },
+      "type": "array"
+    },
+    "missing_reasons": {
+      "additionalProperties": {
+        "$ref": "shared.schema.json#/$defs/v_missing_reason"
+      },
+      "type": "object"
+    },
+    "operator_run_ref": {
+      "anyOf": [
+        {
+          "$ref": "shared.schema.json#/$defs/BoundRef"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "output_records": {
+      "items": {
+        "$ref": "shared.schema.json#/$defs/BoundRef"
+      },
+      "type": "array"
+    },
+    "packet_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "revision_sha256": {
+      "$ref": "shared.schema.json#/$defs/sha256"
+    },
+    "schema_profile": {
+      "const": "horisma-pipeline-packet-0.1.0"
+    },
+    "scientific_review_ref": {
+      "anyOf": [
+        {
+          "$ref": "shared.schema.json#/$defs/BoundRef"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "stage": {
+      "enum": [
+        "INGEST",
+        "PARSE",
+        "ENTITY",
+        "CITATION",
+        "EVIDENCE",
+        "REVIEW",
+        "EVENT",
+        "BOOK",
+        "BENCHMARK",
+        "STUDY",
+        "OPERATIONS"
+      ]
+    }
+  },
+  "required": [
+    "schema_profile",
+    "packet_id",
+    "revision_sha256",
+    "stage",
+    "input_records",
+    "output_records",
+    "artifacts",
+    "operator_run_ref",
+    "execution_status",
+    "scientific_review_ref",
+    "missing_reasons"
+  ],
+  "type": "object"
+}

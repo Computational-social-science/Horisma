@@ -1,0 +1,133 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROTOCOL_DEPENDENT",
+  "field_contracts": {
+    "delivered_stimulus_artifact_ref": {
+      "definition": "Exact stimulus bytes binding the assigned vignette, presentation format and prestige-cue recipient, not just a template.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L40",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Study owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "actual delivered variant"
+    },
+    "participant_ref": {
+      "definition": "Participant clustering unit.",
+      "examples": "`@participant_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L24",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Study owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:participant`; 1; R",
+      "values_units": "exact version"
+    },
+    "presentation": {
+      "definition": "Ledger versus fact-matched narrative, not unmatched information access.",
+      "examples": "a member of `presentation_condition` / an unregistered code or generic PASS",
+      "logic": "L24",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Study owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "presentation_condition"
+    },
+    "prestige_recipient_ref": {
+      "definition": "Recipient of the randomized cue; not actual celebrity identity.",
+      "examples": "`@vignette_actor_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L24",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Study owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:vignette_actor`; 1; R",
+      "values_units": "exact fictional actor"
+    },
+    "randomization_artifact_ref": {
+      "definition": "Actual assignment procedure, not a post-hoc inferred condition.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L24",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Study owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "seed/procedure receipt"
+    },
+    "response_actor_refs": {
+      "definition": "Exact required allocation domain within the assigned vignette; no unrelated actors or omitted required targets.",
+      "examples": "`@vignette_actor_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L40",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Study owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:vignette_actor`; 1..n; R",
+      "values_units": "protocol-defined response set"
+    },
+    "vignette_ref": {
+      "definition": "Item clustering unit.",
+      "examples": "`@vignette_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L24",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Study owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:vignette`; 1; R",
+      "values_units": "exact version"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "delivered_stimulus_artifact_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/delivered_stimulus_artifact_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/participant_ref": "NOT_COLLECTED",
+      "/presentation": "NOT_COLLECTED",
+      "/prestige_recipient_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/randomization_artifact_ref": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/response_actor_refs": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vignette_ref": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "participant_ref": null,
+    "presentation": null,
+    "prestige_recipient_ref": null,
+    "provenance_artifact_refs": null,
+    "randomization_artifact_ref": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "response_actor_refs": null,
+    "supersedes_record_id": null,
+    "vignette_ref": null,
+    "vocabulary_version": null
+  },
+  "record_type": "condition_assignment",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "participant_ref",
+    "vignette_ref",
+    "presentation",
+    "prestige_recipient_ref",
+    "randomization_artifact_ref",
+    "response_actor_refs",
+    "delivered_stimulus_artifact_ref"
+  ],
+  "schema_ref": "condition_assignment.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

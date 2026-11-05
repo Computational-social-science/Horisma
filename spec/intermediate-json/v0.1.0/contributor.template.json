@@ -1,0 +1,95 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "display_name": {
+      "definition": "Name for presentation, not a merge key or proof of identity.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "source-attested name"
+    },
+    "identifier_values": {
+      "definition": "ORCID/other identifiers if actually established.",
+      "examples": "documented DOI and its scheme / a guessed DOI as authenticated evidence",
+      "logic": "L05",
+      "missing_disclosure": "null + missing_reason; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`IdentifierList`; 0..n; O",
+      "values_units": "source identifiers"
+    },
+    "identity_assertion_refs": {
+      "definition": "Dated sourced biography; no inference from portraits/flags.",
+      "examples": "`@identity_assertion_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L32",
+      "missing_disclosure": "null + missing_reason; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:identity_assertion`; 0..n; O",
+      "values_units": "exact versions"
+    },
+    "kind": {
+      "definition": "Entity kind; unknown is not automatically a person.",
+      "examples": "a member of `contributor_kind` / an unregistered code or generic PASS",
+      "logic": "L32",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "contributor_kind"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "display_name": null,
+    "entity_id": null,
+    "identifier_values": null,
+    "identity_assertion_refs": null,
+    "kind": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/display_name": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/identifier_values": "NOT_COLLECTED",
+      "/identity_assertion_refs": "NOT_COLLECTED",
+      "/kind": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "contributor",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "kind",
+    "display_name"
+  ],
+  "schema_ref": "contributor.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

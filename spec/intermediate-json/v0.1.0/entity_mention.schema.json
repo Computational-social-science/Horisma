@@ -1,0 +1,88 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/entity_mention.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "antecedent_refs": {
+      "items": {
+        "$ref": "shared.schema.json#/$defs/BoundRef"
+      },
+      "type": "array"
+    },
+    "candidate_entity_refs": {
+      "items": {
+        "$ref": "shared.schema.json#/$defs/BoundRef"
+      },
+      "type": "array"
+    },
+    "context_binding": {
+      "$ref": "shared.schema.json#/$defs/TextBinding"
+    },
+    "decision_artifact": {
+      "anyOf": [
+        {
+          "$ref": "shared.schema.json#/$defs/ArtifactBinding"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "mention_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "mention_kind": {
+      "enum": [
+        "FULL_NAME",
+        "ALIAS",
+        "INITIALS",
+        "SURNAME",
+        "GIVEN_NAME",
+        "PRONOUN",
+        "TERM"
+      ]
+    },
+    "missing_reasons": {
+      "additionalProperties": {
+        "$ref": "shared.schema.json#/$defs/v_missing_reason"
+      },
+      "type": "object"
+    },
+    "resolution_status": {
+      "enum": [
+        "UNRESOLVED",
+        "AMBIGUOUS",
+        "RESOLVED_CANDIDATE"
+      ]
+    },
+    "revision_sha256": {
+      "$ref": "shared.schema.json#/$defs/sha256"
+    },
+    "schema_profile": {
+      "const": "horisma-entity-mention-0.1.0"
+    },
+    "surface_text": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "text_binding": {
+      "$ref": "shared.schema.json#/$defs/TextBinding"
+    }
+  },
+  "required": [
+    "schema_profile",
+    "mention_id",
+    "revision_sha256",
+    "text_binding",
+    "surface_text",
+    "mention_kind",
+    "candidate_entity_refs",
+    "antecedent_refs",
+    "resolution_status",
+    "context_binding",
+    "decision_artifact",
+    "missing_reasons"
+  ],
+  "type": "object"
+}

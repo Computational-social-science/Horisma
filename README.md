@@ -1,5 +1,7 @@
 # Horisma
 
+Current private reader manuscript: `docs/research/book/THE_SECRETS_OF_TERMS_MATTHEW_EFFECT_EN.md`. Four provisional source-reading results are recorded in `data/research/findings/matthew-source-results.v1.json`. The older chapter stays a reproducible integration fixture. Research prose is not automatically an approved publication.
+
 Horisma studies how scientific contribution, attribution and uncertainty survive retelling. Its shared evidence infrastructure supports scientist/contribution data, reproducible model evaluation and the book series **The Secrets of Terms**. Each volume uses **The Secrets of Terms** as its main title and the target term as its subtitle; the commissioning volume is **The Secrets of Terms: The Matthew Effect**.
 
 Current design:0.2.0 (2026-11-05). This is a clean rebuild. Existing historical assertions remain candidates; no qualified historical gold or accepted book is claimed.
@@ -41,3 +43,5 @@ Private PDFs, extraction, model responses and source custody blobs remain out of
 The exact publication naming migration is available as `research-publication-rebase <old-slice.json>`, followed by `research-eidos-check`. It preserves frozen evidence inputs, re-scores sealed outputs without inference, and rebuilds current entity/case/card/book dependencies. Operational freshness does not confer historical acceptance or release.
 
 `research-passage-review` runs bounded local source-text diagnostics with per-packet response reuse. Its current report preserves raw model judgments and role-guard failures; it abstains from historical acceptance while transcription fidelity or reviewer qualification is missing.
+
+`research-regional-audit` checks two historical regions using sealed page/line caches. `research-heldout-review` scores a frozen constructed role/quotation set with private labels and raw-response reuse. Compound contract compliance and decision correctness are separate; neither grants historical qualification.

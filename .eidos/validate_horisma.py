@@ -53,6 +53,17 @@ def main():
             if (ROOT/'ops/state/passage-review-head.json').exists():
                 from horisma_p0.passage_review import check_review
                 result['passage_review']=check_review(ROOT)
+            if (ROOT/'ops/state/regional-qualification-head.json').exists() and (ROOT/'ops/state/role-quote-holdout-head.json').exists():
+                from horisma_p0.regional_qualification import check_qualification
+                result['regional_qualification']=check_qualification(ROOT)
+            citation_path=ROOT/'data/intermediate/citation_objects/matthew-candidates.v1.json'
+            if citation_path.exists():
+                from horisma_p0.json_contracts import validate_interchange
+                citations=json.loads(citation_path.read_bytes())
+                if citations['case']!=case_head:raise ValueError('CITATION_CASE_REVISION_MISMATCH')
+                for citation in citations['records']:validate_interchange(ROOT,citation)
+                result['normalized_citations']={'records':len(citations['records']),'status':'STRUCTURE_AND_BYTES_BOUND',
+                    'reference_resolution':'NOT_CHECKED','scientific_acceptance':False}
             result['preview_eligible']=result['preview_eligible'] and case_result['preview_eligible']
             result['scientific_eligible']=result['scientific_eligible'] and case_result['scientific_eligible']
             result['release_eligible']=result['release_eligible'] and case_result['release_eligible']

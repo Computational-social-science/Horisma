@@ -1,0 +1,203 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/cost_audit.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Structural interchange for dictionary entity cost_audit. Conformance does not certify review, truth, rights or implementation.",
+  "properties": {
+    "definition_stage": {
+      "const": "PROPOSED"
+    },
+    "record": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "measurement_status": {
+                "const": "DEFINED"
+              }
+            },
+            "required": [
+              "measurement_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "billable_api_calls": {
+                "not": {
+                  "type": "null"
+                }
+              }
+            },
+            "required": [
+              "billable_api_calls"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "measurement_status": {
+                "const": "DEFINED"
+              }
+            },
+            "required": [
+              "measurement_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "spend": {
+                "not": {
+                  "type": "null"
+                }
+              }
+            },
+            "required": [
+              "spend"
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "billable_api_calls": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Actual observed charged-API call count.",
+          "x-logical-type": "integer"
+        },
+        "coverage_artifact_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Declared interval, endpoints and instrumentation gaps.",
+          "x-logical-type": "ref:artifact",
+          "x-target-type": "artifact"
+        },
+        "created_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "created_by_actor_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "currency": {
+          "description": "Currency in the underlying audit; no invented exchange conversion.",
+          "minLength": 1,
+          "type": "string",
+          "x-logical-type": "text"
+        },
+        "dictionary_version": {
+          "const": "0.1.0"
+        },
+        "disclosure_class": {
+          "$ref": "shared.schema.json#/$defs/v_disclosure_class"
+        },
+        "entity_id": {
+          "pattern": "^cost_audit:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "measurement_status": {
+          "$ref": "shared.schema.json#/$defs/v_metric_status",
+          "description": "Configured zero-cost policy is not an observed value.",
+          "x-logical-type": "enum"
+        },
+        "missing_reasons": {
+          "additionalProperties": {
+            "$ref": "shared.schema.json#/$defs/v_missing_reason"
+          },
+          "type": "object"
+        },
+        "provenance_artifact_refs": {
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "type": "array"
+        },
+        "record_id": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "record_status": {
+          "$ref": "shared.schema.json#/$defs/v_record_status"
+        },
+        "record_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "spend": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "API spend only; not total electricity/hardware/labour cost.",
+          "x-logical-type": "number"
+        },
+        "supersedes_record_id": {
+          "anyOf": [
+            {
+              "$ref": "shared.schema.json#/$defs/RecordRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "vocabulary_version": {
+          "const": "0.1.0"
+        }
+      },
+      "required": [
+        "entity_id",
+        "record_id",
+        "record_version",
+        "dictionary_version",
+        "vocabulary_version",
+        "record_status",
+        "created_at",
+        "created_by_actor_ref",
+        "disclosure_class",
+        "missing_reasons",
+        "provenance_artifact_refs",
+        "coverage_artifact_ref",
+        "measurement_status",
+        "currency"
+      ],
+      "type": "object"
+    },
+    "record_type": {
+      "const": "cost_audit"
+    },
+    "schema_profile": {
+      "const": "horisma-dictionary-structural-0.1.0"
+    }
+  },
+  "required": [
+    "schema_profile",
+    "record_type",
+    "definition_stage",
+    "record"
+  ],
+  "type": "object",
+  "x-dictionary-sha256": "bfd1eaf0e8ba683e0aac0a5cbd0ffb77f455f6bb66d16160bd0906d2b6a96cd8",
+  "x-semantic-conditions": [
+    {
+      "condition": "measurement_status=DEFINED",
+      "field": "billable_api_calls",
+      "implementation": "JSON_SCHEMA_CONDITION"
+    },
+    {
+      "condition": "measurement_status=DEFINED",
+      "field": "spend",
+      "implementation": "JSON_SCHEMA_CONDITION"
+    }
+  ],
+  "x-vocabulary-sha256": "01a5153a00f7b938b1db13ba99e25f5bef080e4ba90156238c568536bedc6a27"
+}

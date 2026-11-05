@@ -1,0 +1,133 @@
+{
+  "current_live_projection": "Eight private Matthew citation objects conform structurally and bind exact reading bytes; this does not certify historical truth.",
+  "schema_profile": "horisma-stage-map-0.1.0",
+  "stages": {
+    "BENCHMARK": {
+      "migration_status": "STRUCTURES_DEFINED_EXISTING_ADAPTERS_NOT_FULLY_MIGRATED",
+      "record_schemas": [
+        "dataset_version.schema.json",
+        "split_assignment.schema.json",
+        "benchmark_task.schema.json",
+        "model_configuration.schema.json",
+        "model_response.schema.json",
+        "metric_definition.schema.json",
+        "metric_observation.schema.json",
+        "evaluation_context.schema.json"
+      ],
+      "transport_schema": "pipeline_packet.schema.json"
+    },
+    "BOOK": {
+      "migration_status": "STRUCTURES_DEFINED_EXISTING_ADAPTERS_NOT_FULLY_MIGRATED",
+      "record_schemas": [
+        "manuscript_unit.schema.json",
+        "book_edition.schema.json",
+        "localization.schema.json",
+        "correction.schema.json",
+        "rights_decision.schema.json"
+      ],
+      "transport_schema": "pipeline_packet.schema.json"
+    },
+    "CITATION": {
+      "migration_status": "STRUCTURES_DEFINED_EXISTING_ADAPTERS_NOT_FULLY_MIGRATED",
+      "record_schemas": [
+        "citation_object.schema.json"
+      ],
+      "transport_schema": "pipeline_packet.schema.json"
+    },
+    "ENTITY": {
+      "migration_status": "STRUCTURES_DEFINED_EXISTING_ADAPTERS_NOT_FULLY_MIGRATED",
+      "record_schemas": [
+        "concept.schema.json",
+        "lexical_form.schema.json",
+        "sense.schema.json",
+        "concept_family.schema.json",
+        "taxonomy_assignment.schema.json",
+        "contributor.schema.json",
+        "identity_assertion.schema.json",
+        "entity_mention.schema.json",
+        "contribution_assertion.schema.json"
+      ],
+      "transport_schema": "pipeline_packet.schema.json"
+    },
+    "EVENT": {
+      "migration_status": "STRUCTURES_DEFINED_EXISTING_ADAPTERS_NOT_FULLY_MIGRATED",
+      "record_schemas": [
+        "event_card.schema.json"
+      ],
+      "transport_schema": "pipeline_packet.schema.json"
+    },
+    "EVIDENCE": {
+      "migration_status": "STRUCTURES_DEFINED_EXISTING_ADAPTERS_NOT_FULLY_MIGRATED",
+      "record_schemas": [
+        "atomic_claim.schema.json",
+        "search_scope.schema.json",
+        "attribution_assertion.schema.json",
+        "evidence_link.schema.json",
+        "search_observation.schema.json"
+      ],
+      "transport_schema": "pipeline_packet.schema.json"
+    },
+    "INGEST": {
+      "migration_status": "STRUCTURES_DEFINED_EXISTING_ADAPTERS_NOT_FULLY_MIGRATED",
+      "record_schemas": [
+        "work.schema.json",
+        "document_version.schema.json",
+        "source_file.schema.json",
+        "acquisition_attempt.schema.json",
+        "human_source_request.schema.json"
+      ],
+      "transport_schema": "pipeline_packet.schema.json"
+    },
+    "OPERATIONS": {
+      "migration_status": "STRUCTURES_DEFINED_EXISTING_ADAPTERS_NOT_FULLY_MIGRATED",
+      "record_schemas": [
+        "actor.schema.json",
+        "operator_run.schema.json",
+        "task_lease.schema.json",
+        "resource_observation.schema.json",
+        "cost_audit.schema.json",
+        "recovery_event.schema.json",
+        "logical_statement.schema.json",
+        "proof_record.schema.json",
+        "pipeline_packet.schema.json"
+      ],
+      "transport_schema": "pipeline_packet.schema.json"
+    },
+    "PARSE": {
+      "migration_status": "STRUCTURES_DEFINED_EXISTING_ADAPTERS_NOT_FULLY_MIGRATED",
+      "record_schemas": [
+        "parse_unit.schema.json",
+        "passage.schema.json",
+        "artifact.schema.json"
+      ],
+      "transport_schema": "pipeline_packet.schema.json"
+    },
+    "REVIEW": {
+      "migration_status": "STRUCTURES_DEFINED_EXISTING_ADAPTERS_NOT_FULLY_MIGRATED",
+      "record_schemas": [
+        "annotation.schema.json",
+        "adjudication_policy.schema.json",
+        "adjudication.schema.json",
+        "discrepancy_finding.schema.json",
+        "review_decision.schema.json"
+      ],
+      "transport_schema": "pipeline_packet.schema.json"
+    },
+    "STUDY": {
+      "migration_status": "STRUCTURES_DEFINED_EXISTING_ADAPTERS_NOT_FULLY_MIGRATED",
+      "record_schemas": [
+        "project_protocol.schema.json",
+        "research_question.schema.json",
+        "hypothesis.schema.json",
+        "sampling_frame.schema.json",
+        "study_protocol.schema.json",
+        "vignette_actor.schema.json",
+        "vignette.schema.json",
+        "participant.schema.json",
+        "condition_assignment.schema.json",
+        "behavioral_response.schema.json"
+      ],
+      "transport_schema": "pipeline_packet.schema.json"
+    }
+  }
+}

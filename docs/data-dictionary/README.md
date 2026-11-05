@@ -9,5 +9,7 @@ The current definition entry combines the immutable core and explicit versioned 
 
 Candidate adapter conformance, source fidelity, identity qualification, semantic support and publication eligibility remain separate. An extension does not retroactively rewrite frozen evidence or create historical gold.
 
+- [Normalized intermediate JSON contracts](../../spec/intermediate-json/README.md): generated templates/schemas for all55 core objects and six intermediate profiles, with stage interfaces, explicit unknowns and candidate citation/manuscript examples. Structural conformance is distinct from reference closure and research adjudication.
+
 - [Event-card profile](../../spec/extensions/event_cards.yaml): implemented candidate event propositions, separate event/account clocks, source dependencies and scoped session times.
 - [Shared research-card design](../../spec/extensions/research_cards.yaml): JSON authority, stable identities/revisions and generated Quarto/Logseq publication mappings. Other card-family adapters remain proposed.

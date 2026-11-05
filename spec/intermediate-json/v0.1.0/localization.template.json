@@ -1,0 +1,108 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROPOSED",
+  "field_contracts": {
+    "locale_review_ref": {
+      "definition": "Back-translation/model fluency is not independent approval.",
+      "examples": "`@review_decision_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L18",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent bilingual reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:review_decision`; 0..1; O",
+      "values_units": "exact translated target"
+    },
+    "parent_book_ref": {
+      "definition": "Do not translate an unbound changing draft.",
+      "examples": "`@book_edition_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L17",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent bilingual reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:book_edition`; 1; R",
+      "values_units": "exact version"
+    },
+    "preserved_claim_refs": {
+      "definition": "Claim identities, uncertainty and roles survive translation.",
+      "examples": "`@atomic_claim_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L18",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent bilingual reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:atomic_claim`; 1..n; R",
+      "values_units": "exact versions"
+    },
+    "target_language": {
+      "definition": "Six planned publication lanes, each separately reviewed.",
+      "examples": "a member of `target_language` / an unregistered code or generic PASS",
+      "logic": "L17",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent bilingual reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "target_language"
+    },
+    "translated_artifact_ref": {
+      "definition": "Source-language quotations remain separately accessible.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent bilingual reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "exact bytes"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "locale_review_ref": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/locale_review_ref": "NOT_COLLECTED",
+      "/parent_book_ref": "NOT_COLLECTED",
+      "/preserved_claim_refs": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/target_language": "NOT_COLLECTED",
+      "/translated_artifact_ref": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "parent_book_ref": null,
+    "preserved_claim_refs": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "target_language": null,
+    "translated_artifact_ref": null,
+    "vocabulary_version": null
+  },
+  "record_type": "localization",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "parent_book_ref",
+    "target_language",
+    "preserved_claim_refs",
+    "translated_artifact_ref"
+  ],
+  "schema_ref": "localization.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

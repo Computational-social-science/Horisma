@@ -1,0 +1,21 @@
+{
+  "record_skeleton": {
+    "citation_refs": null,
+    "claim_refs": null,
+    "edition_ref": null,
+    "material_uncertainties": null,
+    "missing_reasons": null,
+    "publication_mode": null,
+    "reader_text": null,
+    "review_ref": null,
+    "revision_sha256": null,
+    "schema_profile": null,
+    "text_binding": null,
+    "unit_id": null,
+    "unit_kind": null
+  },
+  "record_type": "manuscript_unit",
+  "schema_ref": "manuscript_unit.schema.json",
+  "template_only": true,
+  "warning": "Blank structural scaffold, not observed or approved data."
+}

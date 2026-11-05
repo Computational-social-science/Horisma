@@ -1,0 +1,129 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROTOCOL_DEPENDENT",
+  "field_contracts": {
+    "definition_ref": {
+      "definition": "Fixed measurement semantics.",
+      "examples": "`@metric_definition_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L20",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:metric_definition`; 1; R",
+      "values_units": "exact version"
+    },
+    "denominator": {
+      "definition": "Eligible observations; zero denominator makes a rate undefined.",
+      "examples": "0 when actually observed and allowed / -999 as missing sentinel",
+      "logic": "L20",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`integer`; 0..1; O",
+      "values_units": "count; >=0"
+    },
+    "eligible_family_refs": {
+      "definition": "Required for family-macro results; report excluded families separately.",
+      "examples": "`@concept_family_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L21",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:concept_family`; 1..n when condition; else 0..n; C:family-macro metric",
+      "values_units": "actual families"
+    },
+    "input_artifact_refs": {
+      "definition": "Raw scores/logs, eligibility and uncertainty calculation inputs.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L20",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:artifact`; 1..n; R",
+      "values_units": "exact measurements"
+    },
+    "measurement_status": {
+      "definition": "NOT_MEASURED differs from measured zero and NOT_DEFINED.",
+      "examples": "a member of `metric_status` / an unregistered code or generic PASS",
+      "logic": "L02",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "metric_status"
+    },
+    "numerator": {
+      "definition": "Observed count for rate metrics, not inferred from a rounded score.",
+      "examples": "0 when actually observed and allowed / -999 as missing sentinel",
+      "logic": "L20",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`integer`; 0..1; O",
+      "values_units": "count; >=0"
+    },
+    "value": {
+      "definition": "Null for missing/undefined/invalidated observations.",
+      "examples": "0.0 when measured / NaN/infinity or unknown encoded as zero",
+      "logic": "L20",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Independent evaluator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`number`; 1 when condition; else 0..1; C:measurement_status=DEFINED",
+      "values_units": "definition unit"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "definition_ref": null,
+    "denominator": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "eligible_family_refs": null,
+    "entity_id": null,
+    "input_artifact_refs": null,
+    "measurement_status": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/definition_ref": "NOT_COLLECTED",
+      "/denominator": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/eligible_family_refs": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/input_artifact_refs": "NOT_COLLECTED",
+      "/measurement_status": "NOT_COLLECTED",
+      "/numerator": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/value": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "numerator": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "value": null,
+    "vocabulary_version": null
+  },
+  "record_type": "metric_observation",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "definition_ref",
+    "measurement_status",
+    "input_artifact_refs"
+  ],
+  "schema_ref": "metric_observation.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

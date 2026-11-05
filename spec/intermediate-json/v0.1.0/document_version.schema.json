@@ -1,0 +1,189 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/document_version.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Structural interchange for dictionary entity document_version. Conformance does not certify review, truth, rights or implementation.",
+  "properties": {
+    "definition_stage": {
+      "const": "CORE_CONTRACT_DEFINED"
+    },
+    "record": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "identity_status": {
+                "const": "VERIFIED"
+              }
+            },
+            "required": [
+              "identity_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "identity_review_ref": {
+                "not": {
+                  "type": "null"
+                }
+              }
+            },
+            "required": [
+              "identity_review_ref"
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "created_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "created_by_actor_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "dictionary_version": {
+          "const": "0.1.0"
+        },
+        "disclosure_class": {
+          "$ref": "shared.schema.json#/$defs/v_disclosure_class"
+        },
+        "entity_id": {
+          "pattern": "^document_version:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "identity_review_ref": {
+          "anyOf": [
+            {
+              "$ref": "shared.schema.json#/$defs/RecordRef",
+              "x-target-type": "review_decision"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Required evidence for a VERIFIED identity status.",
+          "x-logical-type": "ref:review_decision"
+        },
+        "identity_status": {
+          "$ref": "shared.schema.json#/$defs/v_source_identity_status",
+          "description": "Document/version identity verification, not passage support.",
+          "x-logical-type": "enum"
+        },
+        "missing_reasons": {
+          "additionalProperties": {
+            "$ref": "shared.schema.json#/$defs/v_missing_reason"
+          },
+          "type": "object"
+        },
+        "permanent_uri": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "For Wikipedia prefer oldid; preserve original requested URL separately.",
+          "x-logical-type": "uri"
+        },
+        "provenance_artifact_refs": {
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "type": "array"
+        },
+        "publication_time": {
+          "anyOf": [
+            {
+              "$ref": "shared.schema.json#/$defs/TemporalExtent"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Publication date, distinct from events described in the text.",
+          "x-logical-type": "TemporalExtent"
+        },
+        "record_id": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "record_status": {
+          "$ref": "shared.schema.json#/$defs/v_record_status"
+        },
+        "record_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "supersedes_record_id": {
+          "anyOf": [
+            {
+              "$ref": "shared.schema.json#/$defs/RecordRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "version_label": {
+          "description": "Revision, edition or stated unknown; never silently current.",
+          "minLength": 1,
+          "type": "string",
+          "x-logical-type": "text"
+        },
+        "vocabulary_version": {
+          "const": "0.1.0"
+        },
+        "work_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Parent work identity.",
+          "x-logical-type": "ref:work",
+          "x-target-type": "work"
+        }
+      },
+      "required": [
+        "entity_id",
+        "record_id",
+        "record_version",
+        "dictionary_version",
+        "vocabulary_version",
+        "record_status",
+        "created_at",
+        "created_by_actor_ref",
+        "disclosure_class",
+        "missing_reasons",
+        "provenance_artifact_refs",
+        "work_ref",
+        "version_label",
+        "identity_status"
+      ],
+      "type": "object"
+    },
+    "record_type": {
+      "const": "document_version"
+    },
+    "schema_profile": {
+      "const": "horisma-dictionary-structural-0.1.0"
+    }
+  },
+  "required": [
+    "schema_profile",
+    "record_type",
+    "definition_stage",
+    "record"
+  ],
+  "type": "object",
+  "x-dictionary-sha256": "bfd1eaf0e8ba683e0aac0a5cbd0ffb77f455f6bb66d16160bd0906d2b6a96cd8",
+  "x-semantic-conditions": [
+    {
+      "condition": "identity_status=VERIFIED",
+      "field": "identity_review_ref",
+      "implementation": "JSON_SCHEMA_CONDITION"
+    }
+  ],
+  "x-vocabulary-sha256": "01a5153a00f7b938b1db13ba99e25f5bef080e4ba90156238c568536bedc6a27"
+}

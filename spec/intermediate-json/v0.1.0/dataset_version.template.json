@@ -1,0 +1,133 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROTOCOL_DEPENDENT",
+  "field_contracts": {
+    "access_policy_artifact_ref": {
+      "definition": "Evaluator versus development access and leakage audit, including prompts/caches.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L35",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Independent benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "sealed access policy"
+    },
+    "canonical_family_manifest_ref": {
+      "definition": "Exactly one canonical version per family entity, consistent bidirectional concept membership and task/claim/concept/family bindings before splitting.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L39",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Independent benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "release-specific partition"
+    },
+    "gold_adjudication_refs": {
+      "definition": "Independent gold with disagreement records.",
+      "examples": "`@adjudication_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L01",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Independent benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:adjudication`; 1..n; R",
+      "values_units": "sealed exact versions"
+    },
+    "gold_binding_manifest_ref": {
+      "definition": "Frozen release-specific gold and scoring bindings; task identity alone is insufficient.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L38",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Independent benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "task/target/adjudication/policy bindings"
+    },
+    "protocol_ref": {
+      "definition": "Sampling and research purpose.",
+      "examples": "`@project_protocol_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L19",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Independent benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:project_protocol`; 1; R",
+      "values_units": "exact version"
+    },
+    "split_assignment_refs": {
+      "definition": "Family-level partitions and documented overlap audit.",
+      "examples": "`@split_assignment_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L19",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Independent benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:split_assignment`; 1..n; R",
+      "values_units": "exact versions"
+    },
+    "task_refs": {
+      "definition": "Frozen task inventory; not generated answer narratives as gold.",
+      "examples": "`@benchmark_task_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L01",
+      "missing_disclosure": "not allowed; SEALED_EVALUATION",
+      "provenance_derivation_review": "Inherited provenance rule; Independent benchmark curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:benchmark_task`; 1..n; R",
+      "values_units": "exact versions"
+    }
+  },
+  "record_skeleton": {
+    "access_policy_artifact_ref": null,
+    "canonical_family_manifest_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "gold_adjudication_refs": null,
+    "gold_binding_manifest_ref": null,
+    "missing_reasons": {
+      "/access_policy_artifact_ref": "NOT_COLLECTED",
+      "/canonical_family_manifest_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/gold_adjudication_refs": "NOT_COLLECTED",
+      "/gold_binding_manifest_ref": "NOT_COLLECTED",
+      "/protocol_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/split_assignment_refs": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/task_refs": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "protocol_ref": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "split_assignment_refs": null,
+    "supersedes_record_id": null,
+    "task_refs": null,
+    "vocabulary_version": null
+  },
+  "record_type": "dataset_version",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "protocol_ref",
+    "task_refs",
+    "gold_adjudication_refs",
+    "split_assignment_refs",
+    "access_policy_artifact_ref",
+    "gold_binding_manifest_ref",
+    "canonical_family_manifest_ref"
+  ],
+  "schema_ref": "dataset_version.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

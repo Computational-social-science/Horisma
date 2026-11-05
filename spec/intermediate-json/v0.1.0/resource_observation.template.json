@@ -1,0 +1,106 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROPOSED",
+  "field_contracts": {
+    "gpu_memory_mib": {
+      "definition": "Actual measurement; no parameter-count-derived fit claim.",
+      "examples": "0.0 when measured / NaN/infinity or unknown encoded as zero",
+      "logic": "L30",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`number`; 0..1; O",
+      "values_units": "MiB; >=0"
+    },
+    "latency_seconds": {
+      "definition": "Measured elapsed time with operation scope.",
+      "examples": "0.0 when measured / NaN/infinity or unknown encoded as zero",
+      "logic": "L02",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`number`; 0..1; O",
+      "values_units": "seconds; >=0"
+    },
+    "measurement_artifact_ref": {
+      "definition": "Absence of telemetry cannot establish a successful sample.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L02",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "raw receipt"
+    },
+    "run_ref": {
+      "definition": "Associated run if applicable.",
+      "examples": "`@operator_run_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L03",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:operator_run`; 0..1; O",
+      "values_units": "exact version"
+    },
+    "sampled_at": {
+      "definition": "Fresh observation time, not research-result time.",
+      "examples": "2026-11-04T00:00:00Z / 1964 guessed as an exact operational timestamp",
+      "logic": "L07",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`datetime`; 1; R",
+      "values_units": "UTC instant"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "gpu_memory_mib": null,
+    "latency_seconds": null,
+    "measurement_artifact_ref": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/gpu_memory_mib": "NOT_COLLECTED",
+      "/latency_seconds": "NOT_COLLECTED",
+      "/measurement_artifact_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/run_ref": "NOT_COLLECTED",
+      "/sampled_at": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "run_ref": null,
+    "sampled_at": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "resource_observation",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "sampled_at",
+    "measurement_artifact_ref"
+  ],
+  "schema_ref": "resource_observation.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

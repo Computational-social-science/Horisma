@@ -1,0 +1,106 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROPOSED",
+  "field_contracts": {
+    "proof_artifact_ref": {
+      "definition": "Required for a formally proved status.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L28",
+      "missing_disclosure": "null + missing_reason; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Independent formalization reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1 when condition; else 0..1; C:proof_status=PROVED_WITH_BOUND_ARTIFACT",
+      "values_units": "exact proof bytes"
+    },
+    "proof_status": {
+      "definition": "Finite examples/document checks do not mean formally proved.",
+      "examples": "a member of `proof_status` / an unregistered code or generic PASS",
+      "logic": "L28",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Independent formalization reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "proof_status"
+    },
+    "statement_ref": {
+      "definition": "The precise proposition, not an English paraphrase alone.",
+      "examples": "`@logical_statement_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L28",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Independent formalization reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:logical_statement`; 1; R",
+      "values_units": "exact version"
+    },
+    "toolchain_artifact_ref": {
+      "definition": "Exact toolchain and allowed assumptions; required for proof acceptance.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L28",
+      "missing_disclosure": "null + missing_reason; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Independent formalization reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1 when condition; else 0..1; C:proof_status=PROVED_WITH_BOUND_ARTIFACT",
+      "values_units": "compiler/libraries/kernel/options"
+    },
+    "verification_receipt_ref": {
+      "definition": "Actual checker result plus negative controls, not invented fixture success.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L28",
+      "missing_disclosure": "null + missing_reason; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Independent formalization reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1 when condition; else 0..1; C:proof_status=PROVED_WITH_BOUND_ARTIFACT",
+      "values_units": "independent check receipt"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/proof_artifact_ref": "NOT_COLLECTED",
+      "/proof_status": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/statement_ref": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/toolchain_artifact_ref": "NOT_COLLECTED",
+      "/verification_receipt_ref": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "proof_artifact_ref": null,
+    "proof_status": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "statement_ref": null,
+    "supersedes_record_id": null,
+    "toolchain_artifact_ref": null,
+    "verification_receipt_ref": null,
+    "vocabulary_version": null
+  },
+  "record_type": "proof_record",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "statement_ref",
+    "proof_status"
+  ],
+  "schema_ref": "proof_record.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

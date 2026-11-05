@@ -1,4 +1,4 @@
-version: 0.1.0
+version: 0.2.0
 purpose: Current reading routes; historical checkpoints do not override these authorities.
 current_entries:
   - {role: RESEARCH_DESIGN, path: docs/research/Horisma_Terminological_Provenance_Project_Research_Proposal_EN.md}
@@ -6,6 +6,9 @@ current_entries:
   - {role: DATA_DEFINITIONS, path: docs/data-dictionary/README.md}
   - {role: FROZEN_MACHINE_CODES, path: spec/controlled_vocabularies.yaml}
   - {role: EXECUTION_GUIDANCE, path: .agents/skills/horisma-research-contracts/SKILL.md}
+current_private_drafts:
+  - {role: CURRENT_BOOK_RESEARCH_DRAFT, path: docs/research/book/THE_SECRETS_OF_TERMS_MATTHEW_EFFECT_EN.md, required_in_public_checkout: false}
+frozen_book_fixture: docs/research/book/MATTHEW_CHAPTER_ONE_EN.md is the earlier integration fixture, retained for reproducible evidence/campaign snapshots; it is not the current book manuscript.
 historical_policy: Read a checkpoint only for a specific dated result or exact versioned dependency. Do not glob all checkpoints into model context.
 private_drafts_policy: Book prose and candidate evidence remain draft inputs, not scientific authorities.
 cleanup_policy: Remove only exact Git-reproducible technical exports or byte-identical run copies already sealed and not active/declared inputs. Preserve current export pointers, sealed research evidence, model assets, receipts and originals.

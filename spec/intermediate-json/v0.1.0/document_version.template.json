@@ -1,0 +1,118 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "identity_review_ref": {
+      "definition": "Required evidence for a VERIFIED identity status.",
+      "examples": "`@review_decision_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L05",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:review_decision`; 1 when condition; else 0..1; C:identity_status=VERIFIED",
+      "values_units": "exact version"
+    },
+    "identity_status": {
+      "definition": "Document/version identity verification, not passage support.",
+      "examples": "a member of `source_identity_status` / an unregistered code or generic PASS",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "source_identity_status"
+    },
+    "permanent_uri": {
+      "definition": "For Wikipedia prefer oldid; preserve original requested URL separately.",
+      "examples": "https://example.org/source / URL containing a password",
+      "logic": "L03",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`uri`; 0..1; O",
+      "values_units": "uncredentialed URI"
+    },
+    "publication_time": {
+      "definition": "Publication date, distinct from events described in the text.",
+      "examples": "year1964 with YEAR precision / 1964-01-01 asserted as an observed day",
+      "logic": "L12",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`TemporalExtent`; 0..1; O",
+      "values_units": "historical date"
+    },
+    "version_label": {
+      "definition": "Revision, edition or stated unknown; never silently current.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "edition/revision"
+    },
+    "work_ref": {
+      "definition": "Parent work identity.",
+      "examples": "`@work_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Source curator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:work`; 1; R",
+      "values_units": "exact version"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "identity_review_ref": null,
+    "identity_status": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/identity_review_ref": "NOT_COLLECTED",
+      "/identity_status": "NOT_COLLECTED",
+      "/permanent_uri": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/publication_time": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/version_label": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED",
+      "/work_ref": "NOT_COLLECTED"
+    },
+    "permanent_uri": null,
+    "provenance_artifact_refs": null,
+    "publication_time": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "version_label": null,
+    "vocabulary_version": null,
+    "work_ref": null
+  },
+  "record_type": "document_version",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "work_ref",
+    "version_label",
+    "identity_status"
+  ],
+  "schema_ref": "document_version.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

@@ -1,0 +1,148 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/identity_assertion.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Structural interchange for dictionary entity identity_assertion. Conformance does not certify review, truth, rights or implementation.",
+  "properties": {
+    "definition_stage": {
+      "const": "CORE_CONTRACT_DEFINED"
+    },
+    "record": {
+      "additionalProperties": false,
+      "properties": {
+        "asserted_value": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Preserve uncertainty; do not infer gender, nationality or death from a name.",
+          "x-logical-type": "text"
+        },
+        "attribute_name": {
+          "description": "For example birth event, citizenship or affiliation; these are different constructs.",
+          "minLength": 1,
+          "type": "string",
+          "x-logical-type": "text"
+        },
+        "contributor_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Person/organization described.",
+          "x-logical-type": "ref:contributor",
+          "x-target-type": "contributor"
+        },
+        "created_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "created_by_actor_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "dictionary_version": {
+          "const": "0.1.0"
+        },
+        "disclosure_class": {
+          "$ref": "shared.schema.json#/$defs/v_disclosure_class"
+        },
+        "entity_id": {
+          "pattern": "^identity_assertion:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "description": "Support for this particular attribute.",
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "minItems": 1,
+          "type": "array",
+          "x-logical-type": "refs:evidence_link",
+          "x-target-type": "evidence_link"
+        },
+        "missing_reasons": {
+          "additionalProperties": {
+            "$ref": "shared.schema.json#/$defs/v_missing_reason"
+          },
+          "type": "object"
+        },
+        "provenance_artifact_refs": {
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "type": "array"
+        },
+        "record_id": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "record_status": {
+          "$ref": "shared.schema.json#/$defs/v_record_status"
+        },
+        "record_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "supersedes_record_id": {
+          "anyOf": [
+            {
+              "$ref": "shared.schema.json#/$defs/RecordRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "valid_time": {
+          "anyOf": [
+            {
+              "$ref": "shared.schema.json#/$defs/TemporalExtent"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Time to which the assertion applies.",
+          "x-logical-type": "TemporalExtent"
+        },
+        "vocabulary_version": {
+          "const": "0.1.0"
+        }
+      },
+      "required": [
+        "entity_id",
+        "record_id",
+        "record_version",
+        "dictionary_version",
+        "vocabulary_version",
+        "record_status",
+        "created_at",
+        "created_by_actor_ref",
+        "disclosure_class",
+        "missing_reasons",
+        "provenance_artifact_refs",
+        "contributor_ref",
+        "attribute_name",
+        "evidence_refs"
+      ],
+      "type": "object"
+    },
+    "record_type": {
+      "const": "identity_assertion"
+    },
+    "schema_profile": {
+      "const": "horisma-dictionary-structural-0.1.0"
+    }
+  },
+  "required": [
+    "schema_profile",
+    "record_type",
+    "definition_stage",
+    "record"
+  ],
+  "type": "object",
+  "x-dictionary-sha256": "bfd1eaf0e8ba683e0aac0a5cbd0ffb77f455f6bb66d16160bd0906d2b6a96cd8",
+  "x-semantic-conditions": [],
+  "x-vocabulary-sha256": "01a5153a00f7b938b1db13ba99e25f5bef080e4ba90156238c568536bedc6a27"
+}

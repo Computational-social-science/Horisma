@@ -1,0 +1,153 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/discrepancy_finding.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Structural interchange for dictionary entity discrepancy_finding. Conformance does not certify review, truth, rights or implementation.",
+  "properties": {
+    "definition_stage": {
+      "const": "CORE_CONTRACT_DEFINED"
+    },
+    "record": {
+      "additionalProperties": false,
+      "properties": {
+        "adjudication_refs": {
+          "description": "Independent source-based assessments, not a model vote.",
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "minItems": 1,
+          "type": "array",
+          "x-logical-type": "refs:adjudication",
+          "x-target-type": "adjudication"
+        },
+        "attribution_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Observed allocation of a particular role.",
+          "x-logical-type": "ref:attribution_assertion",
+          "x-target-type": "attribution_assertion"
+        },
+        "comparison_kind": {
+          "$ref": "shared.schema.json#/$defs/v_comparison_kind",
+          "description": "Same-concept/role/scope must be established before supported discrepancy.",
+          "x-logical-type": "enum"
+        },
+        "conclusion": {
+          "$ref": "shared.schema.json#/$defs/v_discrepancy_conclusion",
+          "description": "No implied intent, theft, legal ownership or misconduct.",
+          "x-logical-type": "enum"
+        },
+        "contribution_refs": {
+          "description": "Comparison contributions with evidence.",
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "minItems": 1,
+          "type": "array",
+          "x-logical-type": "refs:contribution_assertion",
+          "x-target-type": "contribution_assertion"
+        },
+        "created_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "created_by_actor_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "dictionary_version": {
+          "const": "0.1.0"
+        },
+        "disclosure_class": {
+          "$ref": "shared.schema.json#/$defs/v_disclosure_class"
+        },
+        "entity_id": {
+          "pattern": "^discrepancy_finding:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "incompatibility_rationale": {
+          "description": "State the supported conflict or why none/unresolved; never a fame-based assertion.",
+          "minLength": 1,
+          "type": "string",
+          "x-logical-type": "text"
+        },
+        "missing_reasons": {
+          "additionalProperties": {
+            "$ref": "shared.schema.json#/$defs/v_missing_reason"
+          },
+          "type": "object"
+        },
+        "policy_ref": {
+          "$ref": "shared.schema.json#/$defs/RecordRef",
+          "description": "Explicit comparison/omission norm.",
+          "x-logical-type": "ref:adjudication_policy",
+          "x-target-type": "adjudication_policy"
+        },
+        "provenance_artifact_refs": {
+          "items": {
+            "$ref": "shared.schema.json#/$defs/RecordRef"
+          },
+          "type": "array"
+        },
+        "record_id": {
+          "$ref": "shared.schema.json#/$defs/RecordRef"
+        },
+        "record_status": {
+          "$ref": "shared.schema.json#/$defs/v_record_status"
+        },
+        "record_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "supersedes_record_id": {
+          "anyOf": [
+            {
+              "$ref": "shared.schema.json#/$defs/RecordRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "vocabulary_version": {
+          "const": "0.1.0"
+        }
+      },
+      "required": [
+        "entity_id",
+        "record_id",
+        "record_version",
+        "dictionary_version",
+        "vocabulary_version",
+        "record_status",
+        "created_at",
+        "created_by_actor_ref",
+        "disclosure_class",
+        "missing_reasons",
+        "provenance_artifact_refs",
+        "attribution_ref",
+        "contribution_refs",
+        "comparison_kind",
+        "policy_ref",
+        "adjudication_refs",
+        "conclusion",
+        "incompatibility_rationale"
+      ],
+      "type": "object"
+    },
+    "record_type": {
+      "const": "discrepancy_finding"
+    },
+    "schema_profile": {
+      "const": "horisma-dictionary-structural-0.1.0"
+    }
+  },
+  "required": [
+    "schema_profile",
+    "record_type",
+    "definition_stage",
+    "record"
+  ],
+  "type": "object",
+  "x-dictionary-sha256": "bfd1eaf0e8ba683e0aac0a5cbd0ffb77f455f6bb66d16160bd0906d2b6a96cd8",
+  "x-semantic-conditions": [],
+  "x-vocabulary-sha256": "01a5153a00f7b938b1db13ba99e25f5bef080e4ba90156238c568536bedc6a27"
+}

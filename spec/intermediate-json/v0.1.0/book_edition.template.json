@@ -1,0 +1,107 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROPOSED",
+  "field_contracts": {
+    "claim_refs": {
+      "definition": "All factual and qualified propositions in the edition.",
+      "examples": "`@atomic_claim_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L18",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Scientific editor; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:atomic_claim`; 1..n; R",
+      "values_units": "exact versions"
+    },
+    "publication_modes": {
+      "definition": "Each included claim maps to a presentation mode; not a global truth badge.",
+      "examples": "every included claim assigned one declared mode / one global PASS for all claims",
+      "logic": "L18",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Scientific editor; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`PublicationModeMap`; 1; R",
+      "values_units": "per-claim mode"
+    },
+    "release_review_ref": {
+      "definition": "No substantive publication without current human bundle approval.",
+      "examples": "`@review_decision_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L18",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Scientific editor; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:review_decision`; 0..1; O",
+      "values_units": "exact bundle"
+    },
+    "render_artifact_refs": {
+      "definition": "File creation does not establish reader/print validity.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L07",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Scientific editor; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:artifact`; 0..n; O",
+      "values_units": "HTML/PDF/EPUB"
+    },
+    "source_artifact_ref": {
+      "definition": "Canonical source used for all formats.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L17",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Scientific editor; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "bound source tree/manifest"
+    }
+  },
+  "record_skeleton": {
+    "claim_refs": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "missing_reasons": {
+      "/claim_refs": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/publication_modes": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/release_review_ref": "NOT_COLLECTED",
+      "/render_artifact_refs": "NOT_COLLECTED",
+      "/source_artifact_ref": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "publication_modes": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "release_review_ref": null,
+    "render_artifact_refs": null,
+    "source_artifact_ref": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "book_edition",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "claim_refs",
+    "publication_modes",
+    "source_artifact_ref"
+  ],
+  "schema_ref": "book_edition.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

@@ -1,0 +1,96 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROTOCOL_DEPENDENT",
+  "field_contracts": {
+    "allocation": {
+      "definition": "Canonical shares; missing/abstention is not an all-zero response.",
+      "examples": "two fictional actors with shares0.25 and0.75 / all-zero vector for abstention",
+      "logic": "L23",
+      "missing_disclosure": "null + missing_reason; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Study analyst; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`CreditAllocation`; 0..1; O",
+      "values_units": "fractions; sum=1"
+    },
+    "assignment_ref": {
+      "definition": "Links outcome to randomized condition and clustering units.",
+      "examples": "`@condition_assignment_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L24",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Study analyst; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:condition_assignment`; 1; R",
+      "values_units": "exact version"
+    },
+    "raw_response_artifact_ref": {
+      "definition": "Retain raw entry and source scale before normalization.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L23",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Study analyst; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "restricted original response"
+    },
+    "raw_scale": {
+      "definition": "Percent-to-fraction conversion is divide100, not a new observation.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L23",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Study analyst; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "fraction or percent and bounds"
+    }
+  },
+  "record_skeleton": {
+    "allocation": null,
+    "assignment_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "missing_reasons": {
+      "/allocation": "NOT_COLLECTED",
+      "/assignment_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/raw_response_artifact_ref": "NOT_COLLECTED",
+      "/raw_scale": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "raw_response_artifact_ref": null,
+    "raw_scale": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "behavioral_response",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "assignment_ref",
+    "raw_response_artifact_ref",
+    "raw_scale"
+  ],
+  "schema_ref": "behavioral_response.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

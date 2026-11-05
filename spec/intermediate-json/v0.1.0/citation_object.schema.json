@@ -1,0 +1,323 @@
+{
+  "$id": "https://horisma.invalid/contracts/intermediate/0.1.0/citation_object.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "citation_mode": {
+            "const": "INDIRECT_QUOTATION"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "referenced_original_inspected": {
+            "const": false
+          },
+          "referenced_work_ref": {
+            "$ref": "shared.schema.json#/$defs/BoundRef"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "citation_mode": {
+            "const": "DIRECT_SOURCE_TEXT"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "referenced_original_inspected": {
+            "const": false
+          },
+          "referenced_work_ref": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ],
+  "properties": {
+    "abbreviations": {
+      "anyOf": [
+        {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "evidence_ref": {
+                "anyOf": [
+                  {
+                    "$ref": "shared.schema.json#/$defs/BoundRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "expansion": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "surface": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "surface",
+              "expansion",
+              "evidence_ref"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "author_list_complete": {
+      "type": "boolean"
+    },
+    "authors": {
+      "anyOf": [
+        {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "person_ref": {
+                "$ref": "shared.schema.json#/$defs/BoundRef"
+              },
+              "source_display_name": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "person_ref",
+              "source_display_name"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "citation_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "citation_mode": {
+      "enum": [
+        "DIRECT_SOURCE_TEXT",
+        "INDIRECT_QUOTATION",
+        "PARAPHRASE"
+      ]
+    },
+    "confidence": {
+      "const": null
+    },
+    "confidence_missing_reason": {
+      "const": "NOT_ASSESSED"
+    },
+    "diplomatic_text": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evidence_group_ref": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "missing_reasons": {
+      "additionalProperties": {
+        "$ref": "shared.schema.json#/$defs/v_missing_reason"
+      },
+      "type": "object"
+    },
+    "normalization_operations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "operation_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "verification_state": {
+            "enum": [
+              "DECLARED",
+              "UNVERIFIED",
+              "VERIFIED_TRANSFORMATION"
+            ]
+          }
+        },
+        "required": [
+          "operation_id",
+          "description",
+          "verification_state"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "publication_authorized": {
+      "const": false
+    },
+    "reading_binding": {
+      "$ref": "shared.schema.json#/$defs/TextBinding"
+    },
+    "reading_entry_status": {
+      "enum": [
+        "PAPER2SKILL_BOUND",
+        "FROZEN_FRAGMENT_EXCEPTION"
+      ]
+    },
+    "reading_text": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "referenced_original_inspected": {
+      "type": "boolean"
+    },
+    "referenced_work_ref": {
+      "anyOf": [
+        {
+          "$ref": "shared.schema.json#/$defs/BoundRef"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "related_passage_refs": {
+      "items": {
+        "$ref": "shared.schema.json#/$defs/BoundRef"
+      },
+      "type": "array"
+    },
+    "revision_sha256": {
+      "$ref": "shared.schema.json#/$defs/sha256"
+    },
+    "schema_profile": {
+      "const": "horisma-citation-object-0.1.0"
+    },
+    "scientific_acceptance": {
+      "const": false
+    },
+    "source_identity_status": {
+      "$ref": "shared.schema.json#/$defs/v_source_identity_status"
+    },
+    "source_kind": {
+      "$ref": "shared.schema.json#/$defs/v_source_kind"
+    },
+    "source_locator": {
+      "additionalProperties": false,
+      "properties": {
+        "normalized_region": {
+          "anyOf": [
+            {
+              "items": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "maxItems": 4,
+              "minItems": 4,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pdf_page_index": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "printed_page": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "pdf_page_index",
+        "printed_page",
+        "normalized_region"
+      ],
+      "type": "object"
+    },
+    "support_scope": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "witness_version_ref": {
+      "$ref": "shared.schema.json#/$defs/BoundRef"
+    },
+    "witness_work_ref": {
+      "$ref": "shared.schema.json#/$defs/BoundRef"
+    }
+  },
+  "required": [
+    "schema_profile",
+    "citation_id",
+    "revision_sha256",
+    "witness_work_ref",
+    "witness_version_ref",
+    "authors",
+    "author_list_complete",
+    "source_kind",
+    "source_locator",
+    "reading_binding",
+    "reading_text",
+    "diplomatic_text",
+    "reading_entry_status",
+    "related_passage_refs",
+    "normalization_operations",
+    "abbreviations",
+    "citation_mode",
+    "referenced_work_ref",
+    "referenced_original_inspected",
+    "evidence_group_ref",
+    "source_identity_status",
+    "confidence",
+    "confidence_missing_reason",
+    "support_scope",
+    "missing_reasons",
+    "scientific_acceptance",
+    "publication_authorized"
+  ],
+  "type": "object"
+}

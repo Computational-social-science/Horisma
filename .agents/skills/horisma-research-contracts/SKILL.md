@@ -15,6 +15,8 @@ Use the project .venv/Scripts/python.exe and scripts/horisma_p0.py. Local/free, 
 
 ## Document entry and execution
 
+Use spec/intermediate-json/v0.1.0/index.json and stage_interfaces.json for normalized intermediate contracts; load only the required schema/template. The55 core types and six intermediate profiles are structural contracts, not proof that all native adapters are migrated. Blank template_only skeletons are not observations. Use research-json-templates to regenerate from unchanged authorities and research-json-validate for filled records. Preserve JSON-pointer missing reasons, exact source/record revisions and the witness/quoted-original distinction. Candidate JSON, research findings and reader prose link through citation and manuscript-unit references; Markdown is a generated/reader view, not an undocumented transport format.
+
 Use Paper2Agent/Paper2Skill's final references/paper.md as the single downstream reading entry for each source version. Raw PDF, OCR output, staging Markdown and coordinate maps are background provenance/validation, not competing default reading paths. Follow the current entrypoint catalogue. Exceptions return to original pages/regions for specific unresolved questions.
 
 - research-document-ingest registers additional supplied PDFs without changing frozen P0. Filename/scanner dates do not become historical dates; work identity may remain provisional.
@@ -33,6 +35,10 @@ For this exact naming migration, use research-publication-rebase <old-slice.json
 
 Use research-passage-review for bounded source-text diagnostics. Check the actual passage includes the role-bearing statement before blaming the model; one located reading unit owns the snippet. Rebind an excerpt rather than rewriting source wording. Reuse identical packet/request/model responses, reparse raw output under current validation, and bind helper-code revisions. Preserve model errors separately from typed guards. Synthetic success, literal quote validity and source-text entailment do not qualify image fidelity or historical truth; the measured joint-authorship-to-naming failure remains a regression target.
 
+For two-region checking, research-regional-audit reuses sealed page/block/line outputs and checks the original image frame. Distinguish paragraph overlap, literal line witnesses and a scoped quote match; none alone certifies image fidelity. Keep line hyphens, citation characters and punctuation unresolved rather than repairing them silently.
+
+research-heldout-review pins the original12-case definition/labels and finite budget. Labels stay out of requests and GitHub. Report decision, speaker, literal-anchor and compound counts separately: one anchor may exclude an otherwise admissible quotation. After first evaluation the set is consumed; cached rescoring is not unseen testing. A revised operator/prompt needs a newly frozen v2. Do not blame all contract failures on semantic reasoning or tune v1 after looking at answers.
+
 ## Scientific constraints
 
 Preserve source/version/page/region/span. Printed page differs from PDF index (Price printed512 is index3). The1968 file contains adjacent article material; full-document co-occurrence is not passage support.
@@ -46,6 +52,8 @@ Separate naming, conceptualization, interviews, authorship and recognition. Corr
 Keep unassessed distinct from five claim assessments, operational success, identity status and release. Norm/version, context and role/object/sense/time comparability precede miscredit. One case/model error establishes neither intent, mechanism nor prevalence. Require alternatives, falsifiers and identification designs. No historical accuracy without qualified labels, invented confidence or zero denominators; synthetic controls are not historical gold.
 
 ## Book and completion
+
+The current reader manuscript is docs/research/book/THE_SECRETS_OF_TERMS_MATTHEW_EFFECT_EN.md; MATTHEW_CHAPTER_ONE_EN.md is a preserved integration fixture. Do not let a fixture lock prevent scientific writing. Deliver source-reading results and coherent prose, not just another refusal report. Assess transcription uncertainty at claim scope: a peripheral citation defect is different from a changed name, role, negation or date on which the proposition depends. Preserve the variant and limitation, while keeping separately supported source-report conclusions usable as provisional research. This never authorizes historical gold or publication by default.
 
 Series and main book title: The Secrets of Terms. The target term is the subtitle; this volume is The Secrets of Terms: The Matthew Effect. Preserve separate series_title, book_title and subtitle metadata; titles never determine concept/event identity. Explain recognition mechanisms and scientific stakes before contribution history. Share evidence revisions across narrative, optional notes and methods. Distinguish facts, source reports and interpretations; engineering logs are not reader prose. Respect source rights and avoid fake historical photographs or release from a successful exporter.
 

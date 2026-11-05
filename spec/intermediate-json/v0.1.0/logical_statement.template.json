@@ -1,0 +1,96 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "assumption_statement_refs": {
+      "definition": "Hypotheses are not silently promoted to axioms.",
+      "examples": "`@logical_statement_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L29",
+      "missing_disclosure": "null + missing_reason; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Methods/formalization reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:logical_statement`; 0..n; O",
+      "values_units": "explicit premises"
+    },
+    "catalogue_logic_ids": {
+      "definition": "Connection to field constraints and later proof obligations.",
+      "examples": "L20 / unsupported/unregistered logic identifier",
+      "logic": "L28",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Methods/formalization reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`LogicRefList`; 1..n; R",
+      "values_units": "logic catalogue IDs"
+    },
+    "formal_expression": {
+      "definition": "Formal statement, not an already checked theorem.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L28",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Methods/formalization reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "typed specification notation"
+    },
+    "logic_kind": {
+      "definition": "Definition, invariant, derivation, transition or empirical hypothesis.",
+      "examples": "a member of `logic_kind` / an unregistered code or generic PASS",
+      "logic": "L29",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Methods/formalization reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "logic_kind"
+    }
+  },
+  "record_skeleton": {
+    "assumption_statement_refs": null,
+    "catalogue_logic_ids": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "formal_expression": null,
+    "logic_kind": null,
+    "missing_reasons": {
+      "/assumption_statement_refs": "NOT_COLLECTED",
+      "/catalogue_logic_ids": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/formal_expression": "NOT_COLLECTED",
+      "/logic_kind": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "logical_statement",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "logic_kind",
+    "formal_expression",
+    "catalogue_logic_ids"
+  ],
+  "schema_ref": "logical_statement.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

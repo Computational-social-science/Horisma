@@ -1,0 +1,118 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "dependency_refs": {
+      "definition": "Explicit transitive dependencies; no self/circular derivation.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L04",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Artifact owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:artifact`; 0..n; O",
+      "values_units": "exact versions"
+    },
+    "kind": {
+      "definition": "For example source PDF, OCR, book, model weights or illustration.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L32",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Artifact owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "declared media/purpose"
+    },
+    "public_projection_of_ref": {
+      "definition": "Explicit reviewed public projection; underlying private source does not become public.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L27",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Artifact owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 0..1; O",
+      "values_units": "source projection"
+    },
+    "relative_path": {
+      "definition": "No traversal, credential path or EIDOS scientific state.",
+      "examples": "data/intake/example.pdf / ../Eidos/outputs/private.pdf",
+      "logic": "L27",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Artifact owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`path`; 1; R",
+      "values_units": "Horisma-owned path"
+    },
+    "rights_decision_refs": {
+      "definition": "Per-operation permissions for included components.",
+      "examples": "`@rights_decision_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L18",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Artifact owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`refs:rights_decision`; 0..n; O",
+      "values_units": "exact versions"
+    },
+    "sha256": {
+      "definition": "Digest does not prove source authenticity or science.",
+      "examples": "a 64-character lowercase hex digest of actual bytes / invented digest or model confidence",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Artifact owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`sha256`; 1; R",
+      "values_units": "exact file bytes"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dependency_refs": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "kind": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dependency_refs": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/kind": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/public_projection_of_ref": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/relative_path": "NOT_COLLECTED",
+      "/rights_decision_refs": "NOT_COLLECTED",
+      "/sha256": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "public_projection_of_ref": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "relative_path": null,
+    "rights_decision_refs": null,
+    "sha256": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "artifact",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "kind",
+    "relative_path",
+    "sha256"
+  ],
+  "schema_ref": "artifact.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

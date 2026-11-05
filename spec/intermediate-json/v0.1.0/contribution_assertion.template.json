@@ -1,0 +1,120 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "claim_ref": {
+      "definition": "Atomic proposition whose evidence is assessed.",
+      "examples": "`@atomic_claim_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:atomic_claim`; 1; R",
+      "values_units": "exact version"
+    },
+    "concept_ref": {
+      "definition": "Referent/sense within which the role is asserted.",
+      "examples": "`@concept_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L10",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:concept`; 1; R",
+      "values_units": "exact version"
+    },
+    "contributor_ref": {
+      "definition": "Contributor, distinct from the author reporting the attribution.",
+      "examples": "`@contributor_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:contributor`; 1; R",
+      "values_units": "exact version"
+    },
+    "event_kind": {
+      "definition": "Scheduled presentation is not actual delivery.",
+      "examples": "a member of `historical_event_kind` / an unregistered code or generic PASS",
+      "logic": "L14",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "historical_event_kind"
+    },
+    "event_time": {
+      "definition": "Claimed event date, not file retrieval time.",
+      "examples": "year1964 with YEAR precision / 1964-01-01 asserted as an observed day",
+      "logic": "L12",
+      "missing_disclosure": "null + missing_reason; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`TemporalExtent`; 0..1; O",
+      "values_units": "historical time"
+    },
+    "role": {
+      "definition": "Naming, discovery, evidence and popularization remain distinct.",
+      "examples": "a member of `contribution_role` / an unregistered code or generic PASS",
+      "logic": "L10",
+      "missing_disclosure": "not allowed; PUBLIC_ELIGIBLE",
+      "provenance_derivation_review": "Inherited provenance rule; Domain adjudicator; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "contribution_role"
+    }
+  },
+  "record_skeleton": {
+    "claim_ref": null,
+    "concept_ref": null,
+    "contributor_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "event_kind": null,
+    "event_time": null,
+    "missing_reasons": {
+      "/claim_ref": "NOT_COLLECTED",
+      "/concept_ref": "NOT_COLLECTED",
+      "/contributor_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/event_kind": "NOT_COLLECTED",
+      "/event_time": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/role": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "role": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "contribution_assertion",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "contributor_ref",
+    "concept_ref",
+    "role",
+    "event_kind",
+    "claim_ref"
+  ],
+  "schema_ref": "contribution_assertion.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

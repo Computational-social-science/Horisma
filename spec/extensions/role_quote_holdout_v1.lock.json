@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "freeze_sha256": "9398e9b6fa71e9f88fbcd709f1bdafe071f45daf1ce2a3b5cf14c8d3b6a45ee6",
+  "corpus_sha256": "3fd067d20c08411164fcf710275ae2cbe30640b25fef9b4efca6d93e9638dbbd",
+  "origin_pre_request_recipe_sha256": "1d2dd7d259a4cf7c698c2da116dddf38623a2bb5b183e55942e5c436662fa6e4",
+  "pin_basis": "Original recipe was written before requests. This lock records those retained hashes after first execution; it does not claim to have existed earlier.",
+  "labels_private": true,
+  "repeated_use": "Consumed constructed controls after initial evaluation; never describe replay as a new unseen test."
+}

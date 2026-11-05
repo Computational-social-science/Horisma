@@ -1,0 +1,119 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "CORE_CONTRACT_DEFINED",
+  "field_contracts": {
+    "document_version_ref": {
+      "definition": "Document supplying the passage.",
+      "examples": "`@document_version_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Source/domain reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:document_version`; 1; R",
+      "values_units": "exact version"
+    },
+    "language_tag": {
+      "definition": "Language of the original passage.",
+      "examples": "en / English nationality inferred from a name",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Source/domain reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`language`; 1; R",
+      "values_units": "source language"
+    },
+    "locator": {
+      "definition": "Printed page/PDF index or exact derivative offsets/region.",
+      "examples": "PDF page index0 bound to a source digest / page number without document version",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Source/domain reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`PassageLocator`; 1; R",
+      "values_units": "position in bound artifact"
+    },
+    "original_text": {
+      "definition": "Withhold when rights require; never replace original with translation.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L16",
+      "missing_disclosure": "null + missing_reason; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Source/domain reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 0..1; O",
+      "values_units": "verbatim source text"
+    },
+    "source_file_ref": {
+      "definition": "Local snapshot or admitted extract binding.",
+      "examples": "`@source_file_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L05",
+      "missing_disclosure": "not allowed; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Source/domain reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:source_file`; 1; R",
+      "values_units": "exact bytes"
+    },
+    "transcription_review_ref": {
+      "definition": "Independent wording-fidelity review against original source image/text; preserve raw extraction and corrected versions. Historical assessors reading only the same OCR do not satisfy this check.",
+      "examples": "`@review_decision_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L36",
+      "missing_disclosure": "null + missing_reason; RESTRICTED",
+      "provenance_derivation_review": "Inherited provenance rule; Source/domain reviewer; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:review_decision`; 1 when condition; else 0..1; C:extracted text used as evidence",
+      "values_units": "exact source/derivative/region binding"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "document_version_ref": null,
+    "entity_id": null,
+    "language_tag": null,
+    "locator": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/document_version_ref": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/language_tag": "NOT_COLLECTED",
+      "/locator": "NOT_COLLECTED",
+      "/original_text": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/source_file_ref": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/transcription_review_ref": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "original_text": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "source_file_ref": null,
+    "supersedes_record_id": null,
+    "transcription_review_ref": null,
+    "vocabulary_version": null
+  },
+  "record_type": "passage",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "document_version_ref",
+    "source_file_ref",
+    "locator",
+    "language_tag"
+  ],
+  "schema_ref": "passage.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

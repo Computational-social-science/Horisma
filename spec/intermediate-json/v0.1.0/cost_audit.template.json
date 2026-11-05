@@ -1,0 +1,107 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROPOSED",
+  "field_contracts": {
+    "billable_api_calls": {
+      "definition": "Actual observed charged-API call count.",
+      "examples": "0 when actually observed and allowed / -999 as missing sentinel",
+      "logic": "L25",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`integer`; 1 when condition; else 0..1; C:measurement_status=DEFINED",
+      "values_units": "calls; >=0"
+    },
+    "coverage_artifact_ref": {
+      "definition": "Declared interval, endpoints and instrumentation gaps.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L25",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "network/call audit"
+    },
+    "currency": {
+      "definition": "Currency in the underlying audit; no invented exchange conversion.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L25",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "ISO4217 code"
+    },
+    "measurement_status": {
+      "definition": "Configured zero-cost policy is not an observed value.",
+      "examples": "a member of `metric_status` / an unregistered code or generic PASS",
+      "logic": "L25",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`enum`; 1; R",
+      "values_units": "metric_status"
+    },
+    "spend": {
+      "definition": "API spend only; not total electricity/hardware/labour cost.",
+      "examples": "0.0 when measured / NaN/infinity or unknown encoded as zero",
+      "logic": "L25",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Engineering owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`number`; 1 when condition; else 0..1; C:measurement_status=DEFINED",
+      "values_units": "currency units; >=0"
+    }
+  },
+  "record_skeleton": {
+    "billable_api_calls": null,
+    "coverage_artifact_ref": null,
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "currency": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "measurement_status": null,
+    "missing_reasons": {
+      "/billable_api_calls": "NOT_COLLECTED",
+      "/coverage_artifact_ref": "NOT_COLLECTED",
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/currency": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/measurement_status": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/spend": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "spend": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "cost_audit",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "coverage_artifact_ref",
+    "measurement_status",
+    "currency"
+  ],
+  "schema_ref": "cost_audit.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

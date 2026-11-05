@@ -1,0 +1,20 @@
+{
+  "record_skeleton": {
+    "account_time": null,
+    "citation_refs": null,
+    "event_id": null,
+    "event_kind": null,
+    "event_proposition": null,
+    "event_time": null,
+    "missing_reasons": null,
+    "qualification_ref": null,
+    "related_event_refs": null,
+    "revision_sha256": null,
+    "schema_profile": null,
+    "system_recorded_at": null
+  },
+  "record_type": "event_card",
+  "schema_ref": "event_card.schema.json",
+  "template_only": true,
+  "warning": "Blank structural scaffold, not observed or approved data."
+}

@@ -1,0 +1,97 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROTOCOL_DEPENDENT",
+  "field_contracts": {
+    "frame_manifest_ref": {
+      "definition": "Eligible units and their identifiers; not a list selected only for controversy.",
+      "examples": "`@artifact_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L19",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:artifact`; 1; R",
+      "values_units": "bound manifest"
+    },
+    "inclusion_exclusion_rule": {
+      "definition": "Eligibility and exclusion criteria fixed before evaluation.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L19",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "prespecified rule"
+    },
+    "protocol_ref": {
+      "definition": "Protocol owning the frame.",
+      "examples": "`@project_protocol_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:project_protocol`; 1; R",
+      "values_units": "exact version"
+    },
+    "sampling_procedure": {
+      "definition": "Selection probabilities/strata or explicit nonprobability design.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L13",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "procedure and seed policy"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "frame_manifest_ref": null,
+    "inclusion_exclusion_rule": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/frame_manifest_ref": "NOT_COLLECTED",
+      "/inclusion_exclusion_rule": "NOT_COLLECTED",
+      "/protocol_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/sampling_procedure": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "protocol_ref": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "sampling_procedure": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "sampling_frame",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "protocol_ref",
+    "frame_manifest_ref",
+    "inclusion_exclusion_rule",
+    "sampling_procedure"
+  ],
+  "schema_ref": "sampling_frame.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}

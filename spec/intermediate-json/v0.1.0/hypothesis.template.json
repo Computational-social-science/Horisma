@@ -1,0 +1,96 @@
+{
+  "authority": "docs/data-dictionary/Horisma_Project_Data_Dictionary_EN.md",
+  "definition_stage": "PROTOCOL_DEPENDENT",
+  "field_contracts": {
+    "falsification_condition": {
+      "definition": "Outcome that would challenge the hypothesis.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L29",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "observable test"
+    },
+    "logical_statement_ref": {
+      "definition": "Typed formal representation, if available; not proof of the hypothesis.",
+      "examples": "`@logical_statement_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L29",
+      "missing_disclosure": "null + missing_reason; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:logical_statement`; 0..1; O",
+      "values_units": "exact version"
+    },
+    "protocol_ref": {
+      "definition": "Protocol defining scope and interpretation.",
+      "examples": "`@project_protocol_a` (symbolic exact-version reference) / a name or current filename",
+      "logic": "L03",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`ref:project_protocol`; 1; R",
+      "values_units": "exact version"
+    },
+    "statement": {
+      "definition": "Research hypothesis; never a trusted logical axiom.",
+      "examples": "A scoped source statement / empty string used as unknown",
+      "logic": "L29",
+      "missing_disclosure": "not allowed; INTERNAL",
+      "provenance_derivation_review": "Inherited provenance rule; Research owner; definition+inputs for derivatives",
+      "type_cardinality_obligation": "`text`; 1; R",
+      "values_units": "falsifiable proposition"
+    }
+  },
+  "record_skeleton": {
+    "created_at": null,
+    "created_by_actor_ref": null,
+    "dictionary_version": null,
+    "disclosure_class": null,
+    "entity_id": null,
+    "falsification_condition": null,
+    "logical_statement_ref": null,
+    "missing_reasons": {
+      "/created_at": "NOT_COLLECTED",
+      "/created_by_actor_ref": "NOT_COLLECTED",
+      "/dictionary_version": "NOT_COLLECTED",
+      "/disclosure_class": "NOT_COLLECTED",
+      "/entity_id": "NOT_COLLECTED",
+      "/falsification_condition": "NOT_COLLECTED",
+      "/logical_statement_ref": "NOT_COLLECTED",
+      "/protocol_ref": "NOT_COLLECTED",
+      "/provenance_artifact_refs": "NOT_COLLECTED",
+      "/record_id": "NOT_COLLECTED",
+      "/record_status": "NOT_COLLECTED",
+      "/record_version": "NOT_COLLECTED",
+      "/statement": "NOT_COLLECTED",
+      "/supersedes_record_id": "NOT_COLLECTED",
+      "/vocabulary_version": "NOT_COLLECTED"
+    },
+    "protocol_ref": null,
+    "provenance_artifact_refs": null,
+    "record_id": null,
+    "record_status": null,
+    "record_version": null,
+    "statement": null,
+    "supersedes_record_id": null,
+    "vocabulary_version": null
+  },
+  "record_type": "hypothesis",
+  "required_unresolved_fields": [
+    "entity_id",
+    "record_id",
+    "record_version",
+    "dictionary_version",
+    "vocabulary_version",
+    "record_status",
+    "created_at",
+    "created_by_actor_ref",
+    "disclosure_class",
+    "missing_reasons",
+    "provenance_artifact_refs",
+    "statement",
+    "protocol_ref",
+    "falsification_condition"
+  ],
+  "schema_ref": "hypothesis.schema.json",
+  "template_only": true,
+  "warning": "Not an observation or valid record; fill required fields and verify references before interchange."
+}
