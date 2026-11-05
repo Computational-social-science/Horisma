@@ -113,12 +113,12 @@ def test_monitor_seals_failures_and_counts_fast_completed_jobs(tmp_path,monkeypa
     ('layout',1.,'ABSTAINED_NO_SCOPED_CANDIDATE')])
 def test_regional_routes_never_turn_partial_controls_into_qualification(tmp_path,monkeypatch,dimension,rate,status):
     from horisma_p0 import fidelity_report as module
-    monkeypatch.setattr(module,'load_suite',lambda *_:None)
+    monkeypatch.setattr(module,'load_suite',lambda *_:({'base_slice_path':'base'},{}))
     codes={}
     for field,name in [('normalizer_sha256','fidelity_blocks.py'),('scoring_operator_sha256','fidelity_suite.py'),('entity_operator_sha256','entity_mentions.py')]:
         path=tmp_path/'src/horisma_p0'/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(b'code')
         codes[field]=sha(b'code')
-    report={**codes,'reporter_sha256':sha(Path(module.__file__).read_bytes()),'suite_manifest':'suite',
+    report={**codes,'reporter_sha256':sha(Path(module.__file__).read_bytes()),'suite_manifest':'suite','effective_base_slice_path':'base',
             'backends':{},'dimension_candidates':{key:{'candidate_backends':['docling'],'observed_critical_fraction':{'docling':rate}} for key in ['nested-quotation','citation-and-numbers']},
             'historical_region_observations':[{'source_id':'4','backend':'docling','transcript':'unchanged candidate','scientific_acceptance':False}]}
     raw=encoded(report);path=tmp_path/'outputs/fidelity-comparisons'/sha(raw)/'report.json';path.parent.mkdir(parents=True);path.write_bytes(raw)
@@ -147,7 +147,7 @@ def test_failed_or_partial_producer_cannot_enter_candidate_scores(tmp_path,monke
         files[ident+'.raw.json']=raw
         files[ident+'.row.json']=encoded({'job_id':ident,'input_sha256':jobs[-1]['png_sha256'],'status':status,'elapsed_seconds':1,'raw_output_sha256':sha(raw)})
         requests.append({'job_id':ident,'png_sha256':jobs[-1]['png_sha256']})
-    suite={'jobs':jobs,'labels':labels}
+    suite={'jobs':jobs,'labels':labels,'base_slice_path':'base'}
     protocol={'backends':['paddleocr'],'historical_sources':[],'challenge':'spec/examples/challenge.json'}
     monkeypatch.setattr(module,'load_suite',lambda *_:(suite,protocol))
     for name in ['fidelity_blocks.py','fidelity_suite.py','entity_mentions.py']:

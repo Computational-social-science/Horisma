@@ -29,6 +29,8 @@ Consult older compatibility contracts only for an operation actually needed. Reu
 
 Use research-event-cards for source-grounded event propositions and research-card-export for generated Quarto/Logseq views. One JSON authority owns the card; publication anchors map its stable ID while editions pin revisions. Event/account/system clocks, scheduled session time and individual delivery time remain separate. Editorial backlinks are not evidence. Other card-family adapters remain proposed until implemented and tested.
 
+For this exact naming migration, use research-publication-rebase <old-slice.json>, then research-eidos-check. The migration reconstructs old byte hashes, preserves scientific payloads and frozen suite identity, replays sealed outputs and rebuilds all current projections. It is deliberately not a general bypass for stale evidence. Never edit the frozen protocol/labels or inherit an old acceptance result. After code or evidence changes, revalidate the bridge and current card/book heads; keep scientific refusal when qualifications are absent.
+
 ## Scientific constraints
 
 Preserve source/version/page/region/span. Printed page differs from PDF index (Price printed512 is index3). The1968 file contains adjacent article material; full-document co-occurrence is not passage support.

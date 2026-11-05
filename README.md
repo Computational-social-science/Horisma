@@ -37,3 +37,5 @@ Source versions, rendered regions, native text and OCR comparisons are privately
 EIDOS Agent is reused through an existing pinned installed worker and a project-local adapter. Its actual check currently refuses scientific acceptance because qualification prerequisites are missing. No monitor, cron or unattended deployment is started.
 
 Private PDFs, extraction, model responses and source custody blobs remain out of Git. Technical acceptance, scientific qualification, reader quality and public release are separate. New UI effects and additional book formats are not substitutes for evidence.
+
+The exact publication naming migration is available as `research-publication-rebase <old-slice.json>`, followed by `research-eidos-check`. It preserves frozen evidence inputs, re-scores sealed outputs without inference, and rebuilds current entity/case/card/book dependencies. Operational freshness does not confer historical acceptance or release.

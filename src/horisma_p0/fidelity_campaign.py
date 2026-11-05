@@ -26,7 +26,8 @@ def load_suite(root, manifest_path):
     if sha(protocol_raw) != lock['protocol_sha256'] or sha(read(root, protocol['challenge'])) != lock['challenge_sha256']:
         raise ValueError('FROZEN_DEFINITION_CHANGED')
     if not check_slice(root, root / suite['base_slice_path'])['preview_eligible']:
-        raise ValueError('STALE_SUITE_BASE')
+        from .publication_rebase import effective_suite_base
+        suite['effective_base_slice_path'] = effective_suite_base(root, suite)
     for name, digest in suite['artifacts'].items():
         if Path(name).name != name or sha((manifest_path.parent / name).read_bytes()) != digest:
             raise ValueError('FROZEN_INPUT_CHANGED')

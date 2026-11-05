@@ -23,7 +23,7 @@ def test_base_scientific_success_cannot_bypass_unqualified_names(tmp_path,monkey
     (state/'fidelity-campaign-head.json').write_bytes(encoded({'report':'report.json','sha256':sha(b'{}'),'suite_id':'suite'}))
     (tmp_path/'report.json').write_bytes(b'{}')
     (tmp_path/'suite.json').write_bytes(encoded({'base_slice_path':'base'}))
-    monkeypatch.setattr(adapter,'load_campaign_report',lambda *_:{'suite_manifest':'suite.json','suite_id':'suite','historical_accuracy':None,'scientific_acceptance':False,'release_authorized':False})
+    monkeypatch.setattr(adapter,'load_campaign_report',lambda *_:{'effective_base_slice_path':'base','suite_manifest':'suite.json','suite_id':'suite','historical_accuracy':None,'scientific_acceptance':False,'release_authorized':False})
     monkeypatch.setattr(adapter,'check_slice',lambda *_:{'preview_eligible':True,'scientific_eligible':True,'release_eligible':True,'blockers':[]})
     monkeypatch.setattr(adapter,'check_entity_dataset',lambda *_:{'base_slice_id':base_id,'preview_eligible':current,'scientific_eligible':False,'release_eligible':False})
     assert adapter.main()==4

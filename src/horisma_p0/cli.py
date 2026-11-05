@@ -16,6 +16,8 @@ def main():
     acquire.add_argument('--media', choices=['pdf', 'html'], default='pdf')
     sub.add_parser('index-wikipedia')
     sub.add_parser('validate')
+    rebase=sub.add_parser('research-publication-rebase')
+    rebase.add_argument('base',type=Path)
     build=sub.add_parser('research-build')
     build.add_argument('--ocr-model-dir',type=Path)
     check=sub.add_parser('research-check')
@@ -93,7 +95,10 @@ def main():
     try:
         if args.command.startswith('research-'):
             from .research_slice import build_slice,check_slice,run_ocr
-            if args.command=='research-card-export':
+            if args.command=='research-publication-rebase':
+                from .publication_rebase import rebuild_integrated
+                result=rebuild_integrated(root,args.base)
+            elif args.command=='research-card-export':
                 from .card_publication import export_cards
                 result=export_cards(root,args.cards)
             elif args.command=='research-event-cards':

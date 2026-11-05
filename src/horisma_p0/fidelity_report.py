@@ -136,6 +136,8 @@ def campaign_report(root, manifest_path):
     challenge = json.loads(read(root, protocol['challenge']))
     contexts = context_challenge(challenge)
     report = {'version': '1.0.0', 'suite_id': manifest_path.parent.name, 'suite_manifest': manifest_path.relative_to(root).as_posix(),
+              'effective_base_slice_path': suite.get('effective_base_slice_path', suite['base_slice_path']),
+              'replay_mode': 'SEALED_OUTPUT_RECOMPUTATION', 'model_calls': 0,
               'reporter_sha256': sha(Path(__file__).read_bytes()),
               'normalizer_sha256': sha(read(root, 'src/horisma_p0/fidelity_blocks.py')),
               'scoring_operator_sha256':sha(read(root,'src/horisma_p0/fidelity_suite.py')),
@@ -161,7 +163,9 @@ def load_campaign_report(root, report_path):
     raw = report_path.read_bytes(); report = json.loads(raw)
     if report_path.parent.name != sha(raw):
         raise ValueError('FIDELITY_REPORT_CHANGED')
-    load_suite(root, root / report['suite_manifest'])
+    suite, _ = load_suite(root, root / report['suite_manifest'])
+    if report.get('effective_base_slice_path') != suite.get('effective_base_slice_path', suite['base_slice_path']):
+        raise ValueError('STALE_CAMPAIGN_BASE_BINDING')
     if report['reporter_sha256'] != sha(Path(__file__).read_bytes()):
         raise ValueError('STALE_REPORTER_REPORT')
     if report['entity_operator_sha256'] != sha(read(root,'src/horisma_p0/entity_mentions.py')):
