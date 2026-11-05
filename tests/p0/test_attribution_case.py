@@ -94,3 +94,25 @@ def test_real_file_dependency_changes_invalidate_all_projections(tmp_path):
 def test_empty_or_dangling_comparison_norm_is_not_valid_intake():
     spec = example(); spec['comparisons'][0]['policy_ref'] = ''
     with pytest.raises(ValueError, match='COMPARISON_NORM'): assemble_case(spec)
+
+
+@pytest.mark.parametrize('fault', [None, 'offset', 'hash', 'edition', 'unbound', 'partial', 'boolean'])
+def test_edition_digest_cannot_mask_a_wrong_paragraph_locator(tmp_path, fault):
+    from horisma_p0.attribution_case import validate_argument_bindings
+    text = '# Synthetic\n\nA Unicode term: \u03b1.\n'
+    source = tmp_path/'draft.md'; source.write_bytes(text.encode())
+    lo = text.index('A Unicode'); hi = text.index('\n', lo)
+    argument = {'edition_artifact': 'draft.md', 'edition_sha256': sha(source.read_bytes()),
+                'paragraph_unicode_span': [lo, hi], 'paragraph_sha256': sha(text[lo:hi].encode()),
+                'paragraph_offset_unit': 'UNICODE_CODE_POINTS_IN_EXACT_UTF8_LF_SOURCE'}
+    dependencies = {'draft.md': sha(source.read_bytes())}
+    if fault == 'offset': argument['paragraph_unicode_span'][0] += 1
+    if fault == 'hash': argument['paragraph_sha256'] = 'wrong'
+    if fault == 'edition': argument['edition_sha256'] = 'wrong'
+    if fault == 'unbound': dependencies = {}
+    if fault == 'partial': del argument['paragraph_unicode_span']
+    if fault == 'boolean': argument['paragraph_unicode_span'][0] = True
+    if fault is None:
+        validate_argument_bindings(tmp_path, [argument], dependencies)
+    else:
+        with pytest.raises(ValueError): validate_argument_bindings(tmp_path, [argument], dependencies)

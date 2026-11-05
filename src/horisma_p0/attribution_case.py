@@ -103,6 +103,35 @@ def assemble_case(spec):
             'scientific_eligible': False, 'release_eligible': False}
 
 
+def validate_argument_bindings(root, arguments, dependencies):
+    """An edition-level digest does not establish a correct paragraph locator."""
+    fields = {'edition_artifact', 'edition_sha256', 'paragraph_unicode_span',
+              'paragraph_sha256', 'paragraph_offset_unit'}
+    for argument in arguments:
+        if not fields.intersection(argument):
+            continue
+        if not fields.issubset(argument):
+            raise ValueError('INCOMPLETE_ARGUMENT_BINDING')
+        artifact = argument['edition_artifact']
+        if artifact not in dependencies:
+            raise ValueError('UNBOUND_ARGUMENT_EDITION')
+        raw = read(root, artifact)
+        if sha(raw) != argument['edition_sha256'] or dependencies[artifact] != sha(raw):
+            raise ValueError('STALE_ARGUMENT_EDITION')
+        if argument['paragraph_offset_unit'] != 'UNICODE_CODE_POINTS_IN_EXACT_UTF8_LF_SOURCE':
+            raise ValueError('UNKNOWN_ARGUMENT_OFFSET_UNIT')
+        text = raw.decode('utf-8')
+        if '\r' in text:
+            raise ValueError('ARGUMENT_REQUIRES_LF_SOURCE')
+        span = argument['paragraph_unicode_span']
+        if (not isinstance(span, list) or len(span) != 2
+                or any(type(x) is not int for x in span)
+                or not 0 <= span[0] < span[1] <= len(text)):
+            raise ValueError('INVALID_ARGUMENT_SPAN')
+        if sha(text[span[0]:span[1]].encode()) != argument['paragraph_sha256']:
+            raise ValueError('STALE_ARGUMENT_PARAGRAPH')
+
+
 def build_case(root, intake_path):
     """Rebuild an explicit private intake. File bindings precede graph assembly."""
     root = Path(root).resolve(); intake_path = Path(intake_path).resolve()
@@ -120,6 +149,7 @@ def build_case(root, intake_path):
         for name, digest in document['artifacts'].items():
             dependencies[(Path(relative).parent/name).as_posix()] = digest
     spec = json.loads(encoded(intake['case']))
+    validate_argument_bindings(root, spec['argument_units'], dependencies)
     vocab_path = 'spec/controlled_vocabularies.yaml'; vocab_raw = read(root, vocab_path)
     roles = yaml.safe_load(vocab_raw)['vocabularies']['contribution_role']['codes']
     dependencies[vocab_path] = sha(vocab_raw)

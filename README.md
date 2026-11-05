@@ -1,6 +1,6 @@
 # Horisma
 
-Horisma studies how scientific contribution, attribution and uncertainty survive retelling. Its shared evidence infrastructure supports scientist/contribution data, reproducible model evaluation and the book series **Credit Where Credit Is Due**, beginning with **The Matthew Effect**.
+Horisma studies how scientific contribution, attribution and uncertainty survive retelling. Its shared evidence infrastructure supports scientist/contribution data, reproducible model evaluation and the book series **The Secrets of Terms**. Each volume uses **The Secrets of Terms** as its main title and the target term as its subtitle; the commissioning volume is **The Secrets of Terms: The Matthew Effect**.
 
 Current design:0.2.0 (2026-11-05). This is a clean rebuild. Existing historical assertions remain candidates; no qualified historical gold or accepted book is claimed.
 
@@ -9,11 +9,13 @@ Current design:0.2.0 (2026-11-05). This is a clean rebuild. Existing historical 
 - [Current research proposal](docs/research/Horisma_Terminological_Provenance_Project_Research_Proposal_EN.md)
 - [Implementation and acceptance](docs/research/Horisma_Implementation_Acceptance_Plan_EN.md)
 - [Data dictionary: frozen core and versioned extensions](docs/data-dictionary/README.md)
-- [Evidence and narrative argument](docs/research/book/CHAPTER_ONE_REALIGNMENT_EN.md)
-- [EIDOS reuse](docs/architecture/EIDOS_SKILL_REUSE_EN.md)
+- [Current document authority registry](spec/extensions/document_authority.yaml)
+- [Research-card and publication contract](spec/extensions/research_cards.yaml)
 - [Wiki](wiki/Home.md)
 
 ## Local workflow
+
+Use `research-docs` to discover maintained authorities instead of loading all historical checkpoints. Downstream research reads the Paper2Skill-produced `references/paper.md` selected by the private entrypoint catalogue; PDF/OCR/staging artifacts are supporting provenance. Event cards have one JSON authority and generated MD/Quarto/Logseq views. Domain IDs and edition-pinned revisions are separate from displayed footnote numbers.
 
 Use the project environment, not an arbitrary PATH Python:
 

@@ -1,0 +1,14 @@
+version: 0.1.0
+status: PARTIAL_CANDIDATE_EVENT_CARD_PROFILE_NOT_ADJUDICATION
+grain: One source-grounded proposition about an event; several cards may refer to one historical event and are not independent observations.
+required: [card_id, historical_event_ref, title, event, account_date, participants, object_refs, proposition, evidence_node_refs, support_scope, limitations, links]
+temporal_contract: spec/extensions/temporal_event_input.schema.json
+event_time: Preserve date precision and distinguish schedule, reported occurrence, publication and retrospective acknowledgment.
+account_time: Date of the source making the report; never substituted for event time.
+time_of_day: Optional local time with explicit SESSION_START or INDIVIDUAL_START_REPORTED scope; session time cannot be transferred to a speaker.
+identity: Stable card_id plus content/dependency revision; source changes invalidate dependent cards and editions.
+sources: Exact Paper2Skill MD units, source/version, Unicode spans and locator sidecars. Unplaced or unqualified evidence cannot confer acceptance.
+finding: Null assessment with NOT_ASSESSED until qualified adjudication; missing sources remain explicit.
+display: Reader proposition, support, limitations and source references; engineering receipts stay separate.
+scientific_acceptance: false
+release_authorized: false

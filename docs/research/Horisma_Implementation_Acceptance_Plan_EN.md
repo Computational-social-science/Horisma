@@ -1,217 +1,73 @@
 # Horisma implementation and acceptance plan
 
-Revision0.2.0,2026-11-05. Implements the current [research proposal](Horisma_Terminological_Provenance_Project_Research_Proposal_EN.md). This replaces the former serial sequencing and mandatory human-evidence-review profile. Frozen P0 files remain unchanged.
+Revision0.3.0 —2026-11-05. Workspace: E:/2026-AI4S/Horisma.
 
-## Current delivery unit
+This is the maintained operational plan. The current proposal and dictionary index own scientific scope and definitions. Superseded detail remains in Git at c943ffc4550cabdf8fa85174a2bb13e301800303 and original private receipts. Do not load every dated checkpoint as current instructions.
 
-A private, reproducible research slice connects source/version custody, concepts, people, contribution assertions, passages, review prerequisites, development tasks and chapter projections. Source aliases are compatibility labels; stable work/version IDs identify the evidence. The current integration sample is two people, five assertions and eight tasks. The separate28-candidate P0 ledger is not promoted.
+## Commissioning objective
 
-## Shared commands
+Commission every lane with Matthew Effect first: custody → scientist/contribution data → benchmark → scientific argument and reader-oriented book. A second term belongs to operations-stage portability evaluation. Within-Matthew controls remain necessary. Counts and file integrity do not establish science or reader value.
 
-Use the project virtual environment and explicit Horisma root:
+Local/free, bounded, on demand. No paid fallback, mandatory human evidence adjudication, new cron/dashboard or EIDOS-core refactor. Humans may supply inaccessible sources; delivery does not qualify identity, support or distribution rights. Participant ethics and publication accountability remain separate.
 
-```
-.venv/Scripts/python.exe scripts/horisma_p0.py research-build
-.venv/Scripts/python.exe scripts/horisma_p0.py research-check outputs/research-slices/<digest>
-.venv/Scripts/python.exe scripts/horisma_p0.py research-ocr outputs/research-slices/<digest> --model-dir <existing-local-ocr-model-directory>
-.venv/Scripts/python.exe scripts/horisma_p0.py research-evaluate --candidate gemma3:12b
-.venv/Scripts/python.exe scripts/horisma_p0.py research-route outputs/research-slices/<digest> --screen outputs/model-screens/<run>/report.json
-```
+## Current state
 
-`research-build --ocr-model-dir <directory>` combines deterministic rebuilding and image-derived OCR comparison. `ops/state/research-slice-head.json` identifies the latest built slice; it is an operational pointer, not acceptance. Compatibility region/asset scripts delegate to the shared builder. Earlier development scripts and exporters remain non-release tools.
-
-## A. Integrated identity, schema adapters and invalidation
-
-Source versions and private derivatives are preserved in an immutable content-addressed vault. Person assertions project existing role codes: displayed author→AUTHORSHIP, interview contribution→EMPIRICAL_BASIS; retrospective acknowledgment remains an event. Partial record profiles are declared, not passed off as complete dictionary records.
-
-Coordinate conversion retains PDF points, dimensions and normalized regions. Chapter citations include exact paragraph hashes, evidence-unit references and source-derived passages. Whitespace normalization is explicit and separate from raw extraction. Frozen contracts are not edited to accommodate an adapter.
-
-Acceptance: identical deterministic inputs rebuild the same slice; changes to source, assertion, chapter or relevant implementation invalidate current consumer eligibility. Vault artifacts remain available for historical replay. Stale checks exit nonzero. Atomic writes do not replace prior immutable artifacts.
-
-## B. Historical-document fidelity and custody
-
-Five regions must have an actual image/OCR comparison or a concrete failure. Preserve source, crop, native text, OCR, diff, model hashes and operation context privately. A title-only crop cannot support an opening-paragraph claim; the1968 region now includes title, byline and opening. The1964 preview also includes its printed date. Context selection and OCR correctness remain different checks.
-
-Printed512 of the supplied Price PDF is index3 because of its cover sheet. Preserve correction provenance. Never infer PDF index from printed page subtraction alone.
-
-Acceptance: all five comparisons are present, corruption and stale evidence are rejected, and missing OCR models yield explicit failures. Agreement—including1.0—does not by itself qualify historical text. Sentence splitting is a candidate locator, not automatic atomicity or complete-context acceptance.
-
-## C. Evaluation, failure replay and routing
-
-The three retained StartLux failures are replayed from hash-bound original responses. Literal replay diagnostics are distinguished from general semantic judges. A frozen24-case synthetic corpus has12 development and12 locked-screen cases; its constructed labels are not historical gold and its near-template scope does not establish generalization.
-
-Actual first screen: StartLux10/12 locked cases; Gemma3:12b12/12. Both produced24 structurally valid outputs. Measured generation-call totals were approximately12.8s and31.1s respectively; these exclude model loading and are not end-to-end throughput claims. The original run completed results but exited with a Windows lock-cleanup error, corrected and regression-tested afterward; do not rewrite the original receipt as successful execution.
-
-Routing prefers a passing scoped synthetic candidate before speed. Screen corpus and current model digest are checked; active unrelated workloads are not unloaded. Candidates remain diagnostic-only until actual task qualification. Changes to source packets create a new diagnostic context; completed contexts are reused rather than regenerated silently. No model/publication policy promotes itself.
-
-Acceptance: full request/response/configuration binding, explicit denominator, failures and abstentions. No historical accuracy without qualified labels. Per-case timeout45s, initial load90s, no case retries; maximum baseline plus one candidate per screen. Do not expand to a third model during this slice just to obtain a pass.
-
-## D. Scientific argument and reader value
-
-Series: Credit Where Credit Is Due. Book: The Matthew Effect. Chapter one starts with recognition of comparable contributions and then distinguishes visibility, evaluation, memory and resources. Concept history enters as an example, not the entire chapter.
-
-Merton1968 reward/communication passages and Merton1988 caution about extrapolation have been read locally. Huber's main-text methods, results and limitations were inspected, including institution-level randomization and reviewer-level recommendations. The supplement retrieval timed out; no supplement or data replication is claimed. See the chapter realignment document for the phenomenon/mechanism/evidence/alternative/remaining-observation matrix.
-
-Acceptance: sixteen mapped paragraphs, including an explicit imagined opening, source-reporting passages and separate hypotheses. No new animation, print/EPUB batch or claim of a completed book. Format exporters declare development-only output and use the agreed titles.
-
-## EIDOS reuse and acceptance boundaries
-
-Use the installed, wheel-hash-verified EIDOS Agent0.5.0 worker for project-local checks, immutable run receipts, freshness/status and local feedback. The Horisma adapter calls the shared domain validator using the project interpreter. It must refuse scientific acceptance while region/reviewer/support prerequisites remain unmet. EIDOS metadata and Horisma research state stay project-local; no new dashboard, cron, package upgrade or central enrollment.
-
-EIDOS's generic scientific gate is not automatically a qualified historical-attribution reviewer. Empty domain claims or unresolved prerequisites remain refused. Feedback bundles contain technical descriptions only and are not automatically uploaded or marked fixed.
-
-## End-of-slice acceptance
-
-Report four dimensions independently: engineering integrity; qualified evidence; evaluation validity; reader-value candidate. Public release additionally needs exact-bundle rights/editorial/format evidence. Trusted producer registry is currently empty; positive receipt paths are tested only with synthetic fixtures.
-
-Before a technical milestone: run the relevant unit/integration tests, frozen P0 validation, deterministic rebuild, actual OCR and model report inspection, stale-input rejection and independent code review. Then inspect a strict Git allowlist. Private PDFs, vault blobs, extracted passages, responses and unapproved book prose must not be staged. No scientific-release claim follows from a technical checkpoint. Unattended operation still requires recovery controls and a real24-hour shadow run; behavioural research needs its own protocol/ethics path.
-
-## Parser route extension: anymd and Docling (same slice)
-
-The user-selected mature tools were tested, not accepted from their README claims. anymd8.5.9 was isolated under .rebuild/tools with npm lifecycle scripts disabled; its native binary is pinned by hash. No global MCP setup, hosted parser or paid Pro cite-check was enabled. Existing Docling2.140.0 ran all five selected pages offline with cached layout weights and existing local RapidOCR. Docling2.147.0 was separately installed in an isolated sandbox and passed a one-page CPU smoke test; it did not replace the existing CUDA research environment.
-
-The four older pages are image scans with hidden text. anymd's no-OCR path returned only watermark/terms text and found0/3 target terms on each. Its born-digital news-page output found3/3 target terms. Docling found3/3 retrieval terms on all five pages and provided labels/geometry; this is target coverage, not transcription accuracy. One news item's charspan exceeded its text length and was quarantined rather than clipped into apparent validity. Several merged or over-broad paragraph contexts still require examination.
-
-Use research-parse --backend auto --source-id <1..5> [--ocr-model-dir <existing directory>] for heuristic task routing. The route registry selects offline Docling layout/OCR for scans or mixed pages and pinned anymd native extraction for born-digital pages. research-parsers <slice> builds the private comparison with normalized geometry and preserved outputs. Candidate parser passages remain separate from accepted scientist assertions or benchmark gold.
-
-Docling reported generation/conversion times of roughly6–14s per selected page in the existing runtime, excluding Python import/startup; anymd native conversion was subsecond but omitted the old scanned-page contents. The2.147 CPU smoke took about28s for the1968 page. Different runtime/device modes prevent interpreting that as a version-level speed ranking. This is a five-page purposeful diagnostic sample, not a general parser benchmark.
-
-## Critical layout audit: names, dates, footnotes and continuations
-
-2026-11-05. `research-audit <slice> --model-dir <local weights>` consumes sealed Docling attempts and checks eight declared targets against source-bound native text and regional image OCR. It records critical-name/number differences, empty channels, unfinished quotation/parenthesis context and probable cross-column merges. These are development diagnostics, not transcription or historical acceptance. Name matching currently covers the declared Merton/Zuckerman variants, not general named-entity validation.
-
-The1964 programme's Matthew-effect entry was merged with a different session in a Docling item. Its actual continuation, “scientific communication” and Merton's name, was independently located in the original PDF's next column and region OCR was retained. The1968 first-clause item spanned two columns; a source-column recovery candidate retrieves the complete left-column opening instead. The preview's left-to-next-column relation remains a proposed continuation, not an automatically joined authoritative quotation.
-
-In the1988 footnote, native hidden text contains Harniet and a damaged19731 token while Docling/image OCR produce Harriet and1973. No spelling/year is silently replaced. The repeated image OCR shares RapidOCR weights with Docling and does not constitute independent model or independent historical corroboration.
-
-For tiny crops with empty OCR, one8-point context expansion is permitted, clamped to actual PDF dimensions; both attempts are retained. Missing text channels are not labelled contradictions. Float differences between Docling page dimensions and the actual PDF boundary are handled at the crop boundary rather than accepting out-of-page coordinates.
-
-Diagnostics project to the five current assertion revisions and eight task revisions; missing source diagnostics remain explicit. No scientist field, historical gold or score is promoted. Next: evaluate the recovered column fragments as new context packets, include negative/context controls, and qualify image/text fidelity before any source-support acceptance. No new model call, paid service, human evidence-review queue or GitHub push is part of this audit.
-
-## Transcription correction and overcorrection gate
-
-2026-11-05. The PDF lane now has a separate correction-proposal primitive and a protected-edit gate, governed by spec/extensions/transcription_correction.yaml. Raw source, native extraction and original OCR stay unchanged. Three views are explicit: diplomatic transcription, tracked typography normalization and separately labelled editorial prose. Grammar correction is forbidden in diplomatic and normalized views. Editorial derivatives are never eligible as verbatim quotations.
-
-Edits bind exact input hashes and unique source substrings resolved to Unicode offsets. Stale, overlapping or ambiguous proposals are quarantined. The gate checks identities, number/sign/comparison expressions, negation including contractions, modality, contribution roles, quantifiers, citations and quotation marks, plus a bounded rewrite fraction. These are conservative heuristics, not a proof of semantic equivalence. Critical edits cannot self-authorize from a model's rationale; OCR repairs remain blocked pending qualified image and semantic evidence. No correction grants historical acceptance.
-
-The existing local Gemma3:12b vision backend was screened on four synthetic image controls before real-region use. It preserved three but changed deliberately printed limitted to limited, failing literal-preservation screening. Real PDF visual-transcription requests were therefore abstained; no qualification was granted. This demonstrates why fluent OCR-like output is not faithful transcription. Image/prompt/model identity and responses are preserved privately.
-
-StartLux remains first for bounded correction proposals. Its real footnote proposal contained a nonexistent exact anchor, attempted19731→1973, and attempted to change the original wording This is occasion to This is an occasion. The whole invalid proposal was quarantined. Per-edit deterministic replay separately exposes the invalid anchor, protected numeric edit and forbidden grammar-in-quotation edit. A line-break proposal remains image-review dependent. The source text was not changed.
-
-Unambiguous synthetic editorial positive controls were also run locally: These results is preliminary→These results are preliminary and The estimate is limitted→The estimate is limited. Both produced EDITORIAL_DERIVATIVE_ONLY, never a verified source transcription. The initial data is example was not treated as universally erroneous; it was replaced as a positive control by the unambiguous plural-results case.
-
-Use research-correct <slice> --audit <sealed-layout-report> for bounded screening/proposals, or --replay <retained-report> to apply the current gate to preserved model responses with zero new model calls. Missing audit input produces abstention rather than mandatory human review or a missing-field crash. The four-control screen is only a stop/go development check, not general OCR qualification. The next bottleneck is an independently task-qualified visual backend and per-edit image evidence; do not loosen preservation rules to obtain more corrections.
-
-## Expanded literal screen and PaddleOCR candidate
-
-The frozen twelve-case corpus in spec/examples/visual_literal_challenge.json covers printed spelling/grammar errors, corrupted names/year brackets, negation, modality/roles, signed numbers, comparison operators, event/date scope, an open quotation, a footnote marker and a continuation fragment. These are clean single-font synthetic stop/go controls, not degraded historical-page gold. Freeze a new version for new challenges rather than silently tuning this corpus.
-
-The existing Qwen tag qwen3.8:27b reported qwen35 family,27.3B Q4_K_M, but the bounded run timed out before any control response: zero attempted, twelve unrun, no accuracy score or historical input. Subsequent operator revisions record the failed phase and cleanup outcome explicitly; they do not rewrite the original run. No paid fallback or repeat with a larger budget was used.
-
-PaddleOCR3.7.0 and PaddlePaddle3.3.1/PaddleX3.7.2 were installed into a separate Python3.12 CPU environment. The existing project CUDA runtime was untouched. Official English v5 recognition and mobile detection models were downloaded at pinned repository commits, with file hashes and a local environment lock. This selects a different recognizer from existing RapidOCR v6 weights, while retaining their shared PaddleOCR lineage limitation. During inference, local model paths are explicit and Python socket.connect attempts are blocked; this is a process-level Python control, not an OS network-isolation claim.
-
-Use research-parse --backend paddleocr --source-id 4. This explicit lane runs the same twelve controls and only then a preserved source/version-bound regional image. It does not change automatic routes. First screening passed12/12; the extended run repeated12/12 and read the1988 footnote. It preserved This is occasion and produced Harriet/[1973], but concatenated the citation page range159-175 into159175. Whitespace-folded native/OCR agreement was about0.997; the critical discrepancy still blocks fidelity qualification. Neither unqualified channel is treated as ground truth. No original extraction, assertion, task label or chapter quotation was automatically replaced.
-
-The parent passes an exact slice path/digest; the child cannot follow a moved head. A150-second process budget retains stdout/stderr and removes only its own terminated-process lease on timeout. Reports bind corpus/font/model/producer hashes; deterministic sealed-output diagnostics compare protected signatures and reference current scientist/contribution/task projections. Historical and publication eligibility remain false. Tests cover head movement, source corruption, malformed corpus identity, model unavailability, first-control stop and foreign-lease preservation.
-
-Next acceptance target: freeze citation-range/bracket/quotation and degraded-print controls, then evaluate PP-StructureV3 on the known1964/1968 column failures. PaddleOCR-VL is a separate optional regional candidate, not yet installed or executed as a model. Official references: [repository](https://github.com/PaddlePaddle/PaddleOCR), [installation](https://www.paddleocr.ai/latest/en/version3.x/installation.html), [PP-StructureV3](https://www.paddleocr.ai/latest/en/version3.x/pipeline_usage/PP-StructureV3.html), [PaddleOCR-VL](https://www.paddleocr.ai/latest/en/version3.x/pipeline_usage/PaddleOCR-VL.html). No general OCR ranking or scientific acceptance is inferred from this one-region trial.
-
-### Complementary channels and local variant records
-
-No single toolkit is required or assumed to solve every part. Separate custody, layout/reading order, glyph transcription, critical-field preservation and semantic support. Tool eligibility is scoped to its measured task and evidence unit. Failure in one span does not erase other candidates, while no unqualified span becomes a quotation through another tool's fluent completion.
-
-The shared research-crosscheck command reuses four preserved channels with zero inference calls. The current1988 adapter probes contributor name, bracketed year, citation volume/page range, printed grammar and joint-authorship modality. Its reusable variant-ledger primitive retains exact per-channel offsets, all matches, missing/ambiguous status and literal differences. It records differing crop boundaries and shared model lineage. RapidOCR and Docling are correlated channels; v5/v6 are related recognizers; multiple outputs are not multiple independent historical sources.
-
-The actual record exposes three literal disagreements: contributor spelling, damaged year bracket and citation-range punctuation. Printed grammar and joint-authorship wording match within the declared probes but remain unqualified. A regex nonmatch means not located by that probe, not absent from the source. No majority vote, merged text, accepted witness or automatic correction is produced. Critical unresolved spans become bounded next-crop/recognizer targets; support and attribution review still require qualified evidence credentials. This is complementary observation, not automatic truth synthesis.
-
-Scientist-name infrastructure now has a source-bound person/name-form/mention development adapter governed by person_names.yaml0.2.0. It covers reported full/initialled/alias/multilingual forms, explicit given/family components and context-bound short mentions, with source validity gaps. The two scientists remain partial candidates, not a complete authority database; the earlier five regex probes are separate diagnostics. No preferred spelling automatically corrects source text or establishes contribution credit.
-
-## Scientist identity, terminology and coreference increment
-
-The project-local shared entry points are research-entity-sources, research-entities-build, research-entities-check and research-entities-evaluate. A bounded, free public-metadata acquisition captured the Wikipedia-to-Wikidata bindings for the two people and Matthew-effect concept plus referenced name components/country. Direct TLS access timed out; the host's existing proxy configuration succeeded. No private PDF/text was transmitted. Captured revisions/bytes support offline rebuilding; cache reuse rechecks binding bytes, mapping, primary catalogue and index keys.
-
-Authority labels/aliases are reports about forms, not qualified historical identity. Exact scalar offsets and JSON Pointers bind each observation. Given/family components retain both explicit person-to-component properties and component-label sources; token order is not guessed. A source alias can contain initials; observable shape is recorded without expanding it. Name language coverage reports snapshot availability, not global completeness. Accumulated/cumulative advantage remains a related mechanism rather than automatic term alias. Concept sense remains unassessed after a lexical match.
-
-The private pilot contains two source-reported scientist profiles and one concept. Source attributes preserve upstream statement IDs, ranks, values, references and temporal qualifiers. Citizenship, nationality, birthplace and sex-or-gender constructs remain distinct. Local flag-icons7.5.0 under Country-flags supplies hashed SVG/license associations via source-reported ISO codes; historical appropriateness and display eligibility remain unresolved. Portraits are not generated or inferred. The data dictionary now specifies these fields and the implemented partial-adapter boundary.
-
-Mentions bind untouched source/channel text and exact offsets. Family/given short forms need scoped full-form context. Same-name candidates remain ambiguous. Harniet is retained as an OCR/unlisted-name hypothesis, not added to aliases. Stable occurrence IDs are separate from decision revisions. Coreference is a conservative English candidate layer: ambiguous/unresolved prior people remain possible antecedents, unregistered capitalized spans block false uniqueness, and first person requires a bound speaker. An outer author does not automatically own quoted I/we. Paragraph/quotation boundaries are preserved. No text is substituted and no QUALIFIED_LINK is emitted.
-
-Native and preserved crosscheck channels feed typed candidate mention/coreference edges and exact revisions of the existing eight development tasks. Correlated channels remain distinct observations of the same source, not independent historical samples. Historical gold/accuracy stay null. The frozen thirty-case synthetic challenge covers full/alias/initialled/short/multilingual forms, homonyms, OCR corruption, source scope and coreference. Passing it is rule regression evidence, not LLM capability, historical accuracy or generalized NER recall.
-
-### Critical pipeline audit and ordered improvements
-
-| Failure mode | Implemented constraint / observation | Next measurable acceptance |
+| Lane | Implemented and exercised | Boundary |
 |---|---|---|
-| Wrong crop, double-column fusion, missing footnote | Source/page/region and geometry retained; known column defects remain candidates. | Same-page reading-order/continuation challenge before parser promotion. |
-| OCR fluency or high agreement hides a critical error | Native/Paddle/Rapid/Docling raw variants retained; citation separator loss remains unresolved. | Frozen degraded-print, range/bracket/name/negation controls and image-bound per-span checks. |
-| Missing extraction interpreted as absence | Missing/ambiguous probes and unknown fields stay explicit. | Report coverage against a declared, qualified observation frame; no blanket absence claims. |
-| Cached authority records or Wikipedia binding swapped | Byte hashes, QID index keys and catalogue mappings revalidated offline. | Corruption and swapped-binding tests must reject without network fallback. |
-| Short-form narrowing leaves another person's form ref | Candidate forms filtered to retained entities; original lexical matches preserved separately. | Mention→form→entity join checks and same-surname counterexamples. |
-| Ambiguous/abstained names dropped from antecedents | All potential prior person candidates retained; unknown capitalized spans block uniqueness. | Blind ambiguous/unknown-entity contexts; no complete NER/coreference claim from current rules. |
-| Quoted speech assigned to the outer author | Speaker evidence and quotation ownership separated; common quotes/paragraphs constrain scope. | Nested/fragmented/historical and non-English quotation tests; currently incomplete. |
-| Related mechanism or translated name becomes a synonym/identity | Candidate term relations and form provenance remain separate from sense/identity. | Comparative sense/context cases and additional language sources before equivalence qualification. |
-| Correlated outputs become majority truth | No merged quote, vote or automatic acceptance; coupling and regional scope retained. | Task-qualified regional fidelity and heterogeneous semantic review, still missing. |
-| Biography or current flag is projected across a whole life | Source qualifiers/precision preserved; historical flag appropriateness unestablished. | Temporal biography/territory mapping tests, without guessing unknown years or nationality. |
+| Custody | Private hash vault, work/file identities, exact locators | Hashes do not establish authenticity or rights |
+| Document access | Native Markdown with position maps; local full-PDF OCR on8+18 pages | No general reading-order, glyph or semantic qualification |
+| Evidence variants | Raw outputs, fixed controls, quote/bracket diagnostics, unplaced items | No authoritative merged quote; nested-quote qualification absent |
+| Scientist/contribution | Two-person sourced identity/name/biography sample and role anchors | Not a complete authority dataset; identity/sense/flags unqualified |
+| Comparison/tasks | Candidate graph and shared development-task/book revisions | No historical gold, full adjudicator or causal finding |
+| Paper2Agent | Pinned Paper2Skill wraps traceable Markdown without PDF reparse | Draft/unreviewed; retrieval preservation is not evidence acceptance |
+| Book | Series/main title The Secrets of Terms; subtitle The Matthew Effect; private argument/method drafts | Evidence, rights, substantive editing and formats still required |
+| EIDOS | Installed0.5.0 worker checks dependencies and missing prerequisites | Generic statistical gates do not qualify history or prove RSI |
 
-Core obligations: every textual occurrence round-trips its offsets; same spelling does not entail identity; alias observation does not entail concept equivalence; coreference candidates never rewrite evidence; source/code changes invalidate dependent profiles/tasks; accepted identity/transcription remains false until the qualified lane supplies scoped evidence. Tests exercise these invariants; no formal proof is claimed.
+Publication naming revision: series_title and book_title are The Secrets of Terms; subtitle is The Matthew Effect. Current card HTML/EPUB metadata and editorial anchors are rebuilt without new inference. Earlier immutable research/campaign snapshots retain their original metadata. Their base dependency check now reports STALE_SUITE_BASE after the chapter/config/gate revision; do not call the old EIDOS receipt current or silently rewrite the frozen screen. A separate deterministic revision/ancestry rebase is needed before claiming a fresh integrated receipt; historical qualification and release remain refused.
 
-Parser expansion is task-driven. The frozen local campaign below now includes installed MinerU4.1.7 Basic ONNX, Docling2.140.0 and PaddleOCR3.7.0/PPStructureV3. It supersedes the earlier documentation-only MinerU status. Marker remains explicitly excluded; no hosted parsing or paid API is introduced.
+## Shared execution
 
+Use the project interpreter and scripts/horisma_p0.py. See research-docs for authority paths.
 
-## Frozen regional fidelity campaign — 2026-11-05
+1. research-document-ingest registers additional supplied PDFs without changing frozen P0. Filename dates and scanner metadata are not historical dates. Work identity may remain provisional.
+2. research-document-build caches native text and exact page/block/Unicode positions. Rotated pages retain unrotated-coordinate/display transforms; original bytes are not edited.
+3. research-document-ocr uses local Docling2.140.0, pinned Heron/RapidOCR assets and requested RTX4070 layout. Image dominance plus hidden text detects scans despite an OCR layer. Pilot limits:26 pages/document, SDK90s, process180s, one owner, no retries.
+4. Inference recipes bind source/worker/adapter/models/version/seed. Sealed raw output survives serializer changes; Markdown rebuilding does not rerun OCR. Foreign leases and failed attempts remain explicit.
+5. Preserve furniture and literal text. Reject invalid dimensions; quarantine broken spans/geometry. A broken item stays searchable once as an unplaced whole item, without fabricated passage bounds. Tables/pictures remain in raw structure/PDF; a text view does not certify them.
+6. research-paper-package invokes pinned Paper2Skill offline on the reading and locator note. No PDF reparse or per-paper MCP. Packages are drafts; strict unreviewed status stays nonzero. Check all localized/unplaced text units for exact retrieval. Seal package manifests and verify recipe/inventory on reuse.
+7. research-case-build / research-case-check bind literal spans, controlled roles and source/map/code/book dependencies. Contributions, tasks and book notes share revisions. Gold/accuracy are undefined without qualified labels.
+8. research-entities-* maintains sourced forms and candidate identities; normal authority reuse is offline. validate checks frozen intake only. research-eidos-check separates execution health from scientific/release eligibility.
 
-The v1 protocol and lock in `spec/extensions/fidelity_campaign_v1.*` froze six constructed panels in clean/degraded variants, eight separate direct-text contextual cases, and five historical pages plus the same five fixed regions. All three backends received exactly the same22 PNG bytes, without hidden OCR or expected labels. The suite hash is `c75ef7750129d142dc1e82efcc832d36514c00a48ef1bbf00f0d0bced9cecd56`. Do not change this development screen to improve observed scores; new questions need a separately versioned screen.
+The1968 file includes adjacent-work content on a shared journal page. Full-file co-occurrence does not establish that a passage belongs to Merton's article. Retrieve scoped units and context.
 
-Shared entry points: `research-fidelity-freeze`, `research-fidelity-run <manifest> --backend <name>`, `research-fidelity-report <manifest>`, `research-fidelity-route <report> --source-id <id> --dimension <name>`. The report and cached route replay sealed outputs without more inference. One owned process uses initialization180s/job90s/backend600s limits, no retries and no concurrent model workload. Empty, malformed or incomplete progress, timeout and missing transcripts remain failures/missingness. Snapshots preserve worker/normalizer/operator source, exact model manifest, raw structure, requests and process logs.
+## Matthew inference rules
 
-| Backend and actual local mode | Completed inputs | Strict full-transcript matches / constructed images | Observed wall time, including initialization |
-|---|---:|---:|---:|
-| Docling2.140.0, pinned Heron layout and full-image RapidOCR |22/22|8/12|67.3s|
-| PaddleOCR3.7.0, OCR regions and PPStructureV3 pages |22/22|4/12|204.5s|
-| MinerU4.1.7, Basic local ONNX CPU, no VLM |22/22|2/12|45.1s|
+-1964 printed usage and programme scheduling do not establish delivery or first coinage.1968 byline, interview material and later authorship entitlement are different roles.
+-1968's author note reports a paper read before ASA in San Francisco in August1967. The new31-page programme lists Merton's long title in Sociology of Science, Session94, under its own3:30 p.m./Rosewood heading. Bind date-section inheritance. A session start is not the fourth listed speaker's actual start time.
+-1988 quotes an acknowledgment associated with1973. Its bibliography/year/chapter locators are separate. The1973 original remains unavailable; archive PDF/text are restricted. A later quoted report is not direct inspection of that edition.
+-Joint authorship does not establish joint naming. Correct byline reporting does not automatically deny material contribution. Role/object/sense/time comparability, context and a versioned norm precede discrepancy assessment.
+-Attribution compression remains proposed. One case, repeated accounts or a model error establish neither intent, mechanism nor prevalence. Define sampling, outcomes, denominators, alternatives and identification before empirical claims.
 
-These are development failure diagnostics, not blind accuracy estimates, model rankings or historical gold. Formatting/math representation contributes to literal differences; critical-item counts are reported separately. All three failed to preserve every nested-quotation critical item across both constructed variants. That route therefore returns `ABSTAINED_CRITICAL_DIMENSION_UNRESOLVED`. Names/numbers can nominate scoped candidate channels while remaining historically unqualified. All five historical regions have three preserved text variants; historical accuracy is undefined. Strict whole-page block containment is a location diagnostic: a boundary-crossing block cannot be clipped into trusted text, and an empty contained projection is not a parser-accuracy score.
+## Measured limits
 
-Important measured constraints: PPStructure's default Markdown furniture filtering was explicitly disabled to retain footnotes/page numbers;1988 citation-range loss remains in the Paddle region candidate. Related v6 recognition weights make Docling/MinerU coupled, and all three have PaddleOCR ancestry. Tool count is not independent source confirmation. Eight/eight pristine contextual-rule cases passed, but this does not qualify OCR-to-coreference, source fidelity or semantic review. No merged quotation, automatic correction, scientific acceptance or book release follows.
+Frozen same-input campaign:22 images/backend; Docling8/12, PaddleOCR4/12 and MinerU2/12 strict constructed-image matches. Formatting contributes; these are development diagnostics, not historical accuracy/rankings. Nested-quote critical preservation was incomplete throughout. Recognition channels share PaddleOCR ancestry. Marker remains excluded.
 
-Runtime/assets are isolated and pinned locally; MinerU's base model inventory is about858MB, with the three-backend prepared inventory below the protocol1.5GiB model-download limit. Inventory hashes are archived inside attempts. Inference blocks Python socket connections, disables telemetry and uses cached assets. Installation/model acquisition used public downloads; no per-call API was required. MinerU's official licence includes additional commercial/service conditions; it is not described as unmodified Apache2. Future distribution needs its own licence review. These runs do not establish unattended24/7 readiness.
+Pinned Paper2Agent default PDF drafts missed critical text on hidden-text scans. The adapted Paper2Skill route packages supplied readings. Its Windows patch and original evaluation are in spec/extensions/paper2skill_evaluation.yaml. No reviewed flags or historical acceptance are manufactured.
 
-## Reusable attribution-event and book-methodology design
+## Document and storage hygiene
 
-Use the [dictionary extension](../data-dictionary/Horisma_Attribution_Event_and_Mechanism_Extension_EN.md) and `spec/extensions/attribution_event_template.yaml`0.1.0. The frozen core already separates contribution, attribution and discrepancy; the proposed extension supplies explicit case-level joins, contemporary knowledge availability, dependent-source transmission, mechanism identification and exact-edition argument mappings. Progenitor/beneficiary are role/object/time-scoped positions, not permanent victim/offender identities. Accurate byline reporting, contribution omission, actual benefit and intentional misconduct are different claims.
+research-docs returns the small current-authority registry. Read historical checkpoints only for a specific dated dependency/failure. Maintain one current plan; Git retains prior versions instead of another reflection document each turn.
 
-This is a scientific design with eight synthetic counterexamples and ten UNPROVEN logical obligations, not an executed historical adjudicator. Current commissioning requires concrete version-bound Matthew anchors/comparisons, dependency invalidation and within-case accurate-byline/role-noncomparability controls. A second terminology case is deferred to operations-stage portability evaluation after the Matthew workflow, not a current work package. Mechanism hypotheses require distinct predictions, alternatives and an identification protocol. Do not infer prestige effects, population prevalence or intent from one reconstructed case.
+The downstream entrypoint is Paper2Skill's final references/paper.md, not a competing hand-maintained Markdown. Its sidecar spans address exact UTF8/LF text. Raw OCR and staging views remain background provenance. Source edits invalidate the selected version; no silent reuse of a superseded PDF.
 
-The series *Credit Where Credit Is Due* and volume *The Matthew Effect* should explain the method through reader questions, a contribution track, an observed-credit track and inspectable evidence notes. Proposed methods may be explained before all history is resolved, with their status stated. Narrative, optional evidence notes and a methods appendix share one edition snapshot across Web/print/EPUB. The local original methods draft remains private and unapproved; technical implementation is not book/publication acceptance.
+research-event-cards builds candidate JSON/MD from the same case. research-card-export generates Quarto and Logseq views with stable ID mappings, edition revisions, footnotes and backlinks. The implemented event profile and proposed family adapters are declared separately. Native Quarto section labels require the sec prefix; Logseq file-graph block references use UUIDs. Do not confuse these editorial references with evidence support, original bibliography or scientific release. Actual HTML/EPUB link checks are development-format tests, not book acceptance.
 
+research-maintenance previews cleanup; --apply removes only proven duplicate caches: exact committed exports or byte-identical raw runs already preserved in independent sealed attempts. Keep current pointers and declared/active inputs. Reject changed trees, unique files, symlinks/junctions and proofs linking back into deletion targets. Do not prune originals, vault data, frozen contracts, sealed attempts, unique responses, models or legacy backups by age/glob.
 
-### Scope correction: Matthew-first commissioning
+## Acceptance and next dependencies
 
-User direction,2026-11-05: keep Matthew Effect as the sole commissioning case until all project lanes have been exercised. Prioritize source/version custody and1968/1988/reported1973 dependencies, then faithful quotation scope, role comparisons, scientist/contribution projections, benchmark tasks, scientific argument and publication gates from the same records. Synthetic tests and negative controls may be used within Matthew; they do not add another historical case. A second term belongs to operational portability testing after commissioning. This sequence does not waive any evidence or publication requirement and does not imply cross-case generalization.
+Test routing, exact-unit retrieval, quarantine/no-duplication, cache/source binding, timeout/foreign leases, stale projections, draft/science/release separation and cleanup boundaries. Deterministic representation rebuilding is distinct from repeatable model output.
 
+Next: qualify scoped image/text and semantic review on fixed controls, then reassess1967/1968/1988/reported1973 with source-bound events.1973 remains a source dependency. Develop recognition/cumulative-advantage arguments and alternatives from the same evidence. No new animation or bulk book export before substantive acceptance.
 
-## Continuous document readings and Paper2Agent evaluation — 2026-11-05
-
-The primary working representation should be a source-version-bound continuous Markdown document with a positioned unit map. Repeatedly sending different crops to downstream reasoning was an architectural gap: crop-local findings became competing working contexts. Retain the original PDF once; build/cache its reading representation; retrieve exact units for tasks; return to rendered pages/regions only for unresolved layout, glyph or quotation issues. A document revision is not a new historical source. Reading convenience, transcription qualification and support assessment remain distinct.
-
-`research-document-build --source-id <id>` currently provides a **native-text baseline**, not a completed OCR solution. It preserves every PyMuPDF text block unchanged, records every PDF page including empty-text pages, original coordinates, stable unit IDs and Unicode-code-point spans in the exact Markdown. It retains hidden OCR corruption and native reading-order limitations. Source/work/version/tool/code form the recipe; manifests and artifacts are content-addressed. Cached reuse does not reparse for unrelated research-slice revisions. Unknown sources, swapped valid cache pointers and modified manifests/artifacts are rejected. This baseline is for retrieval/dependency integration; another qualified parser may supersede it with an explicit version. No accepted full-document transcription is claimed.
-
-Official [Paper2Agent](https://github.com/jmiao24/Paper2Agent) was evaluated at commit8c2d059165ef8cdcb70dbea76655b9c2b55b38e6 in an isolated local checkout. Its [Paper2Skill branch](https://github.com/jmiao24/Paper2Agent/blob/8c2d059165ef8cdcb70dbea76655b9c2b55b38e6/skills/paper2agent/paper2skill/SKILL.md) packages paper content into continuous Markdown/navigation/assets; Paper2MCP wraps existing research code. Paper2Skill already supports source-hash-bound review reuse and keeps review evidence separate from the portable reading package. The latter is a useful design, not an alternative to fixing the underlying document extraction.
-
-Actual evaluation: prepare → extract(auto) → build(draft) → strict verification on the1968 and1988 PDFs,8+18 pages. Both runs selected native extraction throughout; the auto route did not replace their hidden text layers. On each draft, three posthoc exact retrieval probes present in the retained native document were absent from the reading Markdown, including the required opening-contribution and acknowledgment contexts. These are targeted retrieval diagnostics, not historical gold or a general toolkit benchmark. A whole-page image can be present while the needed text is not searchable. File/link integrity passed, but both packages remained unreviewed and strict verification exited nonzero. No reviewed flags were set, no historical conclusions accepted, and no model/API call was needed.
-
-One actual Windows portability failure was contained: four serialized relative paths in upstream reading_package.py used OS-specific backslashes while its inventory validator expected POSIX separators. A recorded local four-expression as_posix compatibility patch permitted draft builds. The pinned source and patch hashes remain in the private evaluation receipt; the checkout is not globally installed or registered as MCP. The isolated script runtime also needed fontTools to avoid its reported font-encoding limitation. No upstream issue/message was posted.
-
-Decision: evaluate Paper2Skill as the **reading/skill packaging layer above a complete, traceable document representation**; do not promote its current default PDF extraction as the historical evidence authority. No per-paper MCP service is needed merely to read text. Paper2MCP becomes relevant when there is independently useful executable research code. A proposed Horisma document skill should retrieve exact unit IDs with context and uncertainty, preserve quotation ownership and reject stale source versions. It must not summarize away evidence, invent missing1973 content or launder OCR into accepted facts. Full-PDF OCR adaptation and qualified automated page review remain unimplemented dependencies.
-
-## Instantiated Matthew contribution/credit slice
-
-`research-case-build <private-intake.json>` and `research-case-check <case.json>` are now shared entry points. The current private slice has17 typed nodes,5 conditional role comparisons,5 DEVELOPMENT_ONLY benchmark tasks and2 book-method argument units from the same dependency revisions. These are integration records, not accepted historical findings or a completed general adjudicator. Controlled roles come from the frozen vocabulary; a missing or wrong-role anchor is rejected. Source/report nodes, versioned passages, contributor anchors and credit anchors remain distinct.
-
-The1968 byline and interview-material statement,1988 retrospective quoted acknowledgment and reported1973 reprint are separate records. The1988 bibliography and its year/chapter continuation are also separately located. The1973 Internet Archive catalogue identifies an edition but marks its PDF and text private. Its missing-source node records WAITING_HUMAN_SOURCE for lawful source provision only; no human evidence adjudication is required. A later source reporting an earlier statement does not amount to direct inspection of that earlier edition.
-
-Within-Matthew controls compare accurate byline reporting, empirical contribution coverage and noncomparable roles. Retrospective authorship entitlement is not a corrected original byline and cannot establish joint naming. Missing1973 dependencies block claims requiring the earlier original; observing what1988 reports has a separate scope. Assessments remain NOT_ASSESSED rather than automatically INSUFFICIENT_EVIDENCE. Mechanism, intent and population prevalence remain unestablished.
-
-Quotation annotations retain unchanged offsets, nesting, unresolved speakers and bracket anomalies. The observed damaged bracketed year is flagged; syntactically balanced OCR with a lost outer quotation remains possible and is tested. These checks do not qualify image-to-text fidelity or solve every same-delimiter/possessive convention. New code cannot erase the frozen campaign's failed nested-quotation result. No new OCR/model run was made merely to improve that score.
-
-Next commissioning remains Matthew-only: complete the full-document parser/reading adapter and task-qualified automated fidelity/semantic review, resolve the original1973 source dependency when available, and use the same accepted revisions across scientist/contribution data, benchmark and reader narrative. A second terminology case stays in the later operations-stage portability programme. Book export and scientific release remain separately gated.
+At a technical milestone run appropriate/full tests, frozen P0/SKILL checks, installed-worker checks and a clean minimal export. Review and synchronize one explicit Git allowlist. Private PDF/text/maps, responses, candidate data, provider checkouts and unapproved prose stay local. No24/7 readiness, general fidelity, formal proof or publication claim follows.

@@ -8,3 +8,6 @@ The current definition entry combines the immutable core and explicit versioned 
 - [Attribution events, mechanisms and book arguments0.1.1](Horisma_Attribution_Event_and_Mechanism_Extension_EN.md): proposed role-scoped contribution/credit anchors, provenance closure and causal-inference boundaries, with a [machine template](../../spec/extensions/attribution_event_template.yaml). This is a design extension, not an implemented historical adjudicator.
 
 Candidate adapter conformance, source fidelity, identity qualification, semantic support and publication eligibility remain separate. An extension does not retroactively rewrite frozen evidence or create historical gold.
+
+- [Event-card profile](../../spec/extensions/event_cards.yaml): implemented candidate event propositions, separate event/account clocks, source dependencies and scoped session times.
+- [Shared research-card design](../../spec/extensions/research_cards.yaml): JSON authority, stable identities/revisions and generated Quarto/Logseq publication mappings. Other card-family adapters remain proposed.

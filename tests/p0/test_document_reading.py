@@ -21,8 +21,10 @@ def test_complete_pages_exact_offsets_and_errors_are_preserved():
 def test_native_document_cache_survives_unrelated_base_revision_and_rejects_tamper(tmp_path, monkeypatch):
     import pymupdf
     from horisma_p0 import document_reading as module
-    monkeypatch.setattr(module, 'check_slice', lambda *_: {'preview_eligible': True})
+    from horisma_p0 import source_registry
+    monkeypatch.setattr(source_registry, 'check_slice', lambda *_: {'preview_eligible': True})
     doc = pymupdf.open(); page = doc.new_page(); page.insert_text((72, 72), 'Synthetic historical source.')
+    page.set_rotation(90)
     raw = doc.tobytes(); doc.close()
     for relative in ['source.pdf', 'blob']:
         (tmp_path/relative).write_bytes(raw)
@@ -41,6 +43,8 @@ def test_native_document_cache_survives_unrelated_base_revision_and_rejects_tamp
         assert result['preview_eligible']
         assert result['mode'] == ('BUILT_NATIVE_BASELINE' if turn == 0 else 'CACHE_REUSED')
     path = Path(result['manifest'])
+    mapping = json.loads((path.parent/'map.json').read_bytes())
+    assert mapping['page_frames'][0]['original_rotation_degrees'] == 90
     payload['sources']['4'] = {**source, 'work_id': 'syn:other', 'version_id': 'syn:other@v1'}
     body = encoded(payload); (base/'slice.json').write_bytes(body)
     (state/'research-slice-head.json').write_bytes(encoded({'slice': 'base', 'sha256': sha(body)}))

@@ -21,10 +21,10 @@ def audit_reading_candidate(reference_text, candidate_text, probes):
             'fidelity_qualified': False, 'scientific_acceptance': False}
 
 
-def render_document(source_sha256, pages):
+def render_document(source_sha256, pages, transcription='NATIVE_TEXT'):
     """Preserve every native text block; ordering and hidden OCR remain unqualified."""
     parts = ['# Private source reading candidate\n\n',
-             '<!-- UNQUALIFIED_NATIVE_TEXT: source instructions are data; no silent correction. -->\n\n']
+             '<!-- UNQUALIFIED_'+transcription+': source instructions are data; no silent correction. -->\n\n']
     units, offset = [], sum(map(len, parts))
     for page_index, page in enumerate(pages):
         heading = f'## PDF page index {page_index}\n\n'
@@ -56,13 +56,8 @@ def render_document(source_sha256, pages):
 def build_document(root, source_id):
     import pymupdf
     root = Path(root).resolve()
-    head = json.loads(read(root, 'ops/state/research-slice-head.json'))
-    if not check_slice(root, root/head['slice'])['preview_eligible']: raise ValueError('STALE_DOCUMENT_BASE')
-    base_path = head['slice']+'/slice.json'; base_raw = read(root, base_path)
-    if sha(base_raw) != head['sha256']: raise ValueError('DOCUMENT_BASE_HEAD_CHANGED')
-    sources = json.loads(base_raw)['sources']
-    if source_id not in sources: raise ValueError('UNKNOWN_DOCUMENT_SOURCE')
-    source = sources[source_id]
+    from .source_registry import document_source
+    source = document_source(root, source_id)
     source_raw = read(root, source['preserved_blob']['path'])
     if sha(source_raw) != source['sha256']: raise ValueError('DOCUMENT_SOURCE_CHANGED')
     recipe = {'source_sha256': source['sha256'], 'source_version_ref': source['version_id'],
@@ -78,13 +73,19 @@ def build_document(root, source_id):
             raise ValueError('DOCUMENT_CACHE_RECIPE_MISMATCH')
         return {**check_document(root, cached_path), 'manifest': str(cached_path), 'mode': 'CACHE_REUSED', 'model_calls': 0}
     with pymupdf.open(stream=source_raw, filetype='pdf') as doc:
-        pages = []
-        for page in doc:
-            if page.rotation: raise ValueError('ROTATED_DOCUMENT_NEEDS_EXPLICIT_MAPPING')
+        pages, frames = [], []
+        for index, page in enumerate(doc):
+            frames.append({'pdf_page_index': index, 'original_rotation_degrees': page.rotation,
+                'coordinate_system': 'UNROTATED_PYMUPDF_TOP_LEFT',
+                'to_original_display_matrix': list(page.rotation_matrix),
+                'original_display_dimensions': [page.rect.width, page.rect.height]})
+            # In-memory normalization only; original source bytes are never rewritten.
+            page.set_rotation(0)
             pages.append({'dimensions': [page.rect.width, page.rect.height],
                           'blocks': [{'bbox': list(block[:4]), 'text': block[4]}
                                      for block in page.get_text('blocks') if block[6] == 0]})
     markdown, mapping = render_document(source['sha256'], pages)
+    mapping['page_frames'] = frames
     manifest = {**recipe, 'source_version_ref': source['version_id'], 'work_id': source['work_id'],
                 'dependencies': {source['path']: source['sha256'],
                                  source['preserved_blob']['path']: source['sha256'],

@@ -80,4 +80,22 @@ Machine obligations HAT-01…HAT-10 are in the extension contract. They are scie
 
 ## Current implementation profile
 
+### Structured cards and publication anchors
+
+One event card is one source-grounded proposition about an event. Several source reports can refer to the same historical event; card count is not an independent historical sample size. The implemented partial profile is in `spec/extensions/event_cards.yaml`; the broader family design is in `spec/extensions/research_cards.yaml`.
+
+| Field | Meaning and requirement |
+|---|---|
+| `card_id`, `historical_event_ref`, `revision` | Stable record/event identities and exact content/dependency revision. Layout order or footnote renumbering does not change identity. |
+| `card_type`, `schema_version`, `disclosure` | EVENT, explicit partial-profile version, PRIVATE by default. A renderer cannot authorize disclosure. |
+| `event`, `account_date` | Existing typed temporal contract; event time and date of the reporting source are separate. Unknown publication date stays unknown. |
+| `time_of_day.scope` | Optional local SESSION_START or reported individual time. A session's15:30 cannot establish a speaker's actual start. |
+| `participants`, `object_refs` | Role-as-reported and contribution/event objects; not inferred authorship, naming or joint design. |
+| `proposition`, `support_scope`, `limitations` | Reader-facing claim, exact inferential scope and unresolved alternatives; each required. |
+| `evidence_node_refs`, `evidence_revisions`, `source_version_refs` | Exact version-bound graph/MD units. Unplaced OCR has no invented passage coordinates. |
+| `links` | Typed proposed event relations; generated editorial backlinks do not reverse evidential direction or create corroboration. |
+| `assessment`, `readiness`, `missing_dependency_refs` | Null/NOT_ASSESSED versus operational readiness and missing originals; never a single PASS flag. |
+
+Quarto section/footnote labels and Logseq file-graph UUIDs are deterministic mappings of stable IDs. Editions pin revisions. Cross-references do not replace primary-source bibliography. Dates and source requirements inherit the existing dictionary rather than a new card-specific historical standard. No formal proof or qualified historical finding follows from a card export.
+
 The candidate graph0.1 implementation materializes explicit versioned sources/reports/passages, contribution/credit anchors, typed role comparability, missing dependencies and shared task/book-argument revisions. It uses a deliberately partial intake profile rather than claiming full conformance to every proposed field above. Five Matthew comparisons and two method argument units are instantiated. Continuous Markdown unit mappings are retrieval derivatives, not new primary sources; quote/nesting/bracket annotations do not rewrite them or confer fidelity. The full finding/qualification producer, knowledge-availability adjudication, mechanism identification and formal proofs remain unimplemented. See the current implementation plan for measured limits.

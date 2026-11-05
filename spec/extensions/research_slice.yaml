@@ -1,7 +1,8 @@
-version: 0.2.0
+version: 0.3.0
 profile: PRIVATE_DEVELOPMENT_SLICE
-series_title: Credit Where Credit Is Due
-book_title: The Matthew Effect
+series_title: The Secrets of Terms
+book_title: The Secrets of Terms
+subtitle: The Matthew Effect
 concept_id: horisma:concept:matthew-effect
 concept_family_id: horisma:family:matthew-effect
 source_aliases:

@@ -70,16 +70,56 @@ def main():
     fidelity_route.add_argument('--dimension',required=True)
     document=sub.add_parser('research-document-build')
     document.add_argument('--source-id',required=True)
+    full_ocr=sub.add_parser('research-document-ocr')
+    full_ocr.add_argument('--source-id',choices=['3','4'],required=True)
+    ingest=sub.add_parser('research-document-ingest')
+    ingest.add_argument('pdf',type=Path)
+    paper_package=sub.add_parser('research-paper-package')
+    paper_package.add_argument('manifest',type=Path)
+    cards=sub.add_parser('research-event-cards')
+    cards.add_argument('case',type=Path)
+    cards.add_argument('intake',type=Path)
+    publication=sub.add_parser('research-card-export')
+    publication.add_argument('cards',type=Path)
     case=sub.add_parser('research-case-build')
     case.add_argument('intake',type=Path)
     case_check=sub.add_parser('research-case-check')
     case_check.add_argument('case',type=Path)
+    sub.add_parser('research-docs')
+    maintenance=sub.add_parser('research-maintenance')
+    maintenance.add_argument('--apply',action='store_true')
     args = parser.parse_args()
     root = args.root.resolve()
     try:
         if args.command.startswith('research-'):
             from .research_slice import build_slice,check_slice,run_ocr
-            if args.command=='research-document-build':
+            if args.command=='research-card-export':
+                from .card_publication import export_cards
+                result=export_cards(root,args.cards)
+            elif args.command=='research-event-cards':
+                from .event_cards import build_event_cards
+                result=build_event_cards(root,args.case,args.intake)
+            elif args.command=='research-paper-package':
+                from .paper_packages import package_reading
+                result=package_reading(root,args.manifest)
+            elif args.command=='research-document-ingest':
+                from .source_registry import register_pdf
+                from .document_reading import build_document
+                intake=register_pdf(root,args.pdf)
+                result={**intake,'reading':build_document(root,intake['source_id'])}
+            elif args.command=='research-docs':
+                from .maintenance import current_documents
+                result=current_documents(root)
+            elif args.command=='research-maintenance':
+                from .maintenance import cleanup_plan,apply_cleanup
+                plan=cleanup_plan(root)
+                result=apply_cleanup(root,plan) if args.apply else plan
+                from .research_slice import encoded,sha,write_new
+                write_new(root/'outputs/maintenance'/sha(encoded(result))/'report.json',encoded(result))
+            elif args.command=='research-document-ocr':
+                from .document_ocr import build_ocr_document
+                result=build_ocr_document(root,args.source_id)
+            elif args.command=='research-document-build':
                 from .document_reading import build_document
                 result=build_document(root,args.source_id)
             elif args.command=='research-case-build':

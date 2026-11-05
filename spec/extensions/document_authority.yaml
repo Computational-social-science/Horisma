@@ -1,0 +1,11 @@
+version: 0.1.0
+purpose: Current reading routes; historical checkpoints do not override these authorities.
+current_entries:
+  - {role: RESEARCH_DESIGN, path: docs/research/Horisma_Terminological_Provenance_Project_Research_Proposal_EN.md}
+  - {role: IMPLEMENTATION_AND_LIMITS, path: docs/research/Horisma_Implementation_Acceptance_Plan_EN.md}
+  - {role: DATA_DEFINITIONS, path: docs/data-dictionary/README.md}
+  - {role: FROZEN_MACHINE_CODES, path: spec/controlled_vocabularies.yaml}
+  - {role: EXECUTION_GUIDANCE, path: .agents/skills/horisma-research-contracts/SKILL.md}
+historical_policy: Read a checkpoint only for a specific dated result or exact versioned dependency. Do not glob all checkpoints into model context.
+private_drafts_policy: Book prose and candidate evidence remain draft inputs, not scientific authorities.
+cleanup_policy: Remove only exact Git-reproducible technical exports or byte-identical run copies already sealed and not active/declared inputs. Preserve current export pointers, sealed research evidence, model assets, receipts and originals.

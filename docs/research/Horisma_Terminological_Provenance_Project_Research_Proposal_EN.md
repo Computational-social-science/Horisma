@@ -84,7 +84,7 @@ Report structural validity, task-defined errors, abstention, retrieval/locator o
 
 ## 8. Reader product and scientific narrative
 
-Series title: *Credit Where Credit Is Due*. Book title: *The Matthew Effect*.
+Series title: *The Secrets of Terms*. Each volume repeats *The Secrets of Terms* as its main book title and uses its target term as a distinct subtitle. The commissioning volume is *The Secrets of Terms: The Matthew Effect* (`series_title` and `book_title`: `The Secrets of Terms`; `subtitle`: `The Matthew Effect`). This naming revision changes publication metadata, not concept identities, event IDs or evidence assessments.
 
 Audience: scientifically curious readers, including researchers unfamiliar with the sociology of recognition. Chapter one begins with recognition and comparable contribution, distinguishes attention/evaluation/memory/resources, confronts alternative explanations, then introduces the concept's own contribution history. Historical dates serve the argument rather than become the entire book.
 

@@ -1,0 +1,19 @@
+version: 0.1.0
+status: SHARED_CARD_DESIGN_WITH_EVENT_ADAPTER_IMPLEMENTED
+authority: One structured JSON record; Markdown/Quarto/Logseq views are generated and never independently authoritative.
+common_envelope: [card_id, card_type, schema_version, revision, title, subject_refs, typed_payload, evidence_refs, source_version_refs, dependency_revisions, uncertainty, disclosure, supersedes]
+families:
+  EVENT: Implemented partial event-card profile in event_cards.yaml.
+  SOURCE: Proposed adapter for source/work/version/access records; not one historical event per PDF.
+  CLAIM: Proposed atomic proposition and scoped support/assessment adapter.
+  SCIENTIST: Proposed sourced identity/name/attribute adapter; attributes remain independent claims.
+  CONTRIBUTION: Proposed role/object/time contributor and credit-recipient adapters.
+  MECHANISM: Proposed falsifiable hypothesis and identification/alternatives adapter.
+  ARGUMENT: Proposed edition/paragraph/figure and evidence-mapping adapter.
+publication_mapping:
+  identity: Stable domain card_id independent of revision, file path, chapter order and displayed footnote number.
+  quarto: Deterministic sec-card label and globally scoped footnote identifier from card_id.
+  logseq: Deterministic UUID5 for file-graph block references; live DB-graph integration untested.
+  revisions: Edition manifest pins the exact card revision; do not silently rewrite an older edition.
+  scientific_boundary: Editorial cross-links/backlinks are not SUPPORTS/CONTRADICTS edges and do not replace primary-source bibliography.
+  disclosure: Private/unqualified cards cannot become public through successful rendering.

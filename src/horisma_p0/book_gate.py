@@ -4,7 +4,8 @@ import re
 
 
 def development_export_metadata(medium):
-    return {'series_title':'Credit Where Credit Is Due','book_title':'The Matthew Effect',
+    return {'series_title':'The Secrets of Terms','book_title':'The Secrets of Terms',
+            'subtitle':'The Matthew Effect',
             'medium':medium,'intended_use':'DEVELOPMENT_PREVIEW_ONLY',
             'scientific_acceptance':False,'release_authorized':False}
 
