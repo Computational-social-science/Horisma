@@ -68,12 +68,27 @@ def main():
     fidelity_route.add_argument('report',type=Path)
     fidelity_route.add_argument('--source-id',choices=['1','2','3','4','5'],required=True)
     fidelity_route.add_argument('--dimension',required=True)
+    document=sub.add_parser('research-document-build')
+    document.add_argument('--source-id',required=True)
+    case=sub.add_parser('research-case-build')
+    case.add_argument('intake',type=Path)
+    case_check=sub.add_parser('research-case-check')
+    case_check.add_argument('case',type=Path)
     args = parser.parse_args()
     root = args.root.resolve()
     try:
         if args.command.startswith('research-'):
             from .research_slice import build_slice,check_slice,run_ocr
-            if args.command=='research-parse':
+            if args.command=='research-document-build':
+                from .document_reading import build_document
+                result=build_document(root,args.source_id)
+            elif args.command=='research-case-build':
+                from .attribution_case import build_case
+                result=build_case(root,args.intake)
+            elif args.command=='research-case-check':
+                from .attribution_case import check_case
+                result=check_case(root,args.case)
+            elif args.command=='research-parse':
                 import subprocess
                 import sys
                 backend=args.backend;route_reason='EXPLICIT_BACKEND'

@@ -1,0 +1,42 @@
+version: 0.1.0
+status: EVALUATED_READING_WRAPPER_NOT_QUALIFIED_PDF_PARSER
+upstream_repository: https://github.com/jmiao24/Paper2Agent
+upstream_commit: 8c2d059165ef8cdcb70dbea76655b9c2b55b38e6
+upstream_component: skills/paper2agent/paper2skill
+upstream_code_license: MIT
+runtime_mode: LOCAL_SCRIPT_ISOLATED_UV_NO_MODEL_API
+extraction_setting:
+  ocr: auto
+  preview_dpi: 110
+drafts:
+  merton_1968:
+    pdf_pages: 8
+    observed_page_mode: native
+    strict_verification: UNREVIEWED_NONZERO
+    posthoc_retrieval_gaps: 3
+  merton_1988:
+    pdf_pages: 18
+    observed_page_mode: native
+    strict_verification: UNREVIEWED_NONZERO
+    posthoc_retrieval_gaps: 3
+diagnostic_scope: Exact literal retrieval probes, selected posthoc. Not historical
+  gold, complete fidelity testing or general parser ranking.
+compatibility_patch:
+  upstream_commit: 8c2d059165ef8cdcb70dbea76655b9c2b55b38e6
+  file: skills/paper2agent/paper2skill/scripts/reading_package.py
+  before_sha256: 66ff9af1861a92f71b2c15394c1128a5d5272f6e158bf705af14c83d7ac1c73a
+  after_sha256: 4bdb60837598686ccc07cfdcda69a6b93ad3fb80a5532bc8b2df5d4edb34cd43
+  reason: Windows package validator compares POSIX relative paths; serialize relative
+    artifact paths with as_posix
+  replacements:
+    str(evidence.relative_to(work)): evidence.relative_to(work).as_posix()
+    str(p.relative_to(stage)): p.relative_to(stage).as_posix()
+    str(path.relative_to(root)): path.relative_to(root).as_posix()
+    str(p.relative_to(output)): p.relative_to(output).as_posix()
+dependency_note: Pinned upstream script runtime declarations plus fontTools for its
+  font-encoding diagnostic; runtime itself is private and not a global installation.
+decision: Consider Paper2Skill above complete source-version-bound readings. Keep
+  underlying OCR, critical glyphs, source support and qualified automated review as
+  separate requirements.
+scientific_acceptance: false
+release_authorized: false

@@ -1,6 +1,6 @@
 # Attribution events, mechanism inference and book argument: data dictionary extension
 
-Version0.1.0 —2026-11-05. Status: **PROPOSED_SCIENTIFIC_TEMPLATE_NOT_IMPLEMENTED_ADJUDICATOR**. This extension accompanies the unchanged frozen core and [machine template](../../spec/extensions/attribution_event_template.yaml). It is a reusable design for future terminology cases, not an accepted reconstruction of Matthew-effect history.
+Version0.1.1 —2026-11-05. Status: **PROPOSED_SCIENTIFIC_TEMPLATE_NOT_IMPLEMENTED_ADJUDICATOR**. This extension accompanies the unchanged frozen core and [machine template](../../spec/extensions/attribution_event_template.yaml). It is a reusable design for future terminology cases, not an accepted reconstruction of Matthew-effect history.
 
 ## Completeness assessment
 
@@ -14,7 +14,7 @@ The current system is not yet a complete reusable historical-misallocation templ
 
 “Beneficiary” is used narrowly as the recipient of credit **in a particular observed account**. A credited actor may also be a legitimate contributor. An actual benefit in prestige, citations, money or opportunities requires a separate measured outcome. Receiving credit neither establishes causing an omission nor establishes misconduct or intent. No required binary victim/offender pair is created.
 
-All fields in this extension inherit exact version references, provenance, missing reasons, disclosure control and revision requirements. Types below are logical record types, not new database tables. Default disclosure is INTERNAL; source-dependent material remains private unless separately eligible. Empty fields use explicit missing reasons. Introduced version is this extension0.1.0. Responsible scientific assessment is the task-qualified automated lane, with source delivery by humans permitted and no mandatory human evidence adjudication.
+All fields in this extension inherit exact version references, provenance, missing reasons, disclosure control and revision requirements. Types below are logical record types, not new database tables. Default disclosure is INTERNAL; source-dependent material remains private unless separately eligible. Empty fields use explicit missing reasons. Fields introduced in extension0.1.0 retain that introduction version;0.1.1 records the partial implementation profile and Matthew-first sequence. Responsible scientific assessment is the task-qualified automated lane, with source delivery by humans permitted and no mandatory human evidence adjudication.
 
 | Object and stable field | Definition; type/cardinality; requirement | Provenance/measurement/missingness | Valid / prohibited use |
 |---|---|---|---|
@@ -71,8 +71,13 @@ The book may explain the two-anchor method before all historical questions are r
 
 1. Populate the pilot with explicit anchor and comparison records without promoting its current claims.
 2. Test same-person/multiple-role, different-originator/different-namer, accurate-byline reporting, known-vs-unavailable later evidence, missing primary quotation and conflicting contributor identities.
-3. Include at least one additional, independently chosen terminology case and a no-discrepancy/role-noncomparability control; do not claim portability from Matthew alone.
+3. Current commissioning stays entirely within Matthew Effect until its shared evidence, scientist/contribution, benchmark and book workflow is exercised. Include accurate-byline and role-noncomparability controls within this case. A second terminology case is an operations-stage portability evaluation, not a prerequisite that diverts current commissioning; do not claim cross-case generalization from Matthew alone.
 4. Exercise invalidation from changed source/identity/role/policy through task and edition projections.
 5. Keep mechanism hypotheses proposed until their separate empirical identification requirements are met.
 
 Machine obligations HAT-01…HAT-10 are in the extension contract. They are scientific/formalization obligations with UNPROVEN status. No completed proof, historical acceptance or causal result is claimed.
+
+
+## Current implementation profile
+
+The candidate graph0.1 implementation materializes explicit versioned sources/reports/passages, contribution/credit anchors, typed role comparability, missing dependencies and shared task/book-argument revisions. It uses a deliberately partial intake profile rather than claiming full conformance to every proposed field above. Five Matthew comparisons and two method argument units are instantiated. Continuous Markdown unit mappings are retrieval derivatives, not new primary sources; quote/nesting/bracket annotations do not rewrite them or confer fidelity. The full finding/qualification producer, knowledge-availability adjudication, mechanism identification and formal proofs remain unimplemented. See the current implementation plan for measured limits.

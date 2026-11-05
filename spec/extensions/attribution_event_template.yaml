@@ -1,4 +1,4 @@
-version: 0.1.0
+version: 0.1.1
 status: PROPOSED_SCIENTIFIC_TEMPLATE_NOT_IMPLEMENTED_ADJUDICATOR
 extends: [core-dictionary-0.1.0, person-names-0.2.0, term-aliases-0.1.0]
 scope: Reusable terminology provenance, role-scoped credit comparison and book methodology.
@@ -63,3 +63,13 @@ logical_obligations:
 proof_status: UNPROVEN_LOGICAL_OBLIGATIONS
 scientific_acceptance: false
 release_authorized: false
+
+implementation_profile:
+  id: CANDIDATE_CASE_GRAPH_0_1
+  callable: horisma_p0.attribution_case.build_case
+  checker: horisma_p0.attribution_case.check_case
+  scope: Partial candidate intake and version-bound comparison/task/book projections; not full template conformance or adjudication.
+  commissioning_case: MATTHEW_EFFECT_ONLY
+  portability_case: DEFERRED_TO_OPERATIONS_AFTER_MATTHEW_COMMISSIONING
+  findings_qualified: false
+  formal_proofs_completed: false
