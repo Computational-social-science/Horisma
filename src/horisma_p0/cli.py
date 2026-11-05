@@ -58,6 +58,16 @@ def main():
     entity_check=sub.add_parser('research-entities-check')
     entity_check.add_argument('dataset',type=Path)
     sub.add_parser('research-entities-evaluate')
+    sub.add_parser('research-fidelity-freeze')
+    fidelity=sub.add_parser('research-fidelity-run')
+    fidelity.add_argument('manifest',type=Path)
+    fidelity.add_argument('--backend',choices=['docling','paddleocr','mineru'],required=True)
+    fidelity_report=sub.add_parser('research-fidelity-report')
+    fidelity_report.add_argument('manifest',type=Path)
+    fidelity_route=sub.add_parser('research-fidelity-route')
+    fidelity_route.add_argument('report',type=Path)
+    fidelity_route.add_argument('--source-id',choices=['1','2','3','4','5'],required=True)
+    fidelity_route.add_argument('--dimension',required=True)
     args = parser.parse_args()
     root = args.root.resolve()
     try:
@@ -137,6 +147,18 @@ def main():
             elif args.command=='research-entities-evaluate':
                 from .entity_workflow import evaluate_entity_rules
                 result=evaluate_entity_rules(root)
+            elif args.command=='research-fidelity-freeze':
+                from .fidelity_suite import freeze_fidelity_suite
+                result=freeze_fidelity_suite(root)
+            elif args.command=='research-fidelity-run':
+                from .fidelity_campaign import run_backend
+                result=run_backend(root,args.manifest,args.backend)
+            elif args.command=='research-fidelity-report':
+                from .fidelity_report import campaign_report
+                result=campaign_report(root,args.manifest)
+            elif args.command=='research-fidelity-route':
+                from .fidelity_report import regional_route
+                result=regional_route(root,args.report,args.source_id,args.dimension)
             else:
                 from .model_screen import run_screen
                 result=run_screen(root,args.candidate)

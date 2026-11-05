@@ -1,0 +1,65 @@
+version: 0.1.0
+status: PROPOSED_SCIENTIFIC_TEMPLATE_NOT_IMPLEMENTED_ADJUDICATOR
+extends: [core-dictionary-0.1.0, person-names-0.2.0, term-aliases-0.1.0]
+scope: Reusable terminology provenance, role-scoped credit comparison and book methodology.
+operating_lane: QUALIFIED_AUTOMATED_EVIDENCE_REVIEW_NO_MANDATORY_HUMAN_ADJUDICATION
+objects:
+  provenance_case:
+    grain: One declared concept-sense and question within a source/search/time frame; not one alleged offender.
+    required: [case_id, concept_ref, sense_refs, concept_family_ref, question_refs, protocol_ref, search_scope_refs, contribution_anchor_refs, credit_anchor_refs, unresolved_dependencies, revision]
+    readiness: [DRAFT, ANCHORS_PARTIAL, COMPARISON_READY, ASSESSED]
+    empty_anchor_sets: Explicit missing reasons; never invent a progenitor or recipient to fill a row.
+  contribution_anchor:
+    grain: One contributor-role-object-scope-time proposition with versioned evidence.
+    required: [anchor_id, contribution_assertion_ref, contributor_ref, role, contribution_object_ref, scope_ref, event_time, origin_basis, source_version_refs, evidence_link_refs, assessment_ref, revision]
+    origin_basis: [EXPLICIT_SOURCE_PRIORITY_CLAIM, EARLIEST_LOCATED_WITHIN_SEARCH, CONCEPT_DEVELOPMENT, EMPIRICAL_BASIS, OTHER_DECLARED_ROLE]
+    interpretation: Progenitor is shorthand for a role-scoped contributor candidate, not a fixed person class or historical-first verdict.
+  credit_anchor:
+    grain: One account attributing a specified role/object to one or more named recipients.
+    required: [anchor_id, attribution_assertion_refs, reporting_actor_refs, credited_contributor_refs, role, contribution_object_ref, scope_ref, literal_mention_refs, reporting_passage_refs, account_time, knowledge_availability_refs, revision]
+    optional: [measured_benefit_refs]
+    interpretation: Beneficiary means observed credit recipient here; actual prestige/reward gain requires separate measurement. Neither implies misconduct.
+  credit_comparison:
+    grain: One explicit comparison of contribution evidence and an observed credit allocation under a versioned norm.
+    required: [comparison_id, contribution_anchor_refs, credit_anchor_refs, concept_sense_comparability, role_comparability, object_scope_comparability, temporal_frame, knowledge_availability_frame, policy_ref, genre, incompatibility_rule_ref, evidence_qualification_refs, finding_ref, alternatives, unresolved_dependencies, revision]
+    temporal_frame: [CONTEMPORARY_KNOWLEDGE, RETROSPECTIVE_RECONSTRUCTION, BOTH_EXPLICITLY_SEPARATED]
+    verdict_domain: Core claim_assessment/discrepancy definitions remain authoritative; readiness is not a verdict.
+    prohibition: Role mismatch, omission or earlier dates alone imply neither positive nor negative discrepancy findings.
+  provenance_edge_extension:
+    grain: One typed relation between versioned observations/claims/artifacts.
+    required: [edge_id, source_ref, target_ref, relation_domain, relation_code, source_version_refs, locators, rationale, limitations, qualification_ref, revision]
+    optional: [source_dependency_group_ref]
+    relation_domain: [BIBLIOGRAPHIC, TEXTUAL_TRANSMISSION, EVIDENCE_ASSESSMENT, COMPUTATIONAL_DERIVATION]
+    examples:
+      BIBLIOGRAPHIC: [CITES, REFERENCES_WORK]
+      TEXTUAL_TRANSMISSION: [QUOTES, PARAPHRASES, REPORTS, ACKNOWLEDGES]
+      EVIDENCE_ASSESSMENT: [SUPPORTS, CONTRADICTS, MENTIONS]
+      COMPUTATIONAL_DERIVATION: [DERIVED_FROM, SUPERSEDES]
+    dependency: Source-copying/quotation groups and unknown dependence must remain explicit; tool agreement is not source independence.
+  mechanism_hypothesis_extension:
+    grain: One falsifiable mechanism proposed for a declared outcome/unit/population, not a story about intent.
+    required: [mechanism_id, hypothesis_ref, mechanism_family, outcome_definition_ref, unit_of_analysis, target_population_ref, sampling_frame_ref, temporal_order, candidate_pathway_refs, observable_implications, alternative_explanation_refs, discriminating_observations, falsification_conditions, causal_design_ref, evidence_refs, identification_status, revision]
+    mechanism_family: [ROLE_COMPRESSION, SOURCE_AVAILABILITY, STATUS_CUE, REPETITION_AND_CANONIZATION, EDITORIAL_COMPRESSION, TRANSLATION_SHIFT, INSTITUTIONAL_INCENTIVE, OTHER_SPECIFIED]
+    identification_status: [PROPOSED, OPERATIONALIZED, ASSOCIATION_TESTED, CAUSALLY_IDENTIFIED, CHALLENGED, UNRESOLVED]
+    protocol_dependent: [sample_size, effect_size, estimator, power, treatment_assignment, confounder_set]
+    causal_rule: A historical discrepancy or model error alone cannot establish a mechanism, prevalence, intent or causal effect.
+  book_argument_unit:
+    grain: One reader-facing paragraph/figure/evidence note in an exact edition snapshot.
+    required: [argument_unit_id, edition_ref, reader_question, argument_role, claim_refs, evidence_link_refs, comparison_refs, mechanism_refs, alternative_refs, uncertainty_statement, source_snapshot_refs, disclosure_mode, dependency_manifest_ref, revision]
+    argument_role: [DEFINITION, OBSERVATION, SOURCE_REPORT, METHOD_REASONING, HYPOTHESIS, ALTERNATIVE_EXPLANATION, LIMITATION]
+    disclosure_mode: [READER_NARRATIVE, OPTIONAL_EVIDENCE_NOTE, METHODS_APPENDIX, PRIVATE_ENGINEERING_RECORD]
+    rule: Schemas, output counts and hashes do not replace a scientific narrative; narrative cannot replace qualified evidence.
+logical_obligations:
+  HAT-01: SameName(a,b) does not entail SamePerson(a,b).
+  HAT-02: SamePerson(p,p) does not entail SameRole or SameContributionScope.
+  HAT-03: EarliestLocated(x,search) does not entail HistoricallyFirst(x).
+  HAT-04: Comparable(c,a) and an explicit incompatibility norm and qualified evidence are necessary, not sufficient, for an assessed discrepancy.
+  HAT-05: Cites(a,b) does not entail Read(a,b), DerivedFrom(a,b) or Supports(b,claim).
+  HAT-06: JointAuthorshipAcknowledgment does not entail JointCoinage.
+  HAT-07: CreditRecipient(p) does not entail Misconduct(p) or MeasuredBenefit(p).
+  HAT-08: ObservedDiscrepancy does not entail CausalMechanism or PopulationPrevalence.
+  HAT-09: SourceOrAssessmentRevision invalidates dependent comparisons and edition eligibility without erasing prior snapshots.
+  HAT-10: Multiple translations, quotations or correlated tool outputs do not increase independent historical sample size.
+proof_status: UNPROVEN_LOGICAL_OBLIGATIONS
+scientific_acceptance: false
+release_authorized: false

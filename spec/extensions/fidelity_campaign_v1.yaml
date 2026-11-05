@@ -1,0 +1,40 @@
+version: 1.0.0
+status: FROZEN_BEFORE_INFERENCE_DEVELOPMENT_CAMPAIGN
+base_slice_id: 9f9856119a62582c088a6b151f52ffa73c0fed29a3da7cc3c76e69769411a2d4
+challenge: spec/examples/difficult_fidelity_v1.json
+historical_sources:
+  - {source_id: '1', sha256: 95b02ce8711d39dcb617f119033e671a9f30d0a012f7371f479d33b0be9f0436, pdf_page_index: 1}
+  - {source_id: '2', sha256: af29a8508b2ed3c9325cdf3f4b286e71ccd81dcc2a462ef949fb98b0d2f78315, pdf_page_index: 3}
+  - {source_id: '3', sha256: 989a14894edbbf22b140f16f54c5dc774bb820237db2f339f82f77ba2f6cc5a8, pdf_page_index: 0}
+  - {source_id: '4', sha256: aa17fbaf301e11aa5152beb9c450c32a1c2bea9c48293868f833edc019a42c7e, pdf_page_index: 1}
+  - {source_id: '5', sha256: c202d7019ae35ede17945893b9a0d6e0b8add7466590a6a89b4d69a5716f4ea7, pdf_page_index: 0}
+historical_inputs: [page, region]
+historical_dpi: 180
+historical_reference: NONE_QUALIFIED_VARIANT_DIAGNOSTICS_ONLY
+backends:
+  docling: {version: 2.140.0, runtime: .venv/Scripts/python.exe, mode: OFFLINE_LAYOUT_RAPIDOCR_FORCE_OCR, device: cuda}
+  paddleocr: {version: 3.7.0, runtime: .rebuild/tools/paddleocr/venv/Scripts/python.exe, mode: OCR_REGIONS_PPSTRUCTURE_PAGES, device: cpu}
+  mineru: {version: 4.1.7, runtime: .rebuild/tools/mineru/venv/Scripts/python.exe, mode: LOCAL_BASIC_ONNX_NO_VLM_NO_HOSTED_API, device: cpu}
+budgets:
+  max_backend_seconds: 600
+  max_initialization_seconds: 180
+  max_job_seconds: 90
+  max_jobs_per_backend: 22
+  retries: 0
+  concurrency: 1
+  model_download_limit_bytes: 1610612736
+output_policy:
+  preserve_raw_structure: true
+  preserve_footnotes_headers_page_numbers: true
+  produce_merged_quote: false
+  historical_accuracy: null
+  automatic_historical_qualification: false
+  scientific_acceptance: false
+  release_authorized: false
+routing:
+  unit: DECLARED_INPUT_REGION_AND_TASK
+  synthetic_scores: SCOPED_FAILURE_DIAGNOSTICS_NOT_BLIND_GENERALIZATION
+  historical_agreement: NOT_TRUTH_OR_INDEPENDENT_CORROBORATION
+  correlation: Record actual weights and shared training lineage; do not count tool names as independent models.
+  unresolved: RETAIN_VARIANTS_AND_PROPOSE_BOUNDED_COMPLEMENTARY_REGION_WORK
+excluded_backends: [marker]

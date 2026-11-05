@@ -1,0 +1,13 @@
+{
+  "challenge_sha256": "eab49dd89c0e0ccea2a7225a333303b1c08e72283ae439c793cb713a56fae3e2",
+  "context_cases": 8,
+  "font_sha256": "8b7e1730387d4d3120f5e5a8045928db28a93b05dd4c56e0ee2ab5e9bbb3816d",
+  "frozen_before_backend_inference": true,
+  "historical_gold": false,
+  "historical_jobs": 10,
+  "protocol_sha256": "e7610a648b231efa977506cdb6120ea1ccdde348fa3e06b62ea403a45dcbcc2b",
+  "suite_id": "c75ef7750129d142dc1e82efcc832d36514c00a48ef1bbf00f0d0bced9cecd56",
+  "suite_manifest_path": "outputs/fidelity-suites/c75ef7750129d142dc1e82efcc832d36514c00a48ef1bbf00f0d0bced9cecd56/manifest.json",
+  "synthetic_jobs": 12,
+  "version": "1.0.0"
+}

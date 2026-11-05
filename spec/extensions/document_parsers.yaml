@@ -1,16 +1,21 @@
-version: 0.1.0
+version: 0.2.0
 status: CANDIDATE_ROUTES_NOT_FIDELITY_QUALIFICATION
 excluded_backends:
   marker:
     status: USER_EXCLUDED
     reason: Explicit user preference to avoid paid-API dependency risk; do not install, call or benchmark.
 mineru:
-  status: DOCUMENTATION_REVIEWED_NOT_INSTALLED_OR_EXECUTED
+  status: INSTALLED_AND_MEASURED_DEVELOPMENT_ONLY
+  version: 4.1.7
+  runtime: .rebuild/tools/mineru/venv/Scripts/python.exe
+  mode: LOCAL_BASIC_ONNX_CPU_NO_VLM
+  model_manifest: .rebuild/fidelity-models/manifest.json
+  historical_fidelity_qualified: false
   official_repository: https://github.com/opendatalab/MinerU
   candidate_task: Local layout/reading-order and footnote-region comparison on the existing frozen pages.
   allowed_mode: LOCAL_ONLY_NO_HOSTED_ENDPOINT
   automatic_route_enabled: false
-  license_review: Repository describes an Apache-2.0-based license with additional conditions; pin and inspect code/weight terms before installation.
+  license_review: Repository describes an Apache-2.0-based license with additional conditions; inspected for the internal local research installation; further redistribution needs its own review.
 anymd:
   version: 8.5.9
   mode: LOCAL_NATIVE_NO_OCR_NO_IMAGES
@@ -39,7 +44,9 @@ paddleocr:
   synthetic_denominator: 12
   historical_fidelity_qualified: false
   automatic_route_enabled: false
-  pp_structure_v3_executed: false
+  pp_structure_v3_executed: true
+  pp_structure_campaign_scope: Same five historical full-page PNGs plus twelve constructed images; not historical qualification.
+  markdown_ignore_labels: []
   paddleocr_vl_executed: false
   limitation: Citation-range punctuation disagreement remains; v5 and v6 share project lineage.
 routing:

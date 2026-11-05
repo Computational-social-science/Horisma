@@ -1,0 +1,41 @@
+version: 0.1.0
+synthetic: true
+scope: Constructed scientific-design counterexamples; no historical gold or executed adjudication.
+cases:
+  - id: distinct_roles
+    contribution: {person: SYN:A, role: EMPIRICAL_BASIS, object: SYN:study}
+    observed_credit: {person: SYN:B, role: NAMING, object: SYN:term}
+    expected: NOT_COMPARABLE_DO_NOT_INFER_DISCREPANCY
+    forbidden: Inferring a naming theft from a different empirical contribution.
+  - id: accurate_byline
+    source_statement: The byline names SYN:B.
+    contribution: {person: SYN:A, role: EMPIRICAL_BASIS, object: SYN:study}
+    expected: BYLINE_REPORT_AND_CONTRIBUTION_ARE_SEPARATE
+    forbidden: The correct byline statement automatically denies all other contributors.
+  - id: joint_authorship_not_coinage
+    acknowledgment: A report says a paper should have had joint authorship.
+    expected: NO_JOINT_COINAGE_INFERENCE
+    forbidden: Adding a joint naming claim without naming-role evidence.
+  - id: knowledge_time
+    earlier_account: {year: 1950, credited_role: AUTHORSHIP}
+    later_acknowledgment: {year: 1970, reported_role: EMPIRICAL_BASIS}
+    expected: CONTEMPORARY_AND_RETROSPECTIVE_NORMS_SEPARATE
+    forbidden: Assuming the earlier writer knew a later source or intended an omission.
+  - id: quoted_missing_primary
+    source: A later account quotes an unavailable earlier statement.
+    expected: QUOTED_REPORT_WITH_PRIMARY_SOURCE_DEPENDENCY
+    forbidden: Claiming direct inspection or source independence from the quotation.
+  - id: mechanism_gap
+    observation: One documented attribution discrepancy.
+    mechanism: Status cues caused the discrepancy in a population.
+    expected: CAUSAL_AND_PREVALENCE_CLAIMS_UNESTABLISHED
+    forbidden: Using one case or model mistake as causal identification.
+  - id: correlated_channels
+    observations: Three OCR tools parse one source; two share recognition weights.
+    expected: ONE_HISTORICAL_SOURCE_WITH_COUPLED_CHANNELS
+    forbidden: Counting three independent historical confirmations.
+  - id: book_methodology
+    paragraph_role: METHOD_REASONING
+    linked_findings_status: UNRESOLVED
+    expected: PROPOSED_METHOD_MAY_BE_EXPLAINED_WITH_EXPLICIT_LIMITS_RELEASE_SEPARATE
+    forbidden: A fluent book paragraph upgrading unresolved source claims or mechanisms.

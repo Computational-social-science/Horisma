@@ -1,0 +1,46 @@
+{
+  "version": "1.0.0",
+  "synthetic": true,
+  "split": "FROZEN_DEVELOPMENT_CHALLENGE_NOT_BLIND_GENERALIZATION",
+  "purpose": "Region transcription, difficult person forms, quotation scope and protected-character diagnostics",
+  "image_policy": {
+    "width": 1800,
+    "font": "C:/Windows/Fonts/times.ttf",
+    "font_size": 38,
+    "line_height": 60,
+    "margin": 45,
+    "variants": ["clean", "downsample_blur"],
+    "degradation": {"downsample_factor": 0.6, "gaussian_radius": 0.45},
+    "input": "RASTER_ONLY_PDF_AND_MATCHING_PNG_NO_TEXT_LAYER",
+    "ocr_equality": "WHITESPACE_FOLD_ONLY_WITH_EXPLICIT_LIGATURE_EQUIVALENCE"
+  },
+  "panels": [
+    {"id":"difficult-names","lines":["Katherine O'Neil thanked José García.","Josef Müller and Alex Müller both replied.","R. K. Merton is an initialled form, not an expansion."],"critical":["Katherine O'Neil","José García","Josef Müller","Alex Müller","R. K. Merton"]},
+    {"id":"printed-errors","lines":["Harniet Zuckerman [19731].", "Their data is limitted.","These results is preliminary; do not rewrite them."],"critical":["Harniet","[19731]","limitted","results is","do not"]},
+    {"id":"nested-quotation","lines":["Katherine O'Neil wrote: ‘José García reported,", "“I did not coin the term.”’ She revised the note.","An outer author does not determine a quoted speaker."],"critical":["‘","“","I did not coin","”’","She","does not"]},
+    {"id":"citation-and-numbers","lines":["Public Opinion Quarterly 36:159–175 [1973].", "Price: pp. 511–512; effect = −0.5, not +0.5.","P <= 0.05 is not P >= 0.05; n = 0 differs from missing."],"critical":["36:159–175","[1973]","511–512","−0.5","+0.5","<=",">=","n = 0"]},
+    {"id":"role-and-modality","lines":["The paper should have appeared under joint authorship.","A sole byline does not establish sole conceptual credit.","The report was scheduled; actual delivery remains unverified."],"critical":["should","joint authorship","does not","sole conceptual credit","scheduled","unverified"]},
+    {"id":"typography-and-scope","lines":["The ﬁeld study was not a proof of first discovery.","Müller said ‘the estimate may change’; García disagreed.","This is occasion for repeating a source, not polishing it."],"critical":["was not","first discovery","Müller","may","García","This is occasion"],"display_equivalent_classes":[["ﬁeld","field"]]}
+  ],
+  "forms": [
+    {"name_form_id":"d:f1","entity_ref":"SYN:P1","entity_kind":"PERSON","literal_form":"Katherine O'Neil","form_kind":"FULL_AS_ATTESTED","language_tag":"en"},
+    {"name_form_id":"d:f2","entity_ref":"SYN:P2","entity_kind":"PERSON","literal_form":"José García","form_kind":"FULL_AS_ATTESTED","language_tag":"en"},
+    {"name_form_id":"d:f3","entity_ref":"SYN:P3","entity_kind":"PERSON","literal_form":"Josef Müller","form_kind":"FULL_AS_ATTESTED","language_tag":"en"},
+    {"name_form_id":"d:f4","entity_ref":"SYN:P4","entity_kind":"PERSON","literal_form":"Alex Müller","form_kind":"FULL_AS_ATTESTED","language_tag":"en"},
+    {"name_form_id":"d:f5","entity_ref":"SYN:P3","entity_kind":"PERSON","literal_form":"Müller","form_kind":"FAMILY_ONLY","language_tag":"en"},
+    {"name_form_id":"d:f6","entity_ref":"SYN:P4","entity_kind":"PERSON","literal_form":"Müller","form_kind":"FAMILY_ONLY","language_tag":"en"},
+    {"name_form_id":"d:f7","entity_ref":"SYN:P2","entity_kind":"PERSON","literal_form":"García","form_kind":"FAMILY_ONLY","language_tag":"en"}
+  ],
+  "context_cases": [
+    {"id":"nested-no-speaker","text":"Katherine O'Neil wrote: ‘José García reported, “I did not coin the term.”’ She replied.","expected_coreferences":[["I","ABSTAINED",[]],["She","AMBIGUOUS",["SYN:P1","SYN:P2"]]]},
+    {"id":"quoted-outer-speaker","text":"Katherine O'Neil wrote: ‘I did not coin it.’","speaker_person_refs":["SYN:P1"],"quote_speaker_owned":false,"expected_coreferences":[["I","ABSTAINED",[]]]},
+    {"id":"explicit-quoted-speaker","text":"“I did not coin it.”","speaker_person_refs":["SYN:P2"],"quote_speaker_owned":true,"expected_coreferences":[["I","CANDIDATE",["SYN:P2"]]]},
+    {"id":"same-surname","text":"Josef Müller thanked Alex Müller. Müller replied.","expected_mentions":[["Josef Müller","CANDIDATE",["SYN:P3"]],["Alex Müller","CANDIDATE",["SYN:P4"]],["Müller","AMBIGUOUS",["SYN:P3","SYN:P4"]]]},
+    {"id":"unknown-antecedent","text":"José García thanked John Doe. He replied.","expected_coreferences":[["He","ABSTAINED",["SYN:P2"]]]},
+    {"id":"paragraph-scope","text":"José García wrote.\n\nHe replied.\n","expected_coreferences":[["He","ABSTAINED",[]]]},
+    {"id":"diacritic-short-form","text":"José García wrote. García replied.","expected_mentions":[["José García","CANDIDATE",["SYN:P2"]],["García","CANDIDATE",["SYN:P2"]]]},
+    {"id":"apostrophe-name","text":"Katherine O'Neil wrote. She replied.\r\n","expected_coreferences":[["She","CANDIDATE",["SYN:P1"]]]}
+  ],
+  "historical_gold": false,
+  "automatic_acceptance": false
+}
