@@ -18,6 +18,7 @@ def main():
     sub.add_parser('validate')
     rebase=sub.add_parser('research-publication-rebase')
     rebase.add_argument('base',type=Path)
+    sub.add_parser('research-passage-review')
     build=sub.add_parser('research-build')
     build.add_argument('--ocr-model-dir',type=Path)
     check=sub.add_parser('research-check')
@@ -95,7 +96,10 @@ def main():
     try:
         if args.command.startswith('research-'):
             from .research_slice import build_slice,check_slice,run_ocr
-            if args.command=='research-publication-rebase':
+            if args.command=='research-passage-review':
+                from .passage_review import review_passages
+                result=review_passages(root)
+            elif args.command=='research-publication-rebase':
                 from .publication_rebase import rebuild_integrated
                 result=rebuild_integrated(root,args.base)
             elif args.command=='research-card-export':

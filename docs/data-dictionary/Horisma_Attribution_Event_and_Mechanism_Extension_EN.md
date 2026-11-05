@@ -102,3 +102,6 @@ The candidate graph0.1 implementation materializes explicit versioned sources/re
 
 
 Publication naming migration receipts bind old_base/new_base content-addressed snapshots, operator_sha256, the unchanged scientific projection digest and the exact changed input paths. They record zero model/pdf-parse calls and no scientific/release approval. The frozen suite retains its original identity; effective_base_slice_path is an explicitly verified current binding, not a replacement historical source version or new independent observation. Each edition/card continues to bind its own source and argument revisions.
+
+
+Source-scope diagnostic records distinguish packet/node revisions, unchanged source text, quoted model output, structural validity, typed inference-guard status and scientific abstention. A source-only SUPPORTED response is not the project's historical claim assessment. Gold answers and historical accuracy remain null for unqualified historical packets. Rebinding changes excerpt and projection revisions, not the source version; the old wrong excerpt remains in immutable history. Cached raw inference may be reused only for identical packet/request/model identities and is parsed with the current version-bound validator.

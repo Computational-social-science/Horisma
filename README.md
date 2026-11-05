@@ -39,3 +39,5 @@ EIDOS Agent is reused through an existing pinned installed worker and a project-
 Private PDFs, extraction, model responses and source custody blobs remain out of Git. Technical acceptance, scientific qualification, reader quality and public release are separate. New UI effects and additional book formats are not substitutes for evidence.
 
 The exact publication naming migration is available as `research-publication-rebase <old-slice.json>`, followed by `research-eidos-check`. It preserves frozen evidence inputs, re-scores sealed outputs without inference, and rebuilds current entity/case/card/book dependencies. Operational freshness does not confer historical acceptance or release.
+
+`research-passage-review` runs bounded local source-text diagnostics with per-packet response reuse. Its current report preserves raw model judgments and role-guard failures; it abstains from historical acceptance while transcription fidelity or reviewer qualification is missing.

@@ -31,6 +31,8 @@ Use research-event-cards for source-grounded event propositions and research-car
 
 For this exact naming migration, use research-publication-rebase <old-slice.json>, then research-eidos-check. The migration reconstructs old byte hashes, preserves scientific payloads and frozen suite identity, replays sealed outputs and rebuilds all current projections. It is deliberately not a general bypass for stale evidence. Never edit the frozen protocol/labels or inherit an old acceptance result. After code or evidence changes, revalidate the bridge and current card/book heads; keep scientific refusal when qualifications are absent.
 
+Use research-passage-review for bounded source-text diagnostics. Check the actual passage includes the role-bearing statement before blaming the model; one located reading unit owns the snippet. Rebind an excerpt rather than rewriting source wording. Reuse identical packet/request/model responses, reparse raw output under current validation, and bind helper-code revisions. Preserve model errors separately from typed guards. Synthetic success, literal quote validity and source-text entailment do not qualify image fidelity or historical truth; the measured joint-authorship-to-naming failure remains a regression target.
+
 ## Scientific constraints
 
 Preserve source/version/page/region/span. Printed page differs from PDF index (Price printed512 is index3). The1968 file contains adjacent article material; full-document co-occurrence is not passage support.

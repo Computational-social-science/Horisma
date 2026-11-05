@@ -50,6 +50,9 @@ def main():
             result['case_projection']=case_result
             from horisma_p0.publication_rebase import check_publication_chain
             result['publication_projection']=check_publication_chain(ROOT,ROOT/case_head['case'])
+            if (ROOT/'ops/state/passage-review-head.json').exists():
+                from horisma_p0.passage_review import check_review
+                result['passage_review']=check_review(ROOT)
             result['preview_eligible']=result['preview_eligible'] and case_result['preview_eligible']
             result['scientific_eligible']=result['scientific_eligible'] and case_result['scientific_eligible']
             result['release_eligible']=result['release_eligible'] and case_result['release_eligible']
