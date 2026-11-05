@@ -1,0 +1,16 @@
+version: 0.1.0
+status: IMPLEMENTED_LOCAL_REVISION_CHAIN_NOT_QUALIFIED_SCIENTIFIC_STORE
+semantic_authority: docs/architecture/LIVE_LEDGER_CHECKPOINT_EN.md
+implementation: horisma_p0.live_ledger.Ledger
+storage: Project-owned immutable entity/snapshot objects with atomic HEAD replacement
+writer: Single exclusive writer lock; stale-lock recovery not implemented
+facets:
+  declared: [SATISFIED, PENDING, REJECTED]
+  effective: [SATISFIED, PENDING, REJECTED, STALE]
+dependency_fields: [entity_id, revision, requires_facet, affects_facet]
+invalidation: Parent revision change or unsatisfied effective required facet blocks declared child target facet and propagates.
+precision: Whole parent revision binding; independent per-parent-facet revisions not implemented.
+view_renderer: scripts/export_live_view.py
+publication: Private local output; not an automatic redaction boundary
+science: Supplied facet assertions require external qualified receipts; importing never authenticates truth.
+proof_status: UNPROVEN

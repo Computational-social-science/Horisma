@@ -1,0 +1,12 @@
+version: 0.1.0
+status: IMPLEMENTED_CANDIDATES_NOT_QUALIFIED_LINGUISTIC_SCOPE
+operator_id: HEX-CLAUSE-SCOPE-01
+callable: horisma_p0.clause_scope.segment
+semantic_authority: docs/research/CLAUSE_SCOPE_CHECKPOINT_EN.md
+input: Caller-bound exact English text plus nonnegative base offset
+output: Exact candidate spans, quotation intersections, reporting and negation cues
+failure: Invalid text or offset raises ValueError
+limitations: [Nested and single quotation unqualified, Speaker unresolved, Negation scope unresolved, Candidate not necessarily atomic]
+cache: Source/text/code/version binding required; no implicit text repairs
+human_review_required: false
+acceptance: None; downstream qualified receipts remain mandatory

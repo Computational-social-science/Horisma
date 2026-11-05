@@ -1,0 +1,10 @@
+version: 0.1.0
+status: PRIVATE_DESIGN_PROOF_NOT_RELEASE_READY
+semantic_authority: docs/architecture/PUBLICATION_VISUAL_LANGUAGE_EN.md
+inputs: [Ledger snapshot, Versioned narrative guide, Source-bound locators]
+outputs: [Interactive HTML, Static print HTML, Paged PDF proof, Reflowable EPUB3 proof]
+source_facsimiles: Private story only; omitted from publication proof
+locator_semantics: Editorial location, never scientific acceptance
+color: Supplementary; textual labels and patterns required
+script_free_book: true
+pending: [Normalized bibliography master, EPUBCheck, Multi-reader QA, Mirrored print margins, Printer preflight, Release rights]

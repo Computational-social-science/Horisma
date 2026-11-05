@@ -1,0 +1,77 @@
+version: 0.2.0
+status: IMPLEMENTED_CANDIDATE_OPERATORS_NOT_IDENTITY_QUALIFICATION
+scope: Versioned extension; frozen P0 records and vocabularies unchanged.
+objects:
+  person_name_form:
+    grain: One sourced name form for one candidate person identity, within a declared scope.
+    required_fields:
+      - name_form_id
+      - person_ref
+      - literal_form
+      - form_kind
+      - language_tag
+      - script_code
+      - valid_time
+      - source_version_ref
+      - passage_or_region_ref
+      - character_span
+      - evidence_status
+      - revision
+    optional_fields: [given_names, family_name, name_order, transliteration_system, surface_shape]
+    form_kind: [FULL_AS_ATTESTED, LABEL_AS_ATTESTED, INITIALLED, FAMILY_ONLY, GIVEN_ONLY, ALIAS_AS_ATTESTED, TRANSLITERATION_AS_ATTESTED, ABBREVIATION_AS_ATTESTED]
+    evidence_status: [CANDIDATE_SOURCE_FORM, ACCEPTED_SOURCE_FORM, WITHDRAWN]
+    missing: Unknown components stay null with an explicit missing reason; do not expand initials from familiarity.
+  person_mention:
+    grain: One unchanged textual occurrence and its context-bound identity candidates.
+    required_fields:
+      - mention_id
+      - source_version_ref
+      - passage_or_region_ref
+      - literal_text
+      - character_span
+      - context_refs
+      - candidate_person_refs
+      - candidate_name_form_refs
+      - link_state
+      - linking_basis
+      - revision
+    additional_fields: [candidate_entity_refs, matched_name_form_refs, entity_kinds, identity_qualified, transcription_accepted]
+    link_state: [UNLINKED, CANDIDATE, AMBIGUOUS, QUALIFIED_LINK, ABSTAINED]
+    linking_basis: [EXACT_ATTESTED_FORM, CONTEXTUAL_SHORT_FORM, SOURCE_IDENTIFIER, CORRUPTION_HYPOTHESIS]
+  coreference_annotation:
+    grain: One unchanged English pronoun with scoped potential antecedents; no substituted text.
+    required_fields: [coreference_id, literal_text, character_span, candidate_person_refs, antecedent_mention_refs, context_refs, linking_basis, link_state, revision]
+    linking_basis: [EXPLICIT_SPEAKER_SCOPE, SPEAKER_UNESTABLISHED, UNIQUE_PRIOR_PERSON_IN_CONTEXT_NOT_GENDER_INFERENCE, QUOTE_OR_CONTEXT_SCOPE_UNESTABLISHED, UNCATALOGUED_SPAN_PREVENTS_UNIQUENESS]
+    language_scope: ENGLISH_CONSERVATIVE_RULE_BASELINE
+    first_person: Known person references and explicit source-evidence references required; outer author does not determine quoted speaker.
+    ambiguity: Preserve ambiguous and abstained named observations as potential antecedents; uncatalogued capitalized spans block uniqueness.
+  source_reported_identity_assertion:
+    grain: One upstream property statement, retaining rank, qualifiers, references, value and source claim ID.
+    evidence_status: CANDIDATE_NOT_ADJUDICATED
+    imported_attributes: [BIRTH_TIME, DEATH_TIME, BIRTH_PLACE, DEATH_PLACE, CITIZENSHIP_AS_REPORTED, SEX_OR_GENDER_AS_REPORTED_UNDISAMBIGUATED, EMPLOYER, EDUCATION, AWARD, OCCUPATION, FIELD_OF_WORK]
+    missing: Preserve source somevalue/novalue separately from NOT_COLLECTED; never invent values.
+  citizenship_flag_association:
+    grain: One source-reported citizenship linked through source-reported ISO alpha-2 to a local flag asset.
+    root: Country-flags/flag-icons-main
+    required_fields: [person_ref, citizenship_assertion_ref, country_entity, iso_alpha2, iso_source_blob, iso_source_pointer, path, sha256, library_version, license_path, license_sha256, historical_appropriateness, display_eligible]
+    display_eligible: false
+    boundary: Citizenship is distinct from nationality and birthplace; historical flag appropriateness remains unestablished.
+invariants:
+  - Same spelling is not an identity key; a surname can identify multiple people.
+  - Different spellings can denote one person but require a sourced identity relation.
+  - Resolve short given/family forms only within explicit document/context scope; retain all candidates when ambiguous.
+  - Historical/translated/transliterated names retain language, script, time and provenance.
+  - Do not infer given/family components from token order for an unknown naming tradition.
+  - An OCR corruption hypothesis is not an attested alias and never rewrites a transcript.
+  - Name-form source updates invalidate dependent mention links, people projections and benchmark tasks.
+  - Candidate identity links grant neither transcription fidelity nor contribution attribution.
+  - Dataset completeness is measured against declared sources and observed mentions, never asserted globally.
+implementation_status:
+  current_people: Two partial source-reported scientist profiles; one target concept shares the surface-form operator.
+  source_bound_name_forms_dataset: IMPLEMENTED_PRIVATE_DEVELOPMENT_SLICE
+  contextual_mention_linker: IMPLEMENTED_CONSERVATIVE_CANDIDATE_BASELINE
+  multilingual_coreference: NOT_IMPLEMENTED
+  historical_link_qualification: NOT_GRANTED
+  term_alias_contract: spec/extensions/term_aliases.yaml
+  acquisition: Public free metadata capture once; offline cache/build/evaluation afterward.
+  next_acceptance: Broader blind ambiguity/degraded-OCR/context tests and independently qualified source fidelity before historical identity-link qualification.

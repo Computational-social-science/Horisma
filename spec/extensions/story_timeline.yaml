@@ -1,0 +1,12 @@
+version: 0.1.0
+status: IMPLEMENTED_PRIVATE_OFFLINE_INTERACTIVE_PROTOTYPE
+semantic_authority: docs/architecture/STORY_TIMELINE_DESIGN_EN.md
+builder: scripts/export_story_timeline.py
+ui: src/horisma_p0/story_ui
+narrative_guide: spec/examples/matthew_story_guide.json
+source_of_truth: Immutable ledger snapshot and bound source/record revisions
+runtime: Browser JavaScript, no external requests or required build dependencies
+refresh: Explicit on-demand export; old editions remain immutable
+acceptance: Narrative and source previews do not qualify scientific claims
+stale_dependencies: Refuse build rather than blend old record bindings and current source revisions
+publication: Private original-page/excerpt output; no automatic redistribution

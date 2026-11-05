@@ -1,0 +1,28 @@
+version: 0.1.0
+status: CANDIDATE_AUTHORITY_BINDINGS_NOT_IDENTITY_GOLD
+languages: [en, fr, es, ru, zh, ar]
+entities:
+  - entity_ref: horisma:person:robert-k-merton
+    entity_kind: PERSON
+    wikidata_id: Q312843
+    wikipedia_title: Robert K. Merton
+  - entity_ref: horisma:person:harriet-a-zuckerman
+    entity_kind: PERSON
+    wikidata_id: Q517539
+    wikipedia_title: Harriet Zuckerman
+  - entity_ref: horisma:concept:matthew-effect
+    entity_kind: CONCEPT
+    wikidata_id: Q1337985
+    wikipedia_title: Matthew effect
+concept_family_ref: horisma:family:matthew-effect
+term_relation_policy:
+  authority_label: CANDIDATE_LABEL
+  authority_alias: CANDIDATE_SAME_CONCEPT
+  related_mechanisms_are_not_aliases: true
+  automatic_concept_merge: false
+inference_policy:
+  qualified_links_produced: false
+  source_text_replacement: false
+  implicit_pronoun_gender_inference: false
+  multilingual_coreference: NOT_IMPLEMENTED_ENGLISH_RULE_BASELINE_ONLY
+  fuzzy_name_similarity: CANDIDATE_OCR_OR_UNLISTED_NAME_NOT_ATTESTED_ALIAS

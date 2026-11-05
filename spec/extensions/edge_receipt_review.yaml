@@ -1,0 +1,9 @@
+version: 0.1.0
+status: IMPLEMENTED_BINDING_AND_ABSTENTION_NOT_SEMANTIC_QUALIFICATION
+semantic_authority: docs/research/EDGE_RECEIPT_REVIEW_CHECKPOINT_EN.md
+operators: [horisma_p0.edge_review.review_context, horisma_p0.edge_review.review_edge, horisma_p0.edge_review.inference_guard]
+context: Exact edge hash, relation, claim/source/passage/record versions and policy
+receipt_domains: Existing seven automated-review gates
+producer_authentication: NOT_IMPLEMENTED_ACCEPTANCE_BLOCKED
+rule_scope: Supplied typed single-evidence counterexamples; not natural-language semantic accuracy
+human_review_required: false

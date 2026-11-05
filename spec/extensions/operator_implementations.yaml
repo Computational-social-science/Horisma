@@ -1,0 +1,53 @@
+version: 0.2.0
+base_catalog_sha256: 62758d0e725c5db942c95eea4ecbbd16f75ef6279a1d711863eac4346de85ef8
+scope: Implementation overlay; frozen scientific contracts unchanged
+providers:
+- operator_id: HOP-TEXT-EXTRACTION
+  provider: horisma_p0.research_passages.materialize_passages
+  measured_scope: candidate native/JATS derivatives; fidelity unqualified
+  historical_science_qualified: false
+- operator_id: HOP-PASSAGE-ANCHOR
+  provider: horisma_p0.region_bindings.region_candidate
+  measured_scope: required-block context; sentence spans remain candidates
+  historical_science_qualified: false
+- operator_id: HOP-TRANSCRIPTION-REVIEW
+  provider: horisma_p0.research_slice.run_ocr
+  measured_scope: actual local image/native comparison; not qualified acceptance
+  historical_science_qualified: false
+- operator_id: HOP-PROFILE-PROJECTION
+  provider: horisma_p0.research_slice.build_slice
+  measured_scope: two-person partial development projection
+  historical_science_qualified: false
+- operator_id: HOP-FRESHNESS-CHECK
+  provider: horisma_p0.research_slice.check_slice
+  measured_scope: source/vault/code/claim/chapter integrity and stale propagation
+  historical_science_qualified: false
+- operator_id: HOP-METRIC-DERIVATION
+  provider: horisma_p0.model_screen.write_report
+  measured_scope: synthetic-only denominated diagnostic metrics
+  historical_science_qualified: false
+- operator_id: HOP-RELEASE-CHECK
+  provider: horisma_p0.research_slice.qualified_receipts
+  measured_scope: scoped local producer registry; real registry currently empty
+  historical_science_qualified: false
+- operator_id: HOP-PROJECT-RECEIPT
+  provider: installed framework.cli through .eidos/validate_horisma.py
+  measured_scope: EIDOS0.5.0 actual REFUSED receipt; not scientific PASS
+  historical_science_qualified: false
+- operator_id: HOP-FEEDBACK-EXPORT
+  provider: installed framework.cli feedback
+  measured_scope: local metadata ZIP exported; not uploaded or closed
+  historical_science_qualified: false
+- operator_id: HOP-CORRECTION-PROPOSAL
+  provider: horisma_p0.correction_workflow.correction_proposal
+  measured_scope: Local StartLux proposals; exact unique anchors required
+  historical_science_qualified: false
+- operator_id: HOP-OVERCORRECTION-GATE
+  provider: horisma_p0.transcription_correction.assess_proposal
+  measured_scope: Protected semantic tokens and editorial/transcription separation;
+    heuristic, no acceptance
+  historical_science_qualified: false
+- operator_id: HOP-VISUAL-LITERAL-SCREEN
+  provider: horisma_p0.correction_workflow.visual_transcript
+  measured_scope: Four synthetic image controls; observed3/4, unqualified
+  historical_science_qualified: false

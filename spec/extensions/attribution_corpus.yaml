@@ -1,0 +1,15 @@
+version: 0.1.0
+status: IMPLEMENTED_WINDOW_OPERATOR_WITH_PROPOSED_RESEARCH_LABELS
+operator_id: HEX-ATTRIBUTION-WINDOW-01
+callable: horisma_p0.attribution_corpus.statement_window
+semantic_authority: docs/research/ATTRIBUTION_CORPUS_PILOT_EN.md
+input: Exact page text, unique anchor, source digest, PDF page index and context radius
+output: Whitespace-normalized locatable window with null role/omission assessments
+failure: Missing/ambiguous/empty anchor or invalid page/radius raises ValueError
+boundaries:
+  - Context window does not prove a complete statement or whole-document omission.
+  - Citation existence does not establish reading, reliance or causal transmission.
+  - Reprints and repeated windows are not independent observations.
+  - Source hashes provide identity binding, not scholarly identity authentication.
+cache: Exact input/source/code/version binding required; changed inputs invalidate output.
+publication: Private corpus text; technical export only at accepted milestone.

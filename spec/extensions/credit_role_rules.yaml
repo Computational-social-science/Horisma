@@ -1,0 +1,16 @@
+version: 0.1.0
+status: IMPLEMENTED_CONDITIONAL_TRIAGE_NOT_QUALIFIED_SEMANTIC_CODING
+semantic_authority: docs/research/ROLE_SCOPED_ATTRIBUTION_CHECKPOINT_EN.md
+operators:
+  HEX-CREDIT-ROLE-01:
+    callable: horisma_p0.credit_roles.credit_triage
+    prerequisites: Role, contributor coverage, exclusive scope, complete context and role comparability are evidence-coded.
+    result: Conditional triage only; no scientific assessment or intent inference.
+  HEX-EVIDENCE-EDGE-01:
+    callable: horisma_p0.evidence_graph.validate_edge
+    prerequisites: Source and target file bindings, target work ID and typed relation.
+    result: Integrity binding only; semantic relation remains proposed.
+    invalidation: Any changed bound file rejects the edge.
+    error: Invalid type or dependency rejected.
+human_review_required: false
+proof_status: UNPROVEN

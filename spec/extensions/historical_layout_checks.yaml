@@ -1,0 +1,44 @@
+version: 0.1.0
+scope: Candidate layout and critical-token diagnostics, not historical gold.
+targets:
+- id: aaas-preview-contribution
+  source_id: '1'
+  anchor: Based on the Zuckerman interviews
+- id: aaas-preview-printed-date
+  source_id: '1'
+  anchor: 16 OCTOBER 1964
+- id: aaas-preview-continuation
+  source_id: '1'
+  anchor: the "Matthew effect" after
+- id: aaas-programme-scheduled-session
+  source_id: '2'
+  anchor: Part I, The Sociology of Science
+- id: merton-byline
+  source_id: '3'
+  anchor: Robert K. Merton
+  exact: true
+- id: merton-opening-first-clause
+  source_id: '3'
+  anchor: This paper develops
+- id: merton-opening-interview-material
+  source_id: '3'
+  anchor: interviews with Nobel laureates
+- id: merton-retrospective-footnote
+  source_id: '4'
+  anchor: should have appeared under joint authorship
+continuations:
+- id: aaas-preview-column-transition
+  from: aaas-preview-contribution
+  to: aaas-preview-continuation
+  status: PROPOSED_CONTINUATION_NOT_ENTAILMENT
+native_retrievals:
+- id: merton-opening-left-column
+  source_id: '3'
+  anchor: This paper develops
+  from: merton-opening-first-clause
+  limitation: Source-column recovery proposal; exclude the adjacent column without silently rewriting Docling text.
+- id: aaas-programme-next-column
+  source_id: '2'
+  anchor: scientific communication
+  from: aaas-programme-scheduled-session
+  limitation: Programme wording concerns a scheduled presentation, not actual delivery or naming priority.

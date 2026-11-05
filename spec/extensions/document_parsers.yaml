@@ -1,0 +1,50 @@
+version: 0.1.0
+status: CANDIDATE_ROUTES_NOT_FIDELITY_QUALIFICATION
+excluded_backends:
+  marker:
+    status: USER_EXCLUDED
+    reason: Explicit user preference to avoid paid-API dependency risk; do not install, call or benchmark.
+mineru:
+  status: DOCUMENTATION_REVIEWED_NOT_INSTALLED_OR_EXECUTED
+  official_repository: https://github.com/opendatalab/MinerU
+  candidate_task: Local layout/reading-order and footnote-region comparison on the existing frozen pages.
+  allowed_mode: LOCAL_ONLY_NO_HOSTED_ENDPOINT
+  automatic_route_enabled: false
+  license_review: Repository describes an Apache-2.0-based license with additional conditions; pin and inspect code/weight terms before installation.
+anymd:
+  version: 8.5.9
+  mode: LOCAL_NATIVE_NO_OCR_NO_IMAGES
+  license: MIT
+  global_mcp_setup: false
+  pro_features_enabled: false
+  binary_sha256: b40f10e9746a1e7928148dd8b10c2efb0939b9d2cd19c9211d29f6232636135d
+docling:
+  measured_version: 2.140.0
+  sandbox_version: 2.147.0
+  mode: OFFLINE_LOCAL_LAYOUT_PLUS_EXISTING_RAPIDOCR
+  software_license: MIT
+  remote_services: false
+  gpu_layout_requested_for_existing_runtime: true
+  sandbox_cpu_smoke_only: true
+paddleocr:
+  version: 3.7.0
+  paddlepaddle_version: 3.3.1
+  runtime: .rebuild/tools/paddleocr/venv/Scripts/python.exe
+  device: cpu
+  software_license: Apache-2.0
+  mode: EXPLICIT_LITERAL_SCREEN_AND_PRIVATE_REGIONAL_DIAGNOSTIC
+  models: [PP-OCRv5_mobile_det, en_PP-OCRv5_mobile_rec]
+  model_manifest: .rebuild/tools/paddleocr/models/manifest.json
+  synthetic_literal_matches: 12
+  synthetic_denominator: 12
+  historical_fidelity_qualified: false
+  automatic_route_enabled: false
+  pp_structure_v3_executed: false
+  paddleocr_vl_executed: false
+  limitation: Citation-range punctuation disagreement remains; v5 and v6 share project lineage.
+routing:
+  SCAN_WITH_HIDDEN_TEXT: docling
+  BORN_DIGITAL: anymd
+  MIXED_OR_UNDETERMINED: docling
+acceptance: Coverage and geometry diagnostics never imply faithful transcription or
+  passage support.

@@ -1,0 +1,12 @@
+version: 0.1.0
+status: IMPLEMENTED_PRIVATE_HTML5_PROTOTYPE
+semantic_authority: docs/architecture/SCROLL_WEB_EBOOK_EN.md
+builder: scripts/export_scroll_ebook.py
+master: horisma_p0.publication_master.make_master
+bibliography: spec/examples/matthew_bibliography.json
+runtime: Native HTML/CSS/JavaScript and Canvas; no CDN
+features: [Scroll source synchronization, Reading progress Canvas, Stable-ID reading paths, Local inference exercise, No-JS chapter fallback]
+three_dimensional_renderer: NOT_IMPLEMENTED_NO_JUSTIFIED_ASSET
+book_integration: Stable master IDs and source registry; EPUBCheck/reader validation pending.
+privacy: No response collection or participant experiment
+scientific_status: Provisional; UI interaction cannot grant scientific acceptance

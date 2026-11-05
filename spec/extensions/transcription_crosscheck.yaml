@@ -1,0 +1,18 @@
+version: 0.1.0
+scope: MATTHEW_1988_FOOTNOTE_DEVELOPMENT_VARIANTS_NOT_TRUTH_LABELS
+source_id: '4'
+audit_target_id: merton-retrospective-footnote
+probes:
+  - id: contributor_name
+    pattern: '\b[A-Z][a-z]+\s+Zuckerman\b'
+  - id: retrospective_year_bracket
+    pattern: '\[\d{4,5}[\]l1]?'
+  - id: citation_volume_page_range
+    pattern: '36\s*:\s*\d+(?:\s*[-–—]\s*\d+)?'
+  - id: printed_grammar
+    pattern: 'This is (?:an )?occasion'
+  - id: joint_authorship_modality
+    pattern: '\b(?:should|must|may|might)\s+have\s+appeared\s+under\s+joint\s+authorship\b'
+automatic_merge: false
+majority_vote: false
+qualification_from_agreement: false

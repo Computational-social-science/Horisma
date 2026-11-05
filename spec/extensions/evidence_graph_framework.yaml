@@ -1,0 +1,21 @@
+version: 0.1.0
+status: IMPLEMENTED_METADATA_MAP_AND_VALIDATOR_NOT_SEMANTIC_PROOF
+semantic_authority: docs/research/EVIDENCE_GRAPH_FRAMEWORK_EN.md
+map_source: spec/examples/matthew_evidence_map.json
+renderer: scripts/render_evidence_map.py
+node_types: [SOURCE, CLAIM, AND_INFERENCE, HYPOTHESIS, OUTCOME]
+relations: [REPORTS, REFERENCES, LIMITS, PREMISE, PROPOSES, HYPOTHESIZES]
+current_semantic_status: PROPOSED
+AND_semantics: Every declared premise must have an incoming PREMISE edge; syntax completeness is not entailment.
+source_clusters: AAAS preview/programme may share origin; no assumed independence.
+role_coding:
+  callable: horisma_p0.role_context.role_proposal
+  qualification: SIX_CASE_DEVELOPMENT_SCREEN_ONLY
+context_coverage:
+  callable: horisma_p0.role_context.context_coverage
+  semantic_completeness: NOT_QUALIFIED
+limits:
+  - No proof of causal mechanism from directed paths.
+  - No truth acceptance from rendering or matching model proposals.
+  - File integrity is separate from semantic qualification.
+  - Mixed statements must be split before role-level omission judgments.

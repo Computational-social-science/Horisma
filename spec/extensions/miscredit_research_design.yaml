@@ -1,0 +1,19 @@
+version: 0.1.0
+status: PROPOSED_NOT_PREREGISTERED
+semantic_authority: docs/research/MISCREDIT_HYPOTHESES_AND_MEASUREMENT_EN.md
+frozen_p0_modified: false
+hypotheses:
+  H1: Lagged prominence and favorable role-comparable attribution conflict are associated.
+  H2: Evidentially linked prior attribution exposure predicts subsequent repetition.
+  H3: Randomized counterevidence exposure changes allocation in a separately approved experiment.
+units:
+  observation: Concept-sense-role / source-version / publication-time
+  independence: Provenance cluster; not multilingual copy or repeated passage
+outcomes: [date_discrepancy, role_comparable_credit_conflict, explicit_credit_allocation]
+protocol_dependent: [sampling_frame, prominence_indicator, adjustment_set, contrast_levels, allocation_reference_set, model, sample_size, equivalence_bounds, experiment_protocol]
+missingness: Unassessed and unavailable are not zero; accepted-only results are selection-conditional.
+prohibited_inferences:
+  - Earlier use establishes sole naming or motive.
+  - Current fame measures historical prominence without evidence.
+  - Historical case examples identify a general causal law.
+  - Model agreement validates historical truth.

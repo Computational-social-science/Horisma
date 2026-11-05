@@ -9,6 +9,9 @@ description = "Bounded literature intake and candidate-evidence contract operato
 requires-python = ">=3.12"
 dependencies = ["beautifulsoup4>=4.12", "PyYAML>=6", "jsonschema>=4.20", "pypdf>=5"]
 
+[project.optional-dependencies]
+research = ["PyMuPDF>=1.26", "rapidocr>=3", "onnxruntime>=1.20", "numpy>=2"]
+
 [project.scripts]
 horisma-p0 = "horisma_p0.cli:main"
 

@@ -1,0 +1,17 @@
+version: 0.1.0
+status: IMPLEMENTED_LOCAL_DATE_INPUT_AND_VIEW
+semantic_authority: docs/architecture/TEMPORAL_TRACKS_AND_SOURCE_DRAWERS_EN.md
+input_schema: spec/extensions/temporal_event_input.schema.json
+operators: [horisma_p0.temporal.date_interval, horisma_p0.temporal.validate_event]
+precision: [DAY, MONTH, YEAR, INTERVAL, UNKNOWN]
+tracks: [SOURCE_PUBLICATION, PLANNED_EVENT, OCCURRENCE_CLAIM, SYSTEM_REVISION]
+calendar: Gregorian only for computed bounds; unresolved calendar requires unknown date.
+verified_occurrence: Not supported by this unqualified adapter.
+source_drawer:
+  inputs: Hashed PDF bytes, typed page index, hashed extracted context and locator
+  original_preview: Frozen embedded PNG derived from the checked bytes
+  max_page_pixels: 2000000
+  output: Private source/transcription comparison, not fidelity acceptance
+  invalid_binding: Withhold comparison
+  local_pdf_link: Not monitored after export; frozen embedded page remains the snapshot reference
+publication: No implicit permission; private exports only.

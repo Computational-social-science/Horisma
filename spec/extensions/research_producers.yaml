@@ -1,0 +1,5 @@
+version: 0.1.0
+trust_boundary: Project-local producer registry; integrity provenance, not guaranteed truth.
+producers: {}
+# Producers may be enrolled only with task-scoped qualification artifacts.
+# Synthetic scope screening alone cannot enroll a historical evidence reviewer.

@@ -1,0 +1,20 @@
+version: 0.1.0
+status: IMPLEMENTED_PROPOSAL_RULES_NOT_QUALIFIED_FACTUAL_REVIEW
+semantic_authority: docs/research/CONTRIBUTION_ACKNOWLEDGMENT_SYNTHESIS_EN.md
+operators:
+  chronology_constraint:
+    callable: horisma_p0.attribution_synthesis.chronology_constraint
+    logic_id: HEX-CHRONOLOGY-01
+    types: Explicit closed date intervals, event kind, supplied concept-sense identity
+    prerequisite: Date bounds are justified by source receipts; concept-sense comparability not guessed.
+    result: Conditional inconsistency flags, never historical approval.
+  contribution_synthesis:
+    callable: horisma_p0.attribution_synthesis.synthesize_contribution
+    logic_id: HEX-CONTRIBUTION-01
+    types: Source-bound retrospective joint-authorship acknowledgment
+    result: Positive contribution proposals and unresolved naming/causal questions.
+    invalid_input: Refused with ValueError
+ownership: Horisma only; no EIDOS writes
+cache: Bind exact input, source versions, rule and code versions; changed inputs invalidate prior result.
+proof_status: UNPROVEN
+scientific_acceptance: false

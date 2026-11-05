@@ -16,10 +16,131 @@ def main():
     acquire.add_argument('--media', choices=['pdf', 'html'], default='pdf')
     sub.add_parser('index-wikipedia')
     sub.add_parser('validate')
+    build=sub.add_parser('research-build')
+    build.add_argument('--ocr-model-dir',type=Path)
+    check=sub.add_parser('research-check')
+    check.add_argument('slice',type=Path)
+    ocr=sub.add_parser('research-ocr')
+    ocr.add_argument('slice',type=Path)
+    ocr.add_argument('--model-dir',type=Path,required=True)
+    evaluate=sub.add_parser('research-evaluate')
+    evaluate.add_argument('--candidate',choices=['gemma3:12b','qwen3.8:27b'],default='gemma3:12b')
+    route=sub.add_parser('research-route')
+    route.add_argument('slice',type=Path)
+    route.add_argument('--screen',type=Path,required=True)
+    sub.add_parser('research-eidos-check')
+    parsers=sub.add_parser('research-parsers')
+    parsers.add_argument('slice',type=Path)
+    parse=sub.add_parser('research-parse')
+    parse.add_argument('--backend',choices=['auto','anymd','docling','paddleocr'],default='auto')
+    parse.add_argument('--source-id',choices=['1','2','3','4','5'],required=True)
+    parse.add_argument('--ocr-model-dir',type=Path)
+    audit=sub.add_parser('research-audit')
+    audit.add_argument('slice',type=Path)
+    audit.add_argument('--model-dir',type=Path,required=True)
+    correct=sub.add_parser('research-correct')
+    correct.add_argument('slice',type=Path)
+    correction_input=correct.add_mutually_exclusive_group(required=True)
+    correction_input.add_argument('--audit',type=Path)
+    correction_input.add_argument('--replay',type=Path)
+    visual=sub.add_parser('research-visual-screen')
+    visual.add_argument('slice',type=Path)
+    visual.add_argument('--audit',type=Path,required=True)
+    crosscheck=sub.add_parser('research-crosscheck')
+    crosscheck.add_argument('slice',type=Path)
+    crosscheck.add_argument('--audit',type=Path,required=True)
+    crosscheck.add_argument('--source-id',choices=['1','2','3','4','5'],required=True)
+    entity_sources=sub.add_parser('research-entity-sources')
+    entity_sources.add_argument('--refresh',action='store_true')
+    entities=sub.add_parser('research-entities-build')
+    entities.add_argument('slice',type=Path)
+    entities.add_argument('--crosscheck',type=Path)
+    entity_check=sub.add_parser('research-entities-check')
+    entity_check.add_argument('dataset',type=Path)
+    sub.add_parser('research-entities-evaluate')
     args = parser.parse_args()
     root = args.root.resolve()
     try:
-        if args.command == 'acquire':
+        if args.command.startswith('research-'):
+            from .research_slice import build_slice,check_slice,run_ocr
+            if args.command=='research-parse':
+                import subprocess
+                import sys
+                backend=args.backend;route_reason='EXPLICIT_BACKEND'
+                if backend=='paddleocr':
+                    from .paddle_candidate import run_paddle_candidate
+                    result=run_paddle_candidate(root,args.source_id)
+                    print(json.dumps(result,indent=2));return result['process_returncode']
+                if backend=='auto':
+                    from .parser_candidates import page_kind
+                    head=json.loads((root/'ops/state/research-slice-head.json').read_bytes())
+                    folder=(root/head['slice']).resolve()
+                    if not check_slice(root,folder)['preview_eligible']:raise ValueError('STALE_SLICE')
+                    payload=json.loads((folder/'slice.json').read_bytes())
+                    source=payload['sources'][args.source_id]
+                    kind=page_kind(root/source['preserved_blob']['path'],payload['regions'][args.source_id]['page_index'])
+                    import yaml
+                    parser_config=yaml.safe_load((root/'spec/extensions/document_parsers.yaml').read_text(encoding='utf-8'))
+                    backend=parser_config['routing'][kind['kind']];route_reason=kind['kind']
+                    if backend not in {'docling','anymd'}:raise ValueError('UNAPPROVED_PARSER_ROUTE')
+                command=[sys.executable,str(root/'scripts'/(backend+'_region_probe.py')),'--source-id',args.source_id]
+                if backend=='docling':
+                    if args.ocr_model_dir is None:raise ValueError('EXPLICIT_LOCAL_OCR_MODELS_REQUIRED')
+                    command+=['--ocr-model-dir',str(args.ocr_model_dir)]
+                operation=subprocess.run(command,cwd=root,capture_output=True,timeout=150)
+                result={'backend':backend,'route_reason':route_reason,'process_returncode':operation.returncode,
+                        'stdout_tail':operation.stdout.decode('utf-8',errors='replace')[-2000:],
+                        'stderr_tail':operation.stderr.decode('utf-8',errors='replace')[-1000:],
+                        'scientific_acceptance':False}
+                print(json.dumps(result,indent=2));return operation.returncode
+            elif args.command=='research-eidos-check':
+                import subprocess
+                from .research_slice import read,sha
+                pin=json.loads(read(root,'.eidos/runtime-pin.json'))
+                if sha(Path(pin['wheel_path']).read_bytes())!=pin['expected_wheel_sha256']:raise ValueError('EIDOS_WHEEL_PIN_MISMATCH')
+                operation=subprocess.run([pin['worker_python'],'-I','-m','framework.cli','check','--project',str(root),'--timeout','120','--json'],cwd=root,capture_output=True,text=True,encoding='utf-8',timeout=130)
+                result=json.loads(operation.stdout)
+                result['adapter_process_returncode']=operation.returncode
+            elif args.command=='research-build':
+                folder=build_slice(root)
+                result={'slice':str(folder),**check_slice(root,folder)}
+                if args.ocr_model_dir:result['ocr_receipt']=str(run_ocr(root,folder,args.ocr_model_dir))
+            elif args.command=='research-check':result=check_slice(root,args.slice)
+            elif args.command=='research-ocr':result={'ocr_receipt':str(run_ocr(root,args.slice,args.model_dir))}
+            elif args.command=='research-route':
+                from .pipeline_routes import route_diagnostics
+                result=route_diagnostics(root,args.slice,args.screen)
+            elif args.command=='research-parsers':
+                from .parser_candidates import parser_report
+                result=parser_report(root,args.slice)
+            elif args.command=='research-audit':
+                from .layout_audit import run_layout_audit
+                result=run_layout_audit(root,args.slice,args.model_dir)
+            elif args.command=='research-correct':
+                from .correction_workflow import run_correction_workflow,replay_correction_report
+                result=replay_correction_report(root,args.slice,args.replay) if args.replay else run_correction_workflow(root,args.slice,args.audit)
+            elif args.command=='research-visual-screen':
+                from .visual_challenge import run_visual_challenge
+                result=run_visual_challenge(root,args.slice,args.audit)
+            elif args.command=='research-crosscheck':
+                from .transcription_crosscheck import crosscheck_transcriptions
+                result=crosscheck_transcriptions(root,args.slice,args.audit,args.source_id)
+            elif args.command=='research-entity-sources':
+                from .entity_sources import acquire_entity_sources
+                result=acquire_entity_sources(root,args.refresh)
+            elif args.command=='research-entities-build':
+                from .entity_workflow import build_entity_dataset
+                result=build_entity_dataset(root,args.slice,args.crosscheck)
+            elif args.command=='research-entities-check':
+                from .entity_workflow import check_entity_dataset
+                result=check_entity_dataset(root,args.dataset)
+            elif args.command=='research-entities-evaluate':
+                from .entity_workflow import evaluate_entity_rules
+                result=evaluate_entity_rules(root)
+            else:
+                from .model_screen import run_screen
+                result=run_screen(root,args.candidate)
+        elif args.command == 'acquire':
             result = acquire_source(root, args.source_id, args.url, args.media)
         elif args.command == 'index-wikipedia':
             folder = root / 'data/intake/wikipedia/matthew_effect'
@@ -31,6 +152,8 @@ def main():
             result = validate_ledger(root, load_json(root/'data/evidence/p0/matthew-effect-v1/candidate_ledger.v2.json'),
                                      load_json(root/'spec/p0/candidate_ledger.schema.json'), load_json(root/'spec/p0/freeze_manifest.json'))
         print(json.dumps(result, indent=2))
+        if 'adapter_process_returncode' in result:return result['adapter_process_returncode']
+        if result.get('preview_eligible') is False:return 1
         return 0 if result.get('access_status') != 'WAITING_HUMAN_SOURCE' else 2
     except (ContractError, OSError, ValueError) as exc:
         print(json.dumps({'execution_status': 'TERMINAL_FAILURE', 'error': str(exc)}))

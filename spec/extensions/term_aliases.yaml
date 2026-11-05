@@ -1,0 +1,12 @@
+version: 0.1.0
+status: IMPLEMENTED_CANDIDATE_LEXICAL_OBSERVATIONS_NOT_CONCEPT_EQUIVALENCE
+concept_ref: horisma:concept:matthew-effect
+concept_family_ref: horisma:family:matthew-effect
+relations: [CANDIDATE_LABEL, CANDIDATE_SAME_CONCEPT, RELATED_MECHANISM, UNRESOLVED_SENSE]
+related_mechanism_forms: [cumulative advantage, accumulated advantage, cumulative disadvantage]
+rules:
+  - Keep source-reported labels, aliases, abbreviations and multilingual forms with exact provenance.
+  - An authority alias is a candidate relation; matching it does not establish the intended sense in a passage.
+  - Related-mechanism forms are retained as related observations, excluded from automatic alias matching.
+  - Never generate an abbreviation or translation as an attested alias.
+  - All Matthew forms and translations remain in the same development concept family; no independent-sample inflation.

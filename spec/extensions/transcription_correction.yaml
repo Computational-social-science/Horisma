@@ -1,0 +1,12 @@
+version: 0.1.0
+scope: Versioned transcription-correction extension; frozen vocabularies unchanged.
+views:
+  diplomatic: Retain source spelling and grammar; OCR repairs need qualified image evidence.
+  normalized: Explicitly tracked typography/normalization derivative; never silently replace diplomatic text.
+  editorial: Readability/spelling/grammar derivative; cannot be cited as a verbatim source quotation.
+edit_kinds: [OCR_REPAIR, TYPOGRAPHIC_NORMALIZATION, EDITORIAL_GRAMMAR]
+protected_dimensions: [identity, numbers, negation, modality, attribution_role, quantification, citation, quotation]
+max_edit_fraction: 0.15
+scientific_acceptance_from_correction: false
+source_errors: Preserve in diplomatic view; explain separately rather than silently correcting them.
+image_review: Unqualified model agreement is insufficient to accept an OCR repair.

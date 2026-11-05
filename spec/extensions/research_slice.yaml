@@ -1,0 +1,17 @@
+version: 0.2.0
+profile: PRIVATE_DEVELOPMENT_SLICE
+series_title: Credit Where Credit Is Due
+book_title: The Matthew Effect
+concept_id: horisma:concept:matthew-effect
+concept_family_id: horisma:family:matthew-effect
+source_aliases:
+  '1': horisma:work:aaas-preview-1964
+  '2': horisma:work:aaas-programme-1964
+  '3': horisma:work:merton-matthew-1968
+  '4': horisma:work:merton-matthew-1988
+  '5': horisma:work:brainard-reviewers-2022
+  '6': horisma:work:price-networks-1965
+  '7': horisma:work:huber-nobel-novice-2022
+coordinate_conversion: pdf-points-to-unit-top-left-0.1.0
+historical_gold_available: false
+regional_fidelity_qualified: false

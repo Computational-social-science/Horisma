@@ -1,0 +1,33 @@
+policy_id: horisma-auto-review-0.1.0
+status: IMPLEMENTED_ELIGIBILITY_GATE_NOT_QUALIFIED_REVIEW_SYSTEM
+supersedes: Mandatory human evidence review in the legacy P0 profile, for the automated evidence lane only.
+authorization: Explicit user instruction to remove human evidence review and implement the proposed automated workflow.
+legacy_frozen_profile: 1.0.0
+legacy_artifacts_modified: false
+current_evidence_review_mode: AUTOMATED
+human_source_supply_allowed: true
+vocabularies:
+  automated_review_status:
+    AUTO_REVIEW_ACCEPTED: All required scoped automatic gates satisfied with traceable receipts; not human verified or guaranteed true.
+    NEEDS_EVIDENCE: Missing gates and bounded retry budget remains.
+    ABSTAINED: Unresolved after bounded attempts; no automatic approval.
+operator:
+  callable: horisma_p0.automated_review.decide
+  required_gates: [source_identity, processing_rights, transcription_fidelity, passage_support, scope_and_modality, dependency_freshness, qualified_heterogeneous_review]
+  input_authority: Gate booleans must be computed from bound receipts; arbitrary caller assertions are not evidence.
+  max_attempts: 2
+  retries: Only on new evidence or corrected extraction; never repeat to obtain a pass.
+  failure: Invalid or incomplete typed gates rejected.
+  acceptance_semantics: Scoped automated-review status, separate from claim assessment, execution and publication.
+  freshness: Recompute whenever any source, claim, derivative, model qualification or policy dependency changes.
+qualification:
+  required: Held-out task-specific measurements of false acceptance, abstention, fidelity errors and runtime with predefined thresholds.
+  current_status: NOT_QUALIFIED
+  model_consensus_is_independent_evidence: false
+  second_local_model_selected: false
+
+receipt_verifier:
+  callable: horisma_p0.receipt_verifier.verify_bundle
+  scope: Receipt/dependency integrity and context binding; not semantic authentication
+  missing_or_invalid: Fail closed
+  semantic_producer_qualification: NOT_IMPLEMENTED

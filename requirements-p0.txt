@@ -4,3 +4,6 @@ jsonschema==4.26.0
 pypdf==6.19.0
 PyYAML==6.0.3
 pytest==9.1.1
+# Synthetic research/name contract checks; no OCR/model weights are installed.
+PyMuPDF==1.28.2
+Pillow==13.0.0
