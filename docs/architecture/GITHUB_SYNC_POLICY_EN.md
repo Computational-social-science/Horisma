@@ -2,7 +2,7 @@
 
 2026-11-04. Owner steering: avoid spending main-model tokens on frequent remote synchronization before the research pipeline is mature.
 
-Default to local iteration. Keep evidence, code, English documentation and project skills consistent locally; a small edit is not a release event. Make local checkpoints when useful. Earlier requests for timely GitHub updates do not imply a push after each change.
+Since 19 November 2026, a verified change to the Matthew Effect history triggers a manuscript revision and a corresponding update to the public case account when it changes what readers should conclude. Track the dated public-source version being compared. The local research cycle synchronizes the relevant public documentation to the existing GitHub repository and regenerates the public research portfolio’s working manuscript and figures when their checked inputs change. Verify the remote revision and the served edition separately. A cycle with identical content reuses the existing revision.
 
 Synchronize remotely on an explicit current request or a named acceptance milestone that produces a coherent, reviewable bundle. Batch related implementation, tests, documentation and skills into one meaningful synchronization. A tiny schema edit or an optional model smoke check does not by itself complete a scientific milestone. Keep technical success separate from evidence/rights/transcription/adjudication acceptance.
 
