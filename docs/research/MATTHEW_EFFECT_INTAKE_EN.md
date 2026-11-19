@@ -1,5 +1,7 @@
 # Matthew Effect preferred intake
 
+The [illustrated working manuscript](https://computational-social-science.github.io/manuscript.html) presents the chronology, contribution roles and source notes. The [research portfolio](https://computational-social-science.github.io/) provides the full-size A4 poster and print download.
+
 ## Attribution in public accounts
 
 The English Wikipedia entry attributes the name to Robert K. Merton and Harriet Zuckerman jointly in 1968. Its account of what the effect describes agrees with the early record: scientists of different standing can receive different recognition for comparable work. Its account of who named it and when requires revision. A campus newspaper dated 19 May 1964 already uses the expression in this scientific sense and attributes the naming to Merton. The issue establishes a latest possible date for this attested use. The exact day of coinage remains open. [Wikipedia, revision 1383245157](https://en.wikipedia.org/w/index.php?title=Matthew_effect&oldid=1383245157) · [Mindel and Bondy, *Statesman*, pp. 6–7](https://repo.library.stonybrook.edu/xmlui/bitstream/handle/11401/62034/Statesman%2C%20V.7%2C%20n.%2011.pdf)
