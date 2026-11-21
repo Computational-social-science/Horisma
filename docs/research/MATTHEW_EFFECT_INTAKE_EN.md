@@ -41,6 +41,37 @@ The methods-pointer criterion for the no-note condition required an explicit sta
 
 Both no-note answers retained Zuckerman’s name in a possessive phrase. A naming-only criterion would credit both. The registered interviewer criterion required an explicit statement of her action. Both reprint answers retained the two document types, the book’s publication status and the article’s year, while omitting both titles. One further assigned operation of the recorder to Zuckerman and exceeded the word limit. The passage describes tape-recorded interviews without identifying the person who operated the recorder. Every answer correctly credited Merton with reporting the use of the interviews. Two of six met every criterion. The test concerns prompted summaries of one shared sentence, with two different documentary loads under one word budget. It supplies no estimate of historical miscredit or of accuracy across other article families.
 
+## Does a longer summary preserve both titles?
+
+We tested the word-budget explanation on the same reprint excerpt. Before generating new answers, we froze the input and scoring procedure and randomly ordered a 65-word assignment and a 100-word assignment within each of four blocks. The eight fresh GPT-6 Luna sessions received identical instructions apart from the number. The primary outcome was whether both source titles appeared as contiguous whole words after punctuation and case normalization. Every assigned session entered the denominator for its budget. This outcome can detect a missing title even when the rest of an answer is accurate. It does not score the historical attribution.
+
+Both titles appeared in one of four short-budget answers and three of four long-budget answers. *Scientific Elite* appeared three times in each arm. “Interviewing an Ultra-Elite” appeared once and three times respectively. All eight assignments delivered. Short-budget answers of 69 and 75 words exceeded the instruction and remained in their assigned group. All four long-budget answers complied. The paired changes in the two-title outcome, in block order, were +1, −1, +1 and +1. The observed 100-minus-65 difference was +0.50. Of the 16 possible within-block label swaps, ten gave an absolute difference at least this large under the sharp null of no effect for any assignment. The exact two-sided result was 0.625. One passage and four pairs leave considerable uncertainty about the effect of giving the writer more space. [Eight assignment-level observations](https://computational-social-science.github.io/matthew-matilda/word-budget-scores.csv)
+
+To redo the randomization calculation in Python, save the linked CSV in the working directory and run the following code. A fresh model generation can yield different answers. These stored outcomes reproduce the reported arithmetic.
+
+```python
+import csv
+from itertools import product
+from statistics import mean
+
+with open("word-budget-scores.csv", newline="", encoding="utf-8") as stream:
+    scores = {(int(r["block"]), int(r["budget_words"])): int(r["both_titles"])
+              for r in csv.DictReader(stream)}
+changes = [scores[b, 100] - scores[b, 65] for b in range(1, 5)]
+observed = mean(changes)
+permuted = [mean(s * d for s, d in zip(signs, changes))
+            for signs in product((-1, 1), repeat=len(changes))]
+print(observed, sum(abs(v) >= abs(observed) for v in permuted) / len(permuted))
+```
+
+## Does the five-year name-frequency result survive a different window?
+
+Using the frozen English series through 2022, we held the corpus, exact bigram spellings, zero smoothing, equal annual weights and 1968 pivot constant. The known five-year result served as a positive control. Before inspecting the sweep, we specified every symmetric width from one through fifteen years, omitted the pivot, and required a strictly larger absolute frequency gap and a strictly smaller ratio to retain the joint pattern. A missing annual observation leaves the dependent estimate undefined. A zero denominator leaves the ratio undefined. All 15 comparisons were defined.
+
+The absolute frequency gap between the two strings widened at every width. The ratio of the mean for “Robert Merton” to the mean for “Harriet Zuckerman” **rose** at widths one and two, then **fell** at every width from three through fifteen. For a single year per side the ratio rose from 10.70 to 26.37. At three years it fell slightly, from 19.56 to 19.32. At five years it fell from 26.60 to 12.39. The 15 comparisons reuse years. Their count describes sensitivity to window choice and supplies no independent replication count. Frequencies are measured for strings in books. This design cannot establish who was credited in those books or what would have happened under a different byline. [Annual input](https://computational-social-science.github.io/matthew-matilda/annual.csv) · [Every width and both window means](https://computational-social-science.github.io/matthew-matilda/window-sensitivity.csv) · [Download the standard-library Python analysis](https://computational-social-science.github.io/matthew-matilda/reproduce-windows.py)
+
+With the analysis and annual input saved together, `python reproduce-windows.py annual.csv` writes the 15 results in CSV format to standard output. The SHA-256 of the annual input is `0598ac967cf03536baedb5d4d2edb2c66510c7e03eb82722d9cc594b78bd346a`.
+
 ## Initial intake
 
 2026-11-04. This intake follows the user's preferred [Wikipedia entry](https://en.wikipedia.org/wiki/Matthew_effect). The private receipt pins [revision 1383245157](https://en.wikipedia.org/w/index.php?title=Matthew_effect&oldid=1383245157), retrieval time and exact byte hash. It is a tertiary-source candidate, not primary evidence or benchmark gold.
