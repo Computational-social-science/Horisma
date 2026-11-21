@@ -22,6 +22,25 @@ Two source checks inform how this case is read. In the Fiesers’ *Organic Chemi
 
 In the examined later printing of *The Sociology of Science*, Merton’s chapter note on p. 439 says that joint authorship was warranted. The volume’s own bibliography omits Zuckerman from the entry on p. 564. Merton’s own 1995 reference to the 1973 reprint brackets Zuckerman’s name (p. 420). Entry 99 of the Poros–Needham online compilation explicitly adds her name. These are distinct observations about retrospective credit and its bibliographic transmission. The 1968 printed byline remains the authority for how the article appeared. [Merton’s 1995 self-citation](https://garfield.library.upenn.edu/merton/thomastheorem.pdf#page=42) · [Book bibliography, p. 564](https://eusp.org/sites/default/files/archive/stories/library/Exhibitions/0010592_2.pdf#page=4) · [Online bibliography, entry 99](https://garfield.library.upenn.edu/merton/rkmpubsfull.html) · [Original article](https://doi.org/10.1126/science.159.3810.56)
 
+## Changing the interview footnote
+
+We tested whether a short summary could identify who supplied the interviews, who reported using them, which documents described them, and what the dates in those documents referred to. All six inputs named Robert K. Merton as the author and identified the opening sentence as coming from the 1968 article. That sentence attributes interviews with US Nobel laureates to Harriet Zuckerman and mentions other materials used in the analysis. After the common sentence we supplied either no note, the original note 1, or the documentary sentence from the examined reprint’s note 1. The reprint’s subsequent bracketed authorship acknowledgment lay outside the excerpt. The three inputs represent one work family. [1968 article, opening and note 1](https://doi.org/10.1126/science.159.3810.56) · [The Sociology of Science, chapter 20, p. 439 n. 1](https://press.uchicago.edu/ucp/books/book/chicago/S/bo28451565.html)
+
+Before generation we fixed the passages, task, rubric, six assignments and 65-word limit. Each input went to two fresh GPT-6 Luna sessions. Every session received the same question, which explicitly requested the reporting voice, interviewer, methods documents and timing. All six returned an answer. A separate assessor read each answer with the source passage and reference reading. Replicate number and run order were masked. The contents of the source identified the condition to the assessor.
+
+| Note supplied | Run | Interviewer explicit | Merton as reporter | Methods pointer | Date scope | Unsupported addition | Words | All criteria |
+| --- | ---: | --- | --- | --- | --- | --- | ---: | --- |
+| No note | 1 | No | Yes | Yes | Yes | No | 57 | No |
+| No note | 2 | No | Yes | Yes | Yes | No | 53 | No |
+| 1968 original | 1 | Yes | Yes | Yes | Yes | No | 53 | Yes |
+| 1968 original | 2 | Yes | Yes | Yes | Yes | No | 53 | Yes |
+| Examined reprint | 1 | Yes | Yes | No | Yes | Yes | 71 | No |
+| Examined reprint | 2 | Yes | Yes | No | Yes | No | 62 | No |
+
+The methods-pointer criterion for the no-note condition required an explicit statement that the supplied extract identified no methods document. The original note identifies a Columbia University thesis dated 1965. The reprint names *Scientific Elite* as in press and “Interviewing an Ultra-Elite” as a 1972 article. The scorer accepted the institution and year as identifying the unnamed thesis and treated a generic book and article as insufficient to identify the two named works. Date scope required explicitly recognizing that the interviews themselves remain undated.
+
+Both no-note answers retained Zuckerman’s name in a possessive phrase. A naming-only criterion would credit both. The registered interviewer criterion required an explicit statement of her action. Both reprint answers retained the two document types, the book’s publication status and the article’s year, while omitting both titles. One further assigned operation of the recorder to Zuckerman and exceeded the word limit. The passage describes tape-recorded interviews without identifying the person who operated the recorder. Every answer correctly credited Merton with reporting the use of the interviews. Two of six met every criterion. The test concerns prompted summaries of one shared sentence, with two different documentary loads under one word budget. It supplies no estimate of historical miscredit or of accuracy across other article families.
+
 ## Initial intake
 
 2026-11-04. This intake follows the user's preferred [Wikipedia entry](https://en.wikipedia.org/wiki/Matthew_effect). The private receipt pins [revision 1383245157](https://en.wikipedia.org/w/index.php?title=Matthew_effect&oldid=1383245157), retrieval time and exact byte hash. It is a tertiary-source candidate, not primary evidence or benchmark gold.
