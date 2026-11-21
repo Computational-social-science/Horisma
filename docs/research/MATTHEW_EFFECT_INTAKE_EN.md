@@ -115,6 +115,57 @@ Across eight blocks we counterbalance researcher aliases and the order of the tw
 
 Two outcomes are specified in advance. On indirect evidence, count an affirmative assignment of the target action to the wrong person, including tentative or joint endorsements. Compare marking the wrong person versus marking the documented actor in the same block. On indeterminate evidence, count an explicit statement that the actor is unresolved without endorsing either person. Compare the mean of the two marked assignments with the unmarked assignment in that block. Report missing deliveries separately. With all relevant assignments delivered, the exploratory two-sided tests enumerate respectively 256 paired exchanges and 6,561 possible placements of the neutral label across the eight blocks. Incomplete matched sets yield only descriptive complete-case contrasts. Neither test is adjusted for multiplicity. The seed is `381271`. The local seal covering assignments, reviewed reference, protocol, scoring rules and runner has SHA-256 `3ca091cdd7f1492c9956ce24f2c51b2c7d9761e75b925fcb9c7aa23059c7d3f8`.
 
+### Findings
+
+All 72 assignments delivered in separate GPT-6 Luna sessions. Two independent model assessors saw the answers and the focal action with the roster, evidence and answer key withheld. They agreed on all four fields for every answer: whether it addressed the action, strength of attribution, actor endorsed and whether it voiced uncertainty. The answer itself could reveal the cue. The two tests below were registered before generation. [Prospective registration](https://github.com/Computational-social-science/Horisma/commit/60e72c2d498c97611fe90e11eae86aee683e0630)
+
+For direct statements, 24/24 answers credited the documented actor alone. When the actor was inferable across records, 22/24 did so and two expressly left the actor open. The prespecified wrong-person outcome occurred in 0/8 assignments marking the other person and 0/8 marking the documented actor (paired difference 0 percentage points, 256/256 assignments as or more extreme, two-sided exact *p* = 1). The neutral condition also yielded no wrong-person endorsements. One neutral answer overlooked the sole person on the specified shift. One answer with the other person marked overlooked the sole speaker at the specified talk. Zero transfers on these two constructed scenarios leaves the size of a prestige effect elsewhere open.
+
+When either person could have acted, 5/8 neutral, 8/8 A-marked and 8/8 B-marked answers explicitly left the choice open without endorsing anyone. The contrast averaging the two marked outcomes within each block was +37.5 percentage points (243/6,561 neutral-label placements at least as extreme, two-sided exact *p* = 1/27). This difference ran opposite to the prediction that marking someone would increase unsupported attribution. Both tests are exploratory and unadjusted. In the marked conditions there were zero sole endorsements of the marked or unmarked actor and zero joint endorsements. No answer omitted the focal action. [Compare the same evidence across rosters](https://computational-social-science.github.io/matthew-matilda/context-cue-comparison.html)
+
+The three unsupported endorsements in neutral accounts illustrate two different reasoning errors. An interview answer asserted categorically that the log placed the interviews on the morning shift. The log specified only the day. Two reading answers tentatively preferred the literacy-roundtable speaker. The minutes identified one of two talks, and nothing ruled out a discussion of reading at the science colloquium. In one answer, stating that the evidence was inconclusive did not undo the choice of a preferred person. The design varied standing, while the topical association of *literacy* with *reading* stayed fixed. To distinguish topical plausibility from a response to standing, independently vary which researcher receives the topical cue and which receives the prestige cue on new passages whose two interpretations have been checked in advance.
+
+### Recalculate the two contrasts
+
+Save the [assignment-level CSV](https://computational-social-science.github.io/matthew-matilda/context-cue-scores.csv) in the current directory. This Python code derives the two outcomes from the actor selections and explicit-uncertainty flags. It reports the number of complete matched sets, the observed difference in proportions, and the two-sided exact probability when all eight sets are complete. Each possible reassignment of the neutral label in a three-condition block is equally weighted.
+
+```python
+import csv
+from itertools import product
+
+with open("context-cue-scores.csv", newline="", encoding="utf-8") as stream:
+    rows = list(csv.DictReader(stream))
+slots = {(r['block'], r['evidence'], r['cue']): r for r in rows}
+blocks = sorted({r['block'] for r in rows})
+assert len(blocks) == 8 and len(rows) == len(slots) == 72
+
+def describe(observed, permutations, scale):
+    n = len(observed)
+    total = sum(observed)
+    estimate = total / (n * scale) if n else None
+    if n < len(blocks):
+        return n, estimate, None
+    all_sums = [sum(p) for p in product(*permutations)]
+    return n, estimate, sum(abs(x) >= abs(total) for x in all_sums) / len(all_sums)
+
+transfers, uncertainty, placements = [], [], []
+for b in blocks:
+    a, z = [slots[b, 'INDIRECT', cue] for cue in ('A_MARKED', 'B_MARKED')]
+    if all(r['delivery'] == 'DELIVERED' for r in (a, z)):
+        correct, wrong = (a, z) if a['gold_actor'] == 'A' else (z, a)
+        foil = wrong['marked_actor']
+        transfers.append(int(foil in wrong['endorsed_actors'].split('+'))
+                         - int(foil in correct['endorsed_actors'].split('+')))
+    triple = [slots[b, 'INDETERMINATE', cue] for cue in ('NEUTRAL', 'A_MARKED', 'B_MARKED')]
+    if all(r['delivery'] == 'DELIVERED' for r in triple):
+        y = [int(r['explicit_uncertainty'] == '1' and not r['endorsed_actors']) for r in triple]
+        placements.append([sum(y) - 3 * candidate for candidate in y])
+        uncertainty.append(placements[-1][0])
+
+print('Indirect, wrong minus correct:', describe(transfers, [(x, -x) for x in transfers], 1))
+print('Indeterminate, marked minus neutral:', describe(uncertainty, placements, 2))
+```
+
 ## Does the five-year name-frequency result survive a different window?
 
 Using the frozen English series through 2022, we held the corpus, exact bigram spellings, zero smoothing, equal annual weights and 1968 pivot constant. The known five-year result served as a positive control. Before inspecting the sweep, we specified every symmetric width from one through fifteen years, omitted the pivot, and required a strictly larger absolute frequency gap and a strictly smaller ratio to retain the joint pattern. A missing annual observation leaves the dependent estimate undefined. A zero denominator leaves the ratio undefined. All 15 comparisons were defined.
