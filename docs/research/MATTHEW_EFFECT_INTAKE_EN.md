@@ -64,6 +64,45 @@ permuted = [mean(s * d for s, d in zip(signs, changes))
 print(observed, sum(abs(v) >= abs(observed) for v in permuted) / len(permuted))
 ```
 
+## Does a status label change who gets credit for a specified action?
+
+The experiment addresses two documented distinctions. Zuckerman conducted interviews with laureates that Merton used in his analysis. Stanovich applied a cumulative-advantage analogy to reading development and discussed earlier uses in education. We wrote two short experimental accounts based on these roles, substituted A and B for names, and supplied artificial standing labels. The materials make no claim about either scientist’s relative standing. [Merton, printed p. 56](https://doi.org/10.1126/science.159.3810.56) · [Stanovich, printed pp. 360 and 381](https://people.uncw.edu/kozloffm/mattheweffect.pdf)
+
+For each account, the target actor could be A or B, and the sentence giving that actor’s contribution could be first or second. This made eight blocks. Each received three rosters in randomized order: standing unavailable for both, high standing for the target actor, and high standing for the other researcher. The unmarked researcher’s standing was unspecified throughout. The evidence and the one-sentence attribution question stayed identical within a block. Each slot was assigned a fresh GPT-6 Luna session. Before generation we fixed the stimuli, model, assignments, scoring rules and no-replacement policy in a local input seal (SHA-256 `06430af38c8fd1b61c5a4dd8226806ad3fd1388346c0d126db98b186a637987a`).
+
+The scorer read the target action and the returned sentence, without its roster, gold actor or assignment order. Identifying the other researcher anywhere in the answer counted as an error only when the answer credited that researcher with the **target action**, either alone or jointly. A sentence that named the reporting author could still correctly identify the interviewer. The scoring rule kept a missing action, an action with an unresolved actor, and technical non-delivery separate.
+
+The primary statistic is the mean of eight within-block differences in the indicator for wrong-person credit, subtracting the result when the correct actor was marked from the result when the other researcher was marked. The exact two-sided randomization test fixes the neutral assignment in each block and considers all 256 ways to exchange the two marked assignments. The neutral condition provides an additional descriptive comparison. The individual prompts, answers and scores allow a reader to check the role coding and repeat the arithmetic. [Download the experiment observations](https://computational-social-science.github.io/matthew-matilda/status-cue-scores.csv)
+
+All 24 assignments produced auditable answers. Every answer identified the target actor alone, including all eight in which the other person was marked as having high standing. The rate of wrong-person credit was 0/8 in each of the three conditions (0/4 per condition for each vignette). The primary paired difference was zero percentage points. All 256 exchanges produced the same statistic (two-sided exact p = 1). There were no cases of joint credit, unresolved actors or omitted actions. With only two templates, explicit action verbs and a question asking for the actor, the absence of errors cannot establish equivalence or general resistance to prestige cues.
+
+A subsequent inspection of the prose found that seven of the sixteen answers shown a high-standing label mentioned the researcher’s standing. Six concerned the interviews and one concerned reading. Two interview answers described the high standing of the person reporting the use of the interviews and still credited the other person with conducting them. This was an unplanned observation about wording and was not included in the primary test. Such wording could incidentally disclose part of the cue to a scorer reading an otherwise masked answer.
+
+Six additional sessions tested whether the standing markers could be read when explicitly requested. We selected the target-first interview block with A as actor and the target-first reading block with B as actor. Each kept its evidence and roster. The new question was “Which researcher, if any, is explicitly marked as having high standing in the field? Return only A, B or NONE.” We froze the question, slots, expected symbols and strict scoring before running these six assignments. In sealed order the expected symbols were A, NONE, B, NONE, B, A. The audited answers were A, missing, B, NONE, B, A. The neutral interview assignment used a tool and failed the prespecified no-tool check. It was not repeated. Thus four of four marked rosters and one of two neutral rosters yielded auditable correct answers. These six sessions measure prompted identification of a label and stay outside the attribution experiment’s denominator.
+
+To repeat the primary calculation with Python, save the CSV in the current directory. `SOLE_FOIL` and `JOINT` are the two outcomes that credit the other researcher with the requested action. A technical failure leaves the outcome unknown.
+
+```python
+import csv
+from itertools import product
+
+with open("status-cue-scores.csv", encoding="utf-8", newline="") as stream:
+    rows = list(csv.DictReader(stream))
+by_slot = {(r["block"], r["condition"]): r for r in rows}
+blocks = sorted({r["block"] for r in rows})
+assert len(blocks) == 8 and len(by_slot) == len(rows) == 24
+def wrong(block, condition):
+    row = by_slot[block, condition]
+    assert row["delivery"] == "DELIVERED", "Missing member of a planned pair"
+    return int(row["response_category"] in {"SOLE_FOIL", "JOINT"})
+
+changes = [wrong(b, "wrong_cued") - wrong(b, "correct_cued") for b in blocks]
+total = sum(changes)
+swaps = [sum(s * d for s, d in zip(signs, changes))
+         for signs in product((-1, 1), repeat=len(blocks))]
+print(total / len(blocks), sum(abs(v) >= abs(total) for v in swaps) / len(swaps))
+```
+
 ## Does the five-year name-frequency result survive a different window?
 
 Using the frozen English series through 2022, we held the corpus, exact bigram spellings, zero smoothing, equal annual weights and 1968 pivot constant. The known five-year result served as a positive control. Before inspecting the sweep, we specified every symmetric width from one through fifteen years, omitted the pivot, and required a strictly larger absolute frequency gap and a strictly smaller ratio to retain the joint pattern. A missing annual observation leaves the dependent estimate undefined. A zero denominator leaves the ratio undefined. All 15 comparisons were defined.
