@@ -103,6 +103,18 @@ swaps = [sum(s * d for s, d in zip(signs, changes))
 print(total / len(blocks), sum(abs(v) >= abs(total) for v in swaps) / len(swaps))
 ```
 
+## When does context identify the actor?
+
+### Prospective design
+
+This follow-up asks two questions. When the actor can be identified only by connecting two pieces of evidence, does marking the other researcher as prestigious redirect credit? When both people could have performed the action, does the summary expressly acknowledge that the record cannot distinguish them?
+
+We wrote two anonymous scenarios based on the roles of interviewing scientists and applying an analogy to reading development. The shifts, meetings and rosters are experimental inventions. Each scenario has three evidence versions. A direct statement names the actor. An indirect statement identifies a shift or a specific talk, and a second record identifies the sole person in that role. An indeterminate statement identifies only the day or one of two talks. The second record still contains information about both researchers. To establish the reference answers before generation, a separate reader received only the question and the two pieces of text in shuffled, unlabelled items. The reader identified A in eight items and B in eight, and supplied two compatible accounts of who acted for each of the other eight. The reviewed 24-item packet has SHA-256 `42b0630ce1d4c58ead264c7a979655c374ed9204061247ee9617a569002bab62`.
+
+Across eight blocks we counterbalance researcher aliases and the order of the two records. Each block includes three evidence versions and three labels for standing, for 72 fresh GPT-6 Luna sessions. A roster marks A, marks B, or gives no standing information for either. Each question requests a single sentence identifying the person insofar as the evidence allows. In the ambiguous accounts there is no correct A/B identity. An answer can distinguish a plausible candidate from an established actor, acknowledge uncertainty without choosing either, or omit the role entirely. We retain technical non-deliveries separately.
+
+Two outcomes are specified in advance. On indirect evidence, count an affirmative assignment of the target action to the wrong person, including tentative or joint endorsements. Compare marking the wrong person versus marking the documented actor in the same block. On indeterminate evidence, count an explicit statement that the actor is unresolved without endorsing either person. Compare the mean of the two marked assignments with the unmarked assignment in that block. Report missing deliveries separately. With all relevant assignments delivered, the exploratory two-sided tests enumerate respectively 256 paired exchanges and 6,561 possible placements of the neutral label across the eight blocks. Incomplete matched sets yield only descriptive complete-case contrasts. Neither test is adjusted for multiplicity. The seed is `381271`. The local seal covering assignments, reviewed reference, protocol, scoring rules and runner has SHA-256 `3ca091cdd7f1492c9956ce24f2c51b2c7d9761e75b925fcb9c7aa23059c7d3f8`.
+
 ## Does the five-year name-frequency result survive a different window?
 
 Using the frozen English series through 2022, we held the corpus, exact bigram spellings, zero smoothing, equal annual weights and 1968 pivot constant. The known five-year result served as a positive control. Before inspecting the sweep, we specified every symmetric width from one through fifteen years, omitted the pivot, and required a strictly larger absolute frequency gap and a strictly smaller ratio to retain the joint pattern. A missing annual observation leaves the dependent estimate undefined. A zero denominator leaves the ratio undefined. All 15 comparisons were defined.
