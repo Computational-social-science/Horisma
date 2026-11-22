@@ -1,6 +1,10 @@
 # Horisma Terminological Provenance Project
 
-Design revision0.2.0 — 5 November2026. Current integrated proposal. Workspace: `E:/2026-AI4S/Horisma`.
+The [public research objectives](MATTHEW_EFFECT_INTAKE_EN.md#research-objectives) summarize the v2.2 questions, Matthew Effect pilot and proposed external comparisons.
+
+The first question is historical. Within a defined language, sense, period and source collection, who named a term, developed the concept, contributed evidence and subsequently received credit? The second concerns measurement. How often does verifying an edition, distinguishing a sense or tracing a repeated citation change an attribution? The third concerns generality. A pattern seen in the Matthew Effect case would need independent evidence from other terms and source families before its prevalence or causes could be estimated.
+
+Design revision0.2.0 — 5 November2026. Earlier technical design. Workspace: `E:/2026-AI4S/Horisma`.
 
 ## Executive purpose
 

@@ -1,8 +1,10 @@
 # Horisma implementation and acceptance plan
 
+The [public research objectives](MATTHEW_EFFECT_INTAKE_EN.md#research-objectives) identify the current Matthew Effect source-revision study and the evidence required for external comparisons.
+
 Revision0.3.0 —2026-11-05. Workspace: E:/2026-AI4S/Horisma.
 
-This is the maintained operational plan. The current proposal and dictionary index own scientific scope and definitions. Superseded detail remains in Git at c943ffc4550cabdf8fa85174a2bb13e301800303 and original private receipts. Do not load every dated checkpoint as current instructions.
+This section records the November 5 operational baseline. The current proposal and dictionary index own scientific scope and definitions. Superseded detail remains in Git at c943ffc4550cabdf8fa85174a2bb13e301800303 and original private receipts. Do not load every dated checkpoint as current instructions.
 
 ## Commissioning objective
 

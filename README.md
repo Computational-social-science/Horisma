@@ -1,10 +1,14 @@
 # Horisma
 
+The first question is historical. Within a defined language, sense, period and source collection, who named a term, developed the concept, contributed evidence and subsequently received credit? The second concerns measurement. How often does verifying an edition, distinguishing a sense or tracing a repeated citation change an attribution? The third concerns generality. A pattern seen in the Matthew Effect case would need independent evidence from other terms and source families before its prevalence or causes could be estimated.
+
+The [public research objectives](docs/research/MATTHEW_EFFECT_INTAKE_EN.md#research-objectives) give the current question and comparison. The maintained English and Chinese proposals reflect strategy v2.2. Historical findings retain their recorded scope and review status.
+
 Current private reader manuscript: `docs/research/book/THE_SECRETS_OF_TERMS_MATTHEW_EFFECT_EN.md`. Four provisional source-reading results are recorded in `data/research/findings/matthew-source-results.v1.json`. The older chapter stays a reproducible integration fixture. Research prose is not automatically an approved publication.
 
 Horisma studies how scientific contribution, attribution and uncertainty survive retelling. Its shared evidence infrastructure supports scientist/contribution data, reproducible model evaluation and the book series **The Secrets of Terms**. Each volume uses **The Secrets of Terms** as its main title and the target term as its subtitle; the commissioning volume is **The Secrets of Terms: The Matthew Effect**.
 
-Current design:0.2.0 (2026-11-05). This is a clean rebuild. Existing historical assertions remain candidates; no qualified historical gold or accepted book is claimed.
+Earlier clean-rebuild design:0.2.0 (2026-11-05). This is a clean rebuild. Existing historical assertions remain candidates; no qualified historical gold or accepted book is claimed.
 
 ## Authoritative entries
 

@@ -2,6 +2,14 @@
 
 The [illustrated working manuscript](https://computational-social-science.github.io/manuscript.html) presents the chronology, contribution roles and source notes. The [research portfolio](https://computational-social-science.github.io/) provides the full-size A4 poster and print download.
 
+## Research objectives
+
+The first question is historical. Within a defined language, sense, period and source collection, who named a term, developed the concept, contributed evidence and subsequently received credit? The second concerns measurement. How often does verifying an edition, distinguishing a sense or tracing a repeated citation change an attribution? The third concerns generality. A pattern seen in the Matthew Effect case would need independent evidence from other terms and source families before its prevalence or causes could be estimated.
+
+The next development comparison starts with Mermin’s January 2005 conditional account of the Fiesers’ priority. An April correction, an unrelated passage by the same author and a wrong-edition control pose three different tests. Score justified changes and harmful revisions separately, and check whether the January judgment remains recoverable. A letter can establish what its author reported while direct inspection of the textbook page remains open.
+
+Strategy v2.2 proposes OpenScholar as an external comparator and as prior work in literature synthesis. OS-L0 denotes its published task. OS-L1 retasks it for historical claims. OS-L2 strengthens that comparator using safeguards available to both systems. Historical decision comparisons require matched sources, budgets and attainable coverage. When systems retrieve different evidence, report discovery performance separately. EX22 examines the added safeguards, EX23 tests ranking effects and EX24 audits the evidence for a scientific advance. These are research designs. The working manuscript reports observations from completed studies. [OpenScholar official implementation](https://github.com/AkariAsai/OpenScholar)
+
 ## Attribution in public accounts
 
 The English Wikipedia entry attributes the name to Robert K. Merton and Harriet Zuckerman jointly in 1968. Its account of what the effect describes agrees with the early record: scientists of different standing can receive different recognition for comparable work. Its account of who named it and when requires revision. A campus newspaper dated 19 May 1964 already uses the expression in this scientific sense and attributes the naming to Merton. The issue establishes a latest possible date for this attested use. The exact day of coinage remains open. [Wikipedia, revision 1383245157](https://en.wikipedia.org/w/index.php?title=Matthew_effect&oldid=1383245157) · [Mindel and Bondy, *Statesman*, pp. 6–7](https://repo.library.stonybrook.edu/xmlui/bitstream/handle/11401/62034/Statesman%2C%20V.7%2C%20n.%2011.pdf)
