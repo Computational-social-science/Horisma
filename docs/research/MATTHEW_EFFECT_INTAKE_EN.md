@@ -6,9 +6,74 @@ The [illustrated working manuscript](https://computational-social-science.github
 
 The first question is historical. Within a defined language, sense, period and source collection, who named a term, developed the concept, contributed evidence and subsequently received credit? The second concerns measurement. How often does verifying an edition, distinguishing a sense or tracing a repeated citation change an attribution? The third concerns generality. A pattern seen in the Matthew Effect case would need independent evidence from other terms and source families before its prevalence or causes could be estimated.
 
-The next development comparison starts with Mermin’s January 2005 conditional account of the Fiesers’ priority. An April correction, an unrelated passage by the same author and a wrong-edition control pose three different tests. Score justified changes and harmful revisions separately, and check whether the January judgment remains recoverable. A letter can establish what its author reported while direct inspection of the textbook page remains open.
+The [edition experiment](#can-a-catalogue-record-change-the-status-of-a-page) compares how an automated reader updates a historical priority judgment and how it classifies the evidence for one particular textbook page. The two tasks yielded different results.
 
 Strategy v2.2 proposes OpenScholar as an external comparator and as prior work in literature synthesis. OS-L0 denotes its published task. OS-L1 retasks it for historical claims. OS-L2 strengthens that comparator using safeguards available to both systems. Historical decision comparisons require matched sources, budgets and attainable coverage. When systems retrieve different evidence, report discovery performance separately. EX22 examines the added safeguards, EX23 tests ranking effects and EX24 audits the evidence for a scientific advance. These are research designs. The working manuscript reports observations from completed studies. [OpenScholar official implementation](https://github.com/AkariAsai/OpenScholar)
+
+## Can a catalogue record change the status of a page?
+
+The source question concerns the wording of p. 119 of the **1950 edition** of the Fiesers’ *Organic Chemistry*. To test whether an apparent catalogue match induces a claim of direct verification, we held the January 2005 exchange fixed. We added either Mermin’s April correction or a passage by him about quantum computing. Within each pair we added or withheld a library record. The catalogue dates a scan to 1950, its visible copyright and preface give 1944, and its target leaf was unavailable. A separate catalogue describes a 1950 second edition. These records leave the identity of the scanned printing open. The stimuli were English paraphrases. [January reply](https://doi.org/10.1063/1.4796715) · [April correction](https://doi.org/10.1063/1.1955465) · [Scanned front matter](https://archive.org/details/organicchemistry0000mary/page/n7/mode/1up) · [Separate catalogue entry](https://agris.fao.org/search/en/providers/122535/records/65dde9200f3e94b9e5c73bba)
+
+We froze the inputs, prompt, code definitions, schedule, expected answers and analysis locally before the first generation on 23 November 2026 in Shanghai. Each condition had one forward and one reverse presentation, each in a fresh GPT-6 Luna session. The primary measure was the difference in the fraction selecting *directly witnessed* between the two correction-present conditions, with and without the catalogue material. The prediction was a positive difference. Missing or invalid codes would leave that contrast undefined and would count as failures for accuracy. All eight responses delivered valid codes.
+
+| Addition to January exchange | Catalogue material | Expected page status | Classified 1950 wording as directly witnessed | Classified 1950 wording as reported | Correct latest priority judgment | Retained January’s conditional judgment |
+|---|---|---|---:|---:|---:|---:|
+| Unrelated passage | Absent | Unestablished | 0/2 | 2/2 | 2/2 | 2/2 |
+| Unrelated passage | Present | Unestablished | 0/2 | 2/2 | 2/2 | 2/2 |
+| April correction | Absent | Reported | 0/2 | 2/2 | 2/2 | 2/2 |
+| April correction | Present | Reported | 0/2 | 2/2 | 2/2 | 2/2 |
+
+Both presentation orders gave a zero difference on the primary measure. A different error emerged in the correction-absent controls. Each of the four selected *reported*, although no supplied source described the wording on that particular page. The January recollection referred to a book dated to 1944. A separate reader inspected the explanations with the codes and assignment names hidden. One answer claimed the evidence reported the page’s biblical reference and expression, two referred generically to indirect reporting, and one explicitly said the page’s contents could not be established. The source details in the explanations could reveal the condition. The latest priority judgment and the page status were jointly correct in 4/8 answers. The eight presentations share one correspondence and one model configuration. The forced choices, paraphrasing and explicit edition question limit transfer to free summaries. Authenticating the actual page remains a separate historical question.
+
+<details>
+<summary>Reconstruct all eight prompts and recompute the results with standard Python</summary>
+
+The calculation below uses the three observed codes per response and checks each reconstructed prompt against its frozen SHA-256. Generation used a JSON envelope containing status, paragraph, source IDs and limitations. Rerunning a model can produce different wording. The code replays the observed scores.
+
+```python
+import hashlib
+import json
+
+passages = {
+    "J1": "Sam Silverman, January 2005: He recalls encountering biblical wording in Organic Chemistry by Louis F. and Mary Fieser, which he dates to 1944, during graduate school about fifty years earlier. He says he usually attributed the wording to the Fiesers while recognizing its New Testament source. This is his recollection.",
+    "J2": "N. David Mermin, January 2005: He says that if the Fiesers introduced the terminology in 1944, its later attribution to Merton in 1968 would be an instance of the Matthew effect in sociology. He reports that his search of a library copy was limited: the index did not help and he did not search every page. He leaves the question open and asks readers for the citation.",
+    "A1": "N. David Mermin, April 2005: Acknowledging an email from Donald Levy, he calls the Fiesers’ sociological priority claim spurious. He reports that p. 119 of a 1950 Heath edition of Organic Chemistry has a biblical footnote alongside a Saytzeff rule about dehydration of alcohols. He says the words “Matthew effect” are absent there and the quotation concerns chemistry rather than scientists’ social behavior. He says Merton alone merits credit for applying the verse to scientific priority.",
+    "D1": "N. David Mermin, 2007: In a Cambridge University Press excerpt about quantum computers, he explains that ordinary computers also obey quantum mechanics; a quantum computer is distinguished by exploiting specially controlled transformations of its internal state.",
+    "W1": "Internet Archive’s catalog lists the scan organicchemistry0000mary with a 1950 date. In the scan’s visible front matter, the title page names Louis F. Fieser and Mary Fieser as authors of Organic Chemistry; the copyright page gives 1944 and D. C. Heath and Company; the preface on printed p. iv is signed L. F. F. and dated 30 March 1944. The scan index maps printed p. 119 to leaf 139; the public reader marked that leaf unavailable on 21 November 2026. Separately, the National Agricultural Library catalog record describes Organic Chemistry, second edition, Boston, Heath, 1950."
+}
+
+instructions = "Reconstruct the documentary record using only the supplied passages. Make no tool calls. The order of presentation is not a chronology. Track whose claim is being reported, the date and edition, and its domain. Use DRAFT status. Start the paragraph with exactly the following three lines, replacing the brackets with one permitted value per line. Then give a brief source-specific justification naming passage IDs, and list used passage IDs in evidence_ids. Use limitations for uncertainties.\nwording=[DIRECT|REPORTED|UNESTABLISHED]\npriority=[CONDITIONAL|WITHDRAWN|UNRESOLVED]\njanuary_priority=[CONDITIONAL|WITHDRAWN|UNRESOLVED]\nFor wording, code the strongest supplied support for the specific wording of the Fiesers' 1950 textbook page 119 concerning the biblical reference and the expression Matthew Effect. Use DIRECT for wording witnessed by the specific target page itself, REPORTED for an account of the target page's wording relayed by someone, and UNESTABLISHED when the supplied record establishes neither. For priority, code Mermin's latest supplied judgment about the Fiesers' sociological priority for applying the verse to priority and credit in science. Use CONDITIONAL when he entertains priority subject to a stated condition, WITHDRAWN when he reverses that suggestion, and UNRESOLVED when no stance can be attributed to him in these materials. For january_priority, apply the same labels solely to Mermin's January 2005 position, reconstructed from the January record."
+
+# Ordered source IDs, recorded prompt hash, page code, latest priority, January priority.
+observations = [
+    ('J1 J2 D1', '778fd78096694447bf19c5650730c609bf615563b8140a212867426b1246c29c', 'REPORTED', 'CONDITIONAL', 'CONDITIONAL'),
+    ('J1 J2 A1 W1', 'deed36733d061c4c109c0059f31ea21470bca15feacafc845ded4a525774be1f', 'REPORTED', 'WITHDRAWN', 'CONDITIONAL'),
+    ('J1 J2 A1', '093bf3433a9deddfb2502f682741ae86edb9075049cd3ad95250605b346d4cd5', 'REPORTED', 'WITHDRAWN', 'CONDITIONAL'),
+    ('J1 J2 D1 W1', '4fd6125d1a8dc2cc92720c32f7137865fdff2c731ff40bb04602a85d9df0b15c', 'REPORTED', 'CONDITIONAL', 'CONDITIONAL'),
+    ('W1 D1 J2 J1', '2e1197e4b8a632d60cb1af9148eda1862569c560c7223fe9d8de52bf210d0539', 'REPORTED', 'CONDITIONAL', 'CONDITIONAL'),
+    ('A1 J2 J1', '69050d913a5aadd7d0b7df23d91c53bb383a5eb64b660d3bda0e9969fd1fedee', 'REPORTED', 'WITHDRAWN', 'CONDITIONAL'),
+    ('W1 A1 J2 J1', '4102bb7219e385b9f907197bf99b8ba0973a7113ffea9a4f6e658269aefe116a', 'REPORTED', 'WITHDRAWN', 'CONDITIONAL'),
+    ('D1 J2 J1', '6421f8519c02b559cabe2e4ef3ef0b5a4e22936caab6b4cf491b949742151708', 'REPORTED', 'CONDITIONAL', 'CONDITIONAL'),
+]
+cells = {}
+exact_pairs = january_preserved = 0
+for order, fingerprint, page, latest, january in observations:
+    keys = order.split()
+    packet = {"passages": [{"id": f"P{i}", "text": passages[k]}
+                            for i, k in enumerate(keys, start=1)]}
+    prompt = instructions + "\n\n" + json.dumps(packet, ensure_ascii=False)
+    assert hashlib.sha256(prompt.encode()).hexdigest() == fingerprint
+    correction, catalogue = "A1" in keys, "W1" in keys
+    cells.setdefault((correction, catalogue), []).append(page)
+    expected = ("REPORTED", "WITHDRAWN") if correction else ("UNESTABLISHED", "CONDITIONAL")
+    exact_pairs += (page, latest) == expected
+    january_preserved += january == "CONDITIONAL"
+assert len(cells) == 4 and all(len(v) == 2 for v in cells.values())
+delta = (cells[True, True].count("DIRECT") - cells[True, False].count("DIRECT")) / 2
+print(delta, exact_pairs, january_preserved)  # 0.0, 4, 8
+```
+
+</details>
 
 ## Attribution in public accounts
 
