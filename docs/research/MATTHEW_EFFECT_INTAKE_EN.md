@@ -75,6 +75,92 @@ print(delta, exact_pairs, january_preserved)  # 0.0, 4, 8
 
 </details>
 
+### Does asking for the source and edition help in free prose?
+
+We tested whether explicitly asking for the source and edition would reduce unsupported claims about p. 119 without losing genuine reports. The follow-up reused the eight ordered documentary presentations from the preceding experiment. The January exchange was always present. Four presentations included Mermin’s April correction and four substituted his unrelated quantum-computing passage. The catalogue material was crossed with that substitution and both passage orders were retained. Each presentation went to two fresh `gpt-6-luna` sessions under the same response envelope, without tool calls. Each prompt went first in two of the four pairs in each evidence group. The target page was unavailable in all sixteen calls.
+
+Both arms began with the same question and instructions.
+
+> Using only the supplied passages, write one paragraph of at most 80 words in natural English. What can we say about the biblical reference and the expression 'Matthew effect' on page 119 of the Fiesers' 1950 textbook, and what is Mermin's position on the Fiesers' priority for applying the verse to scientific priority and credit? Make no tool calls.
+
+The source-and-edition arm appended one sentence before the passages.
+
+> Identify the source and edition that can report on the target page, if any.
+
+Before generation we froze the prompts, evidence, schedule and paired comparison. The design SHA-256 is `12e7b9f656893099eb7df00bc0eb02b6957c673cebea3e97201d1d3cc5cb4612`. Two model readers assessed the visible paragraphs independently with prompts and assignments withheld. The prose itself could reveal the material supplied. With the April correction absent, a reported content claim or a bare assertion about the target wording counted as a false report. With the correction present, we counted a miss when the prose failed to link the target wording unambiguously to Mermin’s April account. A correct report could coexist with explicit lack of direct access. Any claim of direct inspection was also tracked separately. The two readers agreed on page-claim type in 15/16 paragraphs, the report’s source in 12/16, explicit source-and-edition naming in 13/16, direct inspection in 16/16 and priority scope in 8/16 before adjudication. The priority rule treated a conditional suggestion as compatible with leaving the ultimate priority question open.
+
+| Outcome | Neutral | Source and edition | Paired difference | Pairs with event only in neutral / only with request |
+| --- | ---: | ---: | ---: | ---: |
+| False page report, April correction absent | 0/4 | 0/4 | 0 percentage points | 0 / 0 |
+| Missed genuine report, April correction present | 1/4 | 3/4 | +50 percentage points | 0 / 2 |
+| Missed genuine report, accepting the two mixed attributions | 1/4 | 1/4 | 0 percentage points | 0 / 0 |
+
+Every paragraph without the April correction expressly withheld a conclusion about the target wording. None omitted the issue entirely. One of those neutral paragraphs carried an abstention flag in the response envelope and still furnished assessable prose. All sixteen sessions delivered, none claimed direct inspection and one neutral and two source-and-edition answers exceeded 80 whitespace-delimited words. Those paragraphs remained in the analysis. All eight paragraphs without the correction gave Mermin’s conditional judgment. All eight with it described his withdrawal in the domain of scientific credit. An unambiguous report explicitly naming both its source and the 1950 edition occurred in three neutral and one source-and-edition answer.
+
+In two source-and-edition answers, the opening called the textbook the reporting source and a subsequent clause attributed the page’s contents to Mermin. One began “The source identifiable as reporting on the target page is the Fiesers’ *Organic Chemistry*” and then said “Mermin reports that the page has a biblical footnote.” The other called the 1950 edition “The reportable source” and then stated what “Mermin says page 119” contains. The main reading treated the source attribution as mixed. Counting the explicit Mermin clauses as sufficient removes both additional misses. In the remaining matched pair with misses, the neutral answer presented the page’s contents in the writer’s voice. Its counterpart said the textbook “reports on page 119” and named Mermin for the interpretation. One successful source-and-edition response identified “Mermin’s account of the 1950 Heath edition” as the reporting source and noted that the scan did not expose p. 119.
+
+The prediction required fewer false page reports and no increase in missed genuine reports. Neither reading of the mixed attributions supported it. The zero false-report count in neutral prose left no observed room for a reduction on these controls. This is a comparison of two prompts on eight presentations of one correspondence with one model configuration. The earlier coded experiment also asked separately about the January snapshot, so the two experiments cannot isolate the effect of codes versus prose. The textbook page remains unverified.
+
+<details>
+<summary>Check the matched inputs and recalculate the prose comparisons</summary>
+
+Run the Python block from the original edition experiment, then the block below in the same Python 3 session or script. The first block supplies the five frozen paraphrases and their eight presentation orders. This block checks the documentary payloads and both new prompts in that same order. The grade pairs list neutral first and use `withheld` for explicit insufficiency, `relayed` for an unambiguous Mermin report, `mixed` for the two competing attributions, `asserted` for a claim in the writer’s voice and `wrong` for assigning the reporting role to the textbook. Each line prints the neutral and request counts, the number of pairs, the paired difference as a fraction, and the two discordant counts in that order. New model sessions can generate different prose.
+
+```python
+from collections import Counter
+
+neutral = ("Using only the supplied passages, write one paragraph of at most 80 words in natural English. "
+           "What can we say about the biblical reference and the expression 'Matthew effect' on page 119 "
+           "of the Fiesers' 1950 textbook, and what is Mermin's position on the Fiesers' priority "
+           "for applying the verse to scientific priority and credit? Make no tool calls.")
+addition = " Identify the source and edition that can report on the target page, if any."
+grades = [
+    ("withheld", "withheld"),  # J1 J2 D1
+    ("relayed", "mixed"),      # J1 J2 A1 W1
+    ("asserted", "wrong"),     # J1 J2 A1
+    ("withheld", "withheld"),  # J1 J2 D1 W1
+    ("withheld", "withheld"),  # W1 D1 J2 J1
+    ("relayed", "mixed"),      # A1 J2 J1
+    ("relayed", "relayed"),    # W1 A1 J2 J1
+    ("withheld", "withheld"),  # D1 J2 J1
+]
+orders = [row[0].split() for row in observations]
+payloads = [
+    json.dumps({"passages": [{"id": f"P{i}", "text": passages[key]}
+                             for i, key in enumerate(order, 1)]}, ensure_ascii=False)
+    for order in orders
+]
+
+def sequence_hash(strings):
+    return hashlib.sha256("\n".join(strings).encode("utf-8")).hexdigest()
+
+assert sequence_hash(payloads) == "358c184b7763428c9e75a60c209959cbe173260a9f672760225e6455c9c6e2a8"
+for header, expected in [
+    (neutral, "57483e3c3d5d5287dc1b41df60d2fd68c95d9eab913b8b43d490e83f941a6749"),
+    (neutral + addition, "e4ae37b53cc69c306841dbd70b4f09cb5a914870a02bcc0cd65a208fe8fb041c"),
+]:
+    assert sequence_hash(header + "\n\n" + packet for packet in payloads) == expected
+
+for label, correction, events in [
+    ("False reports", False, {"relayed", "mixed", "asserted", "wrong"}),
+    ("Missed genuine reports", True, {"mixed", "asserted", "wrong", "withheld"}),
+    ("Misses accepting mixed attributions", True, {"asserted", "wrong", "withheld"}),
+]:
+    outcomes = Counter(
+        (n in events, t in events)
+        for order, (n, t) in zip(orders, grades)
+        if ("A1" in order) == correction
+    )
+    denominator = sum(outcomes.values())
+    assert denominator == 4
+    both = outcomes[True, True]
+    neutral_only, targeted_only = outcomes[True, False], outcomes[False, True]
+    print(label, both + neutral_only, both + targeted_only, denominator,
+          (targeted_only - neutral_only) / denominator, neutral_only, targeted_only)
+```
+
+</details>
+
 ## Attribution in public accounts
 
 The English Wikipedia entry attributes the name to Robert K. Merton and Harriet Zuckerman jointly in 1968. Its account of what the effect describes agrees with the early record: scientists of different standing can receive different recognition for comparable work. Its account of who named it and when requires revision. A campus newspaper dated 19 May 1964 already uses the expression in this scientific sense and attributes the naming to Merton. The issue establishes a latest possible date for this attested use. The exact day of coinage remains open. [Wikipedia, revision 1383245157](https://en.wikipedia.org/w/index.php?title=Matthew_effect&oldid=1383245157) · [Mindel and Bondy, *Statesman*, pp. 6–7](https://repo.library.stonybrook.edu/xmlui/bitstream/handle/11401/62034/Statesman%2C%20V.7%2C%20n.%2011.pdf)
