@@ -161,6 +161,110 @@ for label, correction, events in [
 
 </details>
 
+### Can a summary distinguish the document it reads from the edition it describes?
+
+Merton appeared alone on the byline of the 1968 *Science* article. A later printing of his collection contains an acknowledgment that the paper warranted joint authorship. In 1988 Merton quoted what he said he had written in the 1973 reprint. The distinction matters because a summary can convey his judgment correctly while overstating which page the reader received. This experiment asked whether explicitly identifying the supplied document and its referent reduces that error. [*Science*, 1968, p. 56](https://garfield.library.upenn.edu/merton/matthew1.pdf#page=1) · [*The Sociology of Science*, publisher record](https://press.uchicago.edu/ucp/books/book/chicago/S/bo28451565.html) · [*Isis*, 1988, p. 607 n. 2](https://garfield.library.upenn.edu/merton/matthewii.pdf#page=2)
+
+#### Materials and prompts
+
+Every packet contained B, an English summary of the original byline and opening passage. It was paired with one of three source-labeled English summaries. P gave wording from p. 439 n. 1 of an examined later printing of the 1973 collection, with an explicit caveat about the unexamined first printing. R gave the 1988 testimony and short quotations from the earlier note as Merton reproduced it. C described the 1973 letter reproduced in 1995, whose proof-photocopy passage provided no acknowledgment about the *Science* article. The models received these texts with positional identifiers D1 and D2. The page readings were done during preparation.
+
+The C fixture was a paraphrase of a checked witness record. It attributed the underlining to Merton personally. The letter says the names had been underlined for indexing and leaves the person who did it unspecified. The photocopied enclosure was unavailable in C. [*Social Forces*, 1995, p. 402, exhibit 7](https://garfield.library.upenn.edu/merton/thomastheorem.pdf#page=24)
+
+We amended the materials before any model run. We removed summaries’ explicit interpretations of what the C excerpt could establish and how P and R carried the acknowledgment, kept the identifiable sources and P’s first-print access caveat, and froze the revised stimuli, comparison, schedule, model and coding rules. The original freeze was archived byte for byte. Six ordered packets went to one fresh `gpt-6-luna` session per arm, with zero tool calls. The two arms shared the same 80-word budget and native response envelope. The forward block finished before the reverse block. Within each pair the first arm finished before the second began. Pairs within a block could run concurrently.
+
+| Block | Packet in document order | First arm | Second arm |
+| --- | --- | --- | --- |
+| Forward | B, P | Combined | Split |
+| Forward | B, R | Split | Combined |
+| Forward | B, C | Combined | Split |
+| Reverse | C, B | Split | Combined |
+| Reverse | R, B | Combined | Split |
+| Reverse | P, B | Split | Combined |
+
+<details>
+<summary>Read the exact passages and prompt instructions</summary>
+
+**B**
+
+> On printed p. 56, the 1968 Science article is titled The Matthew Effect in Science and displays Robert K. Merton as its sole byline author. In the opening account, Merton says the conception draws on experience reported in Harriet Zuckerman’s interviews with U.S. Nobel laureates, alongside other materials.
+
+**P**
+
+> In an examined later printing of Merton’s 1973 collection, the reprinted 1968 article appears on printed p. 439, note 1. The note cites Harriet Zuckerman’s research describing the methods and substance of the interviews, then Merton acknowledges drawing on the interview and other materials: “the paper should have appeared under joint authorship.” The first 1973 printing has not been checked here.
+
+**R**
+
+> On p. 607 n. 2 of his 1988 Isis article, Merton says he is repeating what he noted when reprinting the original paper. He quotes that earlier first-person wording, dated within the quotation as 1973: “It is now [1973] belatedly evident to me” and “the paper should have appeared under joint authorship.”
+
+**C**
+
+> In his 1995 Social Forces article, Exhibit 7 on printed p. 402 reproduces Merton’s reply to Dorothy Swaine Thomas, dated 28 September 1973. In the letter, Merton describes a photocopy he had made from page proofs of his forthcoming collection, then explains that he underlined proper names for indexing.
+
+**Shared opening**
+
+> Using only the supplied documents, write one paragraph of at most 80 words in natural English. What evidence, if any, indicates that Merton considered joint authorship warranted for the 1968 article ‘The Matthew Effect in Science,’ and who was on the article’s published byline? Make no tool calls.
+
+**Combined instruction**
+
+> Identify the source and edition for the evidence about Merton's view, if any.
+
+**Split instruction**
+
+> Identify separately the supplied document that provides the evidence about Merton's view, if any, and the work, edition, or event it describes.
+
+The prompt joined the shared opening and the arm instruction with a space. Two newlines followed, then a JSON object with a `documents` array containing the two passages in order. Each element had `id` and `text` keys. The `id` values were `D1` and `D2`. JSON was serialized with non-ASCII characters preserved and the standard Python spacing.
+
+</details>
+
+#### Scoring rule
+
+The primary comparison used the two R pairs. An error required explicitly presenting the earlier book or note as the evidence supplied in the packet, or explicitly claiming access to the original 1973 page or first printing. Quoting or dating the earlier note with accurate attribution to the 1988 article counted as a valid use of the report. The effect was the mean of the two within-pair differences in the binary error, split minus combined. The prediction required a negative difference and no increase in missed genuine R testimony. If any R outcome was unavailable, the directional decision would stay open. The available pairs would provide a descriptive difference, and assigning both possible values to each missing binary outcome would bound the difference across all assigned pairs.
+
+Secondary outcomes were missed genuine testimony on R, explicit claims of access to the original page or proof text on R and C, unsupported affirmations of the acknowledgment on C, correct identification of direct evidence in the examined later printing on P, and correct reporting of the original byline in all groups. Coding distinguished explicit withholding from silence, and a claim of warranted joint authorship from a claim that the published byline listed two names. The comparison used one work family and one model. Its paired presentations measure sensitivity to the instructions and document order in this case. They provide no estimate of prevalence or transfer to other families.
+
+#### Results
+
+Neither prompt produced an explicit earlier-witness error in the two R pairs. The paired difference was **0 percentage points**, so the predicted reduction did not occur. Both prompts retained the genuine 1988 testimony in both orders and preserved the original byline in all six packets. In one combined answer to the reversed control, the paragraph correctly withheld a judgment but later called the exhibit evidence about Merton’s view. That loose source description did not affirm the acknowledgment or claim access to the earlier note. It sits outside the primary outcome, which covers only R and requires an explicit claim about the supplied witness.
+
+| Outcome | Combined | Split |
+| --- | ---: | ---: |
+| Earlier note or first printing promoted to supplied witness, R | 0/2 | 0/2 |
+| Genuine retrospective report missed, R | 0/2 | 0/2 |
+| Direct first-print or proof text access claimed, R and C | 0/4 | 0/4 |
+| Unsupported acknowledgment or judgment affirmed, C | 0/2 | 0/2 |
+| Unqualified denial, C | 0/2 | 0/2 |
+| Explicitly scoped withholding, C | 2/2 | 2/2 |
+| Silence on credit, C | 0/2 | 0/2 |
+| Examined later-printing evidence correctly identified, P | 2/2 | 2/2 |
+| Original byline correctly reported, all | 6/6 | 6/6 |
+
+All 12 paragraphs were evaluated. None carried an abstention flag. One combined paragraph exceeded 80 whitespace-delimited words and remained in the analysis. With two R pairs, one discordant pair would change the paired estimate by 50 percentage points. The observed zero difference leaves performance on other source families open. A next test would hold bibliographic locators and the question fixed and compare labeled analyst paraphrases with minimally edited source transcriptions. Independent document families with verified witness and referent relationships would support that comparison.
+
+<details>
+<summary>Recalculate the comparison from the adjudicated codes</summary>
+
+Two independent readers scored the paragraphs without the assignment key and agreed on every coded field for all 12 paragraphs. Source wording could still reveal which material a paragraph discussed. Each code in this table applies to one response. The word columns use whitespace-delimited counts.
+
+| Packet in document order | Combined code | Split code | Combined words | Split words |
+| --- | --- | --- | ---: | ---: |
+| B, P | P | P | 59 | 59 |
+| B, R | R | R | 43 | 61 |
+| B, C | C | C | 81 | 79 |
+| C, B | C | C | 67 | 65 |
+| R, B | R | R | 40 | 64 |
+| P, B | P | P | 55 | 71 |
+
+| Code | Testimony status | Reporting document | Referent | Judgment about 1968 affirmed | Positive content affirmed |
+| --- | --- | --- | --- | --- | --- |
+| P | Direct acknowledgment | Examined later printing | Examined later printing | Yes | Yes |
+| R | Retrospective warrant | 1988 article | Earlier reprint note | Yes | Yes |
+| C | Scoped withholding | None | None | No | No |
+
+The other four coded fields were identical for all 12 responses. Earlier-witness promotion, direct first-print inspection and unwarranted denial were each false. The byline was coded as Merton alone in every response. To reproduce the counts, select the packets specified for each outcome, count matching codes in each arm, and divide by the number of selected packets. A genuine report is missed when an R packet’s response has any code other than R. Correct identification of the later printing requires code P in a P packet and neither promotion field. The C positive-content flag counts as unsupported when true. For the primary outcome take the logical OR of the two promotion fields for each R response, subtract combined from split within each pair and average the two differences. Both pairs were complete, giving assigned-pair bounds of [0, 0].
+
+</details>
+
 ## Attribution in public accounts
 
 The English Wikipedia entry attributes the name to Robert K. Merton and Harriet Zuckerman jointly in 1968. Its account of what the effect describes agrees with the early record: scientists of different standing can receive different recognition for comparable work. Its account of who named it and when requires revision. A campus newspaper dated 19 May 1964 already uses the expression in this scientific sense and attributes the naming to Merton. The issue establishes a latest possible date for this attested use. The exact day of coinage remains open. [Wikipedia, revision 1383245157](https://en.wikipedia.org/w/index.php?title=Matthew_effect&oldid=1383245157) · [Mindel and Bondy, *Statesman*, pp. 6–7](https://repo.library.stonybrook.edu/xmlui/bitstream/handle/11401/62034/Statesman%2C%20V.7%2C%20n.%2011.pdf)
