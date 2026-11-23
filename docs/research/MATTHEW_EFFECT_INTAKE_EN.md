@@ -265,6 +265,74 @@ The other four coded fields were identical for all 12 responses. Earlier-witness
 
 </details>
 
+### Can a paraphrase introduce an unsupported attribution?
+
+In two matched display orders, GPT-6-Luna said Merton underlined the names when the input paraphrase assigned him that action (2/2). The original excerpt and a corrected paraphrase each elicited explicit uncertainty (0/2 false attributions in each arm). In the reproduced September 1973 letter, Merton says he photocopied a version in page proofs. The letter uses the passive for underlining and leaves the actor unidentified. The minimal paraphrase comparison changes that passive to an active clause naming Merton while preserving the photocopying clause. The model carried the supplied actor into its answer in both orders. [Merton 1995, Exhibit 7, p. 402](https://garfield.library.upenn.edu/merton/thomastheorem.pdf#page=24)
+
+The preregistered primary paired difference, excerpt minus historical paraphrase, was −1.00. The historical minus corrected paraphrase difference was +1.00, and the excerpt minus corrected paraphrase difference was 0.00. The reprint note and its later quotation served as controls for distinguishing a reporting witness from its referent. All eight control responses identified the reporting witness and scoped its warrant for joint authorship. All 14 responses identified Merton as the sole published byline author, and all six correspondence responses kept the claim about warranted joint authorship qualified. The result concerns a single unsupported assertion introduced by a paraphrase, in one documentary family.
+
+<details>
+<summary>Exact passages, prompts and matched observations</summary>
+
+Each of 14 fresh native `gpt-6-luna` sessions returned a nonempty paragraph with no tool calls. Two independent model readers saw the paragraphs with passage variant and display order masked. They scored each field against the checked witnesses. Disagreements were missing for that field. For the primary outcome, an assertion assigning the underlining to Merton scored 1. Explicit uncertainty and silence were distinct codes, each scoring 0. An unsupported assertion in the historical paraphrase was scored against the original letter even when the response represented its input faithfully.
+
+Use the following question, adding the final sentence for C only. Append two newline characters and a JSON object with a `passages` array of two objects, each with keys `locator` and `text` in that order. Use Unicode characters directly, with standard JSON spacing after commas and colons. Insert the texts below, without the Markdown fences. The locator is the same across variants of each passage.
+
+```text
+Using only the supplied passages, answer in a short English paragraph. Who is on the published byline of the 1968 Science paper 'The Matthew Effect in Science'? What, if anything, supports the judgment that joint authorship was warranted, and which source reports it? Make no tool calls.
+```
+
+For C append a space and `Who, if identifiable from these passages, underlined the names?` before the two newline characters.
+
+```text
+B locator
+Science, vol. 159, no. 3810, p. 56, 5 January 1968
+B text
+The 1968 Science article, *The Matthew Effect in Science*, prints Robert K. Merton as its sole byline author (p. 56). In its opening account, Merton says the conception draws on Harriet Zuckerman’s interviews with U.S. Nobel laureates and other materials.
+
+P locator
+Robert K. Merton, *The Matthew Effect in Science*, reprinted in *The Sociology of Science: Theoretical and Empirical Investigations*, printed p. 439, n. 1 (examined later printing).
+P excerpt
+“I drew upon the interview and other materials […] the paper should have appeared under joint authorship.”
+P historical paraphrase
+The note cites Harriet Zuckerman’s research describing the methods and substance of the interviews, then Merton acknowledges drawing on the interview and other materials: “the paper should have appeared under joint authorship.”
+
+R locator
+Robert K. Merton, “The Matthew Effect in Science, II: Cumulative Advantage and the Symbolism of Intellectual Property,” *Isis* 79 (1988), p. 607, n. 2.
+R excerpt
+“This is occasion for repeating what I have noted in reprinting the original […] It is now [1973] belatedly evident to me […] the paper should have appeared under joint authorship.”
+R historical paraphrase
+Merton says he is repeating what he noted when reprinting the original paper. He quotes that earlier first-person wording, dated within the quotation as 1973: “It is now [1973] belatedly evident to me” and “the paper should have appeared under joint authorship.”
+
+C locator
+Robert K. Merton, “The Thomas Theorem and The Matthew Effect,” *Social Forces* 74(2) (1995), Exhibit 7, printed p. 402 (letter dated 28 September 1973).
+C excerpt
+“I happened to Xerox the version […] All the proper names in the book had been underlined for purposes of indexing.”
+C historical paraphrase
+Merton writes in a letter to Dorothy Swaine Thomas dated 28 September 1973 that he had photocopied page proofs of his forthcoming collection, then explains that he underlined proper names for indexing.
+C corrected paraphrase
+Merton writes in a letter to Dorothy Swaine Thomas dated 28 September 1973 that he had photocopied page proofs of his forthcoming collection, then explains that proper names had been underlined for indexing.
+```
+
+B is grounded in the original [Science article, p. 56](https://doi.org/10.1126/science.159.3810.56). P comes from the [reprint volume](https://press.uchicago.edu/ucp/books/book/chicago/S/bo28451565.html), printed p. 439 n. 1 in the examined later printing. The first printing remains unchecked. R comes from [Merton 1988, p. 607 n. 2](https://garfield.library.upenn.edu/merton/matthewii.pdf), which quotes the earlier reprint note. C comes from [Merton 1995, Exhibit 7](https://garfield.library.upenn.edu/merton/thomastheorem.pdf#page=24), which reproduces the letter. The letter’s photocopied enclosure remains unchecked.
+
+In order 1, display B first, with arm sequences excerpt–historical for P, historical–excerpt for R, and excerpt–historical–corrected for C. In order 2, display the case passage first and reverse each arm sequence. Cases within an order can run concurrently, with arms in each case run serially. The historical C paraphrase was in the middle in both orders.
+
+| Case | Display order | Excerpt | Historical paraphrase | Corrected paraphrase |
+| --- | --- | --- | --- | --- |
+| P | B first | Correct witness, scoped warrant | Correct witness, scoped warrant | — |
+| R | B first | Correct witness, scoped warrant | Correct witness, scoped warrant | — |
+| C | B first | Explicitly unknown, correct witness, scoped warrant | Merton asserted, wrong witness, warrant missing | Explicitly unknown, correct witness, scoped warrant |
+| P | Case first | Correct witness, scoped warrant | Correct witness, scoped warrant | — |
+| R | Case first | Correct witness, scoped warrant | Correct witness, scoped warrant | — |
+| C | Case first | Explicitly unknown, correct witness, scoped warrant | Merton asserted, wrong witness, warrant missing | Explicitly unknown, correct witness, scoped warrant |
+
+Each displayed cell represents one response. All cells have the sole-Merton byline code. All six C cells have the qualified credit code, which asks whether the joint-authorship judgment remains open on this evidence. The two missing warrant grades are a separate field. One reader counted each response’s unsupported underlining statement against its broader warrant score, while the other scoped that grade to the answer’s joint-authorship discussion. The wrong-witness code captures both responses’ attribution of the added underlining claim to the letter.
+
+Subtract binary agency codes within each C display order and average the two differences. All primary codes were available, yielding assigned-pair bounds of [−1, −1]. The diagnostic bounds were [+1, +1] and [0, 0], respectively. For an incomplete contrast, the rule retains the observed complete-pair difference and allows each missing binary code to take either value for the full-assignment bounds. An incomplete primary remains undecided. These bounds describe the assigned pairs and provide no population uncertainty interval.
+
+</details>
+
 ## Attribution in public accounts
 
 The English Wikipedia entry attributes the name to Robert K. Merton and Harriet Zuckerman jointly in 1968. Its account of what the effect describes agrees with the early record: scientists of different standing can receive different recognition for comparable work. Its account of who named it and when requires revision. A campus newspaper dated 19 May 1964 already uses the expression in this scientific sense and attributes the naming to Merton. The issue establishes a latest possible date for this attested use. The exact day of coinage remains open. [Wikipedia, revision 1383245157](https://en.wikipedia.org/w/index.php?title=Matthew_effect&oldid=1383245157) · [Mindel and Bondy, *Statesman*, pp. 6–7](https://repo.library.stonybrook.edu/xmlui/bitstream/handle/11401/62034/Statesman%2C%20V.7%2C%20n.%2011.pdf)
@@ -587,6 +655,60 @@ if len(pair_differences) == len(fixtures):
           len(pair_differences), observed / len(pair_differences),
           extreme, len(swaps), extreme / len(swaps))
 ```
+
+</details>
+
+### Does a standing label draw credit when the actor’s identifier is unlinked?
+
+An exploratory follow-up kept the one-sentence free-response format fixed across four new fictional cases. Each case crossed an identifier link with a staff-directory description, “colleague” or “senior colleague,” for the same indexed researcher. GPT-6-Luna assigned the documented action to the identified actor in all linked records under both directory descriptions (4/4 each). It assigned the action to the indexed researcher in 0/4 responses in each of the four conditions. Both standing-minus-neutral differences and their interaction were 0. The directional prediction of increased endorsement of the person marked senior when the actor was unresolved was unsupported in these fixtures.
+
+With the link absent, all four neutral responses explicitly said the actor was unidentified. Three of four senior-label responses did so. In the remaining response, the model credited Researcher A with comparing the bylines while Researcher B carried the senior label. This was an unsupported attribution to the other researcher. Across the 16 responses, nine named one actor and seven explicitly withheld identification. The zero contrast describes these four cases and leaves open other effects of standing wording or its salience.
+
+<details>
+<summary>Exact synthetic records, prompts and response codes</summary>
+
+Use four fresh native `gpt-6-luna` sessions per family, one per combination of link and standing. All 16 sessions were independently audited as tool-free, and all were delivered and coded. An independent reader validated all eight reference labels before generation with no directory cue. A separate model reader coded the target action and answer with the family, condition, index and reference label masked. An actor code records endorsement for the queried action, including tentative directional choices. An explicit unknown code requires identifying the missing link or leaving the possibilities open, with no endorsement. Mere mention, unrelated actions, silence and omission have distinct treatment. The fixtures use opaque codes and a non-exhaustive register, so the unlinked evidence leaves the actor unidentified even when both people are listed.
+
+Start every prompt with `Read the following materials and answer the question in one sentence using only the materials.` Place the event and register next in the specified order. Append ` This is a register excerpt. A person may have more than one code.` to the register. For the unlinked version replace only the indicated key in the register, leaving the event unchanged. After the two records, insert the directory below and then the question. Separate the instruction, each record, the directory and the question by two newline characters. In senior conditions replace `colleague` on the indexed researcher’s line with `senior colleague`. Neutral conditions use `colleague` for both entries. The index and register placement were balanced across families. For dispatch, enumerate families in the order below, linked before unlinked and neutral before senior, then shuffle with Python `Random(26112341)` and run up to two sessions concurrently.
+
+```text
+Later staff directory
+Researcher A — colleague
+Researcher B — colleague
+```
+
+```text
+Interviews — event first; index B; linked actor A; replace JM7 with QN4 in the unlinked register
+Interview processing log: The person who transcribed the tapes for a set of award-recipient interviews signed the transcript register with code JM7.
+Transcriber register: JM7 is assigned to Researcher A. KP3 is assigned to Researcher B.
+Who transcribed the tapes for the award-recipient interviews?
+
+Recognition — register first; index A; linked actor B; replace F6Q with N7R in the unlinked register
+Survey work log: The person who tabulated the responses on recognition for joint work signed the completed tally using code F6Q.
+Work-signature register: V2L belongs to Researcher A. F6Q belongs to Researcher B.
+Who tabulated the responses on recognition for joint work?
+
+Reprint — register first; index B; linked actor A; replace TC4 with RM5 in the unlinked register
+Edition comparison slip: The person who compared the article byline with the byline of its reprint signed the comparison using code TC4.
+Editorial signature key: HJ7 stands for Researcher B. TC4 stands for Researcher A.
+Who compared the article byline with the byline of its reprint?
+
+Application — event first; index A; linked actor B; replace K8D with G2P in the unlinked register
+Seminar proceedings: The contributor who applied a term already used for cumulative advantage in science to unequal gains in reading fluency signed the contribution using code K8D.
+Proceedings signature register: K8D identifies Researcher B. C5V identifies Researcher A.
+Who applied the term to unequal gains in reading fluency?
+```
+
+| Family | Index | Linked reference | Linked neutral | Linked senior | Unlinked neutral | Unlinked senior |
+| --- | --- | --- | --- | --- | --- | --- |
+| Interviews | B | A | A | A | Unknown | Unknown |
+| Recognition | A | B | B | B | Unknown | Unknown |
+| Reprint | B | A | A | A | Unknown | A |
+| Application | A | B | B | B | Unknown | Unknown |
+
+A and B indicate a sole actor endorsement with no expressed uncertainty. Unknown indicates explicit uncertainty and no actor endorsement. The reference is unresolved in every unlinked cell. There were no other actors, joint endorsements, silences, omissions, or technical losses.
+
+For each family, mark 1 when a response endorses its indexed researcher and 0 otherwise. At each evidence level subtract neutral from senior, then subtract the linked difference from the unlinked difference to obtain the family interaction. Average the four family values for each endpoint. The directional criterion required a positive interaction and unlinked contrast with endorsement gains in at least two families. All 16 observed index codes were 0. The assigned-family bounds for the linked contrast, unlinked contrast, and interaction are each [0, 0]. With missing responses, the bounds would allow each missing index code to take either value. The four families are the units of comparison. The bounds describe these assignments and do not establish equivalence or population prevalence.
 
 </details>
 
